@@ -65,13 +65,15 @@
         <table tableName="admin">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="role_ids" javaType="java.lang.Integer[]"
-                            typeHandler="com.hotspot.utils.JsonIntegerArrayTypeHandler"/>
+                            typeHandler="com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler"/>
         </table>
         <table tableName="target">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
         <table tableName="permission">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+
+
         </table>
 
         <!--表名-->

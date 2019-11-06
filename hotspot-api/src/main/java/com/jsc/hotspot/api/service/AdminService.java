@@ -3,9 +3,9 @@ package com.jsc.hotspot.api.service;
 import com.jsc.hotspot.db.dao.AdminMapper;
 import com.jsc.hotspot.db.domain.Admin;
 import com.jsc.hotspot.db.domain.AdminExample;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class AdminService {
     private final Admin.Column[] result =new Admin.Column[]{
         Admin.Column.id, Admin.Column.username, Admin.Column.avatar, Admin.Column.roleIds};
 
-    @Resource
+    @Autowired
     private AdminMapper adminMapper;
 
     public List<Admin> findAdmin(String username){

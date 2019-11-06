@@ -243,7 +243,7 @@ public class AdminExample {
             if (value == null) {
                 throw new RuntimeException("Value for " + property + " cannot be null");
             }
-            roleIdsCriteria.add(new Criterion(condition, value, "com.hotspot.utils.JsonIntegerArrayTypeHandler"));
+            roleIdsCriteria.add(new Criterion(condition, value, "com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler"));
             allCriteria = null;
         }
 
@@ -251,7 +251,7 @@ public class AdminExample {
             if (value1 == null || value2 == null) {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
-            roleIdsCriteria.add(new Criterion(condition, value1, value2, "com.hotspot.utils.JsonIntegerArrayTypeHandler"));
+            roleIdsCriteria.add(new Criterion(condition, value1, value2, "com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler"));
             allCriteria = null;
         }
 

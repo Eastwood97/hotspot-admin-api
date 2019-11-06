@@ -1,6 +1,7 @@
 package com.jsc.hotspot.api.config;
 
 import com.jsc.hotspot.api.shiro.AdminAuthorizingRealm;
+import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;

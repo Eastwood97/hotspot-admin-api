@@ -9,8 +9,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.5.RELEASE</version>
-        <relativePath/>
+        <version>2.2.0.RELEASE</version>
     </parent>
 
     <properties>
@@ -28,6 +27,10 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
             <dependency>
                 <groupId>com.jsc.hotspot.db</groupId>
                 <artifactId>hotspot-db</artifactId>

@@ -12,7 +12,7 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="role_ids" jdbcType="VARCHAR" property="roleIds" typeHandler="com.hotspot.utils.JsonIntegerArrayTypeHandler" />
+    <result column="role_ids" jdbcType="VARCHAR" property="roleIds" typeHandler="com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler" />
     <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
     <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
     <result column="avatar" jdbcType="VARCHAR" property="avatar" />
@@ -51,15 +51,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler}
+                    #{listItem,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -103,15 +103,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler}
+                    #{listItem,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -253,7 +253,7 @@
       last_login_ip, last_login_time, avatar
       )
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=BIT}, #{updateTime,jdbcType=TIMESTAMP}, #{roleIds,jdbcType=VARCHAR,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler}, 
+      #{deleted,jdbcType=BIT}, #{updateTime,jdbcType=TIMESTAMP}, #{roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler},
       #{lastLoginIp,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{avatar,jdbcType=VARCHAR}
       )
   </insert>
@@ -312,7 +312,7 @@
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="roleIds != null">
-        #{roleIds,jdbcType=VARCHAR,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler},
+        #{roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler},
       </if>
       <if test="lastLoginIp != null">
         #{lastLoginIp,jdbcType=VARCHAR},
@@ -361,7 +361,7 @@
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.roleIds != null">
-        role_ids = #{record.roleIds,jdbcType=VARCHAR,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler},
+        role_ids = #{record.roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler},
       </if>
       <if test="record.lastLoginIp != null">
         last_login_ip = #{record.lastLoginIp,jdbcType=VARCHAR},
@@ -389,7 +389,7 @@
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       deleted = #{record.deleted,jdbcType=BIT},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      role_ids = #{record.roleIds,jdbcType=VARCHAR,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler},
+      role_ids = #{record.roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler},
       last_login_ip = #{record.lastLoginIp,jdbcType=VARCHAR},
       last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
       avatar = #{record.avatar,jdbcType=VARCHAR}
@@ -420,7 +420,7 @@
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="roleIds != null">
-        role_ids = #{roleIds,jdbcType=VARCHAR,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler},
+        role_ids = #{roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler},
       </if>
       <if test="lastLoginIp != null">
         last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
@@ -445,7 +445,7 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=BIT},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      role_ids = #{roleIds,jdbcType=VARCHAR,typeHandler=com.hotspot.utils.JsonIntegerArrayTypeHandler},
+      role_ids = #{roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler},
       last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
       last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
       avatar = #{avatar,jdbcType=VARCHAR}
