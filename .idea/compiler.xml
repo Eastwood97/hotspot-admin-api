@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="hotspot-db" />
+        <module name="hotspot-accept" />
+        <module name="hotspot-api" />
+        <module name="hotdpot-common" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="hotdpot-common" options="-parameters" />
+      <module name="hotspot-accept" options="-parameters" />
+      <module name="hotspot-api" options="-parameters" />
+      <module name="hotspot-db" options="-parameters" />
+      <module name="hotspotall" options="" />
+    </option>
+  </component>
+</project>
