@@ -1,5 +1,6 @@
 package com.jsc.hotspot.api.config;
 
+import com.jsc.hotspot.api.filter.ShiroBasicHttpAuthenticationFilter;
 import com.jsc.hotspot.api.shiro.AdminAuthorizingRealm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.Realm;
@@ -12,6 +13,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
+import javax.servlet.Filter;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -25,7 +28,21 @@ import java.util.Map;
 public class ShiroConfig {
 
 
-
+//    @Bean(name = "sessionManager")
+//    public ShiroSessionManager sessionManager(@Qualifier("sessionDAO") RedisSessionDao sessionDAO,
+//                                              @Qualifier("sessionIdCookie") SimpleCookie sessionIdCookie) {
+//        ShiroSessionManager manager = new ShiroSessionManager();
+//        manager.setGlobalSessionTimeout(GloableField.REDIS_TIME_OUT);
+//        manager.setDeleteInvalidSessions(true);
+//        manager.setSessionValidationSchedulerEnabled(true);
+////        manager.setSessionValidationScheduler(sessionValidationScheduler);
+//        manager.setSessionDAO(sessionDAO);
+//        manager.setSessionIdCookieEnabled(false);
+////        manager.setSessionIdCookieEnabled(true);
+////        manager.setSessionIdCookie(sessionIdCookie);
+//        manager.setSessionIdUrlRewritingEnabled(false);
+//        return manager;
+//    }
 
     /**
      * 配置安全管理器，并且注入Realm域
@@ -61,12 +78,14 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSecurityManager((org.apache.shiro.mgt.SecurityManager) securityManager);
         //拦截器--map集合
         Map<String,String> filterChainDefinitionMap =new LinkedHashMap<>();
+        Map<String, javax.servlet.Filter> filterMap = new HashMap<String, Filter>(1);
+        filterMap.put("authc", new ShiroBasicHttpAuthenticationFilter());
         filterChainDefinitionMap.put("/admin/auth/login","anon");
         filterChainDefinitionMap.put("/admin/auth/401","anon");
         filterChainDefinitionMap.put("/admin/auth/index","anon");
         filterChainDefinitionMap.put("admin/auth/403","anon");
         filterChainDefinitionMap.put("/admin/index/index","anon");
-
+        shiroFilterFactoryBean.setFilters(filterMap);
         /**
          * 匹配所有的路径，通过Map集合组成了一个拦截器链，自定向下过滤，一旦匹配则不再执行下面的过滤
          * 如果下面的定义与上面的冲突，那就按照谁先定义了谁说了算
@@ -115,5 +134,10 @@ public class ShiroConfig {
         DefaultAdvisorAutoProxyCreator creator=new DefaultAdvisorAutoProxyCreator();
         creator.setProxyTargetClass(true);
         return creator;
+    }
+
+    @Bean
+    public ShiroBasicHttpAuthenticationFilter shiroBasicHttpAuthenticationFilter() {
+        return new ShiroBasicHttpAuthenticationFilter();
     }
 }

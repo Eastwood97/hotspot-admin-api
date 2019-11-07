@@ -3,14 +3,12 @@ package com.jsc.hotspot.api.facade;
 //import com.point.common.util.ImageUtil;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.springframework.stereotype.Component;
 
 /**
  * @author huixing
  * @description Kafka接收接口
  * @date 2019/10/29
  */
-@Component
 public interface KafkaReceiverService {
 
     /**

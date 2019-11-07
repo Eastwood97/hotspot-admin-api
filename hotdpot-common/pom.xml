@@ -2,6 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jsc.hotspotall</groupId>
+        <artifactId>hotspotall</artifactId>
+        <version>0.1.0</version>
+    </parent>
+    <artifactId>hotdpot-common</artifactId>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -145,20 +157,5 @@
 
 
     </dependencies>
-    <parent>
-        <groupId>com.jsc.hotspotall</groupId>
-        <artifactId>hotspotall</artifactId>
-        <version>0.1.0</version>
-    </parent>
-    <groupId>com.jsc.hotspot.common</groupId>
-    <artifactId>hotdpot-common</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>hotdpot-common</name>
-    <description>Demo project for Spring Boot</description>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
 
 </project>
