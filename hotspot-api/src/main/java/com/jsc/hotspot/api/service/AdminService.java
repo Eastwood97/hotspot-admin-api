@@ -23,11 +23,11 @@ public class AdminService {
         return adminMapper.selectByExample(example);
     }
 
-    public Admin findAdmin(Integer id){
+    public Admin findAdmin(Long  id){
         return  adminMapper.selectByPrimaryKey(id);
     }
 
-    public  void deleteById(Integer id){adminMapper.logicalDeleteByPrimaryKey(id);}
+    public  void deleteById(Long  id){adminMapper.logicalDeleteByPrimaryKey(id);}
 
     public  void add(Admin admin){
         admin.setCreateTime(LocalDateTime.now());
@@ -35,7 +35,7 @@ public class AdminService {
         adminMapper.insertSelective(admin);
     }
 
-   public Admin fingById(Integer id){
+   public Admin fingById(Long id){
         return adminMapper.selectByPrimaryKeySelective(id,result);
    }
 

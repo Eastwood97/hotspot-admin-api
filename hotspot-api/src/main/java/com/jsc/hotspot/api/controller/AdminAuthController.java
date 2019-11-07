@@ -34,7 +34,10 @@ public class AdminAuthController {
     @Autowired
     private AdminService adminService;
 
-
+    @GetMapping("/1")
+    public String test(){
+        return "123";
+    }
 
 //    @Autowired
 //    private RoleService roleService;

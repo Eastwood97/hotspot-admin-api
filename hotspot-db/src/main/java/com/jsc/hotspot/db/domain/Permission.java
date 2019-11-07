@@ -28,7 +28,7 @@ public class Permission {
      *
      * @mbg.generated
      */
-    private Integer id;
+    private Long id;
 
     /**
      *
@@ -37,7 +37,7 @@ public class Permission {
      *
      * @mbg.generated
      */
-    private Integer roleId;
+    private Long roleId;
 
     /**
      *
@@ -83,7 +83,7 @@ public class Permission {
      *
      * @mbg.generated
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -95,7 +95,7 @@ public class Permission {
      *
      * @mbg.generated
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -107,7 +107,7 @@ public class Permission {
      *
      * @mbg.generated
      */
-    public Integer getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
@@ -119,7 +119,7 @@ public class Permission {
      *
      * @mbg.generated
      */
-    public void setRoleId(Integer roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 
@@ -373,8 +373,8 @@ public class Permission {
      * @mbg.generated
      */
     public enum Column {
-        id("id", "id", "INTEGER", false),
-        roleId("role_id", "roleId", "INTEGER", false),
+        id("id", "id", "BIGINT", false),
+        roleId("role_id", "roleId", "BIGINT", false),
         permission("permission", "permission", "VARCHAR", false),
         createTime("create_time", "createTime", "TIMESTAMP", false),
         updateTime("update_time", "updateTime", "TIMESTAMP", false),

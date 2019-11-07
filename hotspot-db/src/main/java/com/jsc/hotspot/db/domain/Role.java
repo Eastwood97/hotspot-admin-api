@@ -28,7 +28,7 @@ public class Role {
      *
      * @mbg.generated
      */
-    private Integer id;
+    private Long id;
 
     /**
      *
@@ -92,7 +92,7 @@ public class Role {
      *
      * @mbg.generated
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -104,7 +104,7 @@ public class Role {
      *
      * @mbg.generated
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -409,7 +409,7 @@ public class Role {
      * @mbg.generated
      */
     public enum Column {
-        id("id", "id", "INTEGER", false),
+        id("id", "id", "BIGINT", false),
         name("name", "name", "VARCHAR", true),
         desc("desc", "desc", "VARCHAR", true),
         enabled("enabled", "enabled", "BIT", false),
