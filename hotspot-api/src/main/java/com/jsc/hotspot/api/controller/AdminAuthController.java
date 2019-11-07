@@ -1,6 +1,10 @@
 package com.jsc.hotspot.api.controller;
 
 import com.jsc.hotspot.api.service.AdminService;
+import com.jsc.hotspot.api.service.PermissionService;
+import com.jsc.hotspot.api.service.RoleService;
+import com.jsc.hotspot.api.utils.Permission;
+import com.jsc.hotspot.api.utils.PermissionUtil;
 import com.jsc.hotspot.common.utils.JacksonUtil;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
 import com.jsc.hotspot.db.domain.Admin;
@@ -14,13 +18,13 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static com.jsc.hotspot.common.utils.response.AdminResponseCode.ADMIN_INVALID_ACCOUNT;
 
@@ -35,14 +39,14 @@ public class AdminAuthController {
     private AdminService adminService;
 
     @GetMapping("/1")
-    public String test(){
+    public String test() {
         return "123";
     }
 
-//    @Autowired
-//    private RoleService roleService;
-//    @Autowired
-//    private PermissionService permissionService;
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private PermissionService permissionService;
 //    @Autowired
 //    private LogHelper logHelper;
 
@@ -66,7 +70,7 @@ public class AdminAuthController {
             logger.error("用户帐号或密码不正确");
             return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "用户帐号或密码不正确");
         } catch (LockedAccountException lae) {
-            logger.error( "用户帐号已锁定不可用");
+            logger.error("用户帐号已锁定不可用");
             return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "用户帐号已锁定不可用");
 
         } catch (AuthenticationException ae) {
@@ -111,7 +115,7 @@ public class AdminAuthController {
             logger.error("用户帐号或密码不正确");
             return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "用户帐号或密码不正确");
         } catch (LockedAccountException lae) {
-            logger.error( "用户帐号已锁定不可用");
+            logger.error("用户帐号已锁定不可用");
             return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "用户帐号已锁定不可用");
 
         } catch (AuthenticationException ae) {
@@ -149,8 +153,7 @@ public class AdminAuthController {
         return ResponseUtil.ok();
     }
 
-    /*
-     *
+
     @RequiresAuthentication
     @GetMapping("/info")
     public Object info() {
@@ -161,7 +164,7 @@ public class AdminAuthController {
         data.put("name", admin.getUsername());
         data.put("avatar", admin.getAvatar());
 
-        Integer[] roleIds = admin.getRoleIds();
+        Long[] roleIds = admin.getRoleIds();
         Set<String> roles = roleService.queryByIds(roleIds);
         Set<String> permissions = permissionService.queryByRoleIds(roleIds);
         data.put("roles", roles);
@@ -203,7 +206,6 @@ public class AdminAuthController {
         return apis;
     }
 
-     */
 
     @GetMapping("/401")
     public Object page401() {

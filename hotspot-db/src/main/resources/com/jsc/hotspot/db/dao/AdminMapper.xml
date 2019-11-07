@@ -15,7 +15,7 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
-    <result column="role_ids" jdbcType="VARCHAR" property="roleIds" typeHandler="com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler" />
+    <result column="role_ids" jdbcType="VARCHAR" property="roleIds" typeHandler="com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -51,15 +51,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
+                    #{listItem,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -103,15 +103,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
+                    #{listItem,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -157,7 +157,7 @@
       distinct
     </if>
     <choose>
-      <when test="selective != null and selective.length &gt; 0">
+      <when test="selective != null and selective.length > 0">
         <foreach collection="selective" item="column" separator=",">
           ${column.aliasedEscapedColumnName}
         </foreach>
@@ -210,7 +210,7 @@
     -->
     select
     <choose>
-      <when test="selective != null and selective.length &gt; 0">
+      <when test="selective != null and selective.length > 0">
         <foreach collection="selective" item="column" separator=",">
           ${column.aliasedEscapedColumnName}
         </foreach>
@@ -254,7 +254,7 @@
       )
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{lastLoginIp,jdbcType=VARCHAR}, 
       #{lastLoginTime,jdbcType=TIMESTAMP}, #{avatar,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, #{roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, #{roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.jsc.hotspot.db.domain.Admin">
@@ -321,7 +321,7 @@
         #{deleted,jdbcType=BIT},
       </if>
       <if test="roleIds != null">
-        #{roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler},
+        #{roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler},
       </if>
     </trim>
   </insert>
@@ -370,7 +370,7 @@
         deleted = #{record.deleted,jdbcType=BIT},
       </if>
       <if test="record.roleIds != null">
-        role_ids = #{record.roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler},
+        role_ids = #{record.roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler},
       </if>
     </set>
     <if test="_parameter != null">
@@ -392,7 +392,7 @@
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       deleted = #{record.deleted,jdbcType=BIT},
-      role_ids = #{record.roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
+      role_ids = #{record.roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -429,7 +429,7 @@
         deleted = #{deleted,jdbcType=BIT},
       </if>
       <if test="roleIds != null">
-        role_ids = #{roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler},
+        role_ids = #{roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -448,7 +448,7 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=BIT},
-      role_ids = #{roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler}
+      role_ids = #{roleIds,jdbcType=VARCHAR,typeHandler=com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="selectOneByExample" parameterType="com.jsc.hotspot.db.domain.AdminExample" resultMap="BaseResultMap">
@@ -474,7 +474,7 @@
     -->
     select
     <choose>
-      <when test="selective != null and selective.length &gt; 0">
+      <when test="selective != null and selective.length > 0">
         <foreach collection="selective" item="column" separator=",">
           ${column.aliasedEscapedColumnName}
         </foreach>

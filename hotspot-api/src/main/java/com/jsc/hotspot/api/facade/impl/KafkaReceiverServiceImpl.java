@@ -20,7 +20,7 @@ import java.util.Optional;
  * @description kafka接收服务实现
  * @date 2019/11/4
  */
-@Service
+//@Service
 @Slf4j
 public class KafkaReceiverServiceImpl implements KafkaReceiverService {
     @Autowired
