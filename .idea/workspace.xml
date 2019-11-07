@@ -2,10 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88feb1ef-d084-4e0c-a4c7-98dd93b59436" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hotspot-db/sql/hotspot.sql" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/sql/hotspot.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspotall.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspotall.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/dao/AdminMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/dao/AdminMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/AdminExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/AdminExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraCatInfoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraCatInfoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraCatInfoDAOExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraCatInfoDAOExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraCompareResultDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraCompareResultDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraCompareResultDAOExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraCompareResultDAOExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraHotRelationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraHotRelationDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraHotRelationDAOExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraHotRelationDAOExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraTargetFaceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraTargetFaceDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraTargetFaceDAOExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/CameraTargetFaceDAOExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotCompareResultDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotCompareResultDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotCompareResultDAOExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotCompareResultDAOExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotFrontDeviceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotFrontDeviceDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotFrontDeviceDAOExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotFrontDeviceDAOExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotNumInfoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotNumInfoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotNumInfoDAOExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotNumInfoDAOExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotTargetInfoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotTargetInfoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotTargetInfoDAOExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/HotTargetInfoDAOExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/OperatorInfoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/OperatorInfoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/OperatorInfoDAOExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/OperatorInfoDAOExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/AdminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/AdminMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/CameraCatInfoDAOMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/CameraCatInfoDAOMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/CameraCompareResultDAOMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/CameraCompareResultDAOMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/CameraHotRelationDAOMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/CameraHotRelationDAOMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/CameraTargetFaceDAOMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/CameraTargetFaceDAOMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/HotCompareResultDAOMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/HotCompareResultDAOMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/HotFrontDeviceDAOMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/HotFrontDeviceDAOMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/HotNumInfoDAOMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/HotNumInfoDAOMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/HotTargetInfoDAOMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/HotTargetInfoDAOMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/OperatorInfoDAOMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/OperatorInfoDAOMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/PermissionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/PermissionMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/RoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/RoleMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,34 +69,10 @@
     <select />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/shiro/AdminAuthorizingRealm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1913#1914#0" expanded="true" />
-                <element signature="e#1940#1941#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/KafkaReceiverService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/KafkaReceiverServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -110,11 +117,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hotspot-db/sql/hotspot.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3318">
-              <caret line="186" column="24" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
+            <state relative-caret-position="-2857">
+              <caret line="115" column="24" selection-start-line="115" selection-start-column="24" selection-end-line="115" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2293">
+              <caret line="131" selection-start-line="131" selection-end-line="131" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hotspot-db/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="61" column="32" lean-forward="true" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -187,7 +212,6 @@
         <option value="$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/config/netty/StringProtocolInitalizer.java" />
         <option value="$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/service/impl/ServerHandler.java" />
         <option value="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/utils/mybatis/JsonIntegerArrayTypeHandler.java" />
-        <option value="$PROJECT_DIR$/hotspot-db/pom.xml" />
         <option value="$PROJECT_DIR$/hotspot-db/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/hotspot-api/src/test/java/com/jsc/hotspot/api/HotspotApiApplicationTests.java" />
         <option value="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/config/MybatisConfig.java" />
@@ -221,6 +245,7 @@
         <option value="$PROJECT_DIR$/hotspot-api/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/hotspot-api/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/hotspot-db/sql/hotspot.sql" />
+        <option value="$PROJECT_DIR$/hotspot-db/pom.xml" />
       </list>
     </option>
   </component>
@@ -259,6 +284,12 @@
           <item name="hotspot-db" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
           <item name="mybatis-generator" type="36feed69:MavenProjectsStructure$PluginNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="hotspot-db" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+          <item name="resources" type="36feed69:MavenProjectsStructure$PluginNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
@@ -366,124 +397,57 @@
             <path>
               <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
               <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
-              <item name="hotspot-api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
-              <item name="hotspot-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
-              <item name="hotspot-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
-              <item name="hotspot-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
-              <item name="hotspot-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
-              <item name="hotspot-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
-              <item name="hotspot-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
-              <item name="hotspot-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="facade" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
-              <item name="hotspot-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="facade" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
-              <item name="hotspot-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
-              <item name="hotspot-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="shiro" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
-              <item name="hotspot-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
-              <item name="hotspot-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="hotspot-db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
               <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
               <item name="hotspot-db" type="462c0819:PsiDirectoryNode" />
+              <item name="mybatis-generator" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
               <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
               <item name="hotspot-db" type="462c0819:PsiDirectoryNode" />
               <item name="sql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
+              <item name="hotspot-db" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
+              <item name="hotspot-db" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
+              <item name="hotspot-db" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
+              <item name="hotspot-db" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
+              <item name="hotspot-db" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
@@ -630,7 +594,7 @@
       <option name="presentableId" value="Default" />
       <updated>1573008376055</updated>
       <workItem from="1573008385887" duration="27211000" />
-      <workItem from="1573089613763" duration="268000" />
+      <workItem from="1573089613763" duration="1021000" />
     </task>
     <servers />
   </component>
@@ -640,7 +604,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27479000" />
+    <option name="totallyTimeSpent" value="28232000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
@@ -672,7 +636,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24962178" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.18986385" />
+      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.18381241" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Word Book" order="6" side_tool="true" />
@@ -809,13 +773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-db/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/StorageManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-751">
@@ -838,13 +795,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
           <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
-          <caret line="131" selection-start-line="131" selection-end-line="131" />
         </state>
       </provider>
     </entry>
@@ -1059,8 +1009,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hotspot-db/sql/hotspot.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3318">
-          <caret line="186" column="24" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
+        <state relative-caret-position="-2857">
+          <caret line="115" column="24" selection-start-line="115" selection-start-column="24" selection-end-line="115" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2293">
+          <caret line="131" selection-start-line="131" selection-end-line="131" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-db/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="61" column="32" lean-forward="true" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
         </state>
       </provider>
     </entry>

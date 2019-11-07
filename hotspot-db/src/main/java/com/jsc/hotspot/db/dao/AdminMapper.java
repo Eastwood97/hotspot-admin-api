@@ -2,10 +2,8 @@ package com.jsc.hotspot.db.dao;
 
 import com.jsc.hotspot.db.domain.Admin;
 import com.jsc.hotspot.db.domain.AdminExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
-
+import org.apache.ibatis.annotations.Param;
 
 public interface AdminMapper {
     /**
