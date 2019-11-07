@@ -8,8 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="hotspot-db" />
         <module name="hotspot-accept" />
-        <module name="hotspot-api" />
         <module name="hotdpot-common" />
+        <module name="hotspot-api" />
       </profile>
     </annotationProcessing>
   </component>

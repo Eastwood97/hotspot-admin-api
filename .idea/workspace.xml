@@ -2,330 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88feb1ef-d084-4e0c-a4c7-98dd93b59436" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/application/AppContextSupport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/AttrDataMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/BizCommon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/BizResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/BodySearchHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/DatabaseManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/DeviceAbility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/DeviceSearchHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/FaceSearchHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/MessageQueueProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/PageResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/PreprocessorThreadManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/Processor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/ProcessorThreadManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/PropDataMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/StorageManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/SysParamManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/TemporaryStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/VehicleSearchHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/cache/BizCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/cache/CacheConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/cache/CacheNamespaceManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/cache/CacheUpdateController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/cache/NamespaceAnnotationCacheOperationSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/cache/NamespaceCacheAnnotationParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/cache/NamespaceCacheable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/FileConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/JobDataSourceConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/LocalConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/MessageConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/MsgQueueConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/NoSqlDataSourceConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/RDBDataSourceConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/ServerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/UniversalServerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/UniversalStructureConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/consts/Constant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/AnalysisJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/AnlSvrId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ApiInquiryParameter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ApiInquiryResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ApiParameter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ApiResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/AttrTrans.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/AttrTransPlan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/Capture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/CaptureData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ClientAttrConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ClientCaptureData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ClientCaptureResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ClientCompareResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ClientDeviceInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ClientOriginResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ClientRecognizeAttrConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ClientRecognizeResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/CompScore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/CompareConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/CompareResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/Confs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/DeviceAnalSvr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/DeviceAreagrp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/DeviceConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/DeviceMcSvr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/DeviceProgramInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/DeviceRmsSvr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/DeviceStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/DllCallerParam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/DllCallerResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/DllDeviceConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/DllImageData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/DownloadInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/DownloadResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/FaceCrossResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/FaceGroupResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/FaceSearchParam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/FaceStructureData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/FileDescription.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/FileStorageChanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/FileStorageConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/FileStorageInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/FileStoragePlan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/FileWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/FrontDevice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/FrontDeviceGroup.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/InputSourceDevice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/InquiryBodyCapResultRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/InquiryBodyCompResultRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/InquiryFaceCapResultRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/InquiryFaceCompResultRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/InquiryVehicleCapResultRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/InquiryVehicleCompResultRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/JobApiResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/JobConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ManyToManyInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/MediaCoderResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/MediaExtractTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/MetaCodeConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/MetaDataAttr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/MetaDataDic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/MetaDataDicAttr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/MetaDataType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/MetaDicCodeConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/MsgCompareWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ObjectPositionInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/OneToManyInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/PasserInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ProgramInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/PushDestination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/RecognizeConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/RecognizeResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ReferenceImagResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/RsltFilterConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/RsltFilterPlan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ServerAbility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ServerStatusInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ServerVersion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ServiceParameter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ServiceResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/SingleCompareParameter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/SourceLocation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/StorageConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/StorageConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/StorageFileUploadParam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/StorageFileUploadResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/StorageParameter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/StorageResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/SvrTarget.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/SystemSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/TargetBodyBaseConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/TargetBodyConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/TargetFaceBaseConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/TargetFaceConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/TargetVehicleBaseConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/TargetVehicleConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/TaskData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/TaskFlowConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/TaskFlowPlan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/TaskInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/TaskProcessParam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/TimeInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/UploadImageParam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/UploadResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/VehicleSearchParam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/VehicleStructureData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/VideoDownloadCondition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/VideoDownloadResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/VideoMgtPlat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/VideoTransCodeParam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/VideoTransCodeResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/WebServiceParameter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/WebServiceResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ZmqServerCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ZmqServerCallerParam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/ZmqServerCallerResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/accessor/AbstractAccessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/accessor/AbstractDaoSupport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/accessor/JdbcTemplateWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/accessor/NoSqlAccessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/accessor/RDBAccessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/accessor/RedisAccessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/accessor/impl/Cassandra.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/accessor/impl/Mysql.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/accessor/impl/Phoenix.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/accessor/impl/Sqlite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/accessor/impl/Sqlserver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/datasource/CommonDataSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/datasource/NoSqlDataSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/datasource/RDBDataSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstAnlSvr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstAreaGrp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstAttrTransConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstAttrTransPlan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstBodyTarget.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstBodyTargetDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstBodyTargetDbObj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstBodyTargetObj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstCompConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstCompPlan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstDataStats.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstDevProg.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstDevSts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstFaceHit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstFaceTarget.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstFaceTargetDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstFaceTargetDbObj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstFaceTargetObj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstFront.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstJobConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstMcSvr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstMetaDatAttr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstMetaDatType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstMetaDic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstMetaDicAttr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstMetaDicCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstPlatform.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstProg.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstRecogConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstRecogPlan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstRmsSvr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstRsltFilterConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstRsltFilterPlan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstStorageChanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstStorageConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstStoragePlan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstSysParamConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstTaskFlowConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstTaskFlowPlan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstTaskSts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstVehHit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstVehTarget.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstVehTargetDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstVehTargetDbObj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/MstVehTargetObj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/WhsBodyCap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/WhsBodyComp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/WhsBodyFull.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/WhsFaceCap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/WhsFaceComp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/WhsFaceFull.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/WhsFaceSearch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/WhsFileStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/WhsVehCap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/WhsVehComp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domain/WhsVehFull.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domainyt/FaceRecogn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domainyt/FaceRecognDevice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domainyt/FaceRecognHit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/domainyt/FaceRecognPic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/tools/CamelNameConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/tools/FieldNameConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/tools/NoneNameConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/ApiNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/DevelopmentException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/DeviceException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/DeviceNotInitializedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/HttpException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/JobException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/NotSupportedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/SameNameException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/SameNoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/ServiceCallException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/ServiceInnerException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/SystemException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/TargetDataNotExistException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/UpgradeException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/ViewDepotException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/exception/WrongParameterException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/JsonEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/LoggingRequestInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/MultipartFileResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/RestClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/ViewDepotRestTemplate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/maintenance/MaintenanceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/maintenance/UpgradeProcess.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/MsgWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/converter/MsgConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/converter/json/JsonConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/converter/msgpack/MsgpackConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordCap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordComp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordCompDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordDepot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordDepotCommon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordDevSts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordFull.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordHit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordJobSts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordStatistics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordTaskSts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/schedule/ScheduledTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/FileStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/local/LocalStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/rms/RmsStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/smb/SmbStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/weed/WeedStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/thread/ThreadManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/DateUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/FileUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/ImageUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/IpUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/JpsUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/ProcessUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/RTSPClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/RTSPControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/RandomNameUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/ReflectionUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/RetryHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/StringUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/ThreadUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/bcrypt/BCrypt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/bcrypt/BCryptPasswordEncoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/resources/banner.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/resources/database.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/resources/file.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/resources/host.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/resources/log.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/resources/msgqueue.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/resources/openapi.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotdpot-common/src/main/resources/structure.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/KafkaReceiverService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/WeedFSService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/KafkaReceiverServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/WeedFSServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/config/MybatisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotdpot-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotdpot-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/HotdpotCommonApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-accept/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-accept/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/HotspotAcceptApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/HotspotAcceptApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-accept/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-accept/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/HotspotApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/HotspotApiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/ShiroConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/service/AdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-db/mybatis-generator/mybatis-generator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/mybatis-generator/mybatis-generator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/dao/AdminMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/dao/AdminMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/AdminExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/AdminExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/utils/mybatis/JsonIntegerArrayTypeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/utils/JsonIntegerArrayTypeHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/application-db.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/application-db.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/AdminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/AdminMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspot-db/sql/hotspot.sql" beforeDir="false" afterPath="$PROJECT_DIR$/hotspot-db/sql/hotspot.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotspotall.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hotspotall.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -362,23 +42,11 @@
     <option name="delegatedBuild" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/HotspotApiApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
-              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/shiro/AdminAuthorizingRealm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
+            <state relative-caret-position="112">
               <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -392,7 +60,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/KafkaReceiverService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
+            <state relative-caret-position="504">
               <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
             </state>
           </provider>
@@ -401,7 +69,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/KafkaReceiverServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
+            <state relative-caret-position="560">
               <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -418,17 +86,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/config/kafka/KafkaProducerConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="47">
+            <state relative-caret-position="308">
               <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+            <state relative-caret-position="84">
+              <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotspot-db/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hotspot-db/sql/hotspot.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3318">
+              <caret line="186" column="24" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -443,29 +129,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/controller/AdminAuthController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="32" selection-end-line="175" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2973#2989#0" expanded="true" />
-                <element signature="e#3152#3168#0" expanded="true" />
-                <element signature="e#5518#5519#0" expanded="true" />
-                <element signature="e#5563#5564#0" expanded="true" />
-                <element signature="e#5622#5623#0" expanded="true" />
-                <element signature="e#5662#5663#0" expanded="true" />
-                <element signature="e#5717#5718#0" expanded="true" />
-                <element signature="e#5762#5763#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/ShiroConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
+            <state relative-caret-position="532">
               <caret line="32" column="14" selection-end-line="119" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -554,6 +220,7 @@
         <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/KafkaConsumerConfig.java" />
         <option value="$PROJECT_DIR$/hotspot-api/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/hotspot-api/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/hotspot-db/sql/hotspot.sql" />
       </list>
     </option>
   </component>
@@ -580,12 +247,18 @@
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="hotspot-accept" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="hotspot-db" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="hotspot-accept" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+          <item name="hotspot-db" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="hotspot-db" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+          <item name="mybatis-generator" type="36feed69:MavenProjectsStructure$PluginNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
@@ -603,9 +276,9 @@
   <component name="MavenRunner">
     <option name="skipTests" value="true" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="11" />
-    <option name="y" value="18" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="356" />
+    <option name="y" value="10" />
     <option name="width" value="1346" />
     <option name="height" value="691" />
   </component>
@@ -615,6 +288,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -802,13 +476,23 @@
             </path>
             <path>
               <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
+              <item name="hotspot-db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotspotall" type="462c0819:PsiDirectoryNode" />
+              <item name="hotspot-db" type="462c0819:PsiDirectoryNode" />
+              <item name="sql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotspotall" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -945,7 +629,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573008376055</updated>
-      <workItem from="1573008385887" duration="27137000" />
+      <workItem from="1573008385887" duration="27211000" />
+      <workItem from="1573089613763" duration="268000" />
     </task>
     <servers />
   </component>
@@ -955,47 +640,47 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27137000" />
+    <option name="totallyTimeSpent" value="27479000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Designer" />
-      <window_info id="Image Layers" />
-      <window_info id="Capture Tool" />
-      <window_info id="UI Designer" />
-      <window_info id="Web" side_tool="true" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2655068" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2624811" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Spring" />
-      <window_info anchor="bottom" id="Terminal" weight="0.94863015" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.1010274" />
-      <window_info anchor="bottom" id="Java Enterprise" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" weight="0.94863015" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32768363" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.61986303" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.14041096" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.7140411" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Maven" visible="true" weight="0.19591528" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Word Book" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Key Promoter X" weight="0.32980332" />
-      <window_info anchor="right" id="Database" weight="0.32980332" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Bean Validation" weight="0.32980332" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.21468927" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.1010274" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.94863015" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24962178" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.18986385" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Word Book" order="6" side_tool="true" />
+      <window_info anchor="right" id="Key Promoter X" order="7" weight="0.32980332" />
+      <window_info anchor="right" id="Database" order="8" weight="0.32980332" />
+      <window_info anchor="right" id="Palette&#9;" order="9" />
+      <window_info anchor="right" id="Theme Preview" order="10" />
+      <window_info anchor="right" id="Bean Validation" order="11" weight="0.32980332" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="0" />
@@ -1063,18 +748,26 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordStatistics.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/domain/PermissionExample.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/RecognizeResult.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1093,19 +786,8 @@
     <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/accessor/RDBAccessor.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/domain/Role.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/HotdpotCommonApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/domain/Role.java" />
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/HotdpotCommonApplication.java" />
     <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/VideoDownloadResult.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -1141,18 +823,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/impl/WeedFSServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/impl/KafkaReceiverServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/WeedFSService.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/KafkaReceiverService.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/impl/WeedFSServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/impl/KafkaReceiverServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/WeedFSService.java" />
+    <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/KafkaReceiverService.java" />
     <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/config/netty/NettyConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1453">
@@ -1181,54 +855,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/dao/CameraCompareResultDAOMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="63" column="58" lean-forward="true" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/dao/CameraTargetFaceDAOMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-140">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/domain/CameraCompareResultDAOExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-393">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="docComment;field#orderByClause#0;class#CameraCompareResultDAOExample#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/domain/CameraHotRelationDAOExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="716" column="51" selection-start-line="716" selection-start-column="51" selection-end-line="716" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/service/AdminService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="2" column="33" lean-forward="true" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/dao/TargetMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/dao/CameraCompareResultDAOMapper.java" />
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/dao/CameraTargetFaceDAOMapper.java" />
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/domain/CameraCompareResultDAOExample.java" />
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/domain/CameraHotRelationDAOExample.java" />
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/service/AdminService.java" />
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/dao/TargetMapper.java" />
     <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/RestClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4003">
@@ -1341,23 +973,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/ShiroConfig.java">
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/HotspotApiApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="32" column="14" selection-end-line="119" />
+        <state relative-caret-position="140">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1307#1308#0" expanded="true" />
-            <element signature="e#1357#1358#0" expanded="true" />
-            <element signature="e#3693#3694#0" expanded="true" />
-            <element signature="e#3748#3749#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/shiro/AdminAuthorizingRealm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
+        <state relative-caret-position="112">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1369,14 +997,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/KafkaReceiverService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
+        <state relative-caret-position="504">
           <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/KafkaReceiverServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
+        <state relative-caret-position="560">
           <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1389,18 +1017,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/config/kafka/KafkaProducerConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
+        <state relative-caret-position="308">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/HotspotApiApplication.java">
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="84">
+          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1411,10 +1036,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/ShiroConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        <state relative-caret-position="532">
+          <caret line="32" column="14" selection-end-line="119" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1307#1308#0" expanded="true" />
+            <element signature="e#1357#1358#0" expanded="true" />
+            <element signature="e#3693#3694#0" expanded="true" />
+            <element signature="e#3748#3749#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-db/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-db/sql/hotspot.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3318">
+          <caret line="186" column="24" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
         </state>
       </provider>
     </entry>

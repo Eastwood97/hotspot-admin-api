@@ -15,6 +15,8 @@ CREATE TABLE `camera_cat_info` (
   `quality` int(16) NOT NULL DEFAULT '0' COMMENT '识别质量，一般为0，目标非0',
   `target_id` bigint(64) DEFAULT NULL COMMENT '如果是目标，有target_id',
   `dev_id` bigint(64) NOT NULL COMMENT '前端设备ID',
+  `create_time` datetime DEFAULT NOW() COMMENT '创建时间',
+  `update_time` datetime DEFAULT NOW() COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='人脸抓拍结果';
 
@@ -30,6 +32,8 @@ CREATE TABLE `camera_compare_result` (
   `video_id` varchar(128) DEFAULT NULL COMMENT '视频文件ID，一般人脸为空,目标位为视频文件ID',
   `capture_time` datetime DEFAULT NULL COMMENT '抓拍时间yyyyMMddHHmmss',
   `dev_id` bigint(64) DEFAULT NULL COMMENT '前端设备ID',
+  `create_time` datetime DEFAULT NOW() COMMENT '创建时间',
+  `update_time` datetime DEFAULT NOW() COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='人脸比对结果';
 
@@ -40,6 +44,8 @@ DROP TABLE IF EXISTS `camera_hot_relation`;
 CREATE TABLE `camera_hot_relation` (
   `target_id` bigint(64) NOT NULL,
   `target_num_id` bigint(64) DEFAULT NULL COMMENT '采集号码ID',
+  `create_time` datetime DEFAULT NOW() COMMENT '创建时间',
+  `update_time` datetime DEFAULT NOW() COMMENT '更新时间',
   PRIMARY KEY (`target_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='人脸和码址的关联';
 
@@ -52,8 +58,9 @@ CREATE TABLE `camera_target_face` (
   `target_name` varchar(128) NOT NULL COMMENT '目标姓名',
   `desc` varchar(1024) DEFAULT NULL COMMENT '描述（备注信息）',
   `file_name` varchar(128) DEFAULT NULL COMMENT '照片文件名（列表，最多三个）',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `operator_id` bigint(64) DEFAULT NULL COMMENT '创建人员ID',
+  `create_time` datetime DEFAULT NOW() COMMENT '创建时间',
+  `update_time` datetime DEFAULT NOW() COMMENT '更新时间',
   PRIMARY KEY (`target_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='目标人脸';
 
@@ -70,6 +77,8 @@ CREATE TABLE `hot_compare_result` (
   `capture_time` datetime NOT NULL COMMENT '抓拍时间yyyyMMddHHmmss',
   `frt_dev_id` bigint(64) NOT NULL COMMENT '前端设备ID',
   `target_id` bigint(64) NOT NULL COMMENT '目标ID',
+  `create_time` datetime DEFAULT NOW() COMMENT '创建时间',
+  `update_time` datetime DEFAULT NOW() COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='号码比对结果';
 
@@ -90,6 +99,8 @@ CREATE TABLE `hot_front_device` (
   `lat` varchar(64) DEFAULT NULL COMMENT '纬度',
   `place` varchar(128) NOT NULL COMMENT '位置描述',
   `description` varchar(128) DEFAULT NULL COMMENT '设备详细描述',
+  `create_time` datetime DEFAULT NOW() COMMENT '创建时间',
+  `update_time` datetime DEFAULT NOW() COMMENT '更新时间',
   PRIMARY KEY (`dev_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='前端设备表';
 
@@ -106,6 +117,8 @@ CREATE TABLE `hot_num_info` (
   `capture_time` datetime NOT NULL COMMENT '捕获时间',
   `target_id` bigint(64) DEFAULT NULL COMMENT '如果是目标，有target_id',
   `dev_id` bigint(64) NOT NULL COMMENT '抓取的该号码的前端设备id',
+  `create_time` datetime DEFAULT NOW() COMMENT '创建时间',
+  `update_time` datetime DEFAULT NOW() COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='热点号码抓取信息';
 
@@ -120,7 +133,8 @@ CREATE TABLE `hot_target_info` (
   `imsi` varchar(32) DEFAULT NULL,
   `imei` varchar(32) DEFAULT NULL,
   `isdn` varchar(32) DEFAULT NULL,
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+ `create_time` datetime DEFAULT NOW() COMMENT '创建时间',
+  `update_time` datetime DEFAULT NOW() COMMENT '更新时间',
   `operator_id` bigint(64) DEFAULT NULL COMMENT '创建人员ID',
   PRIMARY KEY (`target_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='目标号码';
@@ -134,6 +148,8 @@ CREATE TABLE `operator_info` (
   `group_id` tinyint(8) NOT NULL COMMENT '人员分组编号，0为管理员，1为普通工作人员',
   `operator_name` varchar(128) NOT NULL COMMENT '人员名称',
   `operator_number` varchar(128) DEFAULT NULL COMMENT '人员手机号码',
+ `create_time` datetime DEFAULT NOW() COMMENT '创建时间',
+  `update_time` datetime DEFAULT NOW() COMMENT '更新时间',
   `description` varchar(128) DEFAULT NULL COMMENT '详细描述',
   PRIMARY KEY (`operator_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='操作人员表';
@@ -144,47 +160,53 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 
 
-DROP TABLE IF EXISTS `hotspot_permission`;
+DROP TABLE IF EXISTS `permission`;
 
-CREATE TABLE `hotspot_permission` (
+CREATE TABLE `permission` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `role_id` int(11) DEFAULT NULL COMMENT '角色ID',
   `permission` varchar(63) DEFAULT NULL COMMENT '权限',
-  `add_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COMMENT='权限表';
 
-DROP TABLE IF EXISTS `hotspot_role`;
+DROP TABLE IF EXISTS `role`;
 
-CREATE TABLE `hotspot_role` (
+CREATE TABLE `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(63) NOT NULL COMMENT '角色名称',
   `desc` varchar(1023) DEFAULT NULL COMMENT '角色描述',
   `enabled` tinyint(1) DEFAULT '1' COMMENT '是否启用',
-  `add_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COMMENT='角色表';
 
-DROP TABLE IF EXISTS `hotspot_admin`;
+DROP TABLE IF EXISTS `admin`;
 
-CREATE TABLE `hotspot_admin` (
+CREATE TABLE `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(63) NOT NULL DEFAULT '' COMMENT '管理员名称',
   `password` varchar(63) NOT NULL DEFAULT '' COMMENT '管理员密码',
   `last_login_ip` varchar(63) DEFAULT '' COMMENT '最近一次登录IP地址',
   `last_login_time` datetime DEFAULT NULL COMMENT '最近一次登录时间',
   `avatar` varchar(255) DEFAULT '''' COMMENT '头像图片',
-  `add_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   `role_ids` varchar(127) DEFAULT '[]' COMMENT '角色列表',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='管理员表';
+
+
+LOCK TABLES `admin` WRITE;
+INSERT INTO `admin` VALUES (1,'admin123','$2a$10$.rEfyBb/GURD9P2p0fRg/OAJGloGNDkJS4lY0cQHeqDgsbdTylBpu',NULL,NULL,'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif','2018-02-01 00:00:00','2018-02-01 00:00:00',0,'[1]'),(4,'promotion123','$2a$10$wDZLOLLnzZ1EFZ3ldZ1XFOUWDEX6TnQCUFdJz4g.PoMaLTzS8TjWq','',NULL,'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif','2019-01-07 15:16:59','2019-01-07 15:17:34',0,'[3]'),(5,'mall123','$2a$10$aCtsc4rG6KmxQ59.IkYse.oRyKuwQoU2CPCmxSdB.d5nXq6aw/z4O','',NULL,'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif','2019-01-07 15:17:25','2019-01-07 15:21:05',0,'[2]');
+
+UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `hotspot_log`;
 
@@ -197,7 +219,7 @@ CREATE TABLE `hotspot_log` (
   `status` tinyint(1) DEFAULT NULL COMMENT '操作状态',
   `result` varchar(127) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '操作结果，或者成功消息，或者失败消息',
   `comment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '补充信息',
-  `add_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `deleted` tinyint(1) DEFAULT '0' COMMENT '逻辑删除',
   PRIMARY KEY (`id`)
