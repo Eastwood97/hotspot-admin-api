@@ -2,7 +2,7 @@ package com.jsc.hotspot.api.facade.impl;
 
 import com.jsc.hotspot.api.facade.WeedFSService;
 import com.jsc.hotspot.common.biz.BizResult;
-import com.jsc.hotspot.common.data.StorageConfig;
+import com.jsc.hotspot.common.config.StorageConfig;
 import com.jsc.hotspot.common.storage.weed.WeedStorage;
 import com.jsc.hotspot.common.util.RandomNameUtil;
 import org.springframework.beans.factory.annotation.Autowired;

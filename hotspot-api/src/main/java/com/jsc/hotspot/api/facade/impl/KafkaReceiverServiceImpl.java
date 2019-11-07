@@ -9,7 +9,6 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -20,7 +19,7 @@ import java.util.Optional;
  * @description kafka接收服务实现
  * @date 2019/11/4
  */
-@Service
+//@Service
 @Slf4j
 public class KafkaReceiverServiceImpl implements KafkaReceiverService {
     @Autowired

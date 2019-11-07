@@ -1,6 +1,6 @@
 package com.jsc.hotspot.common.storage.smb;
 
-import com.jsc.hotspot.common.data.StorageConfig;
+import com.jsc.hotspot.common.config.StorageConfig;
 import com.jsc.hotspot.common.exception.DevelopmentException;
 import com.jsc.hotspot.common.storage.FileStorage;
 import com.jsc.hotspot.common.util.DateUtil;

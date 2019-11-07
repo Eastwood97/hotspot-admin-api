@@ -1,8 +1,7 @@
 package com.jsc.hotspot.common.storage;
 
 
-
-import com.jsc.hotspot.common.data.StorageConfig;
+import com.jsc.hotspot.common.config.StorageConfig;
 
 import java.io.InputStream;
 

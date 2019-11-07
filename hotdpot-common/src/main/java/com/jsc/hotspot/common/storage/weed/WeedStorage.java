@@ -1,6 +1,6 @@
 package com.jsc.hotspot.common.storage.weed;
 
-import com.jsc.hotspot.common.data.StorageConfig;
+import com.jsc.hotspot.common.config.StorageConfig;
 import com.jsc.hotspot.common.exception.DevelopmentException;
 import com.jsc.hotspot.common.storage.FileStorage;
 import lombok.extern.slf4j.Slf4j;
