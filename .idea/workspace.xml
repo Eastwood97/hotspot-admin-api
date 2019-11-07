@@ -2,186 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88feb1ef-d084-4e0c-a4c7-98dd93b59436" name="Default Changelist" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/fonts/element-icons.6f0a763.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/img/401.089007e.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/img/404.a57b6f3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-cool.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-cry.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-embarassed.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-foot-in-mouth.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-frown.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-innocent.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-kiss.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-laughing.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-money-mouth.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-sealed.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-smile.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-surprised.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-tongue-out.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-undecided.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-wink.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-yell.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce-mobile.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce-small.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce-small.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce-small.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/img/anchor.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/img/loader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/img/object.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/img/trans.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/fonts/element-icons.6f0a763.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/img/401.089007e.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/img/404.a57b6f3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-cool.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-cry.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-embarassed.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-foot-in-mouth.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-frown.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-innocent.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-kiss.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-laughing.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-money-mouth.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-sealed.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-smile.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-surprised.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-tongue-out.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-undecided.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-wink.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/emoticons/img/smiley-yell.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce-mobile.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce-small.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce-small.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce-small.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/img/anchor.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/img/loader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/img/object.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/img/trans.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/config/redis/RedisConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/CorsConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/filter/CrosFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/filter/ShiroBasicHttpAuthenticationFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/app.e846e2f3.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-066a.135582ec.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-1c9e.a7dd9e9d.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-2cda.42573709.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-4e40.98b7e24e.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-66f6.6c8ca1e0.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-784e.42573709.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-a178.65ff90d7.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-a94e.42573709.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-bdde.e17294f6.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-beb5.3eaa5817.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-c465.42573709.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-elementUI.af66fd7d.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-f8ea.42573709.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-f8f6.42573709.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/css/chunk-libs.81b355b3.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/7zzA.acd9b7e4.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/JEtC.d582661d.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/VYnJ.36c9e7a3.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/app.643ae407.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-066a.3ab2bcb7.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-0d49.14b2b297.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-1c9e.a4e3e22f.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-2cda.b61a9263.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-4e40.260c200a.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-5555.ae5fe157.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-66f6.424da09c.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-784e.2b93997b.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-a178.4b2d134e.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-a94e.ee0e239e.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-bdde.c768573d.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-beb5.78da707d.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-c465.7f50615e.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-elementUI.4fb63d04.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-f8ea.87f567c1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-f8f6.5386bf7f.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/chunk-libs.3ed85239.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/js/ezva.a8c6d68a.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/langs/zh_CN.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/codesample/css/prism.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/plugins/visualblocks/css/visualblocks.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/content.inline.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/content.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce-small.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/skin.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/skins/lightgray/skin.min.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/dist/static/tinymce4.7.5/tinymce.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/app.e846e2f3.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-066a.135582ec.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-1c9e.a7dd9e9d.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-2cda.42573709.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-4e40.98b7e24e.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-66f6.6c8ca1e0.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-784e.42573709.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-a178.65ff90d7.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-a94e.42573709.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-bdde.e17294f6.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-beb5.3eaa5817.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-c465.42573709.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-elementUI.af66fd7d.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-f8ea.42573709.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-f8f6.42573709.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/css/chunk-libs.81b355b3.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/7zzA.acd9b7e4.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/JEtC.d582661d.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/VYnJ.36c9e7a3.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/app.643ae407.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-066a.3ab2bcb7.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-0d49.14b2b297.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-1c9e.a4e3e22f.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-2cda.b61a9263.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-4e40.260c200a.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-5555.ae5fe157.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-66f6.424da09c.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-784e.2b93997b.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-a178.4b2d134e.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-a94e.ee0e239e.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-bdde.c768573d.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-beb5.78da707d.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-c465.7f50615e.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-elementUI.4fb63d04.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-f8ea.87f567c1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-f8f6.5386bf7f.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/chunk-libs.3ed85239.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/js/ezva.a8c6d68a.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/langs/zh_CN.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/codesample/css/prism.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/plugins/visualblocks/css/visualblocks.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/content.inline.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/content.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce-small.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/fonts/tinymce.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/skin.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/skins/lightgray/skin.min.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/static/dist/static/tinymce4.7.5/tinymce.min.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hotdpot-common/src/main/resources/application.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hotspot-api/src/main/resources/application.yml" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/StorageConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/application-dbs.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotdpot-common/pom.xml" afterPath="$PROJECT_DIR$/hotdpot-common/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotspot-accept/pom.xml" afterPath="$PROJECT_DIR$/hotspot-accept/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotspot-accept/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/hotspot-accept/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotspot-api/pom.xml" afterPath="$PROJECT_DIR$/hotspot-api/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/HotspotApiApplication.java" afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/HotspotApiApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/ShiroConfig.java" afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/ShiroConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/controller/AdminAuthController.java" afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/controller/AdminAuthController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/KafkaReceiverService.java" afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/KafkaReceiverService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/RestClient.java" afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/RestClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/FileStorage.java" afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/FileStorage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/local/LocalStorage.java" afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/local/LocalStorage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/rms/RmsStorage.java" afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/rms/RmsStorage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/smb/SmbStorage.java" afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/smb/SmbStorage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/weed/WeedStorage.java" afterPath="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/weed/WeedStorage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotdpot-common/src/main/resources/database.properties" afterPath="$PROJECT_DIR$/hotdpot-common/src/main/resources/database.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/KafkaReceiverServiceImpl.java" afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/KafkaReceiverServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/WeedFSServiceImpl.java" afterPath="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/WeedFSServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotspotall.iml" afterPath="$PROJECT_DIR$/hotspotall.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotspot-api/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/hotspot-api/src/main/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/dao/AdminMapper.java" afterPath="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/dao/AdminMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hotspot-db/src/main/resources/application-db.yml" afterPath="$PROJECT_DIR$/hotspot-db/src/main/resources/application-db.yml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -220,55 +58,31 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AdminAuthorizingRealm.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/shiro/AdminAuthorizingRealm.java">
+      <file leaf-file-name="KafkaReceiverServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/KafkaReceiverServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="database.properties" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/resources/database.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+            <state relative-caret-position="15">
+              <caret line="1" column="55" lean-forward="false" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestMappingHandlerAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/repository/org/springframework/spring-webmvc/5.2.0.RELEASE/spring-webmvc-5.2.0.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.java">
+      <file leaf-file-name="FileStorage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/FileStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="895" column="0" lean-forward="false" selection-start-line="895" selection-start-column="0" selection-end-line="895" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShiroConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/ShiroConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="81" column="49" lean-forward="true" selection-start-line="81" selection-start-column="49" selection-end-line="81" selection-end-column="49" />
-              <folding>
-                <element signature="e#2308#2309#0" expanded="true" />
-                <element signature="e#2358#2359#0" expanded="true" />
-                <element signature="e#2947#2963#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShiroBasicHttpAuthenticationFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/filter/ShiroBasicHttpAuthenticationFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-131">
-              <caret line="16" column="47" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="47" />
+            <state relative-caret-position="180">
+              <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -276,31 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CorsConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/CorsConfig.java">
+      <file leaf-file-name="WeedStorage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/weed/WeedStorage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="375">
-              <caret line="29" column="24" lean-forward="false" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CorsFilter.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/repository/org/springframework/spring-web/5.2.0.RELEASE/spring-web-5.2.0.RELEASE-sources.jar!/org/springframework/web/filter/CorsFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-132">
-              <caret line="53" column="13" lean-forward="false" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CrosFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/filter/CrosFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-65">
-              <caret line="18" column="100" lean-forward="false" selection-start-line="18" selection-start-column="100" selection-end-line="18" selection-end-column="100" />
+              <caret line="25" column="20" lean-forward="false" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -308,24 +102,62 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultWebSecurityManager.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/repository/org/apache/shiro/shiro-web/1.4.0/shiro-web-1.4.0-sources.jar!/org/apache/shiro/web/mgt/DefaultWebSecurityManager.java">
+      <file leaf-file-name="RmsStorage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/rms/RmsStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+            <state relative-caret-position="510">
+              <caret line="34" column="9" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminAuthController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/controller/AdminAuthController.java">
+      <file leaf-file-name="LocalStorage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/local/LocalStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="435">
+              <caret line="29" column="27" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MsgWrapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/MsgWrapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MultipartFileResource.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/MultipartFileResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoggingRequestInterceptor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/LoggingRequestInterceptor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HotspotApiApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/HotspotApiApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -341,7 +173,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>shiro</find>
       <find>securityManager</find>
       <find>JsonIntegerArrayTypeHandle</find>
       <find>com.hotspot.utils.JsonIntegerArrayTypeHandler</find>
@@ -349,7 +180,6 @@
       <find>com.jsc.hotspot.utils.JsonIntegerArrayTypeHandler</find>
       <find>com.point</find>
       <find>Log4j2Filter</find>
-      <find>StorageConfig</find>
       <find>FieldNameConverter</find>
       <find>BCryptPasswordEncoder</find>
       <find>D</find>
@@ -370,6 +200,9 @@
       <find>Shir</find>
       <find>ShiroSessionManager</find>
       <find>dodispatc</find>
+      <find>viewdepot</find>
+      <find>/viewdepot</find>
+      <find>StorageConfig</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -392,27 +225,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/config/netty/NettyConst.java" />
-        <option value="$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/config/kafka/KafkaProducerConfig.java" />
-        <option value="$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/config/TomcatConfig.java" />
-        <option value="$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/convert/FixedLengthFrameEncoder.java" />
-        <option value="$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/config/netty/StringProtocolInitalizer.java" />
-        <option value="$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/service/impl/ServerHandler.java" />
-        <option value="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/utils/mybatis/JsonIntegerArrayTypeHandler.java" />
-        <option value="$PROJECT_DIR$/hotspot-db/pom.xml" />
-        <option value="$PROJECT_DIR$/hotspot-db/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/hotspot-api/src/test/java/com/jsc/hotspot/api/HotspotApiApplicationTests.java" />
         <option value="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/config/MybatisConfig.java" />
-        <option value="$PROJECT_DIR$/hotspot-db/src/main/resources/application-db.yml" />
         <option value="$PROJECT_DIR$/hotspot-db/mybatis-generator/mybatis-generator.xml" />
         <option value="$PROJECT_DIR$/hotspot-db/src/main/resources/com/jsc/hotspot/db/dao/AdminMapper.xml" />
         <option value="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/domain/AdminExample.java" />
-        <option value="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/dao/AdminMapper.java" />
         <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/db/domain/Role.java" />
         <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/biz/BizCommon.java" />
         <option value="$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/KafkaReceiverService.java" />
         <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/ViewDepotRestTemplate.java" />
-        <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/RestClient.java" />
         <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/accessor/JdbcTemplateWrapper.java" />
         <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/KafkaConsumerConfig.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
@@ -424,14 +245,10 @@
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/enums/ModeEnum.java" />
         <option value="$PROJECT_DIR$/hotspot-api/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/hotspot-api/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/WeedFSService.java" />
-        <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/WeedFSServiceImpl.java" />
         <option value="$PROJECT_DIR$/hotdpot-common/pom.xml" />
         <option value="$PROJECT_DIR$/hotspot-api/pom.xml" />
         <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/KafkaReceiverService.java" />
         <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/HotspotApiApplication.java" />
-        <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/KafkaReceiverServiceImpl.java" />
         <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/service/AdminService.java" />
         <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/shiro/AdminAuthorizingRealm.java" />
         <option value="$PROJECT_DIR$/hotspot-accept/pom.xml" />
@@ -443,6 +260,22 @@
         <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/filter/CrosFilter.java" />
         <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/CorsConfig.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/WeedFSService.java" />
+        <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/KafkaReceiverServiceImpl.java" />
+        <option value="$PROJECT_DIR$/hotspot-db/src/main/resources/application-db.yml" />
+        <option value="$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/dao/AdminMapper.java" />
+        <option value="$PROJECT_DIR$/hotspot-api/src/main/resources/application-dbs.properties" />
+        <option value="$PROJECT_DIR$/hotspot-api/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/hotdpot-common/src/main/resources/database.properties" />
+        <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/rms/RmsStorage.java" />
+        <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/local/LocalStorage.java" />
+        <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordDevSts.java" />
+        <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/RestClient.java" />
+        <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/StorageConfig.java" />
+        <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/FileStorage.java" />
+        <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/weed/WeedStorage.java" />
+        <option value="$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/smb/SmbStorage.java" />
+        <option value="$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/WeedFSServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -562,7 +395,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1680" />
-    <option name="height" value="959" />
+    <option name="height" value="965" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -581,8 +414,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -605,6 +436,94 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="hotspot-db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotspot-admin-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotspot-admin-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotspot-db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotspot-admin-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotspot-admin-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotspot-db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotspot-admin-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotspot-admin-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotspot-db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotspot-admin-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotspot-admin-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="hotspot-api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -646,6 +565,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -676,40 +599,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-admin-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-admin-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shiro" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -744,40 +633,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-admin-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-admin-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -863,27 +718,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
+              <option name="myItemId" value="hotdpot-common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -897,55 +732,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-admin-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-admin-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-accept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-admin-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-admin-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-accept" />
+              <option name="myItemId" value="hotdpot-common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -963,7 +750,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-accept" />
+              <option name="myItemId" value="hotdpot-common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -989,7 +776,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-accept" />
+              <option name="myItemId" value="hotdpot-common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -1002,87 +789,13 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="accept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-admin-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-admin-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-accept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="accept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-admin-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-admin-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotspot-accept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="accept" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="redis" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1103,11 +816,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.jsc.hotspot.common.config" />
       <recent name="com.jsc.hotspot.accept.config.redis" />
       <recent name="com.jsc.hotspot.api.config" />
       <recent name="com.jsc.hotspot.db.config" />
       <recent name="com.jsc.hotspot.db.utils.mybatis" />
-      <recent name="com.jsc.hotspot.accept.convert" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/hotspot-api/src/main/resources" />
@@ -1625,6 +1338,8 @@
       <updated>1573008376055</updated>
       <workItem from="1573008385887" duration="27211000" />
       <workItem from="1573089613763" duration="1021000" />
+      <workItem from="1573118302862" duration="2364000" />
+      <workItem from="1573132904997" duration="173000" />
     </task>
     <servers />
   </component>
@@ -1634,16 +1349,15 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48359000" />
+    <option name="totallyTimeSpent" value="50896000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="959" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1680" height="965" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47635525" sideWeight="0.3797314" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55950755" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1651,21 +1365,19 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39907727" sideWeight="0.497558" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39977092" sideWeight="0.497558" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.495116" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47635525" sideWeight="0.62026864" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298731" sideWeight="0.495116" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25579977" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32875144" sideWeight="0.495116" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26190478" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995495" sideWeight="0.497558" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1673,7 +1385,9 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875144" sideWeight="0.495116" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995495" sideWeight="0.497558" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1759,12 +1473,6 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/shiro/AdminAuthorizingRealm.java</url>
-          <line>25</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>jar://$USER_HOME$/repository/org/apache/shiro/shiro-web/1.4.0/shiro-web-1.4.0.jar!/org/apache/shiro/web/mgt/DefaultWebSecurityManager.class</url>
           <line>104</line>
           <properties />
@@ -1782,8 +1490,20 @@
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/shiro/AdminAuthorizingRealm.java</url>
+          <line>27</line>
+          <properties />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/service/AdminService.java</url>
+          <line>21</line>
+          <properties />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="16" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1792,289 +1512,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/data/StorageConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="7" lean-forward="false" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/util/ReflectionUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="54" lean-forward="false" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/tools/FieldNameConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/database/tools/CamelNameConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/utils/bcrypt/BCryptPasswordEncoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="742">
-          <caret line="85" column="34" lean-forward="false" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/weed/WeedStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="74" column="18" lean-forward="false" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/WeedFSServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="35" lean-forward="false" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/KafkaConsumerConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/WeedFSService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="33" column="9" lean-forward="false" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/KafkaReceiverService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/HotspotAcceptApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-          <folding>
-            <element signature="e#386#387#0" expanded="false" />
-            <element signature="e#461#462#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-accept/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="45" column="21" lean-forward="false" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/config/redis/RedisConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="37" column="41" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/service/AdminService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#853#854#0" expanded="true" />
-            <element signature="e#911#912#0" expanded="true" />
-            <element signature="e#1221#1222#0" expanded="true" />
-            <element signature="e#1293#1294#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/repository/org/springframework/spring-webmvc/5.2.0.RELEASE/spring-webmvc-5.2.0.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="5" column="40" lean-forward="false" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/repository/org/springframework/spring-webmvc/5.2.0.RELEASE/spring-webmvc-5.2.0.RELEASE-sources.jar!/org/springframework/web/servlet/handler/HandlerInterceptorAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="48" column="16" lean-forward="false" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/repository/org/apache/shiro/shiro-web/1.4.0/shiro-web-1.4.0.jar!/org/apache/shiro/web/mgt/DefaultWebSecurityManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/KafkaReceiverServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/repository/org/apache/shiro/shiro-web/1.4.0/shiro-web-1.4.0.jar!/org/apache/shiro/web/servlet/ShiroHttpServletRequest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/repository/org/springframework/spring-webmvc/5.2.0.RELEASE/spring-webmvc-5.2.0.RELEASE-sources.jar!/org/springframework/web/servlet/HandlerInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="122" column="17" lean-forward="false" selection-start-line="122" selection-start-column="17" selection-end-line="122" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#7841#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/repository/org/apache/shiro/shiro-web/1.4.0/shiro-web-1.4.0-sources.jar!/org/apache/shiro/web/servlet/AbstractShiroFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="361" column="0" lean-forward="false" selection-start-line="361" selection-start-column="0" selection-end-line="361" selection-end-column="0" />
-          <folding>
-            <element signature="e#17830#18095#0" expanded="false" />
-            <element signature="e#18094#18095#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/repository/org/springframework/spring-webmvc/5.2.0.RELEASE/spring-webmvc-5.2.0.RELEASE-sources.jar!/org/springframework/web/servlet/HandlerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="77" column="17" lean-forward="false" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/repository/org/springframework/spring-webmvc/5.2.0.RELEASE/spring-webmvc-5.2.0.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/HttpRequestHandlerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="52" column="46" lean-forward="true" selection-start-line="52" selection-start-column="46" selection-end-line="52" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/repository/org/springframework/spring-web/5.2.0.RELEASE/spring-web-5.2.0.RELEASE.jar!/org/springframework/web/HttpRequestHandler.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="14" column="9" lean-forward="false" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/repository/org/springframework/spring-webmvc/5.2.0.RELEASE/spring-webmvc-5.2.0.RELEASE-sources.jar!/org/springframework/web/servlet/resource/DefaultServletHttpRequestHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="118" column="16" lean-forward="false" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/repository/org/springframework/spring-webmvc/5.2.0.RELEASE/spring-webmvc-5.2.0.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/AbstractHandlerMethodAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/repository/org/springframework/spring-web/5.2.0.RELEASE/spring-web-5.2.0.RELEASE.jar!/org/springframework/web/context/request/AbstractRequestAttributes.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/repository/org/springframework/spring-web/5.2.0.RELEASE/spring-web-5.2.0.RELEASE-sources.jar!/org/springframework/web/HttpRequestHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#4263#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/repository/org/springframework/spring-webmvc/5.2.0.RELEASE/spring-webmvc-5.2.0.RELEASE-sources.jar!/org/springframework/web/servlet/support/WebContentGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
           <caret line="376" column="25" lean-forward="false" selection-start-line="376" selection-start-column="25" selection-end-line="376" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2082,7 +1523,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
           <caret line="100" column="28" lean-forward="false" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2090,10 +1530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="178" column="0" lean-forward="false" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
-          <folding>
-            <element signature="e#2663#2664#0" expanded="false" />
-            <element signature="e#2689#2690#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2101,15 +1537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
           <caret line="287" column="27" lean-forward="false" selection-start-line="287" selection-start-column="27" selection-end-line="287" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/HotspotApiApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2117,7 +1544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2133,7 +1559,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2141,32 +1566,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
           <caret line="83" column="40" lean-forward="true" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
-          <folding>
-            <element signature="e#2822#2823#0" expanded="true" />
-            <element signature="e#2860#2861#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/repository/org/springframework/spring-webmvc/5.2.0.RELEASE/spring-webmvc-5.2.0.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
+        <state relative-caret-position="11670">
           <caret line="895" column="0" lean-forward="false" selection-start-line="895" selection-start-column="0" selection-end-line="895" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/repository/org/springframework/spring-web/5.2.0.RELEASE/spring-web-5.2.0.RELEASE-sources.jar!/org/springframework/web/filter/CorsFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-132">
+        <state relative-caret-position="390">
           <caret line="53" column="13" lean-forward="false" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/repository/org/apache/shiro/shiro-web/1.4.0/shiro-web-1.4.0-sources.jar!/org/apache/shiro/web/mgt/DefaultWebSecurityManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
+        <state relative-caret-position="480">
           <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding />
         </state>
@@ -2174,12 +1593,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/config/ShiroConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="81" column="49" lean-forward="true" selection-start-line="81" selection-start-column="49" selection-end-line="81" selection-end-column="49" />
+        <state relative-caret-position="945">
+          <caret line="81" column="49" lean-forward="false" selection-start-line="81" selection-start-column="49" selection-end-line="81" selection-end-column="49" />
           <folding>
-            <element signature="e#2308#2309#0" expanded="true" />
-            <element signature="e#2358#2359#0" expanded="true" />
-            <element signature="e#2947#2963#0" expanded="true" />
+            <element signature="e#2308#2309#0" expanded="false" />
+            <element signature="e#2358#2359#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2192,23 +1610,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/filter/CrosFilter.java">
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/filter/ShiroBasicHttpAuthenticationFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-65">
-          <caret line="18" column="100" lean-forward="false" selection-start-line="18" selection-start-column="100" selection-end-line="18" selection-end-column="100" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="240">
+          <caret line="16" column="47" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/filter/ShiroBasicHttpAuthenticationFilter.java">
+    <entry file="file://$PROJECT_DIR$/hotspot-accept/src/main/java/com/jsc/hotspot/accept/config/TomcatConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-131">
-          <caret line="16" column="47" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2222,11 +1636,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/shiro/AdminAuthorizingRealm.java">
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/filter/CrosFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="15">
+          <caret line="18" column="100" lean-forward="false" selection-start-line="18" selection-start-column="100" selection-end-line="18" selection-end-column="100" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/KafkaReceiverService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/WeedFSService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2234,6 +1664,236 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-db/sql/hotspot.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="20" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-db/src/main/java/com/jsc/hotspot/db/dao/AdminMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-db/src/main/resources/application-db.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="10" lean-forward="false" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/resources/msgqueue.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="30" lean-forward="false" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/FileConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/JsonEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/ViewDepotRestTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/converter/MsgConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/schedule/ScheduledTask.java" />
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordCap.java" />
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/converter/json/JsonConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/record/MsgRecordDevSts.java" />
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/RestClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="37" column="15" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="394" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/config/StorageConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/smb/SmbStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-631">
+          <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/WeedFSServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="38" column="16" lean-forward="false" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="19" lean-forward="false" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/service/AdminService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-db/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/shiro/AdminAuthorizingRealm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/resources/application-dbs.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/facade/impl/KafkaReceiverServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/FileStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/weed/WeedStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="20" lean-forward="false" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/rms/RmsStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="9" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/storage/local/LocalStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="27" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/msg/MsgWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/MultipartFileResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/java/com/jsc/hotspot/common/http/LoggingRequestInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotspot-api/src/main/java/com/jsc/hotspot/api/HotspotApiApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotdpot-common/src/main/resources/database.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="55" lean-forward="false" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="55" />
           <folding />
         </state>
       </provider>
