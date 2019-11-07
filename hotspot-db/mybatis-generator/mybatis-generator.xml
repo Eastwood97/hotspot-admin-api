@@ -65,7 +65,7 @@
         <table tableName="admin">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="role_ids" javaType="java.lang.Integer[]"
-                            typeHandler="com.jsc.hotspot.db.utils.JsonIntegerArrayTypeHandler"/>
+                            typeHandler="com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler"/>
         </table>
         <table tableName="target">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>

@@ -2,8 +2,10 @@ package com.jsc.hotspot.api.config;
 
 import com.jsc.hotspot.api.filter.ShiroBasicHttpAuthenticationFilter;
 import com.jsc.hotspot.api.shiro.AdminAuthorizingRealm;
+import com.jsc.hotspot.api.shiro.AdminWebSessionManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.Realm;
+import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -28,21 +30,11 @@ import java.util.Map;
 public class ShiroConfig {
 
 
-//    @Bean(name = "sessionManager")
-//    public ShiroSessionManager sessionManager(@Qualifier("sessionDAO") RedisSessionDao sessionDAO,
-//                                              @Qualifier("sessionIdCookie") SimpleCookie sessionIdCookie) {
-//        ShiroSessionManager manager = new ShiroSessionManager();
-//        manager.setGlobalSessionTimeout(GloableField.REDIS_TIME_OUT);
-//        manager.setDeleteInvalidSessions(true);
-//        manager.setSessionValidationSchedulerEnabled(true);
-////        manager.setSessionValidationScheduler(sessionValidationScheduler);
-//        manager.setSessionDAO(sessionDAO);
-//        manager.setSessionIdCookieEnabled(false);
-////        manager.setSessionIdCookieEnabled(true);
-////        manager.setSessionIdCookie(sessionIdCookie);
-//        manager.setSessionIdUrlRewritingEnabled(false);
-//        return manager;
-//    }
+    @Bean
+    public SessionManager sessionManager() {
+
+        return new AdminWebSessionManager();
+    }
 
     /**
      * 配置安全管理器，并且注入Realm域
@@ -85,6 +77,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/admin/auth/index","anon");
         filterChainDefinitionMap.put("admin/auth/403","anon");
         filterChainDefinitionMap.put("/admin/index/index","anon");
+        filterChainDefinitionMap.put("/admin/auth/info","anon");
         shiroFilterFactoryBean.setFilters(filterMap);
         /**
          * 匹配所有的路径，通过Map集合组成了一个拦截器链，自定向下过滤，一旦匹配则不再执行下面的过滤

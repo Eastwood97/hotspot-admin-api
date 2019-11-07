@@ -1,10 +1,14 @@
 package com.jsc.hotspot.api.shiro;
 
 import com.jsc.hotspot.api.service.AdminService;
+import com.jsc.hotspot.api.service.PermissionService;
+import com.jsc.hotspot.api.service.RoleService;
 import com.jsc.hotspot.common.utils.bcrypt.BCryptPasswordEncoder;
 import com.jsc.hotspot.db.domain.Admin;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.Assert;
@@ -12,12 +16,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.Set;
 
 public class AdminAuthorizingRealm extends AuthorizingRealm {
 
     @Autowired
     private AdminService adminService;
-
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private PermissionService permissionService;
 
 
     //身份认证
@@ -49,7 +57,18 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
 
     //鉴权
     @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        return null;
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        if (principals == null) {
+            throw new AuthorizationException("PrincipalCollection method argument cannot be null.");
+        }
+
+        Admin admin = (Admin) getAvailablePrincipal(principals);
+        Long[] roleIds = admin.getRoleIds();
+        Set<String> roles = roleService.queryByIds(roleIds);
+        Set<String> permissions = permissionService.queryByRoleIds(roleIds);
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        info.setRoles(roles);
+        info.setStringPermissions(permissions);
+        return info;
     }
 }

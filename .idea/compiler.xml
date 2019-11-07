@@ -6,18 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hotspot-db" />
-        <module name="hotspot-accept" />
         <module name="hotdpot-common" />
+        <module name="hotspot-accept" />
         <module name="hotspot-api" />
+        <module name="hotspot-db" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="hotdpot-common" target="1.8" />
-      <module name="hotspot-accept" target="1.8" />
-      <module name="hotspot-api" target="1.8" />
-      <module name="hotspot-db" target="1.8" />
-      <module name="hotspotall" target="1.8" />
-    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="hotdpot-common" options="-parameters" />
+      <module name="hotspot-accept" options="-parameters" />
+      <module name="hotspot-api" options="-parameters" />
+      <module name="hotspot-db" options="-parameters" />
+    </option>
   </component>
 </project>
