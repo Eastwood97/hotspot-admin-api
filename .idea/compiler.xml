@@ -19,7 +19,6 @@
       <module name="hotspot-accept" options="-parameters" />
       <module name="hotspot-api" options="-parameters" />
       <module name="hotspot-db" options="-parameters" />
-      <module name="hotspotall" options="" />
     </option>
   </component>
 </project>

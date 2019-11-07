@@ -28,7 +28,7 @@ public class Admin {
      *
      * @mbg.generated
      */
-    private Integer id;
+    private Long id;
 
     /**
      *
@@ -119,7 +119,7 @@ public class Admin {
      *
      * @mbg.generated
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -131,7 +131,7 @@ public class Admin {
      *
      * @mbg.generated
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -517,7 +517,7 @@ public class Admin {
      * @mbg.generated
      */
     public enum Column {
-        id("id", "id", "INTEGER", false),
+        id("id", "id", "BIGINT", false),
         username("username", "username", "VARCHAR", false),
         password("password", "password", "VARCHAR", true),
         lastLoginIp("last_login_ip", "lastLoginIp", "VARCHAR", false),

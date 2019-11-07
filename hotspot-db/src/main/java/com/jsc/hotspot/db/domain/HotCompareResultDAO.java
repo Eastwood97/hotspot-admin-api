@@ -12,7 +12,7 @@ public class HotCompareResultDAO {
      *
      * @mbg.generated
      */
-    private String id;
+    private Long id;
 
     /**
      *
@@ -103,7 +103,7 @@ public class HotCompareResultDAO {
      *
      * @mbg.generated
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -115,7 +115,7 @@ public class HotCompareResultDAO {
      *
      * @mbg.generated
      */
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -421,7 +421,7 @@ public class HotCompareResultDAO {
      * @mbg.generated
      */
     public enum Column {
-        id("id", "id", "VARCHAR", false),
+        id("id", "id", "BIGINT", false),
         imsi("imsi", "imsi", "VARCHAR", false),
         imei("imei", "imei", "VARCHAR", false),
         isdn("isdn", "isdn", "VARCHAR", false),

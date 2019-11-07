@@ -5,7 +5,9 @@ import com.jsc.hotspot.common.biz.BizResult;
 import com.jsc.hotspot.common.data.StorageConfig;
 import com.jsc.hotspot.common.storage.weed.WeedStorage;
 import com.jsc.hotspot.common.util.RandomNameUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
 
@@ -14,6 +16,8 @@ import java.io.InputStream;
  * @description 文件服务接口实现
  * @date 2019/11/4
  */
+@Service
+@Slf4j
 public class WeedFSServiceImpl implements WeedFSService {
 
     /**

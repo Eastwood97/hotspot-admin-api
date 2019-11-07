@@ -2,6 +2,7 @@ package com.jsc.hotspot.api.facade;
 
 
 import com.jsc.hotspot.common.biz.BizResult;
+import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
 
@@ -10,6 +11,7 @@ import java.io.InputStream;
  * @description weedFS操作服务处理
  * @date 2019/10/29
  */
+@Component
 public interface WeedFSService {
 
     /**

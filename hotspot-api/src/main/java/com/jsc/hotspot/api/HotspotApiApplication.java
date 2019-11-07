@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class}, scanBasePackages = {"com.jsc.hotspot.db", "com.jsc.hotspot.common"})
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class}, scanBasePackages = {"com.jsc.hotspot.db", "com.jsc.hotspot.common","com.jsc.hotspot.api"})
 @MapperScan("com.jsc.hotspot.db.dao")
 @EnableTransactionManagement
 @EnableScheduling
