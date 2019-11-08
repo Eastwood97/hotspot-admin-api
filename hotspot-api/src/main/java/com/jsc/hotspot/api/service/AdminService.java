@@ -50,4 +50,10 @@ public class AdminService {
        return adminMapper.updateByPrimaryKeySelective(admin);
    }
 
+    public List<Admin> queryByUsername(String username) {
+        AdminExample example = new AdminExample();
+        example.or().andUsernameEqualTo(username).andDeletedEqualTo(false);
+        return adminMapper.selectByExample(example);
+    }
+
 }

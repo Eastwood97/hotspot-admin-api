@@ -1,5 +1,6 @@
 package com.jsc.hotspot.api.config;
 
+import com.jsc.hotspot.api.filter.CrosFilter;
 import com.jsc.hotspot.api.filter.ShiroBasicHttpAuthenticationFilter;
 import com.jsc.hotspot.api.shiro.AdminAuthorizingRealm;
 import com.jsc.hotspot.api.shiro.AdminWebSessionManager;
@@ -38,13 +39,14 @@ public class ShiroConfig {
 
     /**
      * 配置安全管理器，并且注入Realm域
-     * @param realm
+     * @param
      * @return
      */
     @Bean
-    public DefaultWebSecurityManager securityManager(Realm realm){
+    public DefaultWebSecurityManager securityManager(){
         DefaultWebSecurityManager securityManager =new DefaultWebSecurityManager();
-        securityManager.setRealm(realm);
+        securityManager.setRealm(realm());
+        securityManager.setSessionManager(sessionManager());
         return  securityManager;
     }
 
@@ -72,27 +74,38 @@ public class ShiroConfig {
         Map<String,String> filterChainDefinitionMap =new LinkedHashMap<>();
         Map<String, javax.servlet.Filter> filterMap = new HashMap<String, Filter>(1);
         filterMap.put("authc", new ShiroBasicHttpAuthenticationFilter());
-        filterChainDefinitionMap.put("/admin/auth/login","anon");
-        filterChainDefinitionMap.put("/admin/auth/401","anon");
-        filterChainDefinitionMap.put("/admin/auth/index","anon");
-        filterChainDefinitionMap.put("admin/auth/403","anon");
-        filterChainDefinitionMap.put("/admin/index/index","anon");
+//        filterChainDefinitionMap.put("/admin/auth/login","anon");
+//        filterChainDefinitionMap.put("/admin/auth/401","anon");
+//        filterChainDefinitionMap.put("/admin/auth/index","anon");
+//        filterChainDefinitionMap.put("admin/auth/403","anon");
+//        filterChainDefinitionMap.put("/admin/index/index","anon");
         filterChainDefinitionMap.put("/admin/auth/info","anon");
         shiroFilterFactoryBean.setFilters(filterMap);
+
+        filterChainDefinitionMap.put("/admin/auth/login", "anon");
+        filterChainDefinitionMap.put("/admin/auth/401", "anon");
+        filterChainDefinitionMap.put("/admin/auth/index", "anon");
+        filterChainDefinitionMap.put("/admin/auth/403", "anon");
+        filterChainDefinitionMap.put("/admin/index/index", "anon");
+
+        filterChainDefinitionMap.put("/admin/**", "authc");
+        shiroFilterFactoryBean.setLoginUrl("/admin/auth/401");
+        shiroFilterFactoryBean.setSuccessUrl("/admin/auth/index");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/admin/auth/403");
         /**
          * 匹配所有的路径，通过Map集合组成了一个拦截器链，自定向下过滤，一旦匹配则不再执行下面的过滤
          * 如果下面的定义与上面的冲突，那就按照谁先定义了谁说了算
          * /** 一定要配置在最后
          */
-        filterChainDefinitionMap.put("/admin/**","authc");
-        //将拦截器设置到shiro中
+//        filterChainDefinitionMap.put("/admin/**","authc");
+//        //将拦截器设置到shiro中
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
-        //设置登陆页，默认为Web工程根目录下的"/login.jsp"页面
-        shiroFilterFactoryBean.setLoginUrl("/admin/auth/401");
-        //设置登录成功后跳转的页面
-        shiroFilterFactoryBean.setSuccessUrl("admin/auth/index");
-        //未授权界面
-        shiroFilterFactoryBean.setUnauthorizedUrl("/admin/auth");
+//        //设置登陆页，默认为Web工程根目录下的"/login.jsp"页面
+//        shiroFilterFactoryBean.setLoginUrl("/admin/auth/401");
+//        //设置登录成功后跳转的页面
+//        shiroFilterFactoryBean.setSuccessUrl("admin/auth/index");
+//        //未授权界面
+//        shiroFilterFactoryBean.setUnauthorizedUrl("/admin/auth");
 
         return shiroFilterFactoryBean;
     }
@@ -133,4 +146,5 @@ public class ShiroConfig {
     public ShiroBasicHttpAuthenticationFilter shiroBasicHttpAuthenticationFilter() {
         return new ShiroBasicHttpAuthenticationFilter();
     }
+
 }

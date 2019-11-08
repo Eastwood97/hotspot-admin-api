@@ -5,7 +5,9 @@ import com.jsc.hotspot.api.service.PermissionService;
 import com.jsc.hotspot.api.service.RoleService;
 import com.jsc.hotspot.api.utils.Permission;
 import com.jsc.hotspot.api.utils.PermissionUtil;
+import com.jsc.hotspot.common.util.IpUtil;
 import com.jsc.hotspot.common.utils.JacksonUtil;
+import com.jsc.hotspot.common.utils.bcrypt.BCryptPasswordEncoder;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
 import com.jsc.hotspot.db.domain.Admin;
 import org.apache.commons.logging.Log;
@@ -15,8 +17,11 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.subject.support.WebDelegatingSubject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.util.StringUtils;
@@ -24,6 +29,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static com.jsc.hotspot.common.utils.response.AdminResponseCode.ADMIN_INVALID_ACCOUNT;
@@ -83,7 +89,7 @@ public class AdminAuthController {
 //        admin.setLastLoginIp(IpUtil.getIpAddr(request));
 //        admin.setLastLoginTime(LocalDateTime.now());
         adminService.updateById(admin);
-
+        System.out.println(currentUser.isAuthenticated());
         logger.info("登录");
 
         // userInfo
@@ -96,52 +102,6 @@ public class AdminAuthController {
         result.put("adminInfo", adminInfo);
         return ResponseUtil.ok(result);
     }
-
-
-    @RequestMapping(value = "/login", method = RequestMethod.OPTIONS)
-    public Object login1(@RequestBody String body, HttpServletRequest request) {
-        logger.debug("正在登陆");
-        String username = JacksonUtil.parseString(body, "username");
-        String password = JacksonUtil.parseString(body, "password");
-
-        if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
-            return ResponseUtil.badArgument();
-        }
-
-        Subject currentUser = SecurityUtils.getSubject();
-        try {
-            currentUser.login(new UsernamePasswordToken(username, password));
-        } catch (UnknownAccountException uae) {
-            logger.error("用户帐号或密码不正确");
-            return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "用户帐号或密码不正确");
-        } catch (LockedAccountException lae) {
-            logger.error("用户帐号已锁定不可用");
-            return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "用户帐号已锁定不可用");
-
-        } catch (AuthenticationException ae) {
-            logger.error("认证失败");
-            return ResponseUtil.fail(ADMIN_INVALID_ACCOUNT, "认证失败");
-        }
-
-        currentUser = SecurityUtils.getSubject();
-        Admin admin = (Admin) currentUser.getPrincipal();
-//        admin.setLastLoginIp(IpUtil.getIpAddr(request));
-//        admin.setLastLoginTime(LocalDateTime.now());
-        adminService.updateById(admin);
-
-        logger.info("登录");
-
-        // userInfo
-        Map<String, Object> adminInfo = new HashMap<String, Object>();
-        adminInfo.put("nickName", admin.getUsername());
-//        adminInfo.put("avatar", admin.getAvatar());
-
-        Map<Object, Object> result = new HashMap<Object, Object>();
-        result.put("token", currentUser.getSession().getId());
-        result.put("adminInfo", adminInfo);
-        return ResponseUtil.ok(result);
-    }
-
 
     @RequiresAuthentication
     @PostMapping("/logout")
@@ -153,18 +113,17 @@ public class AdminAuthController {
         return ResponseUtil.ok();
     }
 
-
-    @RequiresAuthentication
+    @RequiresPermissions(value={"admin123"},logical= Logical.OR)
     @GetMapping("/info")
-    public Object info() {
+    public Object infos() {
         Subject currentUser = SecurityUtils.getSubject();
         Admin admin = (Admin) currentUser.getPrincipal();
 
         Map<String, Object> data = new HashMap<>();
         data.put("name", admin.getUsername());
         data.put("avatar", admin.getAvatar());
-
         Long[] roleIds = admin.getRoleIds();
+        roleIds[0] = 1l;
         Set<String> roles = roleService.queryByIds(roleIds);
         Set<String> permissions = permissionService.queryByRoleIds(roleIds);
         data.put("roles", roles);
