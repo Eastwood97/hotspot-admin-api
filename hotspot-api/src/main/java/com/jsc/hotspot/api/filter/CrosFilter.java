@@ -19,7 +19,6 @@ public class CrosFilter implements Filter {
 
 
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        System.err.println("CorsFilter");
         HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
         //跨域设置,谁来都放行,与设置成*效果相同,但是这里设置成*行不通,因此用该方法代替
@@ -35,12 +34,7 @@ public class CrosFilter implements Filter {
         try {
             chain.doFilter(request, response);
         } catch (Exception e) {
-//
-//            System.err.println("CrosFilter Error start");
-//            e.printStackTrace();
-//            System.err.println("CrosFilter Error end");
-//            if((e.getCause()+"").contains("UnauthorizedException")){
-//            }
+            e.printStackTrace();
         }
     }
 
