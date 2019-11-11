@@ -9,11 +9,11 @@ public interface TargetNumService {
 
     List<HotTargetInfo> query(Integer page, Integer limit,String targetName,String imsi,String imei,String isdn);
 
-    int updateById();
+    int updateById(HotTargetInfo targetInfo);
 
-    void deleteById();
+    void deleteById(Long[] ids);
 
-    void add();
+    void add(HotTargetInfo targetInfo);
 
 
 

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service("TargetNumService")
@@ -27,16 +28,17 @@ public class TargetNumServiceImpl implements TargetNumService {
         HotTargetInfoExample example=new HotTargetInfoExample();
         HotTargetInfoExample.Criteria criteria=example.createCriteria();
         if (!StringUtils.isEmpty(targetName)) {
-            criteria.andTargetNameLike(targetName);
+            criteria.andTargetNameLike("%"+targetName+"%");
+
         }
         if (!StringUtils.isEmpty(imsi)) {
             criteria.andImsiEqualTo(imsi);
         }
         if (!StringUtils.isEmpty(imei)) {
-            criteria.andImsiEqualTo(imei);
+            criteria.andImeiEqualTo(imei);
         }
         if (!StringUtils.isEmpty(isdn)) {
-            criteria.andImsiEqualTo(isdn);
+            criteria.andIsdnEqualTo(isdn);
         }
 
        example.setOrderByClause("create_time desc");
@@ -45,17 +47,20 @@ public class TargetNumServiceImpl implements TargetNumService {
     }
 
     @Override
-    public int updateById() {
-        return 0;
+    public int updateById(HotTargetInfo targetInfo) {
+        targetInfo.setUpdateTime(LocalDateTime.now());
+        return hotTargetInfoMapper.updateByPrimaryKeySelective(targetInfo);
     }
 
     @Override
-    public void deleteById() {
+    public void deleteById(Long[] ids) {
 
     }
 
     @Override
-    public void add() {
-
+    public void add(HotTargetInfo targetInfo) {
+        targetInfo.setCreateTime(LocalDateTime.now());
+        targetInfo.setUpdateTime(LocalDateTime.now());
+        hotTargetInfoMapper.insertSelective(targetInfo);
     }
 }
