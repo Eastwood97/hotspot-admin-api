@@ -12,6 +12,7 @@ jbit.log
 .settings
 .springBeans
 .sts4-cache
+hotspotall.iml
 
 ### IntelliJ IDEA ###
 .idea/*

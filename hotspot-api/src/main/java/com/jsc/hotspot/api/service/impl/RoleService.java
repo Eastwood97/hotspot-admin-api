@@ -1,4 +1,4 @@
-package com.jsc.hotspot.api.service;
+package com.jsc.hotspot.api.service.impl;
 
 import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;

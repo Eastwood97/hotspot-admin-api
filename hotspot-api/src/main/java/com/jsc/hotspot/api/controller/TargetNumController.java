@@ -82,7 +82,12 @@ public class TargetNumController {
         return ResponseUtil.ok(targetInfo);
     }
 
-    public Object deleteById(){
-        return null;
+    @DeleteMapping
+    public Object deleteById(@RequestBody String targetIds){
+        if(targetNumService.deleteById(targetIds)){
+            return  ResponseUtil.ok();
+        }else {
+            return  ResponseUtil.deleteDataFailed();
+        }
     }
 }

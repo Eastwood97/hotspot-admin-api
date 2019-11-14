@@ -1,4 +1,4 @@
-package com.jsc.hotspot.api.service;
+package com.jsc.hotspot.api.service.impl;
 
 import com.jsc.hotspot.db.dao.PermissionMapper;
 import com.jsc.hotspot.db.domain.Permission;

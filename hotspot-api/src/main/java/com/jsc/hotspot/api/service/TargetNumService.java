@@ -11,7 +11,7 @@ public interface TargetNumService {
 
     int updateById(HotTargetInfo targetInfo);
 
-    void deleteById(Long[] ids);
+    boolean deleteById(String targetIds);
 
     void add(HotTargetInfo targetInfo);
 
