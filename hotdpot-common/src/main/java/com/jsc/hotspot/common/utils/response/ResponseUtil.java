@@ -135,5 +135,13 @@ public class ResponseUtil {
     public static Object unauthz() {
         return fail(506, "无操作权限");
     }
+
+    public static Object deleteDataFailed() {
+        return fail(507, "删除失败");
+    }
+
+    public static Object uploadFailed() {
+        return fail(508, "上传失败");
+    }
 }
 

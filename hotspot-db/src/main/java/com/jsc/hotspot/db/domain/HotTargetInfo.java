@@ -1,7 +1,5 @@
 package com.jsc.hotspot.db.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -68,7 +66,6 @@ public class HotTargetInfo {
      *
      * @mbg.generated
      */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
 
     /**
@@ -78,7 +75,6 @@ public class HotTargetInfo {
      *
      * @mbg.generated
      */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
 
     /**

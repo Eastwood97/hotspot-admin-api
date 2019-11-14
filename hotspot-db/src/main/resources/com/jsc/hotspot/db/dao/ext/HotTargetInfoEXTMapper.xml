@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsc.hotspot.db.dao.ext.HotTargetInfoEXTMapper">
+    <delete id="deleteNumById">
+        DELETE  From hot_target_info WHERE target_id in
+        <foreach collection="targetIds" item="targetId" open="(" close=")" separator=",">
+            #{targetId}
+        </foreach>
+    </delete>
+</mapper>

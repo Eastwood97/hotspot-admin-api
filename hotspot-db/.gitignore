@@ -12,6 +12,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
+hotspot-db.iml
 
 ### IntelliJ IDEA ###
 .idea

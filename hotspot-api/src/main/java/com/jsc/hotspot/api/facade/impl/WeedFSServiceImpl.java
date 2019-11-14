@@ -15,7 +15,7 @@ import java.io.InputStream;
  * @description 文件服务接口实现
  * @date 2019/11/4
  */
-@Service
+@Service("WeedFSService")
 public class WeedFSServiceImpl implements WeedFSService {
 
     /**
