@@ -1,12 +1,23 @@
 package com.jsc.hotspot.api.dto;
 
-import org.springframework.web.multipart.MultipartFile;
 
+import lombok.Data;
+import org.springframework.stereotype.Component;
+
+@Data
 public class TargetFace {
+
+    private Long targetId;
 
     private String targetName;
 
     private String desc;
 
-    private MultipartFile file;
+    private String fileId1;
+
+    private String fileId2;
+
+    private String fileId3;
+
+
 }

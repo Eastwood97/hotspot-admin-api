@@ -1,9 +1,14 @@
 package com.jsc.hotspot.api.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
+import com.jsc.hotspot.api.dto.TargetFace;
+import com.jsc.hotspot.api.service.TargetFaceService;
+import com.jsc.hotspot.common.utils.response.ResponseUtil;
+import com.jsc.hotspot.db.domain.CameraTargetFace;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 
 /**
  * 布控人脸数据接口
@@ -13,10 +18,28 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/admin/targetFace")
 public class TargetFaceController {
 
-    @PostMapping
-    public Object creat(MultipartFile file){
+    @Autowired
+    private  TargetFaceService targetFaceService;
 
-        return null;
+    @PostMapping
+    public Object creat(@RequestBody TargetFace targetFace){
+        targetFaceService.add(targetFace);
+        return ResponseUtil.ok("添加成功");
+    }
+
+    @PutMapping
+    public Object update(@RequestBody TargetFace targetFace){
+        if(targetFaceService.update(targetFace)==0){
+            return ResponseUtil.updatedDataFailed();
+        }
+        return ResponseUtil.ok(targetFace);
+    }
+
+    public Object query(  @RequestParam(defaultValue = "1") Integer page,
+                          @RequestParam(defaultValue = "20") Integer limit,
+                             String targetName){
+        List<CameraTargetFace> targetFaces=targetFaceService.getTargetFace();
+        return ResponseUtil.ok(targetFaces);
     }
 
 }
