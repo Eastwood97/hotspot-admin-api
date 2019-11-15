@@ -1,6 +1,6 @@
 package com.jsc.hotspot.accept.config.netty;
 
-import com.jsc.hotspot.accept.service.impl.ServerHandler;
+import com.jsc.hotspot.accept.facade.impl.ServerHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;

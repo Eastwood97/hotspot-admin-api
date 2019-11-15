@@ -15,7 +15,7 @@ jbit.log
 hotspotall.iml
 
 ### IntelliJ IDEA ###
-.idea/*
+.idea/
 *.iws
 *.iml
 *.ipr
