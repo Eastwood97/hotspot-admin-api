@@ -31,6 +31,10 @@ public interface DeviceService {
      */
     List<HotFrontDevice> getDevices(Integer page, Integer limit,String devName,String devType,String devNum);
 
-
-
+    /**
+     * 根据设备名字获取设备
+     * @param devName
+     * @return
+     */
+    HotFrontDevice getDeviceByDevName(String devName);
 }

@@ -42,7 +42,7 @@ public class WeedFSServiceImpl implements WeedFSService {
 
     public void init() throws Exception{
         StorageConfig storageConfig = new StorageConfig();
-        storageConfig.setIpAddr("192.168.8.112");
+        storageConfig.setIpAddr("192.168.95.101");
         storageConfig.setPort(9333);
         weedStorage.config(storageConfig);
     }

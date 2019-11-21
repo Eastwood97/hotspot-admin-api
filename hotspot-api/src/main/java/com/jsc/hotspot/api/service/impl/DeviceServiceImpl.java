@@ -56,4 +56,13 @@ public class DeviceServiceImpl implements DeviceService {
         PageHelper.startPage(page, limit);
         return hotFrontDeviceMapper.selectByExampleSelective(example);
     }
+
+    @Override
+    public HotFrontDevice getDeviceByDevName(String devName) {
+        HotFrontDeviceExample hotFrontDeviceExample = new HotFrontDeviceExample();
+        HotFrontDeviceExample.Criteria criteria = hotFrontDeviceExample.createCriteria();
+        criteria.andDevNameEqualTo(devName);
+        HotFrontDevice hotFrontDevice = hotFrontDeviceMapper.selectOneByExampleSelective(hotFrontDeviceExample);
+        return hotFrontDevice;
+    }
 }

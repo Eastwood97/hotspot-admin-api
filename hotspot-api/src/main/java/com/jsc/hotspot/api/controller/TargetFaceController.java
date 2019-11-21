@@ -35,6 +35,7 @@ public class TargetFaceController {
         return ResponseUtil.ok(targetFace);
     }
 
+    @GetMapping
     public Object query(  @RequestParam(defaultValue = "1") Integer page,
                           @RequestParam(defaultValue = "20") Integer limit,
                              String targetName){

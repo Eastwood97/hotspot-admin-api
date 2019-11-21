@@ -1,8 +1,10 @@
 package com.jsc.hotspot.accept.video;
 
+import com.jsc.hotspot.accept.http.EasyDrawinHttpRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.javacpp.avcodec;
 import org.bytedeco.javacv.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.ComponentScan;
@@ -23,6 +25,9 @@ import java.io.IOException;
 @Order(1)
 public class RecordVideoThread implements ApplicationRunner {
 
+    @Autowired
+    private EasyDrawinHttpRequest easyDrawinHttpRequest;
+
     //TODO 录制完视频后保存到文件系统中，并将文件系统的ID保存到数据库中，后期通过时间来查
     public String streamURL = "http://192.201.102.100/hls/cctv.m3u8";//流地址 网上有自行百度
     public String filePath;//文件路径
@@ -31,6 +36,8 @@ public class RecordVideoThread implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        String a = easyDrawinHttpRequest.startStream("rtsp://admin:admin12345@192.201.102.201:554");
+        System.out.println(a);
         // 获取视频源 可以获取RTSP视频源进行视频播放
 //        FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(streamURL);
 //        FFmpegFrameRecorder recorder = null;
