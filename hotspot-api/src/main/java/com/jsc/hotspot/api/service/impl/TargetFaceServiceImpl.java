@@ -1,11 +1,13 @@
 package com.jsc.hotspot.api.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
 import com.jsc.hotspot.api.dto.TargetFace;
 import com.jsc.hotspot.api.service.TargetFaceService;
 import com.jsc.hotspot.db.dao.CameraTargetFaceMapper;
 import com.jsc.hotspot.db.domain.Admin;
 import com.jsc.hotspot.db.domain.CameraTargetFace;
+import com.jsc.hotspot.db.domain.CameraTargetFaceExample;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ import java.util.Map;
 public class TargetFaceServiceImpl implements TargetFaceService {
     @Autowired
     private CameraTargetFaceMapper targetFaceMapper;
+
+
     @Override
     public void add(TargetFace targetFace) {
         CameraTargetFace cameraTargetFace =new CameraTargetFace();
@@ -66,7 +70,12 @@ public class TargetFaceServiceImpl implements TargetFaceService {
     }
 
     @Override
-    public List<CameraTargetFace> getTargetFace() {
-        return null;
+    public List<CameraTargetFace> getTargetFace(Integer page,Integer limit,String targetName) {
+        CameraTargetFaceExample cameraTargetFaceExample=new CameraTargetFaceExample();
+        CameraTargetFaceExample.Criteria criteria=cameraTargetFaceExample.createCriteria();
+        criteria.andTargetNameEqualTo(targetName);
+
+        PageHelper.startPage(page, limit);
+        return targetFaceMapper.selectByExampleSelective(cameraTargetFaceExample);
     }
 }
