@@ -1,6 +1,9 @@
 package com.jsc.hotspot.accept.dto;
 
 import lombok.Data;
+import org.springframework.context.annotation.Bean;
+
+import java.time.LocalDateTime;
 
 /**
  * @author huixing
@@ -10,9 +13,10 @@ import lombok.Data;
 @Data
 public class AcceptBean {
 
-    private String device_id;
+    private Long device_id;
+    private String LocalLibPicName;
     private int Facelibrary;
-    private String CompareScore;
-    private String SnapTime;
-    private String FacePicData;
+    private Double CompareScore;
+    private LocalDateTime SnapTime;
+    private String catchFace;
 }

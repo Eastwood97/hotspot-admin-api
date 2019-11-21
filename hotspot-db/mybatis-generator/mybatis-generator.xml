@@ -104,5 +104,9 @@
         <table tableName="operator_info" domainObjectName="OperatorInfo">
             <generatedKey column="operator_id" sqlStatement="MySql" identity="true"/>
         </table>
+
+        <table tableName="related_num" domainObjectName="RelatedNum">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>
