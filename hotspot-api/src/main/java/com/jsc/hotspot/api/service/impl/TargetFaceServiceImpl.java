@@ -73,7 +73,7 @@ public class TargetFaceServiceImpl implements TargetFaceService {
     public List<CameraTargetFace> getTargetFace(Integer page,Integer limit,String targetName) {
         CameraTargetFaceExample cameraTargetFaceExample=new CameraTargetFaceExample();
         CameraTargetFaceExample.Criteria criteria=cameraTargetFaceExample.createCriteria();
-        criteria.andTargetNameEqualTo(targetName);
+        criteria.andTargetNameLike("%"+targetName+"%");
 
         PageHelper.startPage(page, limit);
         return targetFaceMapper.selectByExampleSelective(cameraTargetFaceExample);

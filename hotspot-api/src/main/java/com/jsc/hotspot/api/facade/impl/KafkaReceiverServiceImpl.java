@@ -5,6 +5,7 @@ import com.jsc.hotspot.accept.dto.FaceRecognitionInfo;
 import com.jsc.hotspot.api.config.WebSocket;
 import com.jsc.hotspot.api.facade.KafkaReceiverService;
 import com.jsc.hotspot.api.facade.WeedFSService;
+import com.jsc.hotspot.db.dao.CameraCatInfoMapper;
 import com.jsc.hotspot.db.dao.CameraCompareResultMapper;
 import com.jsc.hotspot.db.dao.HotNumInfoMapper;
 import com.jsc.hotspot.db.dao.RelatedNumMapper;
@@ -50,6 +51,11 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
     @Autowired
     private WebSocket webSocket;
 
+    @Autowired
+    private  CameraCatInfoMapper cameraCatInfoMapper;
+
+
+
     /**
      * 监听 "picTopic" 将图片数据存入文件系统和数据库
      * @param record
@@ -64,9 +70,11 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
             String msg = (String)message;//json字符串
             Object object= JSON.parseObject(msg);//json对象
             FaceRecognitionInfo faceRecognitionInfo= (FaceRecognitionInfo) object;
-
+            CameraCatInfo cameraCatInfo=new CameraCatInfo();
             //1.中标
             if (faceRecognitionInfo.getCompareScore()==0){
+
+                cameraCatInfo.setQuality(1);
                 Map<String,Object> map=new HashMap<String,Object>();
                 //2.根据中标时间查询取号
              HotNumInfoExample.Criteria criteria= hotNumInfoExample.createCriteria();
@@ -117,8 +125,14 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
 
 
             }
-            //抓拍入库
 
+            cameraCatInfo.setCaptureTime(faceRecognitionInfo.getCaptureTime());
+            cameraCatInfo.setDevId(faceRecognitionInfo.getDevId());
+           cameraCatInfo.setUpdateTime(LocalDateTime.now());
+           cameraCatInfo.setCreateTime(LocalDateTime.now());
+            cameraCatInfo.setTargetFaceImg(faceRecognitionInfo.getTargetFaceImg());
+            //抓拍入库
+            cameraCatInfoMapper.insertSelective(cameraCatInfo);
 
 
 
