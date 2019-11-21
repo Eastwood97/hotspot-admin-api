@@ -450,4 +450,20 @@
     </if>
     limit 1
   </select>
+  <select id="selectCount" resultType="java.util.Map">
+    select count(*) AS num,capture_time
+    from hot_num_info
+    <where>
+      date(capture_time) in
+      <foreach collection="list" item="capture_time" index="index" open="(" close=")" separator=",">
+        date(#{capture_time})
+      </foreach>
+    </where>
+    GROUP BY date(create_time)
+  </select>
+  <select id="selectGuiShuDiList" resultType="java.util.Map">
+        select count(*) AS value,attribution AS name
+        from hot_num_info
+        GROUP BY attribution
+    </select>
 </mapper>

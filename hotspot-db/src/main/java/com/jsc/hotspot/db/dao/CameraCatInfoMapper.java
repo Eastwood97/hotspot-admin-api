@@ -2,7 +2,11 @@ package com.jsc.hotspot.db.dao;
 
 import com.jsc.hotspot.db.domain.CameraCatInfo;
 import com.jsc.hotspot.db.domain.CameraCatInfoExample;
+
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface CameraCatInfoMapper {
@@ -125,4 +129,15 @@ public interface CameraCatInfoMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(CameraCatInfo record);
+
+    /**
+     *
+     * 功能描述: 此处是为了获取15天内的上号数量进行展示
+     *
+     * @param: List<Date> capture_time
+     * @return: List<Map>
+     * @auther: ww
+     * @date: 2019/11/15 0015 10:25
+     */
+    List<Map> selectCount(List<Date> capture_time);
 }

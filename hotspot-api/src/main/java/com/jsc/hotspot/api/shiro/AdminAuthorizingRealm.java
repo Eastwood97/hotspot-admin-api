@@ -1,8 +1,8 @@
 package com.jsc.hotspot.api.shiro;
 
-import com.jsc.hotspot.api.service.impl.AdminService;
-import com.jsc.hotspot.api.service.impl.PermissionService;
-import com.jsc.hotspot.api.service.impl.RoleService;
+import com.jsc.hotspot.api.service.AdminService;
+import com.jsc.hotspot.api.service.PermissionService;
+import com.jsc.hotspot.api.service.RoleService;
 import com.jsc.hotspot.common.utils.bcrypt.BCryptPasswordEncoder;
 import com.jsc.hotspot.db.domain.Admin;
 import org.apache.shiro.authc.*;
