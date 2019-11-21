@@ -1,8 +1,8 @@
 package com.jsc.hotspot.api.facade.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.jsc.hotspot.accept.dto.AcceptBean;
 import com.jsc.hotspot.accept.dto.FaceRecognitionInfo;
+import com.jsc.hotspot.api.config.WebSocket;
 import com.jsc.hotspot.api.facade.KafkaReceiverService;
 import com.jsc.hotspot.api.facade.WeedFSService;
 import com.jsc.hotspot.db.dao.CameraCompareResultMapper;
@@ -46,6 +46,9 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
 
     @Autowired
     private CameraCompareResultExample cameraCompareResultExample;
+
+    @Autowired
+    private WebSocket webSocket;
 
     /**
      * 监听 "picTopic" 将图片数据存入文件系统和数据库
@@ -110,7 +113,7 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                 //推送识别和关联的结果
                 map.put("regcognition",faceRecognitionInfo);
                 String data=JSON.toJSONString(map);
-
+                webSocket.sendOneMessage("admin123",data);
 
 
             }
