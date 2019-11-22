@@ -20,9 +20,9 @@ import java.io.IOException;
  * @description 直播流保存本地线程
  * @date 2019/11/10
  */
-@Slf4j
-@Component
-@Order(1)
+//@Slf4j
+//@Component
+//@Order(1)
 public class RecordVideoThread implements ApplicationRunner {
 
     @Autowired

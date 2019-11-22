@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@MapperScan({"com.jsc.hotspot.db.dao", "com.jsc.hotspot.db.dao.ext"})
+@MapperScan({"com.jsc.hotspot.db.dao"})
 @ComponentScan(basePackages = {"com.jsc.hotspot.db", "com.jsc.hotspot.common", "com.jsc.hotspot.api"})
 @EnableTransactionManagement
 @EnableScheduling

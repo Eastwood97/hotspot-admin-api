@@ -15,7 +15,7 @@ import java.io.File;
 import java.io.IOException;
 
 @EnableFeignClients
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, RedissonAutoConfiguration.class})
+@SpringBootApplication(exclude = {RedissonAutoConfiguration.class})
 @Slf4j
 public class HotspotAcceptApplication {
 
