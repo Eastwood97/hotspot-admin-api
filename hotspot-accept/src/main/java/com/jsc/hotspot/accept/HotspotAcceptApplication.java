@@ -18,7 +18,7 @@ import java.io.File;
 import java.io.IOException;
 
 @EnableFeignClients
-@MapperScan("com.jsc.hotspot.db.dao")
+@MapperScan({"com.jsc.hotspot.db.dao","com.jsc.hotspot.accept.Mapper"})
 @SpringBootApplication(exclude = {RedissonAutoConfiguration.class})
 @ComponentScan(basePackages = {"com.jsc.hotspot.db", "com.jsc.hotspot.common", "com.jsc.hotspot.accept"})
 @ServletComponentScan

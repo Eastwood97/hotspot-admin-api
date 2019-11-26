@@ -7,8 +7,6 @@ import com.jsc.hotspot.db.domain.HotCompareResult;
 import com.jsc.hotspot.db.domain.HotNumInfo;
 import com.jsc.hotspot.db.domain.HotTargetInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -16,7 +14,11 @@ import javax.servlet.annotation.WebListener;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.time.LocalDateTime;
 import java.util.List;
+
+import static com.jsc.hotspot.accept.DB.getImsiDB.getAreaString;
+
 @WebListener
 public class UdpListenerServiceImpl implements ServletContextListener {
     @Autowired
@@ -26,7 +28,7 @@ public class UdpListenerServiceImpl implements ServletContextListener {
     @Autowired
     private HotCompareResultService hotCompareResultService;
     public static final int MAX_UDP_DATA_SIZE = 4096;
-    public static final int UDP_PORT = 9900;
+    public static final int UDP_PORT = 9999;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -83,27 +85,32 @@ public class UdpListenerServiceImpl implements ServletContextListener {
                 }
                 System.err.println(imsi);
                 HotNumInfo hotNumInfo = new HotNumInfo();
-//            hotNumInfo.setDevId(devId);
-//            hotNumInfo.setImsi();
-//            hotNumInfo.setImei();
+                hotNumInfo.setDevId((long) 1);
+                imsi = "460027522752226";
+                hotNumInfo.setImsi("460030144889899");
+                hotNumInfo.setImei(imei);
 //            hotNumInfo.setMode();
 //            hotNumInfo.setIsdn();
 //            hotNumInfo.setTargetId();
-//            hotNumInfo.setAttribution(getAreaString(imsi));
+                System.out.println(imsi.indexOf("46011"));
+                System.out.println(imsi.indexOf("46003"));
+                hotNumInfo.setCaptureTime(LocalDateTime.now());
+                if ((imsi.indexOf("46011")) == -1 && (imsi.indexOf("46003")) == -1) {
+                    hotNumInfo.setAttribution(getAreaString("460027522752226"));
+                }
                 HoTnumInfoService.insertHoTnumInfoNum(hotNumInfo);
                 List<HotTargetInfo> List = hotTargetInfoService.selectHotTargetInfoList(imsi, imei);
                 if (List != null) {
                     HotCompareResult hotCompareResult = new HotCompareResult();
-//                hotCompareResult.setFrtDevId();
-//                hotCompareResult.setImei();
-//                hotCompareResult.setImsi();
+//                hotCompareResult.setFrtDevId(1);
+//                hotCompareResult.setImei(1);
+//                hotCompareResult.setImsi(1);
 //                hotCompareResult.setIsdn();
 //                hotCompareResult.setTargetId();
 //                hotCompareResult.setMode();
                     hotCompareResultService.insertHotCompareResult(hotCompareResult);
                 }
             }
-
         }
 
         /**

@@ -23,7 +23,8 @@ public class getImsiDB {
     static {
         try {
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:resource:sqlite/numarea.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:d:/assets/numarea.db");
+            System.out.println(connection);
         } catch (Exception e) {
         }
     }
@@ -153,8 +154,7 @@ public class getImsiDB {
             resultSet = stat.executeQuery("SELECT * from numarea where Mobile = " + num);
             while (resultSet.next()) {
                 String col1 = resultSet.getString("City");
-                String col2 = resultSet.getString("Province");
-                retstr = col2 + col1;
+                retstr =  col1;
             }
         } catch (Exception e) {
             e.printStackTrace();

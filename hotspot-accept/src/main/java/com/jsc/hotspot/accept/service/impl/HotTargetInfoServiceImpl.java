@@ -32,8 +32,12 @@ public class HotTargetInfoServiceImpl implements HotTargetInfoService {
     public List<HotTargetInfo> selectHotTargetInfoList(String imsi, String imei) {
         HotTargetInfoExample hotTargetInfoExample = new HotTargetInfoExample();
         HotTargetInfoExample.Criteria criteria = hotTargetInfoExample.createCriteria();
-        criteria.andImeiEqualTo(imei);
-        criteria.andImsiEqualTo(imsi);
+        if(imsi !="" && imsi !=null){
+            criteria.andImsiEqualTo(imsi);
+        }
+        if(imei !="" && imei !=null){
+            criteria.andImeiEqualTo(imei);
+        }
         List<HotTargetInfo> list = hotTargetInfoMapper.selectByExample(hotTargetInfoExample);
         return list;
     }
