@@ -64,7 +64,7 @@
         </table>
         <table tableName="admin">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="role_ids" javaType="java.lang.Integer[]"
+            <columnOverride column="role_ids" javaType="java.lang.Long[]"
                             typeHandler="com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler"/>
         </table>
         <table tableName="target">
@@ -72,8 +72,6 @@
         </table>
         <table tableName="permission">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-
-
         </table>
 
         <!--表名-->
@@ -88,6 +86,8 @@
         </table>
         <table tableName="camera_target_face" domainObjectName="CameraTargetFace">
             <generatedKey column="target_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="file_name" javaType="com.alibaba.fastjson.JSONObject"
+                            typeHandler="com.jsc.hotspot.db.utils.ObjectJsonHandler"/>
         </table>
         <table tableName="hot_compare_result" domainObjectName="HotCompareResult">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>

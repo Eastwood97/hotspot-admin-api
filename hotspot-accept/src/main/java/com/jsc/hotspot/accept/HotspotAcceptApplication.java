@@ -3,17 +3,25 @@ package com.jsc.hotspot.accept;
 import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.javacpp.avcodec;
 import org.bytedeco.javacv.*;
+import org.mybatis.spring.annotation.MapperScan;
 import org.redisson.spring.starter.RedissonAutoConfiguration;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.io.File;
 import java.io.IOException;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, RedissonAutoConfiguration.class})
+@EnableFeignClients
+@MapperScan({"com.jsc.hotspot.db.dao","com.jsc.hotspot.accept.Mapper"})
+@SpringBootApplication(exclude = {RedissonAutoConfiguration.class})
+@ComponentScan(basePackages = {"com.jsc.hotspot.db", "com.jsc.hotspot.common", "com.jsc.hotspot.accept"})
+@ServletComponentScan
 @Slf4j
 public class HotspotAcceptApplication {
 
