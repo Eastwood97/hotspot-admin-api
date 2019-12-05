@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class FaceRecognitionInfo {
+    private String targetName;
     private long devId;
     private String devIp;
     private String targetFaceImg;

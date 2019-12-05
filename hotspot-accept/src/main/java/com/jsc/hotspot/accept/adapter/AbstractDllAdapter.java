@@ -16,4 +16,6 @@ public interface AbstractDllAdapter {
     void Logout();
 
     void SetupAlarmChan();
+
+    void uploadToCamera();
 }

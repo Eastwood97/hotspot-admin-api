@@ -49,6 +49,12 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
     HCNetSDK.NET_DVR_USER_LOGIN_INFO m_strLoginInfo = new HCNetSDK.NET_DVR_USER_LOGIN_INFO();//设备登录信息
     HCNetSDK.NET_DVR_DEVICEINFO_V40 m_strDeviceInfo = new HCNetSDK.NET_DVR_DEVICEINFO_V40();//设备信息
 
+    /**
+     * 查看设备的能力集合
+     */
+    HCNetSDK.NET_DVR_XML_CONFIG_INPUT m_xmlConfigInputInfo = new HCNetSDK.NET_DVR_XML_CONFIG_INPUT();
+    HCNetSDK.NET_DVR_XML_CONFIG_OUTPUT m_xmlConfigOutputInfo = new HCNetSDK.NET_DVR_XML_CONFIG_OUTPUT();
+
     FMSGCallBack fMSFCallBack;//报警回调函数实现
     FMSGCallBack_V31 fMSFCallBack_V31;//报警回调函数实现
     FGPSDataCallback fGpsCallBack;//GPS信息查询回调函数实现
@@ -206,6 +212,17 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                  logger.error("布防成功");
             }
         }
+    }
+
+    /**
+     * 上传图片
+     */
+    @Override
+    public void uploadToCamera() {
+        /**
+         * int lUserID, int dwUploadType, Pointer lpInBuffer, int dwInBufferSize, String sFileName, Pointer lpOutBuffer, int dwOutBufferSize
+         */
+        //hCNetSDK.NET_DVR_UploadFile_V40(lUserID, );
     }
 
     public class FMSGCallBack_V31 implements HCNetSDK.FMSGCallBack_V31
@@ -716,7 +733,10 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                     }
 
                     sAlarmType = sAlarmType + "：人脸黑名单比对报警，相识度：" + strFaceSnapMatch.fSimilarity + "，黑名单姓名：" + new String(strFaceSnapMatch.struBlackListInfo.struBlackListInfo.struAttribute.byName, "GBK").trim() + "，\n黑名单证件信息：" + new String(strFaceSnapMatch.struBlackListInfo.struBlackListInfo.struAttribute.byCertificateNumber).trim();
-
+                    String targetName = new String(strFaceSnapMatch.struBlackListInfo.struBlackListInfo.struAttribute.byName, "GBK").trim();
+                    float fSimilarity = strFaceSnapMatch.fSimilarity;
+                    faceRecognitionInfo.setTargetName(targetName);
+                    faceRecognitionInfo.setCompareScore(fSimilarity);
                     //获取人脸库ID
                     byte[] FDIDbytes;
                     String libraryId = "";
@@ -952,4 +972,6 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
             logger.error(HaiKDllAdapterImpl.class.getName() + "  AlarmDataHandle");
         }
     }
+
+
 }
