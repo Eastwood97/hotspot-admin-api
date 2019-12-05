@@ -1,8 +1,12 @@
 package com.jsc.hotspot.accept.video;
 
+import com.jsc.hotspot.accept.adapter.AbstractDllAdapter;
+import com.jsc.hotspot.accept.adapter.impl.HaiKDllAdapterImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.javacpp.avcodec;
 import org.bytedeco.javacv.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,10 +32,15 @@ public class RecordVideoThread implements ApplicationRunner {
     public String filePath;//文件路径
     public Integer id;//案件id
     public Integer audioChannel;//是否录制声音
+    @Autowired
+    @Qualifier("haiKDllAdapterImpl")
+    private AbstractDllAdapter haiKDllAdapter;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         // 获取视频源 可以获取RTSP视频源进行视频播放
+        haiKDllAdapter.register();
+        haiKDllAdapter.SetupAlarmChan();
 //        FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(streamURL);
 //        FFmpegFrameRecorder recorder = null;
 //        try {

@@ -26,7 +26,7 @@ import java.io.IOException;
 public class HotspotAcceptApplication {
 
     //TODO 录制完视频后保存到文件系统中，并将文件系统的ID保存到数据库中，后期通过时间来查
-    public String streamURL = "http://192.201.102.100/hls/cctv.m3u8";//流地址 网上有自行百度
+    public String streamURL = "http://192.201.102.100/hls/cctv.m3u8";//流地址
     public String filePath;//文件路径
     public Integer id;//案件id
     public Integer audioChannel;//是否录制声音

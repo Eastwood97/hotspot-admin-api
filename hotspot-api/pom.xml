@@ -15,11 +15,11 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.jsc.hotspot.accept</groupId>
-            <artifactId>hotspot-accept</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.jsc.hotspot.accept</groupId>-->
+<!--            <artifactId>hotspot-accept</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>com.jsc.hotspotall</groupId>

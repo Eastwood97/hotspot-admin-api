@@ -10,11 +10,21 @@
 
     <groupId>com.jsc.hotspot.accept</groupId>
     <artifactId>hotspot-accept</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.0</version>
 
 
 
     <dependencies>
+        <dependency>
+            <groupId>com.sun.jna</groupId>  <!--自定义-->
+            <artifactId>examples</artifactId>    <!--自定义-->
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jna</groupId>  <!--自定义-->
+            <artifactId>jna</artifactId>    <!--自定义-->
+            <version>1.0</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
