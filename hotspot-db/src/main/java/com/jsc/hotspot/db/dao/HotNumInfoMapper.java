@@ -2,11 +2,7 @@ package com.jsc.hotspot.db.dao;
 
 import com.jsc.hotspot.db.domain.HotNumInfo;
 import com.jsc.hotspot.db.domain.HotNumInfoExample;
-
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
-
 import org.apache.ibatis.annotations.Param;
 
 public interface HotNumInfoMapper {
@@ -129,6 +125,4 @@ public interface HotNumInfoMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(HotNumInfo record);
-
-    List<Map> selectCount(List<Date> dateList);
 }

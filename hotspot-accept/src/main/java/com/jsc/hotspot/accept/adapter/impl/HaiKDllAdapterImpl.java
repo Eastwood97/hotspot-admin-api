@@ -27,6 +27,7 @@ import java.nio.ByteBuffer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -545,6 +546,8 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                 case HCNetSDK.COMM_SNAP_MATCH_ALARM:
                     //人脸黑名单比对报警
                     LocalDateTime localDateTime = LocalDateTime.now();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    String captureTime = formatter.format(localDateTime);
                     FaceRecognitionInfo faceRecognitionInfo = new FaceRecognitionInfo();
                     HCNetSDK.NET_VCA_FACESNAP_MATCH_ALARM strFaceSnapMatch = new HCNetSDK.NET_VCA_FACESNAP_MATCH_ALARM();
                     strFaceSnapMatch.write();
@@ -573,7 +576,7 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                         try {
                             strOut= HTTPClientUtil.doGet(srString, null);
                             InputStream inputStream = new ByteArrayInputStream(strOut);
-                            weedFSService.init();
+                         //   weedFSService.init();
                             BizResult<String> bizResult = weedFSService.storagePic(inputStream);
                             if (bizResult.getFlag()){
                                 faceRecognitionInfo.setSceneStorageUrl(bizResult.getData());
@@ -631,7 +634,7 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                         try {
                             strOut= HTTPClientUtil.doGet(srString, null);
                             InputStream inputStream = new ByteArrayInputStream(strOut);
-                            weedFSService.init();
+                            //weedFSService.init();
                             BizResult<String> bizResult = weedFSService.storagePic(inputStream);
                             if (bizResult.getFlag()){
                                 faceRecognitionInfo.setCaptureFaceStorageUrl(bizResult.getData());
@@ -765,7 +768,7 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                     sIP = new String(pAlarmer.sDeviceIP).split("\0", 2);
                     faceRecognitionInfo.setDevIp(sIP[0]);
                     faceRecognitionInfo.setTargetLibrary(libraryId);
-                    faceRecognitionInfo.setCaptureTime(localDateTime);
+                    faceRecognitionInfo.setCaptureTime(captureTime);
                     kafkaSenderService.send(JSON.toJSONString(faceRecognitionInfo));
                     newRow[2] = sIP[0];
                     alarmTableModel.insertRow(0, newRow);

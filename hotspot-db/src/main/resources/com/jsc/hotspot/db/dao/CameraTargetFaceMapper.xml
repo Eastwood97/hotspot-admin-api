@@ -9,7 +9,7 @@
     <id column="target_id" jdbcType="BIGINT" property="targetId" />
     <result column="target_name" jdbcType="VARCHAR" property="targetName" />
     <result column="desc" jdbcType="VARCHAR" property="desc" />
-    <result column="file_name" jdbcType="VARCHAR" property="fileName" />
+    <result column="file_name" jdbcType="CHAR" property="fileName" typeHandler="com.jsc.hotspot.db.utils.ObjectJsonHandler" />
     <result column="operator_id" jdbcType="BIGINT" property="operatorId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -38,6 +38,25 @@
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+            <foreach collection="criteria.fileNameCriteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler} and #{criterion.secondValue,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler}
                   </foreach>
                 </when>
               </choose>
@@ -71,6 +90,25 @@
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+            <foreach collection="criteria.fileNameCriteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler} and #{criterion.secondValue,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler}
                   </foreach>
                 </when>
               </choose>
@@ -190,7 +228,7 @@
     insert into camera_target_face (target_name, `desc`, file_name, 
       operator_id, create_time, update_time
       )
-    values (#{targetName,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, 
+    values (#{targetName,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{fileName,jdbcType=CHAR,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler}, 
       #{operatorId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -231,7 +269,7 @@
         #{desc,jdbcType=VARCHAR},
       </if>
       <if test="fileName != null">
-        #{fileName,jdbcType=VARCHAR},
+        #{fileName,jdbcType=CHAR,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler},
       </if>
       <if test="operatorId != null">
         #{operatorId,jdbcType=BIGINT},
@@ -271,7 +309,7 @@
         `desc` = #{record.desc,jdbcType=VARCHAR},
       </if>
       <if test="record.fileName != null">
-        file_name = #{record.fileName,jdbcType=VARCHAR},
+        file_name = #{record.fileName,jdbcType=CHAR,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler},
       </if>
       <if test="record.operatorId != null">
         operator_id = #{record.operatorId,jdbcType=BIGINT},
@@ -296,7 +334,7 @@
     set target_id = #{record.targetId,jdbcType=BIGINT},
       target_name = #{record.targetName,jdbcType=VARCHAR},
       `desc` = #{record.desc,jdbcType=VARCHAR},
-      file_name = #{record.fileName,jdbcType=VARCHAR},
+      file_name = #{record.fileName,jdbcType=CHAR,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler},
       operator_id = #{record.operatorId,jdbcType=BIGINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP}
@@ -318,7 +356,7 @@
         `desc` = #{desc,jdbcType=VARCHAR},
       </if>
       <if test="fileName != null">
-        file_name = #{fileName,jdbcType=VARCHAR},
+        file_name = #{fileName,jdbcType=CHAR,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler},
       </if>
       <if test="operatorId != null">
         operator_id = #{operatorId,jdbcType=BIGINT},
@@ -340,7 +378,7 @@
     update camera_target_face
     set target_name = #{targetName,jdbcType=VARCHAR},
       `desc` = #{desc,jdbcType=VARCHAR},
-      file_name = #{fileName,jdbcType=VARCHAR},
+      file_name = #{fileName,jdbcType=CHAR,typeHandler=com.jsc.hotspot.db.utils.ObjectJsonHandler},
       operator_id = #{operatorId,jdbcType=BIGINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}

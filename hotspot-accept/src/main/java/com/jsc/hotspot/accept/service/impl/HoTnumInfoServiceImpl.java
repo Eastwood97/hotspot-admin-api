@@ -88,8 +88,9 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
             Date d = c.getTime();
             dateList.add(d);
         }
-        List<Map> maps1 = hotNumInfoMapper.selectCount(dateList);
-        return maps1;
+//        List<Map> maps1 = hotNumInfoMapper.selectCount(dateList);
+//        return maps1;
+        return null;
     }
 
     @Override

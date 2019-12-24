@@ -1,5 +1,6 @@
 package com.jsc.hotspot.db.domain;
 
+import com.alibaba.fastjson.JSONObject;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -223,19 +224,50 @@ public class CameraTargetFaceExample {
      * @mbg.generated
      */
     protected abstract static class GeneratedCriteria {
+        protected List<Criterion> fileNameCriteria;
+
+        protected List<Criterion> allCriteria;
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
             super();
             criteria = new ArrayList<Criterion>();
+            fileNameCriteria = new ArrayList<Criterion>();
+        }
+
+        public List<Criterion> getFileNameCriteria() {
+            return fileNameCriteria;
+        }
+
+        protected void addFileNameCriterion(String condition, Object value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            fileNameCriteria.add(new Criterion(condition, value, "com.jsc.hotspot.db.utils.ObjectJsonHandler"));
+            allCriteria = null;
+        }
+
+        protected void addFileNameCriterion(String condition, JSONObject value1, JSONObject value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            fileNameCriteria.add(new Criterion(condition, value1, value2, "com.jsc.hotspot.db.utils.ObjectJsonHandler"));
+            allCriteria = null;
         }
 
         public boolean isValid() {
-            return criteria.size() > 0;
+            return criteria.size() > 0
+                || fileNameCriteria.size() > 0;
         }
 
         public List<Criterion> getAllCriteria() {
-            return criteria;
+            if (allCriteria == null) {
+                allCriteria = new ArrayList<Criterion>();
+                allCriteria.addAll(criteria);
+                allCriteria.addAll(fileNameCriteria);
+            }
+            return allCriteria;
         }
 
         public List<Criterion> getCriteria() {
@@ -247,6 +279,7 @@ public class CameraTargetFaceExample {
                 throw new RuntimeException("Value for condition cannot be null");
             }
             criteria.add(new Criterion(condition));
+            allCriteria = null;
         }
 
         protected void addCriterion(String condition, Object value, String property) {
@@ -254,6 +287,7 @@ public class CameraTargetFaceExample {
                 throw new RuntimeException("Value for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value));
+            allCriteria = null;
         }
 
         protected void addCriterion(String condition, Object value1, Object value2, String property) {
@@ -261,6 +295,7 @@ public class CameraTargetFaceExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+            allCriteria = null;
         }
 
         public Criteria andTargetIdIsNull() {
@@ -671,8 +706,8 @@ public class CameraTargetFaceExample {
             return (Criteria) this;
         }
 
-        public Criteria andFileNameEqualTo(String value) {
-            addCriterion("file_name =", value, "fileName");
+        public Criteria andFileNameEqualTo(JSONObject value) {
+            addFileNameCriterion("file_name =", value, "fileName");
             return (Criteria) this;
         }
 
@@ -687,8 +722,8 @@ public class CameraTargetFaceExample {
             return (Criteria) this;
         }
 
-        public Criteria andFileNameNotEqualTo(String value) {
-            addCriterion("file_name <>", value, "fileName");
+        public Criteria andFileNameNotEqualTo(JSONObject value) {
+            addFileNameCriterion("file_name <>", value, "fileName");
             return (Criteria) this;
         }
 
@@ -703,8 +738,8 @@ public class CameraTargetFaceExample {
             return (Criteria) this;
         }
 
-        public Criteria andFileNameGreaterThan(String value) {
-            addCriterion("file_name >", value, "fileName");
+        public Criteria andFileNameGreaterThan(JSONObject value) {
+            addFileNameCriterion("file_name >", value, "fileName");
             return (Criteria) this;
         }
 
@@ -719,8 +754,8 @@ public class CameraTargetFaceExample {
             return (Criteria) this;
         }
 
-        public Criteria andFileNameGreaterThanOrEqualTo(String value) {
-            addCriterion("file_name >=", value, "fileName");
+        public Criteria andFileNameGreaterThanOrEqualTo(JSONObject value) {
+            addFileNameCriterion("file_name >=", value, "fileName");
             return (Criteria) this;
         }
 
@@ -735,8 +770,8 @@ public class CameraTargetFaceExample {
             return (Criteria) this;
         }
 
-        public Criteria andFileNameLessThan(String value) {
-            addCriterion("file_name <", value, "fileName");
+        public Criteria andFileNameLessThan(JSONObject value) {
+            addFileNameCriterion("file_name <", value, "fileName");
             return (Criteria) this;
         }
 
@@ -751,8 +786,8 @@ public class CameraTargetFaceExample {
             return (Criteria) this;
         }
 
-        public Criteria andFileNameLessThanOrEqualTo(String value) {
-            addCriterion("file_name <=", value, "fileName");
+        public Criteria andFileNameLessThanOrEqualTo(JSONObject value) {
+            addFileNameCriterion("file_name <=", value, "fileName");
             return (Criteria) this;
         }
 
@@ -767,33 +802,33 @@ public class CameraTargetFaceExample {
             return (Criteria) this;
         }
 
-        public Criteria andFileNameLike(String value) {
-            addCriterion("file_name like", value, "fileName");
+        public Criteria andFileNameLike(JSONObject value) {
+            addFileNameCriterion("file_name like", value, "fileName");
             return (Criteria) this;
         }
 
-        public Criteria andFileNameNotLike(String value) {
-            addCriterion("file_name not like", value, "fileName");
+        public Criteria andFileNameNotLike(JSONObject value) {
+            addFileNameCriterion("file_name not like", value, "fileName");
             return (Criteria) this;
         }
 
-        public Criteria andFileNameIn(List<String> values) {
-            addCriterion("file_name in", values, "fileName");
+        public Criteria andFileNameIn(List<JSONObject> values) {
+            addFileNameCriterion("file_name in", values, "fileName");
             return (Criteria) this;
         }
 
-        public Criteria andFileNameNotIn(List<String> values) {
-            addCriterion("file_name not in", values, "fileName");
+        public Criteria andFileNameNotIn(List<JSONObject> values) {
+            addFileNameCriterion("file_name not in", values, "fileName");
             return (Criteria) this;
         }
 
-        public Criteria andFileNameBetween(String value1, String value2) {
-            addCriterion("file_name between", value1, value2, "fileName");
+        public Criteria andFileNameBetween(JSONObject value1, JSONObject value2) {
+            addFileNameCriterion("file_name between", value1, value2, "fileName");
             return (Criteria) this;
         }
 
-        public Criteria andFileNameNotBetween(String value1, String value2) {
-            addCriterion("file_name not between", value1, value2, "fileName");
+        public Criteria andFileNameNotBetween(JSONObject value1, JSONObject value2) {
+            addFileNameCriterion("file_name not between", value1, value2, "fileName");
             return (Criteria) this;
         }
 

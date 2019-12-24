@@ -3,6 +3,7 @@ package com.jsc.hotspot.api.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.jsc.hotspot.api.service.DeviceService;
 import com.jsc.hotspot.db.dao.HotFrontDeviceMapper;
+import com.jsc.hotspot.db.dao.ext.HotFrontDeviceEXTMapper;
 import com.jsc.hotspot.db.domain.Admin;
 import com.jsc.hotspot.db.domain.HotFrontDevice;
 import com.jsc.hotspot.db.domain.HotFrontDeviceExample;
@@ -21,7 +22,11 @@ import java.util.List;
 public class DeviceServiceImpl implements DeviceService {
 
     @Autowired
-    HotFrontDeviceMapper hotFrontDeviceMapper;
+    private HotFrontDeviceMapper hotFrontDeviceMapper;
+
+    @Autowired
+    private HotFrontDeviceEXTMapper hotFrontDeviceEXTMapper;
+
     public void  add(HotFrontDevice hotFrontDevice){
         hotFrontDevice.setCreateTime(LocalDateTime.now());
         hotFrontDevice.setUpdateTime(LocalDateTime.now());
@@ -30,7 +35,9 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Override
     public boolean deleteById(String devIds) {
-        return false;
+        String[] split=devIds.split(",");
+        int result=hotFrontDeviceEXTMapper.deleteById(split);
+        return split.length==result;
     }
 
     @Override

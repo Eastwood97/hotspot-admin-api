@@ -247,7 +247,7 @@ public class AdminExample {
             allCriteria = null;
         }
 
-        protected void addRoleIdsCriterion(String condition, Integer[] value1, Integer[] value2, String property) {
+        protected void addRoleIdsCriterion(String condition, Long[] value1, Long[] value2, String property) {
             if (value1 == null || value2 == null) {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
@@ -1481,7 +1481,7 @@ public class AdminExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdsEqualTo(Integer[] value) {
+        public Criteria andRoleIdsEqualTo(Long[] value) {
             addRoleIdsCriterion("role_ids =", value, "roleIds");
             return (Criteria) this;
         }
@@ -1497,7 +1497,7 @@ public class AdminExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdsNotEqualTo(Integer[] value) {
+        public Criteria andRoleIdsNotEqualTo(Long[] value) {
             addRoleIdsCriterion("role_ids <>", value, "roleIds");
             return (Criteria) this;
         }
@@ -1513,7 +1513,7 @@ public class AdminExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdsGreaterThan(Integer[] value) {
+        public Criteria andRoleIdsGreaterThan(Long[] value) {
             addRoleIdsCriterion("role_ids >", value, "roleIds");
             return (Criteria) this;
         }
@@ -1529,7 +1529,7 @@ public class AdminExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdsGreaterThanOrEqualTo(Integer[] value) {
+        public Criteria andRoleIdsGreaterThanOrEqualTo(Long[] value) {
             addRoleIdsCriterion("role_ids >=", value, "roleIds");
             return (Criteria) this;
         }
@@ -1545,7 +1545,7 @@ public class AdminExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdsLessThan(Integer[] value) {
+        public Criteria andRoleIdsLessThan(Long[] value) {
             addRoleIdsCriterion("role_ids <", value, "roleIds");
             return (Criteria) this;
         }
@@ -1561,7 +1561,7 @@ public class AdminExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdsLessThanOrEqualTo(Integer[] value) {
+        public Criteria andRoleIdsLessThanOrEqualTo(Long[] value) {
             addRoleIdsCriterion("role_ids <=", value, "roleIds");
             return (Criteria) this;
         }
@@ -1577,32 +1577,32 @@ public class AdminExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdsLike(Integer[] value) {
+        public Criteria andRoleIdsLike(Long[] value) {
             addRoleIdsCriterion("role_ids like", value, "roleIds");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdsNotLike(Integer[] value) {
+        public Criteria andRoleIdsNotLike(Long[] value) {
             addRoleIdsCriterion("role_ids not like", value, "roleIds");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdsIn(List<Integer[]> values) {
+        public Criteria andRoleIdsIn(List<Long[]> values) {
             addRoleIdsCriterion("role_ids in", values, "roleIds");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdsNotIn(List<Integer[]> values) {
+        public Criteria andRoleIdsNotIn(List<Long[]> values) {
             addRoleIdsCriterion("role_ids not in", values, "roleIds");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdsBetween(Integer[] value1, Integer[] value2) {
+        public Criteria andRoleIdsBetween(Long[] value1, Long[] value2) {
             addRoleIdsCriterion("role_ids between", value1, value2, "roleIds");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdsNotBetween(Integer[] value1, Integer[] value2) {
+        public Criteria andRoleIdsNotBetween(Long[] value1, Long[] value2) {
             addRoleIdsCriterion("role_ids not between", value1, value2, "roleIds");
             return (Criteria) this;
         }

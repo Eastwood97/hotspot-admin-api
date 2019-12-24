@@ -1,5 +1,6 @@
 package com.jsc.hotspot.db.domain;
 
+import com.alibaba.fastjson.JSONObject;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +40,7 @@ public class CameraTargetFace {
      *
      * @mbg.generated
      */
-    private String fileName;
+    private JSONObject fileName;
 
     /**
      *
@@ -148,7 +149,7 @@ public class CameraTargetFace {
      *
      * @mbg.generated
      */
-    public String getFileName() {
+    public JSONObject getFileName() {
         return fileName;
     }
 
@@ -160,7 +161,7 @@ public class CameraTargetFace {
      *
      * @mbg.generated
      */
-    public void setFileName(String fileName) {
+    public void setFileName(JSONObject fileName) {
         this.fileName = fileName;
     }
 
@@ -316,7 +317,7 @@ public class CameraTargetFace {
         targetId("target_id", "targetId", "BIGINT", false),
         targetName("target_name", "targetName", "VARCHAR", false),
         desc("desc", "desc", "VARCHAR", true),
-        fileName("file_name", "fileName", "VARCHAR", false),
+        fileName("file_name", "fileName", "CHAR", false),
         operatorId("operator_id", "operatorId", "BIGINT", false),
         createTime("create_time", "createTime", "TIMESTAMP", false),
         updateTime("update_time", "updateTime", "TIMESTAMP", false);

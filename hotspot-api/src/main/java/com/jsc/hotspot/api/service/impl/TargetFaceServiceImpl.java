@@ -1,13 +1,16 @@
 package com.jsc.hotspot.api.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.jsc.hotspot.api.dto.TargetFace;
 import com.jsc.hotspot.api.service.TargetFaceService;
 import com.jsc.hotspot.db.dao.CameraTargetFaceMapper;
+import com.jsc.hotspot.db.dao.ext.HotTargetFaceEXTMapper;
 import com.jsc.hotspot.db.domain.Admin;
 import com.jsc.hotspot.db.domain.CameraTargetFace;
 import com.jsc.hotspot.db.domain.CameraTargetFaceExample;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,8 @@ public class TargetFaceServiceImpl implements TargetFaceService {
     @Autowired
     private CameraTargetFaceMapper targetFaceMapper;
 
+    @Autowired
+    private HotTargetFaceEXTMapper hotTargetFaceEXTMapper;
 
     @Override
     public void add(TargetFace targetFace) {
@@ -35,7 +40,8 @@ public class TargetFaceServiceImpl implements TargetFaceService {
         map.put("fileId3",targetFace.getFileId3());
 
         String fileName= JSON.toJSONString(map);
-        cameraTargetFace.setFileName(fileName);
+        JSONObject jsonObject=JSONObject.parseObject(fileName);
+        cameraTargetFace.setFileName(jsonObject);
         cameraTargetFace.setCreateTime(LocalDateTime.now());
         cameraTargetFace.setUpdateTime(LocalDateTime.now());
         Subject currentUser = SecurityUtils.getSubject();
@@ -46,7 +52,10 @@ public class TargetFaceServiceImpl implements TargetFaceService {
 
     @Override
     public boolean deleteById(String targetIds) {
-        return false;
+        String[] split=targetIds.split(",");
+        int result=hotTargetFaceEXTMapper.deleteById(split);
+        return split.length==result;
+
     }
 
     @Override
@@ -61,7 +70,8 @@ public class TargetFaceServiceImpl implements TargetFaceService {
         map.put("fileId3",targetFace.getFileId3());
 
         String fileName= JSON.toJSONString(map);
-        cameraTargetFace.setFileName(fileName);
+        JSONObject jsonObject=JSONObject.parseObject(fileName);
+        cameraTargetFace.setFileName(jsonObject);
         cameraTargetFace.setUpdateTime(LocalDateTime.now());
 
 
@@ -73,8 +83,9 @@ public class TargetFaceServiceImpl implements TargetFaceService {
     public List<CameraTargetFace> getTargetFace(Integer page,Integer limit,String targetName) {
         CameraTargetFaceExample cameraTargetFaceExample=new CameraTargetFaceExample();
         CameraTargetFaceExample.Criteria criteria=cameraTargetFaceExample.createCriteria();
-        criteria.andTargetNameLike("%"+targetName+"%");
-
+        if(!StringUtils.isEmpty(targetName)){
+            criteria.andTargetNameLike("%"+targetName+"%");
+        }
         PageHelper.startPage(page, limit);
         return targetFaceMapper.selectByExampleSelective(cameraTargetFaceExample);
     }
