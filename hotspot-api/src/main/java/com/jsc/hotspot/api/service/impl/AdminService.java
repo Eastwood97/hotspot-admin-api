@@ -1,10 +1,12 @@
 package com.jsc.hotspot.api.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.jsc.hotspot.db.dao.AdminMapper;
 import com.jsc.hotspot.db.domain.Admin;
 import com.jsc.hotspot.db.domain.AdminExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -55,5 +57,14 @@ public class AdminService {
         example.or().andUsernameEqualTo(username).andDeletedEqualTo(false);
         return adminMapper.selectByExample(example);
     }
-
+    public List<Admin> querySelective(String username, Integer page, Integer limit) {
+        AdminExample example = new AdminExample();
+        AdminExample.Criteria criteria = example.createCriteria();
+        if (!StringUtils.isEmpty(username)) {
+            criteria.andUsernameLike("%" + username + "%");
+        }
+        criteria.andDeletedEqualTo(false);
+        PageHelper.startPage(page, limit);
+        return adminMapper.selectByExampleSelective(example, result);
+    }
 }

@@ -31,6 +31,8 @@ public interface DeviceService {
      */
     List<HotFrontDevice> getDevices(Integer page, Integer limit,String devName,String devType,String devNum);
 
+    HotFrontDevice getDeviceByDevName(String devName);
 
+    List<HotFrontDevice> getDeviceList();
 
 }
