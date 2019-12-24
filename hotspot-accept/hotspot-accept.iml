@@ -28,6 +28,8 @@
     <orderEntry type="library" name="Maven: com.alibaba:druid-spring-boot-starter:1.1.10" level="project" />
     <orderEntry type="library" name="Maven: com.sun.jna:examples:1.0" level="project" />
     <orderEntry type="library" name="Maven: com.jna:jna:1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.jna:examples:1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.jna:jna:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.kafka:kafka-clients:2.3.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.luben:zstd-jni:1.4.0-1" level="project" />
     <orderEntry type="library" name="Maven: org.lz4:lz4-java:1.6.0" level="project" />
