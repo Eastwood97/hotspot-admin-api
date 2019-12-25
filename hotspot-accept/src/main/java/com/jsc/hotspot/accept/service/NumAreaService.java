@@ -11,5 +11,5 @@ import com.jsc.hotspot.db.domain.NumArea;
 
 public interface NumAreaService {
     void insertNumArea(NumArea numArea);
-    String selectNumArea(Integer Mobile);
+    NumArea selectNumArea(String Mobile);
 }

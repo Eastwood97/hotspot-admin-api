@@ -2,8 +2,10 @@ package com.jsc.hotspot.accept.service.impl;
 
 
 import com.jsc.hotspot.accept.service.*;
+import com.jsc.hotspot.db.domain.HotCompareResult;
 import com.jsc.hotspot.db.domain.HotNumInfo;
 import com.jsc.hotspot.db.domain.HotTargetInfo;
+import com.jsc.hotspot.db.domain.NumArea;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.ServletContextEvent;
@@ -13,6 +15,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -72,71 +75,86 @@ public class UdpListenerServiceImpl implements ServletContextListener {
     }
 
     class Process implements Runnable {
-        public Process(DatagramPacket packet) throws Exception {
+        public Process(DatagramPacket packet) {
             byte[] buffer = packet.getData();
-            String str = new String(buffer, "utf-8").trim();
+            String str = BinaryToHexString(buffer);
             String[] split = str.split(" ");
             String imsi = "";
             String imei = "";
+            Integer devId;
             if (split[0].equals("04")) {
-                Integer devId = Integer.parseInt(split[6].substring(1));
+                devId = Integer.parseInt(split[6].substring(1));
                 for (int i = 8; i < 23; i++) {
                     imsi = imsi + split[i].substring(1);
                 }
                 for (int i = 23; i < 38; i++) {
                     imei = imei + split[i].substring(1);
                 }
-                System.err.println(imsi);
+                //数据展示插入
                 HotNumInfo hotNumInfo = new HotNumInfo();
-                hotNumInfo.setDevId((long) 1);
-                imsi = "460001084591004";
-                hotNumInfo.setImsi("460001084591004");
-                hotNumInfo.setImei(imei);
-//            hotNumInfo.setMode();
-//            hotNumInfo.setIsdn();
-//            hotNumInfo.setTargetId();
-                System.out.println(imsi.indexOf("46011"));
-                System.out.println(imsi.indexOf("46003"));
-                hotNumInfo.setCaptureTime(LocalDateTime.now());
                 if ((imsi.indexOf("46011")) == -1 && (imsi.indexOf("46003")) == -1) {
-                    if(imsi.indexOf("460")!=-1){
-                        String areaString = getAreaString("460001084591004");
-                        System.out.println(areaString);
-                        hotNumInfo.setAttribution(areaString);
-                    }else {
-                        int i = Integer.parseInt("234108086242750".substring(0, 3));
+                    if (imsi.indexOf("460") != -1) {
+                        String num = GetPhoneNumByIMSI(imsi);
+                        if ("".equals(num)) {
+                            hotNumInfo.setAttribution("中国");
+                        } else {
+                            NumArea area = numAreaService.selectNumArea(num);
+                            if (area != null) {
+                                hotNumInfo.setAttribution("中国" + area.getProvince() + area.getCity());
+                            } else {
+                                hotNumInfo.setAttribution("中国");
+                            }
+                        }
+                    } else {
+                        int i = Integer.parseInt(imsi.substring(0, 3));
                         String areaString = imsiAreaService.selectImsiArea(i);
-                        System.out.println(areaString);
-                        hotNumInfo.setAttribution(areaString);
+                        if ("".equals(areaString)) {
+                            hotNumInfo.setAttribution("");
+                        } else {
+                            hotNumInfo.setAttribution(areaString);
+                        }
                     }
+                } else {
+                    hotNumInfo.setAttribution("");
                 }
+                //此处在校验黑名单信息
                 HoTnumInfoService.insertHoTnumInfoNum(hotNumInfo);
-//                List<HotTargetInfo> List = hotTargetInfoService.selectHotTargetInfoList(imsi, imei);
-//                if (List != null) {
-//                    HotCompareResult hotCompareResult = new HotCompareResult();
-////                hotCompareResult.setFrtDevId(1);
-////                hotCompareResult.setImei(1);
-////                hotCompareResult.setImsi(1);
-////                hotCompareResult.setIsdn();
-////                hotCompareResult.setTargetId();
-////                hotCompareResult.setMode();
-//                    hotCompareResultService.insertHotCompareResult(hotCompareResult);
-//                }
+                HotTargetInfo List = hotTargetInfoService.selectHotTargetInfoList(imsi, imei);
+                if (List != null) {
+                    HotCompareResult hotCompareResult = new HotCompareResult();
+                    hotCompareResult.setFrtDevId((long) devId);
+                    hotCompareResult.setImei(imei);
+                    hotCompareResult.setImsi(imsi);
+                    hotCompareResult.setIsdn("");
+                    hotCompareResult.setTargetId(List.getTargetId());
+                    hotCompareResultService.insertHotCompareResult(hotCompareResult);
+                }
+                hotNumInfo.setDevId((long) devId);
+                hotNumInfo.setImsi(imsi);
+                hotNumInfo.setImei(imei);
+                hotNumInfo.setIsdn(hotNumInfo.getIsdn());
+                hotNumInfo.setTargetId(hotNumInfo.getTargetId());
             }
         }
+
         @Override
         public void run() {
         }
     }
 
-    public String getAreaString(String imsi) {
-        StringBuffer numSB = new StringBuffer();
-        GetPhoneNumByIMSI(imsi, numSB);
-        String num = numSB.toString();
-        return numAreaService.selectNumArea(Integer.parseInt(num));
+    public static String BinaryToHexString(byte[] bytes) {
+        String hexStr = "0123456789ABCDEF";
+        String result = "";
+        String hex = "";
+        for (byte b : bytes) {
+            hex = String.valueOf(hexStr.charAt((b & 0xF0) >> 4));
+            hex += String.valueOf(hexStr.charAt(b & 0x0F));
+            result += hex + " ";
+        }
+        return result;
     }
 
-    public int GetPhoneNumByIMSI(String imsi, StringBuffer numSB) {
+    public String GetPhoneNumByIMSI(String imsi) {
         String num = "";
         String networkid = imsi.substring(3, 5);
         String mobileid = imsi.substring(5, 10);
@@ -165,8 +183,7 @@ public class UdpListenerServiceImpl implements ServletContextListener {
                 num = "139" + mobileid.substring(4, 5);
             }
             num += mobileid.substring(0, 3);
-            numSB.append(num);
-            return 0;
+            return num;
         } else if (networkid.equals("01"))//联通
         {
             String numid = mobileid.substring(4, 5);
@@ -187,11 +204,10 @@ public class UdpListenerServiceImpl implements ServletContextListener {
             } else if (numid.equals("7")) {
                 num = "145";
             } else {
-                return 3;//"不支持该类型IMSI码查询"
+                return "";//"不支持该类型IMSI码查询"
             }
             num += mobileid.substring(3, 4) + mobileid.substring(0, 3);
-            numSB.append(num);
-            return 0;
+            return num;
         } else if (networkid.equals("02"))  //移动
         {
             char numid = mobileid.charAt(0);
@@ -210,11 +226,10 @@ public class UdpListenerServiceImpl implements ServletContextListener {
             } else if (numid == '8') {
                 num = "158";
             } else {
-                return 3;//不支持该类型IMSI码查询
+                return "";//不支持该类型IMSI码查询
             }
             num += mobileid.substring(1, 5);
-            numSB.append(num);
-            return 0;
+            return num;
         } else if (networkid.equals("07"))    //157 or 188 存在疑问
         {
             char numid = mobileid.charAt(0);
@@ -225,14 +240,12 @@ public class UdpListenerServiceImpl implements ServletContextListener {
             } else if (numid == '9') {
                 num = "147";
             } else {
-                return 3;//不支持该类型IMSI码查询
+                return "";//不支持该类型IMSI码查询
             }
             num += mobileid.substring(1, 5);
-            numSB.append(num);
-            return 0;
+            return num;
         } else {
-            return 2;//运营商代码不支持
+            return "";//运营商代码不支持
         }
     }
-
 }

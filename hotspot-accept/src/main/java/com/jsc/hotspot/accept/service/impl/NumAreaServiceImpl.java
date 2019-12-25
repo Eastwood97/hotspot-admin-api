@@ -23,7 +23,7 @@ public class NumAreaServiceImpl implements NumAreaService {
     }
 
     @Override
-    public String selectNumArea(Integer Mobile) {
+    public NumArea selectNumArea(String Mobile) {
         return numAreaMapper.selectNumArea(Mobile);
     }
 }

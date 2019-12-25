@@ -44,10 +44,10 @@
     <!--</select>-->
 
     <!--&lt;!&ndash; 查询用户列表 &ndash;&gt;-->
-    <select id="selectNumArea" resultType="String" parameterType="java.lang.Integer">
+    <select id="selectNumArea" resultType="com.jsc.hotspot.db.domain.NumArea" parameterType="java.lang.String">
         <!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
         select
-        Province
+        *
         from numarea
         where Mobile = #{Mobile}
     </select>

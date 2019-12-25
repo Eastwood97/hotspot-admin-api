@@ -35,7 +35,7 @@ import java.util.Date;
  * @description 海康dll动态库实现
  * @date 2019/12/3
  */
-@Service("haiKDllAdapterImpl")
+//@Service("haiKDllAdapterImpl")
 public class HaiKDllAdapterImpl implements AbstractDllAdapter {
 
     private final Log logger = LogFactory.getLog(HaiKDllAdapterImpl.class);

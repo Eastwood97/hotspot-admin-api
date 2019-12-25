@@ -29,7 +29,7 @@ public class HotTargetInfoServiceImpl implements HotTargetInfoService {
     }
 
     @Override
-    public List<HotTargetInfo> selectHotTargetInfoList(String imsi, String imei) {
+    public HotTargetInfo selectHotTargetInfoList(String imsi, String imei) {
         HotTargetInfoExample hotTargetInfoExample = new HotTargetInfoExample();
         HotTargetInfoExample.Criteria criteria = hotTargetInfoExample.createCriteria();
         if(imsi !="" && imsi !=null){
@@ -38,7 +38,7 @@ public class HotTargetInfoServiceImpl implements HotTargetInfoService {
         if(imei !="" && imei !=null){
             criteria.andImeiEqualTo(imei);
         }
-        List<HotTargetInfo> list = hotTargetInfoMapper.selectByExample(hotTargetInfoExample);
+        HotTargetInfo list = hotTargetInfoMapper.selectOneByExample(hotTargetInfoExample);
         return list;
     }
 }

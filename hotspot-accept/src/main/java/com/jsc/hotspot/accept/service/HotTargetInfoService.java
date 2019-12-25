@@ -11,5 +11,5 @@ import java.util.List;
  */
 public interface HotTargetInfoService {
     Long getHotTargetInfoNum();
-    List<HotTargetInfo> selectHotTargetInfoList(String imsi, String imei);
+    HotTargetInfo selectHotTargetInfoList(String imsi, String imei);
 }
