@@ -118,7 +118,6 @@ public class UdpListenerServiceImpl implements ServletContextListener {
                     hotNumInfo.setAttribution("");
                 }
                 //此处在校验黑名单信息
-                HoTnumInfoService.insertHoTnumInfoNum(hotNumInfo);
                 HotTargetInfo List = hotTargetInfoService.selectHotTargetInfoList(imsi, imei);
                 if (List != null) {
                     HotCompareResult hotCompareResult = new HotCompareResult();
@@ -134,6 +133,8 @@ public class UdpListenerServiceImpl implements ServletContextListener {
                 hotNumInfo.setImei(imei);
                 hotNumInfo.setIsdn(hotNumInfo.getIsdn());
                 hotNumInfo.setTargetId(hotNumInfo.getTargetId());
+                HoTnumInfoService.insertHoTnumInfoNum(hotNumInfo);
+
             }
         }
 
