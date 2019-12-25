@@ -2,6 +2,7 @@ package com.jsc.hotspot.accept.video;
 
 import com.jsc.hotspot.accept.adapter.AbstractDllAdapter;
 import com.jsc.hotspot.accept.adapter.impl.HaiKDllAdapterImpl;
+import com.jsc.hotspot.accept.facade.KafkaSender;
 import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.javacpp.avcodec;
 import org.bytedeco.javacv.*;
@@ -22,9 +23,9 @@ import java.io.IOException;
  * @description 直播流保存本地线程
  * @date 2019/11/10
  */
-@Slf4j
-@Component
-@Order(1)
+//@Slf4j
+//@Component
+//@Order(1)
 public class RecordVideoThread implements ApplicationRunner {
 
     //TODO 录制完视频后保存到文件系统中，并将文件系统的ID保存到数据库中，后期通过时间来查
@@ -36,11 +37,15 @@ public class RecordVideoThread implements ApplicationRunner {
     @Qualifier("haiKDllAdapterImpl")
     private AbstractDllAdapter haiKDllAdapter;
 
+    @Autowired
+    private KafkaSender kafkaSender;
     @Override
     public void run(ApplicationArguments args) throws Exception {
         // 获取视频源 可以获取RTSP视频源进行视频播放
-        haiKDllAdapter.register();
-        haiKDllAdapter.SetupAlarmChan();
+
+        kafkaSender.send("---------------------------");
+//        haiKDllAdapter.register();
+//        haiKDllAdapter.SetupAlarmChan();
 //        FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(streamURL);
 //        FFmpegFrameRecorder recorder = null;
 //        try {

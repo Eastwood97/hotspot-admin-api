@@ -18,4 +18,12 @@ public interface AbstractDllAdapter {
     void SetupAlarmChan();
 
     void uploadToCamera();
+
+    void getCameraAbilities();
+
+    void GetUploadState();
+
+    void UploadClose();
+
+    void StartDownload();
 }

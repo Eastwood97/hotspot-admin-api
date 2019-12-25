@@ -133,6 +133,7 @@ public class UdpListenerServiceImpl implements ServletContextListener {
                 hotNumInfo.setImei(imei);
                 hotNumInfo.setIsdn(hotNumInfo.getIsdn());
                 hotNumInfo.setTargetId(hotNumInfo.getTargetId());
+                hotNumInfo.setCaptureTime(LocalDateTime.now());
                 HoTnumInfoService.insertHoTnumInfoNum(hotNumInfo);
 
             }

@@ -31,11 +31,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
+/**
  * @author huixing
  * @description 海康dll动态库实现
  * @date 2019/12/3
  */
-//@Service("haiKDllAdapterImpl")
+@Service("haiKDllAdapterImpl")
 public class HaiKDllAdapterImpl implements AbstractDllAdapter {
 
     private final Log logger = LogFactory.getLog(HaiKDllAdapterImpl.class);
@@ -223,7 +224,36 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
         /**
          * int lUserID, int dwUploadType, Pointer lpInBuffer, int dwInBufferSize, String sFileName, Pointer lpOutBuffer, int dwOutBufferSize
          */
-        //hCNetSDK.NET_DVR_UploadFile_V40(lUserID, );
+        Pointer lpInBuffer = null;
+//        hCNetSDK.NET_DVR_UploadFile_V40(lUserID, 0, lpInBuffer,lpInBuffer. );
+    }
+
+    /**
+     * 获取能力集
+     */
+    public void getCameraAbilities(){
+
+    }
+
+    /**
+     * 获取文件上传的进度和状态
+     */
+    public void GetUploadState(){
+
+    }
+
+    /**
+     * 停止文件上传
+     */
+    public void UploadClose() {
+
+    }
+
+    /**
+     * 下载文件
+     */
+    public void StartDownload() {
+
     }
 
     public class FMSGCallBack_V31 implements HCNetSDK.FMSGCallBack_V31

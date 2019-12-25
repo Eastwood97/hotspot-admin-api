@@ -14,7 +14,7 @@ import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
  * @description 消息队列配置
  * @date 2019/11/13
  */
-@Configuration
+//@Configuration
 public class RedisMessageConfig
 {
 

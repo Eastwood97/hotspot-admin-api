@@ -23,6 +23,16 @@ public class NumArea {
         this. PostCode = postCode;
     }
 
+    public NumArea(Integer id, Integer mobile, String province, String city, String corp, Integer areaCode, Integer postCode) {
+        this.id = id;
+        this.Mobile = mobile;
+        this. Province = province;
+        this.City = city;
+        this. Corp = corp;
+        this. AreaCode = areaCode;
+        this. PostCode = postCode;
+    }
+
     public Integer getId() {
         return id;
     }

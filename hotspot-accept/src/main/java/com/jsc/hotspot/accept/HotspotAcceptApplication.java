@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.javacpp.avcodec;
 import org.bytedeco.javacv.*;
 import org.mybatis.spring.annotation.MapperScan;
-import org.redisson.spring.starter.RedissonAutoConfiguration;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 
 @EnableFeignClients
 @MapperScan({"com.jsc.hotspot.db.dao","com.jsc.hotspot.accept.Mapper"})
-@SpringBootApplication(exclude = {RedissonAutoConfiguration.class})
+@SpringBootApplication
 @ComponentScan(basePackages = {"com.jsc.hotspot.db", "com.jsc.hotspot.common", "com.jsc.hotspot.accept"})
 @ServletComponentScan
 @Slf4j
