@@ -5,6 +5,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.jsc.hotspot.accept.service.HoTnumInfoService;
 import com.jsc.hotspot.db.dao.HotNumInfoMapper;
+import com.jsc.hotspot.db.dao.ext.HotNumInfoEXTMapper;
 import com.jsc.hotspot.db.domain.HotNumInfo;
 import com.jsc.hotspot.db.domain.HotNumInfoExample;
 import com.jsc.hotspot.db.entity.PageResult;
@@ -26,6 +27,9 @@ import java.util.*;
 public class HoTnumInfoServiceImpl implements HoTnumInfoService {
     @Autowired
     private HotNumInfoMapper hotNumInfoMapper;
+
+    @Autowired
+    private HotNumInfoEXTMapper hotNumInfoEXTMapper;
 
     @Override
     public PageResult findHotNumInfo(int page, int rows, HotNumInfo hotNumInfoDAO) {
@@ -88,7 +92,7 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
             Date d = c.getTime();
             dateList.add(d);
         }
-        List<Map> maps1 = hotNumInfoMapper.selectCount(dateList);
+        List<Map> maps1 = hotNumInfoEXTMapper.selectCount(dateList);
         return maps1;
     }
 

@@ -611,7 +611,7 @@ public class CameraCompareResult {
         targetFaceImg("target_face_img", "targetFaceImg", "VARCHAR", false),
         compareScore("compare_score", "compareScore", "DOUBLE", false),
         captureFaceImg("capture_face_img", "captureFaceImg", "VARCHAR", false),
-        libraryName("library_name", "libraryName", "TINYINT", false),
+        libraryName("library_name", "libraryName", "VARCHAR", false),
         devIp("dev_ip", "devIp", "VARCHAR", false),
         captureFaceStorageUrl("capture_face_storage_url", "captureFaceStorageUrl", "VARCHAR", false),
         sceneImg("scene_img", "sceneImg", "VARCHAR", false),

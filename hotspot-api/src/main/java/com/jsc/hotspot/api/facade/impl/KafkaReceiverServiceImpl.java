@@ -6,23 +6,24 @@ import com.jsc.hotspot.api.dto.FaceRecognitionInfo;
 import com.jsc.hotspot.api.config.WebSocket;
 import com.jsc.hotspot.api.facade.KafkaReceiverService;
 import com.jsc.hotspot.api.facade.WeedFSService;
-import com.jsc.hotspot.db.dao.CameraCatInfoMapper;
-import com.jsc.hotspot.db.dao.CameraCompareResultMapper;
-import com.jsc.hotspot.db.dao.HotNumInfoMapper;
-import com.jsc.hotspot.db.dao.RelatedNumMapper;
+import com.jsc.hotspot.db.dao.*;
 import com.jsc.hotspot.db.dao.ext.HotNumInfoEXTMapper;
 import com.jsc.hotspot.db.dao.ext.RelatedNumEXTMapper;
 import com.jsc.hotspot.db.domain.*;
-import com.jsc.hotspot.db.po.CampareValue;
+import com.jsc.hotspot.db.po.RealatedNumAndCount;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import sun.rmi.runtime.NewThreadAction;
 
+import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -64,11 +65,10 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
     @Autowired
     private CameraCatInfoMapper cameraCatInfoMapper;
 
+    @Autowired
+    private RelatedNumResultMapper relatedNumResultMapper;
 
 
-    private CameraCompareResultExample cameraCompareResultExample=new CameraCompareResultExample();
-    private HotNumInfoExample hotNumInfoExample=new HotNumInfoExample();
-    private FaceRecognitionInfo faceRecognitionInfo=new FaceRecognitionInfo();
 
     ExecutorService es= Executors.newFixedThreadPool(10);
 
@@ -78,15 +78,16 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
      */
     @Async
     @KafkaListener(topics = {"picTopic"})
-    public void listen(ConsumerRecord<?, ?> record) {
+    public void listen(ConsumerRecord<?, ?> record) throws InvocationTargetException, IllegalAccessException {
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
         if (kafkaMessage.isPresent()) {
-
+             RelatedNumResultExample relatedNumResultExample=new RelatedNumResultExample();
+             CameraCompareResultExample cameraCompareResultExample=new CameraCompareResultExample();
+             HotNumInfoExample hotNumInfoExample=new HotNumInfoExample();
+            FaceRecognitionInfo faceRecognitionInfo = new FaceRecognitionInfo();
             Object message = kafkaMessage.get();
             String msg = (String) message;//json字符串
-             log.error("---------------------------------1接受kafka消息："+msg+"-------------");
             JSONObject jsonObject = JSON.parseObject(msg);//json对象
-
 
             DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             String stringTime=jsonObject.getString("captureTime");
@@ -103,17 +104,25 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
             faceRecognitionInfo.setSceneImg(jsonObject.getString("sceneImg"));
             faceRecognitionInfo.setCaptureFaceStorageUrl(jsonObject.getString("captureFaceStorageUrl"));
             faceRecognitionInfo.setSceneStorageUrl(jsonObject.getString("sceneStorageUrl"));
+            //把摄像头识别结果放入map 用于推送前台
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("regcognition", faceRecognitionInfo);
 
             CameraCatInfo cameraCatInfo = new CameraCatInfo();
             //1.中标
-            if (faceRecognitionInfo.getCompareScore().compareTo(0.6)==1){
+            if (faceRecognitionInfo.getCompareScore().compareTo(0.6)>0){
 
                 cameraCatInfo.setQuality(1);
                 cameraCatInfo.setTargetName(faceRecognitionInfo.getTargetName());
-                Map<String, Object> map = new HashMap<String, Object>();
 
+                CameraCompareResult result=new CameraCompareResult();
+                BeanUtils.copyProperties(result,faceRecognitionInfo);
+                result.setCreateTime(LocalDateTime.now());
 
-            //    2.根据中标时间查询取号
+                //2.添加人臉中標結果
+                cameraCompareResultMapper.insertSelective(result);
+                log.error("-------------------------成功添加人臉中標結果-------------");
+                // 3.根据中标时间查询取号
                 Callable<List> numberListCallable=new Callable<List>() {
                     @Override
                     public List call() throws Exception {
@@ -121,8 +130,12 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                         long sleepTime=10000-duration.toMillis();
                         Thread.sleep(sleepTime);
                         log.error("------------------------------醒来-----------------------------------------");
-                        return hotNumInfoEXTMapper.getIntervalNum(captureTime);
-
+                        LocalDateTime beforDate=captureTime.minusSeconds(30);
+                        LocalDateTime afterDate=captureTime.plusSeconds(30);
+                        HotNumInfoExample example=new HotNumInfoExample();
+                        example.or().andCaptureTimeBetween(beforDate,afterDate);
+                        log.error("############");
+                        return hotNumInfoMapper.selectByExampleSelective(example);
                     }
                 };
 
@@ -130,6 +143,7 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                 es.submit(numberListTask);
                 List<HotNumInfo> numberList= null;
                 try {
+                    //获取关联号码
                     numberList = numberListTask.get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -149,68 +163,49 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                         relatedNumMapper.insertSelective(relatedNum);
                     }
                 }
-
-
-
-                //4.人脸中标结果入股
-
-               CameraCompareResult result=new CameraCompareResult();
-                result.setCaptureTime(faceRecognitionInfo.getCaptureTime());
-                result.setCreateTime(LocalDateTime.now());
-                result.setDevId(faceRecognitionInfo.getDevId());
-                result.setTargetFaceImg(faceRecognitionInfo.getTargetFaceImg());
-                result.setCaptureFaceImg(faceRecognitionInfo.getCaptureFaceImg());
-                result.setCaptureFaceStorageUrl(faceRecognitionInfo.getCaptureFaceStorageUrl());
-                result.setDevIp(faceRecognitionInfo.getDevIp());
-                result.setSceneStorageUrl(faceRecognitionInfo.getSceneStorageUrl());
-                result.setSceneImg(faceRecognitionInfo.getSceneImg());
-                result.setLibraryName(faceRecognitionInfo.getLibraryName());
-                result.setTargetFaceStorageUrl(faceRecognitionInfo.getTargetFaceStorageUrl());
-                result.setTargetName(faceRecognitionInfo.getTargetName());
-                result.setCompareScore(faceRecognitionInfo.getCompareScore());
-
-                if(result.getCompareScore().compareTo(0.6)==1) {
-
-
-                    cameraCompareResultMapper.insertSelective(result);
-                    log.error("-------------------------添加成功-------------");
-
                     //5.是否是第一次中标
                     CameraCompareResultExample.Criteria criteriaOfResult = cameraCompareResultExample.createCriteria();
                     criteriaOfResult.andTargetNameEqualTo(faceRecognitionInfo.getTargetName());
-                    int count = (int) (cameraCompareResultMapper.countByExample(cameraCompareResultExample)) + 1;
-                    if (count > 1) {
+                    int count = (int) (cameraCompareResultMapper.countByExample(cameraCompareResultExample)) ;
+                    //实例化一个对象承载关联结果
+                    RelatedNumResult relatedNumResult=new RelatedNumResult();
+                    relatedNumResult.setCaptureNum(count);
+//                    if (count > 1) { //是否是第一次中标
                         //查询每个号码出现的频次比
-                        List<CampareValue> campareValues = relatedNumEXTMapper.getCampareValue(faceRecognitionInfo.getTargetName());
-                        if (campareValues.size() > 0) {
-                            int top1 = campareValues.get(0).getCount();
-                            if (top1 > 1) {
-                                Map<Object, Integer> compareValue = new HashMap<Object, Integer>();
-                                compareValue.put(campareValues.get(0), count);
-                                compareValue.put(campareValues.get(1), count);
-                                compareValue.put(campareValues.get(2), count);
-                                map.put("compareValue", compareValue);
-                            }
-                        }
-                    }
-                    //推送识别和关联的结果
-                    map.put("regcognition", faceRecognitionInfo);
-                    String data = JSON.toJSONString(map);
-       //             if (faceRecognitionInfo.getCompareScore().compareTo(0.6) == 1) {
-                        System.out.println("++++++++++++++++++++++++++++++++++++++kafka的发送数据+++++++++++" + data);
-                        webSocket.sendOneMessage("admin123", data);
-       //             }
-                }
-            }
+                        List<RealatedNumAndCount> realatedNumAndCounts = relatedNumEXTMapper.getCampareValue(faceRecognitionInfo.getTargetName());
+                        if (realatedNumAndCounts.size() > 0) {
+                                //数组转json字符串
+                                Map<String,Object> jsonMap= new HashMap<>();
+                                jsonMap.put("topOne",realatedNumAndCounts.get(0));
+                                jsonMap.put("topTwo",realatedNumAndCounts.get(1));
+                                jsonMap.put("topThree",realatedNumAndCounts.get(2));
+                                String  stringMap=JSON.toJSONString(jsonMap);
+                                //json 字符串转object
+                               JSONObject relatedResult=JSON.parseObject(stringMap);
+                                map.put("realatedNumAndCount",relatedResult);
+                                map.put("captureCount",count);
+                                //更新关联结果
+                                relatedNumResult.setRelatedResult(relatedResult);
+                                relatedNumResultExample.or().andTargetNameEqualTo(result.getTargetName());
+                                List<RelatedNumResult> list=relatedNumResultMapper.selectByExampleSelective(relatedNumResultExample);
+                                if (list.size()>0) {
+                                    RelatedNumResultExample.Criteria criteria = relatedNumResultExample.createCriteria();
+                                    criteria.andTargetNameEqualTo(result.getTargetName());
+                                    relatedNumResultMapper.updateByExampleSelective(relatedNumResult, relatedNumResultExample);
+                                }else{
+                                    relatedNumResult.setTargetName(result.getTargetName());
+                                    relatedNumResult.setTargetFace(result.getTargetFaceStorageUrl());
+                                    relatedNumResultMapper.insertSelective(relatedNumResult);
+                                }
 
-            cameraCatInfo.setCaptureTime(faceRecognitionInfo.getCaptureTime());
-            cameraCatInfo.setDevId(faceRecognitionInfo.getDevId());
-           cameraCatInfo.setCreateTime(LocalDateTime.now());
-           cameraCatInfo.setDevIp(faceRecognitionInfo.getDevIp());
-           cameraCatInfo.setCaptureFaceStorageUrl(faceRecognitionInfo.getCaptureFaceStorageUrl());
-           cameraCatInfo.setCaptureFaceImg(faceRecognitionInfo.getCaptureFaceImg());
-           cameraCatInfo.setSceneStorageUrl(faceRecognitionInfo.getSceneStorageUrl());
-           cameraCatInfo.setSceneImg(faceRecognitionInfo.getSceneImg());
+                    }
+
+                    String data = JSON.toJSONString(map);
+                        webSocket.sendOneMessage("admin123", data);
+                }
+
+            BeanUtils.copyProperties(cameraCatInfo,faceRecognitionInfo);
+            cameraCatInfo.setCreateTime(LocalDateTime.now());
             //抓拍入库
             cameraCatInfoMapper.insertSelective(cameraCatInfo);
 

@@ -78,6 +78,7 @@ public class UdpListenerServiceImpl implements ServletContextListener {
         public Process(DatagramPacket packet) {
             byte[] buffer = packet.getData();
             String str = BinaryToHexString(buffer);
+            System.out.println(buffer);
             String[] split = str.split(" ");
             String imsi = "";
             String imei = "";

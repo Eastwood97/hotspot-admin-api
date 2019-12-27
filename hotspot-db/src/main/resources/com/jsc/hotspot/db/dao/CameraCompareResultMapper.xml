@@ -16,7 +16,7 @@
     <result column="target_face_img" jdbcType="VARCHAR" property="targetFaceImg" />
     <result column="compare_score" jdbcType="DOUBLE" property="compareScore" />
     <result column="capture_face_img" jdbcType="VARCHAR" property="captureFaceImg" />
-    <result column="library_name" jdbcType="TINYINT" property="libraryName" />
+    <result column="library_name" jdbcType="VARCHAR" property="libraryName" />
     <result column="dev_ip" jdbcType="VARCHAR" property="devIp" />
     <result column="capture_face_storage_url" jdbcType="VARCHAR" property="captureFaceStorageUrl" />
     <result column="scene_img" jdbcType="VARCHAR" property="sceneImg" />
@@ -206,7 +206,7 @@
     values (#{sceneStorageUrl,jdbcType=VARCHAR}, #{targetFaceStorageUrl,jdbcType=VARCHAR}, 
       #{videoId,jdbcType=VARCHAR}, #{captureTime,jdbcType=TIMESTAMP}, #{devId,jdbcType=BIGINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{targetFaceImg,jdbcType=VARCHAR}, #{compareScore,jdbcType=DOUBLE}, 
-      #{captureFaceImg,jdbcType=VARCHAR}, #{libraryName,jdbcType=TINYINT}, #{devIp,jdbcType=VARCHAR}, 
+      #{captureFaceImg,jdbcType=VARCHAR}, #{libraryName,jdbcType=VARCHAR}, #{devIp,jdbcType=VARCHAR}, 
       #{captureFaceStorageUrl,jdbcType=VARCHAR}, #{sceneImg,jdbcType=VARCHAR}, #{targetName,jdbcType=VARCHAR}
       )
   </insert>
@@ -292,7 +292,7 @@
         #{captureFaceImg,jdbcType=VARCHAR},
       </if>
       <if test="libraryName != null">
-        #{libraryName,jdbcType=TINYINT},
+        #{libraryName,jdbcType=VARCHAR},
       </if>
       <if test="devIp != null">
         #{devIp,jdbcType=VARCHAR},
@@ -356,7 +356,7 @@
         capture_face_img = #{record.captureFaceImg,jdbcType=VARCHAR},
       </if>
       <if test="record.libraryName != null">
-        library_name = #{record.libraryName,jdbcType=TINYINT},
+        library_name = #{record.libraryName,jdbcType=VARCHAR},
       </if>
       <if test="record.devIp != null">
         dev_ip = #{record.devIp,jdbcType=VARCHAR},
@@ -391,7 +391,7 @@
       target_face_img = #{record.targetFaceImg,jdbcType=VARCHAR},
       compare_score = #{record.compareScore,jdbcType=DOUBLE},
       capture_face_img = #{record.captureFaceImg,jdbcType=VARCHAR},
-      library_name = #{record.libraryName,jdbcType=TINYINT},
+      library_name = #{record.libraryName,jdbcType=VARCHAR},
       dev_ip = #{record.devIp,jdbcType=VARCHAR},
       capture_face_storage_url = #{record.captureFaceStorageUrl,jdbcType=VARCHAR},
       scene_img = #{record.sceneImg,jdbcType=VARCHAR},
@@ -435,7 +435,7 @@
         capture_face_img = #{captureFaceImg,jdbcType=VARCHAR},
       </if>
       <if test="libraryName != null">
-        library_name = #{libraryName,jdbcType=TINYINT},
+        library_name = #{libraryName,jdbcType=VARCHAR},
       </if>
       <if test="devIp != null">
         dev_ip = #{devIp,jdbcType=VARCHAR},
@@ -467,7 +467,7 @@
       target_face_img = #{targetFaceImg,jdbcType=VARCHAR},
       compare_score = #{compareScore,jdbcType=DOUBLE},
       capture_face_img = #{captureFaceImg,jdbcType=VARCHAR},
-      library_name = #{libraryName,jdbcType=TINYINT},
+      library_name = #{libraryName,jdbcType=VARCHAR},
       dev_ip = #{devIp,jdbcType=VARCHAR},
       capture_face_storage_url = #{captureFaceStorageUrl,jdbcType=VARCHAR},
       scene_img = #{sceneImg,jdbcType=VARCHAR},

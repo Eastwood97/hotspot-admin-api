@@ -1583,7 +1583,7 @@ public class CameraCompareResultExample {
             return (Criteria) this;
         }
 
-        public Criteria andLibraryNameEqualTo(Byte value) {
+        public Criteria andLibraryNameEqualTo(String value) {
             addCriterion("library_name =", value, "libraryName");
             return (Criteria) this;
         }
@@ -1599,7 +1599,7 @@ public class CameraCompareResultExample {
             return (Criteria) this;
         }
 
-        public Criteria andLibraryNameNotEqualTo(Byte value) {
+        public Criteria andLibraryNameNotEqualTo(String value) {
             addCriterion("library_name <>", value, "libraryName");
             return (Criteria) this;
         }
@@ -1615,7 +1615,7 @@ public class CameraCompareResultExample {
             return (Criteria) this;
         }
 
-        public Criteria andLibraryNameGreaterThan(Byte value) {
+        public Criteria andLibraryNameGreaterThan(String value) {
             addCriterion("library_name >", value, "libraryName");
             return (Criteria) this;
         }
@@ -1631,7 +1631,7 @@ public class CameraCompareResultExample {
             return (Criteria) this;
         }
 
-        public Criteria andLibraryNameGreaterThanOrEqualTo(Byte value) {
+        public Criteria andLibraryNameGreaterThanOrEqualTo(String value) {
             addCriterion("library_name >=", value, "libraryName");
             return (Criteria) this;
         }
@@ -1647,7 +1647,7 @@ public class CameraCompareResultExample {
             return (Criteria) this;
         }
 
-        public Criteria andLibraryNameLessThan(Byte value) {
+        public Criteria andLibraryNameLessThan(String value) {
             addCriterion("library_name <", value, "libraryName");
             return (Criteria) this;
         }
@@ -1663,7 +1663,7 @@ public class CameraCompareResultExample {
             return (Criteria) this;
         }
 
-        public Criteria andLibraryNameLessThanOrEqualTo(Byte value) {
+        public Criteria andLibraryNameLessThanOrEqualTo(String value) {
             addCriterion("library_name <=", value, "libraryName");
             return (Criteria) this;
         }
@@ -1679,22 +1679,32 @@ public class CameraCompareResultExample {
             return (Criteria) this;
         }
 
-        public Criteria andLibraryNameIn(List<Byte> values) {
+        public Criteria andLibraryNameLike(String value) {
+            addCriterion("library_name like", value, "libraryName");
+            return (Criteria) this;
+        }
+
+        public Criteria andLibraryNameNotLike(String value) {
+            addCriterion("library_name not like", value, "libraryName");
+            return (Criteria) this;
+        }
+
+        public Criteria andLibraryNameIn(List<String> values) {
             addCriterion("library_name in", values, "libraryName");
             return (Criteria) this;
         }
 
-        public Criteria andLibraryNameNotIn(List<Byte> values) {
+        public Criteria andLibraryNameNotIn(List<String> values) {
             addCriterion("library_name not in", values, "libraryName");
             return (Criteria) this;
         }
 
-        public Criteria andLibraryNameBetween(Byte value1, Byte value2) {
+        public Criteria andLibraryNameBetween(String value1, String value2) {
             addCriterion("library_name between", value1, value2, "libraryName");
             return (Criteria) this;
         }
 
-        public Criteria andLibraryNameNotBetween(Byte value1, Byte value2) {
+        public Criteria andLibraryNameNotBetween(String value1, String value2) {
             addCriterion("library_name not between", value1, value2, "libraryName");
             return (Criteria) this;
         }

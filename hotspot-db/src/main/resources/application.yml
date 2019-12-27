@@ -3,8 +3,11 @@ spring:
     active: db
   messages:
     encoding: UTF-8
+#logging:
+#  level:
+#    root:  info
+#    org.springframework:  info
+#    org.mybatis:  info
 logging:
   level:
-    root:  info
-    org.springframework:  info
-    org.mybatis:  info
+    com.jsc.hotspot.db.dao : debug

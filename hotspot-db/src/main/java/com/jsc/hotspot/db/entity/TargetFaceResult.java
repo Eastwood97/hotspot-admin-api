@@ -3,10 +3,11 @@ package com.jsc.hotspot.db.entity;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.time.LocalDateTime;
-
+@Data
 public class TargetFaceResult {
     private Long targetId;
     private String targetName;
