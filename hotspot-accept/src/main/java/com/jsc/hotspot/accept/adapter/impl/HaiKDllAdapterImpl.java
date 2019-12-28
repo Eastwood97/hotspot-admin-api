@@ -606,12 +606,13 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                         try {
                             strOut= HTTPClientUtil.doGet(srString, null);
                             InputStream inputStream = new ByteArrayInputStream(strOut);
-                         //   weedFSService.init();
                             BizResult<String> bizResult = weedFSService.storagePic(inputStream);
                             if (bizResult.getFlag()){
                                 faceRecognitionInfo.setSceneStorageUrl(bizResult.getData());
                             }
-                            //System.out.println(strOut);
+                            if (logger.isDebugEnabled()){
+                                logger.debug("HaiKDllAdapterImpl: 场景图信息：{0}, {1}" + bizResult.getData() + inputStream);
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -640,7 +641,9 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                             if (bizResult.getFlag()){
                                 faceRecognitionInfo.setTargetFaceStorageUrl(bizResult.getData());
                             }
-                            //System.out.println(strOut);
+                            if (logger.isDebugEnabled()){
+                                logger.debug("HaiKDllAdapterImpl: 黑名单人脸信息：{0}, {1}" +bizResult.getData() + inputStream);
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -657,19 +660,19 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                         buffers.get(bytes);
                         // 抓拍人脸
                         String srString = new String(bytes);
-                        System.out.println(srString);
                         faceRecognitionInfo.setCaptureFaceImg(srString);
 
                         byte[] strOut;
                         try {
                             strOut= HTTPClientUtil.doGet(srString, null);
                             InputStream inputStream = new ByteArrayInputStream(strOut);
-                            //weedFSService.init();
                             BizResult<String> bizResult = weedFSService.storagePic(inputStream);
                             if (bizResult.getFlag()){
                                 faceRecognitionInfo.setCaptureFaceStorageUrl(bizResult.getData());
                             }
-                            //System.out.println(strOut);
+                            if (logger.isDebugEnabled()){
+                                logger.debug("HaiKDllAdapterImpl: 抓拍人脸信息：{0}, {1}" +bizResult.getData() + inputStream);
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -799,6 +802,9 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                     faceRecognitionInfo.setDevIp(sIP[0]);
                     faceRecognitionInfo.setTargetLibrary(libraryId);
                     faceRecognitionInfo.setCaptureTime(captureTime);
+                    if (logger.isDebugEnabled()){
+                        logger.debug("HaiKDllAdapterImpl: 已上传到文件系统：" + faceRecognitionInfo.toString());
+                    }
                     kafkaSenderService.send(JSON.toJSONString(faceRecognitionInfo));
                     newRow[2] = sIP[0];
                     alarmTableModel.insertRow(0, newRow);
