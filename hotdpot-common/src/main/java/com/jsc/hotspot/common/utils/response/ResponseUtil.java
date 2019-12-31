@@ -1,6 +1,7 @@
 package com.jsc.hotspot.common.utils.response;
 
 import com.github.pagehelper.Page;
+import org.springframework.http.ResponseEntity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -142,6 +143,10 @@ public class ResponseUtil {
 
     public static Object uploadFailed() {
         return fail(508, "上传失败");
+    }
+
+    public static ResponseEntity<byte[]> okList(ResponseEntity<byte[]> targetExcel) {
+        return (ResponseEntity<byte[]>) ok(targetExcel);
     }
 }
 

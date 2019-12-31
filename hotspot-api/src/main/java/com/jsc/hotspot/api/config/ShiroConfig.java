@@ -87,7 +87,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/admin/auth/index", "anon");
         filterChainDefinitionMap.put("/admin/auth/403", "anon");
         filterChainDefinitionMap.put("/admin/index/index", "anon");
-
+        filterChainDefinitionMap.put("/admin/targetNum/exportTarget", "anon");
         filterChainDefinitionMap.put("/admin/**", "authc");
         filterChainDefinitionMap.put("/websocket", "anon");
         shiroFilterFactoryBean.setLoginUrl("/admin/auth/401");

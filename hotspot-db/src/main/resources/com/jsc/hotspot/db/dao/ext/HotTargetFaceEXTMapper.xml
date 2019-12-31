@@ -9,6 +9,21 @@
         </foreach>
     </delete>
 
+    <insert id="insertForeach" parameterType="java.util.List">
+        insert into hot_target_info
+        (`targetName`,`imsi`,`imei`,`isdn`,`caseName`,`desc`)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.targetName,jdbcType=VARCHAR},
+            #{item.imsi,jdbcType=VARCHAR},
+            #{item.imei,jdbcType=VARCHAR},
+            #{item.isdn,jdbcType=VARCHAR},
+            #{item.caseName,jdbcType=VARCHAR},
+            #{item.desc,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
 
 
 </mapper>

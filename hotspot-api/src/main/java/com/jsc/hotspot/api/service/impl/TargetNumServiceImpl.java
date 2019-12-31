@@ -78,4 +78,22 @@ public class TargetNumServiceImpl implements TargetNumService {
         targetInfo.setUpdateTime(LocalDateTime.now());
         hotTargetInfoMapper.insertSelective(targetInfo);
     }
+
+    @Override
+    public List<HotTargetInfo> getAllTargetNum() {
+        HotTargetInfoExample example=new HotTargetInfoExample();
+        return hotTargetInfoMapper.selectByExampleSelective(example);
+    }
+
+    public boolean insertForeach(List<HotTargetInfo> targetList){
+        int result=hotTargetInfoEXTMapper.insertForeach(targetList);
+        if(result==targetList.size()){
+            return true;
+        }else {
+            return false;
+        }
+
+    }
+
+
 }

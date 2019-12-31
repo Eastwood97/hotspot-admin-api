@@ -15,6 +15,7 @@ public interface TargetNumService {
 
     void add(HotTargetInfo targetInfo);
 
+    List<HotTargetInfo> getAllTargetNum();
 
-
+  boolean insertForeach(List<HotTargetInfo> targetList);
 }
