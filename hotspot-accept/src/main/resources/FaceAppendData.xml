@@ -1,0 +1,64 @@
+<FaceAppendData version="2.0" xmlns="http://www.isapi.org/ver20/XMLSchema">
+    <!--req,人脸比对库图片数据关联信息配置-->
+    <bornTime>
+        <!--opt, xs:ISO8601 time,出生日期,例如:2014-12-12T00:00:00Z-->
+    </bornTime>
+    <name>
+        <!--opt,xs:string,姓名-->
+    </name>
+    <sex>
+        <!--opt,xs:string,"male,female",性别-->
+    </sex>
+    <province>
+        <!--opt,xs:string,省份,代码索引具体请参考"全国各省份城市列表"-->
+    </province>
+    <city>
+        <!--opt,xs:string,城市,代码索引具体请参考"全国各省份城市列表"-->
+    </city>
+    <certificateType>
+        <!--opt,xs:string,"officerID,ID,passportID,other",
+        证件类型: OfficerID-军官证, ID-身份证, passportID-护照, other-其他-->
+    </certificateType>
+    <certificateNumber>
+        <!--dep,xs:string,"证件号"-->
+    </certificateNumber>
+
+    <PersonInfoExtendList size="">
+        <!--req,人员扩展信息列表-->
+        <PersonInfoExtend>
+            <id>
+                <!--req,xs:integer, "人员扩展信息序号, 从"1"开始赋值, 依次增加" -->
+            </id>
+            <enable>
+                <!--req,xs: boolean, "人员扩展信息使能" -->
+            </enable>
+            <name>
+                <!--opt,xs:string, "人员标签信息扩展名称" -->
+            </name>
+            <value>
+                <!--opt,xs:string, "人员标签信息扩展内容" -->
+            </value>
+        </PersonInfoExtend>
+    </PersonInfoExtendList>
+    <phoneNumber>
+        <!--opt,xs:string, 电话号码-->
+    </phoneNumber>
+    <customHumanID>
+        <!--opt,xs:string,"自定义人员ID"-->
+    </customHumanID>
+    <RegionCoordinatesList>
+        <!--opt,导入图片中存在多张人脸时需要框选指定目标,一个识别出来的人脸目标,该坐标可以指导后续检索中的数据建模处理-->
+        <RegionCoordinates>
+            <!--req,人脸目标范围矩形框点坐标-->
+            <positionX>
+                <!--req, xs:integer, X坐标-->
+            </positionX>
+            <positionY>
+                <!--req, xs:integer;coordinate, Y坐标-->
+            </positionY>
+        </RegionCoordinates>
+    </RegionCoordinatesList>
+    <customHumanID>
+        <!--opt,xs:string,"自定义人员ID"-->
+    </customHumanID>
+</FaceAppendData>

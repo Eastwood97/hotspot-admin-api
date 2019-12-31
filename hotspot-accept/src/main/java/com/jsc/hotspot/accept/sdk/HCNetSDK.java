@@ -5,10 +5,7 @@ package com.jsc.hotspot.accept.sdk;
  * @description 海康SDK
  * @date 2019/12/3
  */
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.Union;
+import com.sun.jna.*;
 import com.sun.jna.examples.win32.GDI32.RECT;
 import com.sun.jna.examples.win32.W32API;
 import com.sun.jna.examples.win32.W32API.HWND;
@@ -22,10 +19,18 @@ import java.util.List;
 //SDK接口说明,HCNetSDK.dll
 public interface HCNetSDK extends StdCallLibrary {
 
+
     HCNetSDK INSTANCE = (HCNetSDK) Native.loadLibrary(Path.DLL_PATH + "HCNetSDK.dll",
             HCNetSDK.class);
     /***宏定义***/
     //常量
+    int NET_SDK_MAX_INDENTITY_KEY_LEN = 64;
+    public static final int BYTE_ARRAY_LEN = 1024;
+    public static final int NET_SDK_MAX_FDID_LEN = 256;//人脸库ID最大长度
+    public static final int IMPORT_DATA_TO_FACELIB = 39;//导入人脸数据（人脸图片+图片附件信息 到设备人脸库）
+    public static final int MAX_UPLOADFILE_URL_LEN = 240;
+    public static final int ISAPI_DATA_LEN = 100*1024;
+    public static final int ISAPI_STATUS_LEN = 4*4096;
 
     public static final int MAX_NAMELEN = 16;	//DVR本地登陆名
     public static final int MAX_RIGHT = 32;	//设备支持的权限（1-12表示本地权限，13-32表示远程权限）
@@ -762,6 +767,20 @@ public interface HCNetSDK extends StdCallLibrary {
      **************************************************/
 
 /////////////////////////////////////////////////////////////////////////
+
+    public static class LPNET_DVR_PLAYCOND extends Structure {
+
+        public int dwChannel;
+        public NET_DVR_TIME struStartTime;
+        public NET_DVR_TIME struStopTime;
+        public byte byDrawFrame;
+        public byte byStreamType;
+        public byte byStreamID[];
+        public byte byCourseFile;
+        public byte[] byRes = new byte[29];
+
+
+    }
 //校时结构参数
     public static class NET_DVR_TIME extends Structure {//校时结构参数
         public int dwYear;		//年
@@ -3791,6 +3810,22 @@ EMAIL参数结构
         }
     }
 
+    public static class NET_DVR_SEND_PARAM_IN extends Structure
+    {
+        public Pointer  pSendData;             //发送的缓冲区
+        public int      dwSendDataLen;         //发送数据长度
+        public NET_DVR_TIME_V30    struTime;   //图片时间
+        public byte    byPicType;              //图片格式,1-jpg,2-bmp,3-png,4-SWF,5-GIF
+        public byte    byPicURL;               //图片数据采用URL方式 0-二进制图片数据，1-图片数据走URL方式
+        public byte[]    byRes1 = new byte[2];
+        public int   dwPicMangeNo;           //图片管理号
+        public byte[]    sPicName = new byte[NAME_LEN];     //图片名称
+        public int    dwPicDisplayTime;       //图片播放时长，单位秒
+        public Pointer pSendAppendData;       //发送图片的附加信息缓冲区，对应FaceAppendData 的XML描述；
+        public int   dwSendAppendDataLen;    //发送图片的附加信息数据长度  FaceAppendData  XML的长度；
+        public byte[]    byRes = new byte[192];
+    }
+
     /***API函数声明,详细说明见API手册***/
     public static interface FRealDataCallBack_V30 extends StdCallCallback {
         public void invoke(int lRealHandle, int dwDataType,
@@ -3989,6 +4024,8 @@ EMAIL参数结构
     boolean  NET_DVR_PlayBackCaptureFile(int lPlayHandle,String sFileName);
     int  NET_DVR_GetFileByName(int lUserID,String sDVRFileName,String sSavedFileName);
     int  NET_DVR_GetFileByTime(int lUserID,int lChannel, NET_DVR_TIME lpStartTime, NET_DVR_TIME lpStopTime, String sSavedFileName);
+    int  NET_DVR_GetFileByTime_V40(int lUserID,String sSavedFileName, LPNET_DVR_PLAYCOND pDownloadCond);
+
     boolean  NET_DVR_StopGetFile(int lFileHandle);
     int  NET_DVR_GetDownloadPos(int lFileHandle);
     int	 NET_DVR_GetPlayBackPos(int lPlayHandle);
@@ -4207,31 +4244,56 @@ EMAIL参数结构
 
     // 新增接口
 // 上传图片接口
-    int NET_DVR_UploadFile_V40(int lUserID, int dwUploadType, Pointer lpInBuffer, int dwInBufferSize, String sFileName, Pointer lpOutBuffer, int dwOutBufferSize);
-    int NET_DVR_UploadSend(int lUploadHandle, LPNET_DVR_SEND_PARAM_IN pstruSendParamIN, Pointer lpOutBuffer);
-    int NET_DVR_GetUploadState(int lUploadHandle, Pointer pProgress);
-    boolean NET_DVR_GetUploadResult(int lUploadHandle, Pointer lpOutBuffer, int dwOutBufferSize);
-    boolean NET_DVR_UploadClose(int lUploadHandle);
+    boolean  NET_DVR_STDXMLConfig(NativeLong lUserID, NET_DVR_XML_CONFIG_INPUT lpInputParam, NET_DVR_XML_CONFIG_OUTPUT lpOutputParam);
 
+    NativeLong NET_DVR_UploadFile_V40(NativeLong lUserID, int dwUploadType, Pointer lpInBuffer, int dwInBufferSize, String sFileName, Pointer lpOutBuffer, int dwOutBufferSize);
+    NativeLong NET_DVR_UploadSend(NativeLong lUploadHandle, Pointer pstruSendParamIN, Pointer lpOutBuffer);
+    NativeLong NET_DVR_GetUploadState(NativeLong lUploadHandle, IntByReference pProgress);
+    boolean NET_DVR_GetUploadResult(NativeLong lUploadHandle, Pointer lpOutBuffer, int dwOutBufferSize);
+    boolean NET_DVR_UploadClose(NativeLong lUploadHandle);
 
+    // 人脸库相关操作
 
-    boolean  NET_DVR_STDXMLConfig(int lUserID, NET_DVR_XML_CONFIG_INPUT lpInputParam, NET_DVR_XML_CONFIG_OUTPUT lpOutputParam);
-
+    public static class NET_DVR_FDLIB_PARAM extends Structure {
+        public int dwFDID;
+        public String szFDName;
+        public int dwID;
+    }
 
     // 新增上传结构定义
-// 图片上传
-    public static class LPNET_DVR_SEND_PARAM_IN {
-        public Pointer pSendData;
+    // 图片上传
+    public static class NET_DVR_FACELIB_COND extends Structure{
+        public int         dwSize;
+        public byte[]      szFDID = new byte[NET_SDK_MAX_FDID_LEN/*256*/];//人脸库ID
+        public byte        byConcurrent;//设备并发处理 0-不开启，1-开始
+        public byte        byCover;//是否覆盖式导入 0-否，1-是
+        public byte        byCustomFaceLibID;//FDID是否是自定义，0-不是，1-是；
+        public byte[]      byRes = new byte[125];
+    }
+
+    public static class LPNET_DVR_SEND_PARAM_IN extends Structure{
+        public byte[] pSendData;
         public int dwSendDataLen;
-        public NET_DVR_TIME struTime;
+        public NET_DVR_TIME_V30 struTime;
         public byte byPicType;
         public byte byRes1[] = new byte[3];
         public int dwPicMangeNo;
         public byte sPicName[] = new byte[NAME_LEN];
         public int dwPicDisplayTime;
-        public Pointer pSendAppendData;
+        public byte[] pSendAppendData;
         public int dwSendAppendDataLen;
         public byte[] byRes = new byte[192];
+    }
+
+    // 获取文件上传的进度和状态
+    public static class NET_DVR_GetUploadState extends Structure {
+        public int lUploadHandle;
+        public int pProgress;
+    }
+
+    public static class NET_DVR_UPLOAD_FILE_RET extends Structure {
+        public byte sUrl[];
+        public byte[] byRes = new byte[260];
     }
 
     //gps相关结构定义

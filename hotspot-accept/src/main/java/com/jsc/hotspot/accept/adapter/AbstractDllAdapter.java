@@ -1,5 +1,7 @@
 package com.jsc.hotspot.accept.adapter;
 
+import com.jsc.hotspot.common.bean.VideoDownLoadBean;
+
 /**
  * @author huixing
  * @description 抽象的dll功能接口
@@ -17,13 +19,7 @@ public interface AbstractDllAdapter {
 
     void SetupAlarmChan();
 
-    void uploadToCamera();
+    void GetShortVideoFile(VideoDownLoadBean videoDownLoadBean);
 
-    void getCameraAbilities();
-
-    void GetUploadState();
-
-    void UploadClose();
-
-    void StartDownload();
+    void getLibrary();
 }

@@ -44,8 +44,9 @@ public class RecordVideoThread implements ApplicationRunner {
         // 获取视频源 可以获取RTSP视频源进行视频播放
 
         kafkaSender.send("---------------------------");
-        haiKDllAdapter.register();
-        haiKDllAdapter.SetupAlarmChan();
+//        haiKDllAdapter.register();
+//        haiKDllAdapter.SetupAlarmChan();
+//        haiKDllAdapter.getLibrary();
 //        FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(streamURL);
 //        FFmpegFrameRecorder recorder = null;
 //        try {
