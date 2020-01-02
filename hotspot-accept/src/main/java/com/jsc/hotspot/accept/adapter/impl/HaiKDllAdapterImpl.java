@@ -1,26 +1,31 @@
 package com.jsc.hotspot.accept.adapter.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.jsc.hotspot.accept.adapter.AbstractDllAdapter;
+import com.jsc.hotspot.accept.adapter.HaiKDllInterfaceAdapter;
 import com.jsc.hotspot.accept.dto.FaceRecognitionInfo;
 import com.jsc.hotspot.accept.facade.KafkaSender;
 import com.jsc.hotspot.accept.facade.WeedFSService;
-import com.jsc.hotspot.accept.facade.impl.KafkaSenderServiceImpl;
 import com.jsc.hotspot.accept.sdk.HCNetSDK;
 import com.jsc.hotspot.accept.utils.HTTPClientUtil;
+import com.jsc.hotspot.common.bean.FileInfo;
+import com.jsc.hotspot.common.bean.VideoDownLoadBean;
 import com.jsc.hotspot.common.biz.BizResult;
 import com.jsc.hotspot.common.http.RestClient;
-import com.jsc.hotspot.common.http.ViewDepotRestTemplate;
-import com.jsc.hotspot.common.storage.weed.WeedStorage;
+import com.jsc.hotspot.common.util.RandomNameUtil;
+import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import org.apache.commons.httpclient.UsernamePasswordCredentials;
 import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.client.methods.HttpGet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Base64Utils;
+import org.springframework.util.ObjectUtils;
+
 import javax.swing.table.DefaultTableModel;
 import java.io.*;
 import java.nio.ByteBuffer;
@@ -29,16 +34,19 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Map;
 
+/**
 /**
  * @author huixing
  * @description 海康dll动态库实现
  * @date 2019/12/3
  */
 @Service("haiKDllAdapterImpl")
-public class HaiKDllAdapterImpl implements AbstractDllAdapter {
-
+public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
     private final Log logger = LogFactory.getLog(HaiKDllAdapterImpl.class);
+
+    private HaiKDllFaceImpl faceInterface = new HaiKDllFaceImpl();
 
     static HCNetSDK hCNetSDK = HCNetSDK.INSTANCE;
     @Autowired
@@ -46,6 +54,9 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
 
     @Autowired
     private WeedFSService weedFSService;
+
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
 
     HCNetSDK.NET_DVR_USER_LOGIN_INFO m_strLoginInfo = new HCNetSDK.NET_DVR_USER_LOGIN_INFO();//设备登录信息
     HCNetSDK.NET_DVR_DEVICEINFO_V40 m_strDeviceInfo = new HCNetSDK.NET_DVR_DEVICEINFO_V40();//设备信息
@@ -69,9 +80,9 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
     @Value("${camera.password}")
     String m_sPassword;//设备密码
 
-    int lUserID;//用户句柄
-    int lAlarmHandle;//报警布防句柄
-    int lListenHandle;//报警监听句柄
+    public int lUserID;//用户句柄
+    public int lAlarmHandle;//报警布防句柄
+    public int lListenHandle;//报警监听句柄
 
     @Autowired
     RestClient restClient;
@@ -80,6 +91,10 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
     int lChannel;
     Pointer lpInBuffer;
     int dwInBufferSize;
+
+    public int getlUserID(){
+        return lUserID;
+    }
 
     public HaiKDllAdapterImpl(){
 
@@ -216,14 +231,92 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
     }
 
     /**
-     * 上传图片
+     * 上传文件到摄像机
+     * @param fileInfo
+     * @return
      */
     @Override
-    public void uploadToCamera() {
-        /**
-         * int lUserID, int dwUploadType, Pointer lpInBuffer, int dwInBufferSize, String sFileName, Pointer lpOutBuffer, int dwOutBufferSize
-         */
-        //hCNetSDK.NET_DVR_UploadFile_V40(lUserID, );
+    public BizResult<Boolean> uploadToHaiKCamera(FileInfo fileInfo) {
+        String urls = fileInfo.getUrl();
+        Map<String, String> fileInfo1 = JSON.parseObject(urls, Map.class);
+        // 开始上传数据
+        if (!ObjectUtils.isEmpty(fileInfo1)) {
+            fileInfo1.forEach((k, v) -> {
+                ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
+                String base64String = valueOperations.get(v);
+                byte[] picByte = Base64Utils.decodeFromString(base64String);
+                InputStream inputStream = new ByteArrayInputStream(picByte);
+                faceInterface.UploadFaceLinData(new NativeLong(lUserID), inputStream);
+            });
+        }else {
+            return BizResult.create(false);
+        }
+        return BizResult.create(true);
+    }
+
+    public void GetShortVideoFile(VideoDownLoadBean videoDownLoadBean){
+//        Pointer pointer = null;
+//        HCNetSDK.LPNET_DVR_PLAYCOND lpnet_dvr_playcond = new HCNetSDK.LPNET_DVR_PLAYCOND();
+//        lpnet_dvr_playcond.byDrawFrame = 0;
+//        lpnet_dvr_playcond.byCourseFile = 0;
+//        lpnet_dvr_playcond.byStreamType = 0;
+//        lpnet_dvr_playcond.dwChannel = 0;
+//        HCNetSDK.NET_DVR_TIME struStartTime = new HCNetSDK.NET_DVR_TIME();
+//        LocalDateTimeToNetDvrTime(videoDownLoadBean, struStartTime);
+//        HCNetSDK.NET_DVR_TIME struStopTime = new HCNetSDK.NET_DVR_TIME();
+//        LocalDateTimeToNetDvrTime(videoDownLoadBean, struStopTime);
+//        lpnet_dvr_playcond.struStartTime = struStartTime;
+//        lpnet_dvr_playcond.struStopTime = struStopTime;
+//        hCNetSDK.NET_DVR_GetFileByTime_V40(lUserID, videoDownLoadBean.getStoreFileName(), lpnet_dvr_playcond);
+    }
+
+    @Override
+    public void getLibrary() {
+        faceInterface.GetFaceAppendData(new NativeLong(lUserID));
+    }
+
+    private void LocalDateTimeToNetDvrTime(VideoDownLoadBean videoDownLoadBean, HCNetSDK.NET_DVR_TIME struStartTime) {
+        struStartTime.dwYear = videoDownLoadBean.getStartTime().getYear();
+        struStartTime.dwMonth = videoDownLoadBean.getStartTime().getMonthValue();
+        struStartTime.dwDay = videoDownLoadBean.getStartTime().getDayOfMonth();
+        struStartTime.dwHour = videoDownLoadBean.getStartTime().getHour();
+        struStartTime.dwMinute = videoDownLoadBean.getStartTime().getMinute();
+        struStartTime.dwSecond = videoDownLoadBean.getStartTime().getSecond();
+    }
+
+    /**
+     * 获取能力集
+     */
+    public void getCameraAbilities(){
+
+    }
+
+    /**
+     * 获取文件上传的进度和状态
+     */
+    public void GetUploadState(){
+
+    }
+
+    /**
+     * 停止文件上传
+     */
+    public void UploadClose() {
+
+    }
+
+    /**
+     * 下载文件
+     */
+    public void StartDownload() {
+
+    }
+
+    /**
+     * POST /ISAPI/Intelligent/FDLib/FDSearch
+     */
+    public void sarchLibraryPic(){
+
     }
 
     public class FMSGCallBack_V31 implements HCNetSDK.FMSGCallBack_V31
@@ -568,20 +661,25 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                         System.out.println(srString);
                         faceRecognitionInfo.setSceneImg(srString);
 
-                        UsernamePasswordCredentials creds = new UsernamePasswordCredentials("admin",
-                                "Admin12345"); //设备登录用户名密码，摘要认证方式
-                        HTTPClientUtil.client.getState().setCredentials(AuthScope.ANY, creds);
-
+                        ISAPILogin();
+                        VideoDownLoadBean videoDownLoadBean = new VideoDownLoadBean();
+                        videoDownLoadBean.setStartTime(localDateTime.minusSeconds(5));
+                        videoDownLoadBean.setStopTime(localDateTime.minusSeconds(5));
+                        int fileName = RandomNameUtil.getNum(0, Integer.MAX_VALUE);
+                        videoDownLoadBean.setStoreFileName("D:\\Video\\" + fileName);
+                        // 下载黑名单前后5s的小视频
+                        GetShortVideoFile(videoDownLoadBean);
                         byte[] strOut;
                         try {
                             strOut= HTTPClientUtil.doGet(srString, null);
                             InputStream inputStream = new ByteArrayInputStream(strOut);
-                         //   weedFSService.init();
                             BizResult<String> bizResult = weedFSService.storagePic(inputStream);
                             if (bizResult.getFlag()){
                                 faceRecognitionInfo.setSceneStorageUrl(bizResult.getData());
                             }
-                            //System.out.println(strOut);
+                            if (logger.isDebugEnabled()){
+                                logger.debug("HaiKDllAdapterImpl: 场景图信息：{0}, {1}" + bizResult.getData() + inputStream);
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -610,7 +708,9 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                             if (bizResult.getFlag()){
                                 faceRecognitionInfo.setTargetFaceStorageUrl(bizResult.getData());
                             }
-                            //System.out.println(strOut);
+                            if (logger.isDebugEnabled()){
+                                logger.debug("HaiKDllAdapterImpl: 黑名单人脸信息：{0}, {1}" +bizResult.getData() + inputStream);
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -627,19 +727,19 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                         buffers.get(bytes);
                         // 抓拍人脸
                         String srString = new String(bytes);
-                        System.out.println(srString);
                         faceRecognitionInfo.setCaptureFaceImg(srString);
 
                         byte[] strOut;
                         try {
                             strOut= HTTPClientUtil.doGet(srString, null);
                             InputStream inputStream = new ByteArrayInputStream(strOut);
-                            //weedFSService.init();
                             BizResult<String> bizResult = weedFSService.storagePic(inputStream);
                             if (bizResult.getFlag()){
                                 faceRecognitionInfo.setCaptureFaceStorageUrl(bizResult.getData());
                             }
-                            //System.out.println(strOut);
+                            if (logger.isDebugEnabled()){
+                                logger.debug("HaiKDllAdapterImpl: 抓拍人脸信息：{0}, {1}" +bizResult.getData() + inputStream);
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -769,6 +869,9 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
                     faceRecognitionInfo.setDevIp(sIP[0]);
                     faceRecognitionInfo.setTargetLibrary(libraryId);
                     faceRecognitionInfo.setCaptureTime(captureTime);
+                    if (logger.isDebugEnabled()){
+                        logger.debug("HaiKDllAdapterImpl: 已上传到文件系统：" + faceRecognitionInfo.toString());
+                    }
                     kafkaSenderService.send(JSON.toJSONString(faceRecognitionInfo));
                     newRow[2] = sIP[0];
                     alarmTableModel.insertRow(0, newRow);
@@ -975,6 +1078,16 @@ public class HaiKDllAdapterImpl implements AbstractDllAdapter {
             logger.error(HaiKDllAdapterImpl.class.getName() + "  AlarmDataHandle");
         }
     }
+
+    /**
+     * ISAPI 协议透传认证
+     */
+    private void ISAPILogin() {
+        UsernamePasswordCredentials creds = new UsernamePasswordCredentials("admin",
+                "Admin12345"); //设备登录用户名密码，摘要认证方式
+        HTTPClientUtil.client.getState().setCredentials(AuthScope.ANY, creds);
+    }
+
 
 
 }

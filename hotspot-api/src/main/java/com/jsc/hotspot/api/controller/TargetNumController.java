@@ -2,14 +2,12 @@ package com.jsc.hotspot.api.controller;
 
 import com.jsc.hotspot.api.service.ImportService;
 import com.jsc.hotspot.api.service.TargetNumService;
-import com.jsc.hotspot.api.utils.PoiTargetUtil;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
 import com.jsc.hotspot.db.domain.HotTargetInfo;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -102,20 +100,15 @@ public class TargetNumController {
         }
     }
 
-    @RequestMapping(value = "/exportTarget", method = RequestMethod.GET)
-    public ResponseEntity<byte[]> exportTarget() {
-        ResponseEntity<byte[]> targetExcel=PoiTargetUtil.exportTargetExcel(targetNumService.getAllTargetNum());
-        return ResponseUtil.okList(targetExcel);
-    }
+//    @RequestMapping(value = "/exportTarget", method = RequestMethod.GET)
+//    public ResponseEntity<byte[]> exportTarget() {
+//        ResponseEntity<byte[]> targetExcel=PoiTargetUtil.exportTargetExcel(targetNumService.getAllTargetNum());
+//        return ResponseUtil.okList(targetExcel);
+//    }
 
     /**
      *
      * 功能描述: 上传文件excl
-     *
-     * @param:
-     * @return:
-     * @auther: ww
-     * @date: 2019/12/11 0011 13:44
      */
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
     @ResponseBody
@@ -150,7 +143,6 @@ public class TargetNumController {
                 target.setIsdn(isdn);
                 target.setCaseName(caseName);
                 target.setDesc(desc);
-                target.setCaseName(caseName);
                 targetList.add(target);
             }
             if (targetNumService.insertForeach(targetList)){

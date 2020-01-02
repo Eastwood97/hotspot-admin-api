@@ -80,6 +80,7 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
     @KafkaListener(topics = {"picTopic"})
     public void listen(ConsumerRecord<?, ?> record) throws InvocationTargetException, IllegalAccessException {
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
+        log.error("-----===========---------+++++++++++++++++++");
         if (kafkaMessage.isPresent()) {
              RelatedNumResultExample relatedNumResultExample=new RelatedNumResultExample();
              CameraCompareResultExample cameraCompareResultExample=new CameraCompareResultExample();
@@ -134,7 +135,7 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                         LocalDateTime afterDate=captureTime.plusSeconds(30);
                         HotNumInfoExample example=new HotNumInfoExample();
                         example.or().andCaptureTimeBetween(beforDate,afterDate);
-                        log.error("############");
+                        log.error("############前后30秒查询");
                         return hotNumInfoMapper.selectByExampleSelective(example);
                     }
                 };
@@ -153,6 +154,7 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                 RelatedNum relatedNum = new RelatedNum();
                 //3.存入关联表
                 if (null!=numberList||numberList.size()>0){
+                    log.error("插入relatedNum表");
                     for (HotNumInfo number : numberList
                     ) {
                         relatedNum.setImei(number.getImei());
@@ -161,56 +163,63 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                         relatedNum.setTargetName(faceRecognitionInfo.getTargetName());
                         relatedNum.setNumberId(number.getId());
                         relatedNumMapper.insertSelective(relatedNum);
-                    }
+                    }log.error("插入relatedNum表结束");
+
                 }
-                    //5.是否是第一次中标
-                    CameraCompareResultExample.Criteria criteriaOfResult = cameraCompareResultExample.createCriteria();
-                    criteriaOfResult.andTargetNameEqualTo(faceRecognitionInfo.getTargetName());
-                    int count = (int) (cameraCompareResultMapper.countByExample(cameraCompareResultExample)) ;
-                    //实例化一个对象承载关联结果
-                    RelatedNumResult relatedNumResult=new RelatedNumResult();
-                    relatedNumResult.setCaptureNum(count);
+                //5.是否是第一次中标
+                CameraCompareResultExample.Criteria criteriaOfResult = cameraCompareResultExample.createCriteria();
+                criteriaOfResult.andTargetNameEqualTo(faceRecognitionInfo.getTargetName());
+                int count = (int) (cameraCompareResultMapper.countByExample(cameraCompareResultExample)) ;
+                //实例化一个对象承载关联结果
+                RelatedNumResult relatedNumResult=new RelatedNumResult();
+                relatedNumResult.setCaptureNum(count);
 //                    if (count > 1) { //是否是第一次中标
-                        //查询每个号码出现的频次比
-                        List<RealatedNumAndCount> realatedNumAndCounts = relatedNumEXTMapper.getCampareValue(faceRecognitionInfo.getTargetName());
-                        if (realatedNumAndCounts.size() > 0) {
-                                //数组转json字符串
-                                Map<String,Object> jsonMap= new HashMap<>();
-                                jsonMap.put("topOne",realatedNumAndCounts.get(0));
-                                jsonMap.put("topTwo",realatedNumAndCounts.get(1));
-                                jsonMap.put("topThree",realatedNumAndCounts.get(2));
-                                String  stringMap=JSON.toJSONString(jsonMap);
-                                //json 字符串转object
-                               JSONObject relatedResult=JSON.parseObject(stringMap);
-                                map.put("realatedNumAndCount",relatedResult);
-                                map.put("captureCount",count);
-                                //更新关联结果
-                                relatedNumResult.setRelatedResult(relatedResult);
-                                relatedNumResultExample.or().andTargetNameEqualTo(result.getTargetName());
-                                List<RelatedNumResult> list=relatedNumResultMapper.selectByExampleSelective(relatedNumResultExample);
-                                if (list.size()>0) {
-                                    RelatedNumResultExample.Criteria criteria = relatedNumResultExample.createCriteria();
-                                    criteria.andTargetNameEqualTo(result.getTargetName());
-                                    relatedNumResultMapper.updateByExampleSelective(relatedNumResult, relatedNumResultExample);
-                                }else{
-                                    relatedNumResult.setTargetName(result.getTargetName());
-                                    relatedNumResult.setTargetFace(result.getTargetFaceStorageUrl());
-                                    relatedNumResultMapper.insertSelective(relatedNumResult);
-                                }
+                    //查询每个号码出现的频次比
+                List<RealatedNumAndCount> realatedNumAndCounts = relatedNumEXTMapper.getCampareValue(faceRecognitionInfo.getTargetName());
+                if (null!=realatedNumAndCounts) {
+                            //数组转json字符串
+                            Map<String,Object> jsonMap= new HashMap<>();
 
-                    }
+                            jsonMap.put("topOne",realatedNumAndCounts.get(0));
+                            if(realatedNumAndCounts.size()>1) {
+                                jsonMap.put("topTwo", realatedNumAndCounts.get(1));
+                            }
+                            if(realatedNumAndCounts.size()>2) {
+                                jsonMap.put("topThree", realatedNumAndCounts.get(2));
+                            }
+                            String  stringMap=JSON.toJSONString(jsonMap);
+                            //json 字符串转object
+                           JSONObject relatedResult=JSON.parseObject(stringMap);
+                            map.put("realatedNumAndCount",relatedResult);
+                            map.put("captureCount",count);
+                            //更新关联结果
+                            relatedNumResult.setRelatedResult(relatedResult);
+                            relatedNumResultExample.or().andTargetNameEqualTo(result.getTargetName());
+                            List<RelatedNumResult> list=relatedNumResultMapper.selectByExampleSelective(relatedNumResultExample);
+                            if (list.size()>0) {
+                                RelatedNumResultExample.Criteria criteria = relatedNumResultExample.createCriteria();
+                                criteria.andTargetNameEqualTo(result.getTargetName());
+                                log.error("更新关联结果表前");
+                                relatedNumResultMapper.updateByExampleSelective(relatedNumResult, relatedNumResultExample);
+                                log.error("更新关联结果表后");
+                            }else{
+                                relatedNumResult.setTargetName(result.getTargetName());
+                                relatedNumResult.setTargetFace(result.getTargetFaceStorageUrl());
+                                log.error("插入relatedNum表");
+                                relatedNumResultMapper.insertSelective(relatedNumResult);
+                                log.error("插入relatedNum表结束");
+                            }
 
-                    String data = JSON.toJSONString(map);
-                        webSocket.sendOneMessage("admin123", data);
                 }
+
+                String data = JSON.toJSONString(map);
+                webSocket.sendOneMessage("admin123", data);
+            }
 
             BeanUtils.copyProperties(cameraCatInfo,faceRecognitionInfo);
             cameraCatInfo.setCreateTime(LocalDateTime.now());
             //抓拍入库
             cameraCatInfoMapper.insertSelective(cameraCatInfo);
-
-
-
         }
     }
 }

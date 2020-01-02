@@ -109,7 +109,7 @@ public class AdminAuthController {
         return ResponseUtil.ok();
     }
 
-    @RequiresPermissions(value={"admin123"},logical= Logical.OR)
+
     @GetMapping("/info")
     public Object infos() {
         Subject currentUser = SecurityUtils.getSubject();
