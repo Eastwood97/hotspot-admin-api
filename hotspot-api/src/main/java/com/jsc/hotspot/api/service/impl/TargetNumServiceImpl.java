@@ -38,7 +38,7 @@ public class TargetNumServiceImpl implements TargetNumService {
         HotTargetInfoExample example=new HotTargetInfoExample();
         HotTargetInfoExample.Criteria criteria=example.createCriteria();
         if (!StringUtils.isEmpty(targetName)) {
-            criteria.andTargetNameLike("%"+targetName+"%");
+            criteria.andTargetNameLike(targetName+"%");
 
         }
         if (!StringUtils.isEmpty(imsi)) {

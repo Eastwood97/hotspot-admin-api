@@ -21,7 +21,7 @@ public class RelatedNumServiceImpl implements RealtedNumService {
     public List<RelatedNumResult> query(Integer page, Integer limit,String targetName) {
         RelatedNumResultExample example=new RelatedNumResultExample();
         if (null!=targetName&&!targetName.equals("")){
-            example.or().andTargetNameEqualTo(targetName);
+            example.or().andTargetNameLike(targetName+"%");
         }
         PageHelper.startPage(page, limit);
          return  relatedNumResultMapper.selectByExampleSelective(example);
