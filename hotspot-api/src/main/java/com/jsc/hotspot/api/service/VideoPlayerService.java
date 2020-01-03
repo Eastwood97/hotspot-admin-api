@@ -1,5 +1,6 @@
 package com.jsc.hotspot.api.service;
 
+import com.jsc.hotspot.api.dto.RecordVideoDTO;
 import com.jsc.hotspot.common.biz.BizResult;
 
 import java.util.List;
@@ -14,5 +15,12 @@ public interface VideoPlayerService {
      * @return
      */
     BizResult<List<String>> getVideoRTSPUrl();
+
+    /**
+     * 下載視頻到本地
+     * @param recordVideoDTO
+     * @return
+     */
+    BizResult<List<String>> getDownLoadVideo(RecordVideoDTO recordVideoDTO);
 
 }

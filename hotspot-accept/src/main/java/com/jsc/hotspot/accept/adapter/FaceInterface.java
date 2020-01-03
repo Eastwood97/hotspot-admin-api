@@ -1,5 +1,6 @@
 package com.jsc.hotspot.accept.adapter;
 
+import com.jsc.hotspot.common.bean.FileInfo;
 import com.sun.jna.NativeLong;
 import org.dom4j.DocumentException;
 
@@ -15,8 +16,8 @@ public interface FaceInterface {
     boolean CreateFDLib(String FDLibName, NativeLong lUserID) throws DocumentException;
     boolean DeleteFDLib(NativeLong lUserID);
     boolean UploadFile(int index, NativeLong lUserID);
-    void UploadSend(InputStream inputStream);
-    void UploadFaceLinData(NativeLong lUserID, InputStream inputStream);
+    void UploadSend(InputStream inputStream, FileInfo fileInfo);
+    void UploadFaceLinData(NativeLong lUserID, InputStream inputStream, FileInfo fileInfo);
     NativeLong getUploadState();
     void SetFaceAppendData(NativeLong lUserID);
     void DeleteFaceAppendData(NativeLong lUserID);

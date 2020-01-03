@@ -22,7 +22,7 @@ public class HttpUtil {
     public static String sendPost(String paramJSON, String url) {
         HttpClient client = new HttpClient();
         client.getHttpConnectionManager().getParams().setConnectionTimeout(15000);
-        PostMethod postMethod = new PostMethod(UrlConst.SDK_URL);
+        PostMethod postMethod = new PostMethod(url);
         postMethod.getParams().setParameter(HttpMethodParams.SO_TIMEOUT, 60000);
         postMethod.addRequestHeader("Content-Type", "application/json");
 

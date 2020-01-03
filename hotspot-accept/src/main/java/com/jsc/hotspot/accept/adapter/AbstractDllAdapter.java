@@ -1,6 +1,9 @@
 package com.jsc.hotspot.accept.adapter;
 
 import com.jsc.hotspot.common.bean.VideoDownLoadBean;
+import com.jsc.hotspot.common.biz.BizResult;
+
+import java.time.LocalDateTime;
 
 /**
  * @author huixing
@@ -22,4 +25,5 @@ public interface AbstractDllAdapter {
     void GetShortVideoFile(VideoDownLoadBean videoDownLoadBean);
 
     void getLibrary();
+
 }

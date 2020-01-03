@@ -3,6 +3,7 @@ package com.jsc.hotspot.accept.adapter.impl;
 import com.jsc.hotspot.accept.adapter.FaceInterface;
 import com.jsc.hotspot.accept.adapter.HaiKDllInterfaceAdapter;
 import com.jsc.hotspot.accept.sdk.HCNetSDK;
+import com.jsc.hotspot.common.bean.FileInfo;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
@@ -115,7 +116,7 @@ public class HaiKDllFaceImpl implements FaceInterface {
                             if (e2.getName().equals("FDID"))
                             {
                                 String fdid = e2.getText();
-                                tmp.dwFDID = Integer.parseInt(fdid);
+                                tmp.dwFDID = fdid;
                             }
                         }
                         m_FDLibList.add(tmp);
@@ -224,8 +225,8 @@ public class HaiKDllFaceImpl implements FaceInterface {
         HCNetSDK.NET_DVR_XML_CONFIG_INPUT struInput = new HCNetSDK.NET_DVR_XML_CONFIG_INPUT();
         struInput.dwSize = struInput.size();
 
-        int index = 0;
-        int id = m_FDLibList.get(index).dwFDID;
+        int index = 1;
+        String id = m_FDLibList.get(index).dwFDID;
         String str = "DELETE /ISAPI/Intelligent/FDLib/" + id;
         HCNetSDK.BYTE_ARRAY ptrUrl = new HCNetSDK.BYTE_ARRAY(HCNetSDK.BYTE_ARRAY_LEN);
         System.arraycopy(str.getBytes(), 0, ptrUrl.byValue, 0, str.length());
@@ -285,24 +286,50 @@ public class HaiKDllFaceImpl implements FaceInterface {
         }
     }
 
-    public void UploadSend(InputStream picfile)
+    public void UploadSend(InputStream picfile, FileInfo fileInfo)
     {
+//        FileInputStream xmlfile = null;
+//        int picdataLength = 0;
+//        int xmldataLength = 0;
+//
+//        try{
+//            xmlfile = new FileInputStream(new File(System.getProperty("user.dir") + "\\data.xml"));
+//        }
+//        catch(FileNotFoundException e)
+//        {
+//            e.printStackTrace();
+//        }
+//        FileInputStream picfile = null;
         FileInputStream xmlfile = null;
         int picdataLength = 0;
         int xmldataLength = 0;
-
-        try{
-            xmlfile = new FileInputStream(new File(System.getProperty("user.dir") + "\\data.xml"));
-        }
-        catch(FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
+        String xmlfile1 = null;
+        byte[] xmlBytes = null;
+//            picfile = new FileInputStream(new File(System.getProperty("user.dir") + "\\face.jpg"));
+        xmlfile1 = "<?xml version=\"1.0\"?>\n" +
+                "<FaceAppendData xmlns=\"http://www.hikvision.com/ver20/XMLSchema\" version=\"2.0\">\n" +
+                "    <bornTime></bornTime>\n" +
+                "    <name>" + fileInfo.getTargetName() + "</name>\n" +
+                "    <sex></sex>\n" +
+                "    <province>11</province>\n" +
+                "    <city></city>\n" +
+                "    <certificateType></certificateType>\n" +
+                "    <certificateNumber></certificateNumber>\n" +
+                "    <PersonInfoExtendList>\n" +
+                "        <PersonInfoExtend>\n" +
+                "            <id>1</id>\n" +
+                "            <enable>false</enable>\n" +
+                "            <name>test1</name>\n" +
+                "            <value>test2</value>\n" +
+                "        </PersonInfoExtend>\n" +
+                "    </PersonInfoExtendList>\n" +
+                "</FaceAppendData>";
+        xmlBytes = xmlfile1.getBytes();
 
 
         try{
             picdataLength = picfile.available();
-            xmldataLength = xmlfile.available();
+            xmldataLength = xmlBytes.length;
         }
         catch(IOException e1)
         {
@@ -323,7 +350,7 @@ public class HaiKDllFaceImpl implements FaceInterface {
 
         try {
             picfile.read(ptrpicByte.byValue);
-            xmlfile.read(ptrxmlByte.byValue);
+            ptrxmlByte.byValue = xmlBytes;
         } catch (IOException e2) {
             e2.printStackTrace();
         }
@@ -333,7 +360,8 @@ public class HaiKDllFaceImpl implements FaceInterface {
 
 
         HCNetSDK.NET_DVR_SEND_PARAM_IN struSendParam = new HCNetSDK.NET_DVR_SEND_PARAM_IN();
-
+        struSendParam.byPicURL = 0;
+//        struSendParam
         struSendParam.pSendData = ptrpicByte.getPointer();
         struSendParam.dwSendDataLen = picdataLength;
         struSendParam.pSendAppendData = ptrxmlByte.getPointer();
@@ -364,14 +392,13 @@ public class HaiKDllFaceImpl implements FaceInterface {
 
         try {
             picfile.close();
-            xmlfile.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
-    public void UploadFaceLinData(NativeLong lUserID, InputStream picStream)
+    public void UploadFaceLinData(NativeLong lUserID, InputStream picStream, FileInfo fileInfo)
     {
         if(m_lUploadHandle.longValue() != -1)
         {
@@ -385,7 +412,7 @@ public class HaiKDllFaceImpl implements FaceInterface {
             }
         }
 
-        int index = 0;
+        int index = 1;
         UploadFile(index, lUserID);
 
         if (m_lUploadHandle.longValue() < 0)
@@ -401,7 +428,7 @@ public class HaiKDllFaceImpl implements FaceInterface {
         {
             public void run()
             {
-                UploadSend(picStream);
+                UploadSend(picStream, fileInfo);
                 while(true)
                 {
                     if (-1 == m_lUploadHandle.longValue())
@@ -481,8 +508,8 @@ public class HaiKDllFaceImpl implements FaceInterface {
         struInput.dwSize = struInput.size();
 
         // TODO 后期会添加不同的库
-        int index = 0;
-        int id = m_FDLibList.get(index).dwFDID;
+        int index = 1;
+        String id = m_FDLibList.get(index).dwFDID;
 
         String str = "PUT /ISAPI/Intelligent/FDLib/" + id + "/picture/" + m_picID;
         HCNetSDK.BYTE_ARRAY ptrSetFaceAppendDataUrl = new HCNetSDK.BYTE_ARRAY(HCNetSDK.BYTE_ARRAY_LEN);
@@ -528,8 +555,8 @@ public class HaiKDllFaceImpl implements FaceInterface {
 
     public void DeleteFaceAppendData(NativeLong lUserID)
     {
-        int index = 0;
-        int id = m_FDLibList.get(index).dwFDID;
+        int index = 1;
+        String id = m_FDLibList.get(index).dwFDID;
 
         String str = "DELETE /ISAPI/Intelligent/FDLib/" + id + "/picture/" + m_picID;
 
@@ -618,8 +645,8 @@ public class HaiKDllFaceImpl implements FaceInterface {
                 while (!isQuit)
                 {
                     //返回true，说明支持人脸
-                    int index = 0;
-                    int id = m_FDLibList.get(index).dwFDID;
+                    int index = 1;
+                    String id = m_FDLibList.get(index).dwFDID;
 
                     HCNetSDK.NET_DVR_XML_CONFIG_INPUT	struInput = new HCNetSDK.NET_DVR_XML_CONFIG_INPUT();
                     struInput.dwSize = struInput.size();

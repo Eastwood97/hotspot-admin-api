@@ -13,5 +13,5 @@ import java.time.LocalDateTime;
 public class VideoDownLoadBean {
     private LocalDateTime startTime;
     private LocalDateTime stopTime;
-    private String storeFileName;
+    private String storeFileName = "D:\\Video";
 }

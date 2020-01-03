@@ -66,7 +66,8 @@ public class TargetFaceServiceImpl implements TargetFaceService {
         // 创建HTTPClient实例对象
         String paramJSON = fileName;
         FileInfo fileInfo = new FileInfo();
-        fileInfo.setUrl(fileName);
+
+        fileInfo.setUrl(JSON.toJSONString(map));
         fileInfo.setTargetName(targetFace.getTargetName());
         fileInfo.setDescribe(targetFace.getDesc());
         String response = HttpUtil.sendPost(JSON.toJSONString(fileInfo), UrlConst.SDK_URL);
@@ -75,7 +76,7 @@ public class TargetFaceServiceImpl implements TargetFaceService {
                 logger.debug("TargetFaceServiceImpl 通过Http请求进行布控：" + response);
             }
         }
-        targetFaceMapper.insertSelective(cameraTargetFace);
+        //targetFaceMapper.insertSelective(cameraTargetFace);
     }
 
 

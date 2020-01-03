@@ -7,4 +7,6 @@ package com.jsc.hotspot.api.config;
  */
 public class UrlConst {
     public static String SDK_URL = "http://127.0.0.1:9090/sdk/upload";
+
+    public static String SDK_DOWNLOAD_URL = "http://127.0.0.1:9090/sdk/download/video";
 }

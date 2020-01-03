@@ -4255,7 +4255,7 @@ EMAIL参数结构
     // 人脸库相关操作
 
     public static class NET_DVR_FDLIB_PARAM extends Structure {
-        public int dwFDID;
+        public String dwFDID;
         public String szFDName;
         public int dwID;
     }
@@ -4292,7 +4292,7 @@ EMAIL参数结构
     }
 
     public static class NET_DVR_UPLOAD_FILE_RET extends Structure {
-        public byte sUrl[];
+        public byte sUrl[] = new byte[260];
         public byte[] byRes = new byte[260];
     }
 

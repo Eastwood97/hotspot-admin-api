@@ -30,9 +30,9 @@ import java.lang.reflect.Method;
  * @description Lettuce客户端
  * @date 2019/11/14
  */
-//@Configuration
-//@EnableCaching
-//@AutoConfigureAfter(RedisAutoConfiguration.class)
+@Configuration
+@EnableCaching
+@AutoConfigureAfter(RedisAutoConfiguration.class)
 public class RedisCacheAutoConfiguration extends CachingConfigurerSupport {
 
 

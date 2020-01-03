@@ -1,6 +1,7 @@
 package com.jsc.hotspot.accept.adapter;
 
 import com.jsc.hotspot.common.bean.FileInfo;
+import com.jsc.hotspot.common.bean.VideoDownLoadBean;
 import com.jsc.hotspot.common.biz.BizResult;
 
 /**
@@ -20,4 +21,7 @@ public interface HaiKDllInterfaceAdapter extends AbstractDllAdapter{
     void StartDownload();
 
     int getlUserID();
+
+    BizResult<Boolean> downLoadVideo(VideoDownLoadBean videoDownLoadBean);
+
 }
