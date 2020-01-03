@@ -21,4 +21,5 @@ public interface HoTnumInfoService {
     List getGuiShuDiList();
     List<Map> getTraffic(Integer devId, String[] createTime);
     Object getDifferentCountries(Integer devId, String[] createTime);
+    PageResult selecttongxingList(Integer currentPage, Integer pageSize, Integer createTime,String imsi);
 }

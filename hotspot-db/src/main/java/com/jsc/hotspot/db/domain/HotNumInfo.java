@@ -1,5 +1,7 @@
 package com.jsc.hotspot.db.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,6 +59,7 @@ public class HotNumInfo {
      *
      * @mbg.generated
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime captureTime;
 
     /**

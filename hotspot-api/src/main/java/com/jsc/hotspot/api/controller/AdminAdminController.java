@@ -81,10 +81,10 @@ public class AdminAdminController {
 
     @PostMapping("/update")
     public Object update(@RequestBody Admin admin) {
-        Object error = validate(admin);
-        if (error != null) {
-            return error;
-        }
+//        Object error = validate(admin);
+//        if (error != null) {
+//            return error;
+//        }
         Integer anotherAdminId = Math.toIntExact(admin.getId());
         if (anotherAdminId == null) {
             return ResponseUtil.badArgument();

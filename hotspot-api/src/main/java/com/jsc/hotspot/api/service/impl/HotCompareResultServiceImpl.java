@@ -6,9 +6,11 @@ import com.github.pagehelper.PageHelper;
 import com.jsc.hotspot.api.service.HotCompareResultService;
 import com.jsc.hotspot.db.dao.HotCompareResultMapper;
 import com.jsc.hotspot.db.dao.HotTargetInfoMapper;
+import com.jsc.hotspot.db.dao.ext.HotCompareResultEXTMapper;
 import com.jsc.hotspot.db.domain.HotCompareResult;
 import com.jsc.hotspot.db.domain.HotCompareResultExample;
 import com.jsc.hotspot.db.entity.CountList;
+import com.jsc.hotspot.db.entity.HotCompareResultList;
 import com.jsc.hotspot.db.entity.PageResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,36 +32,13 @@ public class HotCompareResultServiceImpl implements HotCompareResultService {
     private HotCompareResultMapper hotCompareResultDAOMapper;
     @Autowired
     private HotTargetInfoMapper hotTargetInfoDAOMapper;
+    @Autowired
+    private HotCompareResultEXTMapper hotCompareResultEXTMapper;
     @Override
-    public PageResult findHotCompareResult(int page, int row, HotCompareResult hotCompareResultDAO) {
+    public PageResult findHotCompareResult(int page, int row, HotCompareResultList hotCompareResultList) {
         PageHelper.startPage(page,row);
-        HotCompareResultExample hotCompareResultDAOExample = new HotCompareResultExample();
-        HotCompareResultExample.Criteria criteria = hotCompareResultDAOExample.createCriteria();
-        if(hotCompareResultDAO.getImsi() != null && hotCompareResultDAO.getImsi().length() > 0){
-            criteria.andImsiLike("%"+hotCompareResultDAO.getImsi()+"%");
-        }
-        if(hotCompareResultDAO.getImei() != null && hotCompareResultDAO.getImei().length() > 0){
-            criteria.andImeiLike("%"+hotCompareResultDAO.getImei()+"%");
-        }
-        if(hotCompareResultDAO.getIsdn() != null && hotCompareResultDAO.getIsdn().length() > 0){
-            criteria.andIsdnLike("%"+hotCompareResultDAO.getIsdn()+"%");
-        }
-        if(hotCompareResultDAO.getMode() != null){
-            criteria.andModeEqualTo(hotCompareResultDAO.getMode());
-        }
-        if(hotCompareResultDAO.getCaptureTime() != null){
-            criteria.andCaptureTimeBetween( LocalDateTime.of(hotCompareResultDAO.getCaptureTime().toLocalDate(), LocalTime.MIN), LocalDateTime.of(hotCompareResultDAO.getCaptureTime().toLocalDate(), LocalTime.MAX));
-        }
-        if(hotCompareResultDAO.getFrtDevId() != null){
-            criteria.andFrtDevIdEqualTo(hotCompareResultDAO.getFrtDevId());
-        }
-        if(hotCompareResultDAO.getTargetId() != null){
-            criteria.andTargetIdEqualTo(hotCompareResultDAO.getTargetId());
-        }
-        if(hotCompareResultDAO.getAttribution() != null){
-            criteria.andAttributionLike(hotCompareResultDAO.getAttribution());
-        }
-        Page<HotCompareResult> page1 = (Page<HotCompareResult>) hotCompareResultDAOMapper.selectByExample(hotCompareResultDAOExample);
+        List list = hotCompareResultEXTMapper.selectHotCompareResult(hotCompareResultList);
+        Page<HotCompareResult> page1 = (Page<HotCompareResult>) list;
         return new PageResult(page1.getTotal(),page1.getResult());
     }
 

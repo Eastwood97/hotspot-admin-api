@@ -39,5 +39,6 @@ public interface HotNumInfoEXTMapper {
     List<Map> selectGuoBieCount(@Param(value ="devId") Integer devId, @Param(value ="startTime") Date startTime, @Param(value ="endTime") Date endTime);
     Map selectGuojiCount(@Param(value ="devId") Integer devId, @Param(value ="startTime") Date startTime, @Param(value ="endTime") Date endTime);
     Map selectGuojiCounts(@Param(value ="devId") Integer devId, @Param(value ="startTime") Date startTime, @Param(value ="endTime") Date endTime);
-
+    List<Map> selectbansuiLists(@Param(value ="id") Long id, @Param(value ="devId") Long devId, @Param(value ="imsi") String imsi,
+                                @Param(value ="createTime") Integer createTime);
 }

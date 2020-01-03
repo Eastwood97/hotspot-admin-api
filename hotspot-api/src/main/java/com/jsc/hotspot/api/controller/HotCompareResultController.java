@@ -8,6 +8,7 @@ import com.jsc.hotspot.common.utils.response.ResponseUtil;
 import com.jsc.hotspot.db.domain.HotCompareResult;
 import com.jsc.hotspot.db.domain.HotNumInfo;
 import com.jsc.hotspot.db.entity.CountList;
+import com.jsc.hotspot.db.entity.HotCompareResultList;
 import com.jsc.hotspot.db.entity.PageResult;
 import com.jsc.hotspot.db.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +45,8 @@ public class HotCompareResultController {
      * @date: 2019/11/7 0007 11:18
      */
     @RequestMapping(value = "/hotcompareresult", method = RequestMethod.GET)
-    public Object findHotCompareResult(int page, int row, HotCompareResult hotCompareResultDAO) {
-        PageResult hotCompareResult = hotCompareResultService.findHotCompareResult(page, row, hotCompareResultDAO);
+    public Object findHotCompareResult(int page, int row, HotCompareResultList hotCompareResultList) {
+        PageResult hotCompareResult = hotCompareResultService.findHotCompareResult(page, row, hotCompareResultList);
         return ResponseUtil.ok(hotCompareResult);
     }
 

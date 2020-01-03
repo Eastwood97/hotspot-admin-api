@@ -6,6 +6,7 @@ import com.jsc.hotspot.api.service.HotFrontDeviceOptionService;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
 import com.jsc.hotspot.db.domain.HotFrontDevice;
 import com.jsc.hotspot.db.domain.HotFrontDeviceOption;
+import com.jsc.hotspot.db.entity.PageResult;
 import com.jsc.hotspot.db.entity.Traffic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -99,5 +100,24 @@ public class DataFenXiController {
         }catch (Exception e){
             return ResponseUtil.fail();
         }
+    }
+    /**
+     *
+     * 功能描述: 同行分析
+     *
+     * @param:
+     * @return:
+     * @auther: ww
+     * @date: 2019/12/16 0016 14:54
+     */
+    @RequestMapping(value = "/tongxingList", method = RequestMethod.GET)
+    public Object getTongXingLists(Integer currentPage, Integer pageSize, Integer createTime,String imsi) {
+        try {
+            PageResult pageResult = hoTnumInfoService.selecttongxingList(currentPage, pageSize,createTime,imsi);
+            return ResponseUtil.ok(pageResult);
+        }catch (Exception e){
+            return ResponseUtil.fail();
+        }
+//
     }
 }

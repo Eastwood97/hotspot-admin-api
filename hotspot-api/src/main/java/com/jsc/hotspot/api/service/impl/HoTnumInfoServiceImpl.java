@@ -8,6 +8,8 @@ import com.jsc.hotspot.db.dao.HotNumInfoMapper;
 import com.jsc.hotspot.db.dao.ext.HotNumInfoEXTMapper;
 import com.jsc.hotspot.db.domain.HotNumInfo;
 import com.jsc.hotspot.db.domain.HotNumInfoExample;
+import com.jsc.hotspot.db.entity.HotNumInfoObject;
+import com.jsc.hotspot.db.entity.ListSub;
 import com.jsc.hotspot.db.entity.PageResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,19 +40,21 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         HotNumInfoExample.Criteria criteria = hotNumInfoDAOExample.createCriteria();
 //        判断数据
         if (hotNumInfoDAO.getImsi() != null && hotNumInfoDAO.getImsi().length() > 0) {
-            criteria.andImsiLike("%" + hotNumInfoDAO.getImsi() + "%");
+            criteria.andImsiLike( hotNumInfoDAO.getImsi() + "%");
         }
         if (hotNumInfoDAO.getImei() != null && hotNumInfoDAO.getImei().length() > 0) {
-            criteria.andImeiLike("%" + hotNumInfoDAO.getImei() + "%");
+            criteria.andImeiLike(hotNumInfoDAO.getImei() + "%");
         }
         if (hotNumInfoDAO.getIsdn() != null && hotNumInfoDAO.getIsdn().length() > 0) {
-            criteria.andIsdnLike("%" + hotNumInfoDAO.getIsdn() + "%");
+            criteria.andIsdnLike( hotNumInfoDAO.getIsdn() + "%");
         }
         if (hotNumInfoDAO.getMode() != null ) {
             criteria.andModeEqualTo(hotNumInfoDAO.getMode());
         }
         if (hotNumInfoDAO.getCaptureTime() != null) {
-            criteria.andCaptureTimeBetween( LocalDateTime.of(hotNumInfoDAO.getCaptureTime().toLocalDate(), LocalTime.MIN), LocalDateTime.of(hotNumInfoDAO.getCaptureTime().toLocalDate(), LocalTime.MAX));
+            LocalDateTime of = LocalDateTime.of(hotNumInfoDAO.getCaptureTime().toLocalDate(), LocalTime.MIN);
+            LocalDateTime of1 = LocalDateTime.of(hotNumInfoDAO.getCaptureTime().toLocalDate(), LocalTime.MAX);
+            criteria.andCaptureTimeBetween(of,of1);
         }
         if (hotNumInfoDAO.getDevId() != null) {
             criteria.andDevIdEqualTo(hotNumInfoDAO.getDevId());
@@ -61,6 +65,7 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         if (hotNumInfoDAO.getId() != null) {
             criteria.andIdEqualTo(hotNumInfoDAO.getId());
         }
+        hotNumInfoDAOExample.setOrderByClause("capture_time desc");
         Page<HotNumInfo> pages = (Page<HotNumInfo>) hotNumInfoMapper.selectByExample(hotNumInfoDAOExample);
         return new PageResult(pages.getTotal(), pages.getResult());
     }
@@ -141,8 +146,8 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         Date startTime = formatter.parse(createTime[0], pos);
         Date endTime = formatter.parse(createTime[1], pos1);
         Date[] date = new Date[2];
-        date[0]=startTime;
-        date[1]=endTime;
+        date[0] = startTime;
+        date[1] = endTime;
         Date[] objects = getDate(date);
         List<Map> guoBieList = selectGuoBieCount(devId, date);//各省
         List GuojiCountList = selectGuojiCount(devId, date);//国内外数量
@@ -156,20 +161,132 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         return objectObjectHashMap;
     }
 
+    public List<HotNumInfo> selectbansuiList(String imsi) {
+        HotNumInfo hotNumInfo = new HotNumInfo();
+        HotNumInfoExample hotNumInfoDAOExample = new HotNumInfoExample();
+        HotNumInfoExample.Criteria criteria = hotNumInfoDAOExample.createCriteria();
+//        判断数据
+        criteria.andImsiEqualTo(imsi);
+        hotNumInfo.setImsi(imsi);
+        List<HotNumInfo> hotNumInfoList = hotNumInfoMapper.selectByExample(hotNumInfoDAOExample);
+        return hotNumInfoList;
+    }
+
+    @Override
+    public PageResult selecttongxingList(Integer currentPage, Integer pageSize, Integer createTime, String imsi) {
+        List<Map<String, Object>> ListOne = new ArrayList<>();
+        List<HotNumInfo> dataMessages = this.selectbansuiList(imsi);
+        List<List<Map>> list = new ArrayList<>();
+        for (HotNumInfo message : dataMessages) {
+            List<Map> dataMessages1 = hotNumInfoEXTMapper.selectbansuiLists(message.getId(),
+                    message.getDevId(), message.getImsi(), createTime);
+            list.add(dataMessages1);
+        }
+        for (int i = 0; i < list.size(); i++) {//循环大的
+            List<Map> dataMessages1 = list.get(i);//获取第二个往后
+            for (int k = 0; k < dataMessages1.size(); k++) {
+                Integer id = (Integer) dataMessages1.get(k).get("id");
+                Integer devId = (Integer) dataMessages1.get(k).get("dev_Id");
+                String imsi1 = (String) dataMessages1.get(k).get("imsi");
+                String imei = (String) dataMessages1.get(k).get("imei");
+                String area = (String) dataMessages1.get(k).get("attribution");
+                String shengshi = (String) dataMessages1.get(k).get("attribution");
+                String location = (String) dataMessages1.get(k).get("attribution");
+                Map<String, Object> map = new HashMap<>();
+                map.put("id", id);
+                map.put("devId", devId);
+                map.put("imsi", imsi1);
+                map.put("imei", imei);
+                map.put("area", area);
+                map.put("shengshi", shengshi);
+                map.put("location", location);
+                map.put("num", 0);
+                ListOne.add(map);
+            }
+        }
+        List<Map<String, Object>> maps = this.removeRepeatMapByKey(ListOne);
+        List<HotNumInfoObject> Lists = new ArrayList<>();
+        for (Map<String, Object> map : maps) {
+            Integer id = (Integer) map.get("id");
+            Integer devId = (Integer) map.get("devId");
+            String imsi1 = (String) map.get("imsi");
+            String imei = (String) map.get("imei");
+            String area = (String) map.get("area");
+            String shengshi = (String) map.get("attribution");
+            String location = (String) map.get("location");
+            Integer num = (Integer) map.get("num");
+            Lists.add(new HotNumInfoObject(id, devId, imsi1, imei, area, shengshi, location, num));
+
+        }
+        List<HotNumInfoObject> sort = this.sort(Lists);
+        ListSub<HotNumInfoObject> objectListSub = new ListSub<>(currentPage, pageSize, sort);
+        return new PageResult(objectListSub.getTotal(), objectListSub.getList());
+    }
+    /**
+     * 功能描述: 对list中map进行排序
+     *
+     * @param:
+     * @return:
+     * @auther: ww
+     * @date: 2019/12/17 0017 7:59
+     */
+    public List<HotNumInfoObject> sort(List<HotNumInfoObject> list) {
+        if (list != null && list.size() > 1) {
+            Collections.sort(list, new Comparator<HotNumInfoObject>() {
+                @Override
+                public int compare(HotNumInfoObject o1, HotNumInfoObject o2) {
+                    Integer num1 = o1.getNum();
+                    Integer num2 = o2.getNum();
+                    return num2.compareTo(num1);
+                }
+            });
+        }
+        return list;
+    }
+    /**
+     * 功能描述: 根据map中的某个key 去除List中重复的map
+     *
+     * @param:
+     * @return:
+     * @auther: ww
+     * @date: 2019/12/17 0017 8:48
+     */
+    public static List<Map<String, Object>> removeRepeatMapByKey(List<Map<String, Object>> list) {
+
+        List<Integer> integerList = new ArrayList<>();
+        for (int i = 0; i < list.size() - 1; i++) {
+            for (int j = i + 1; j < list.size(); j++) {
+                Map<String, Object> map = list.get(i);
+                String imsi1 = (String) map.get("imsi");
+                Map<String, Object> maps = list.get(j);
+                String imsi2 = (String) maps.get("imsi");
+                if (imsi1.equals(imsi2)) {
+                    integerList.add(j);
+                    Integer num = (Integer) map.get("num");
+                    map.put("num", num + 1);
+                    list.remove(j);
+                }
+            }
+        }
+
+        return list;
+    }
     public List<Map> selectGuoBieCount(Integer devId, Date[] createTime) {
         Date[] objects = getDate(createTime);
-        List<Map> list = hotNumInfoEXTMapper.selectGuoBieCount(devId, createTime[0],createTime[1]);
+        List<Map> list = hotNumInfoEXTMapper.selectGuoBieCount(devId, createTime[0], createTime[1]);
         return getGuoBieList(objects.length - 1, objects, list, devId);
     }
+
     public List selectGuojiCount(Integer devId, Date[] createTime) {
         Date[] objects = getDate(createTime);
-        Map myCountryCount = hotNumInfoEXTMapper.selectGuojiCount(devId, createTime[0],createTime[1]);
-        Map BroadCount = hotNumInfoEXTMapper.selectGuojiCounts(devId, createTime[0],createTime[1]);
+        Map myCountryCount = hotNumInfoEXTMapper.selectGuojiCount(devId, createTime[0], createTime[1]);
+        Map BroadCount = hotNumInfoEXTMapper.selectGuojiCounts(devId, createTime[0], createTime[1]);
         ArrayList<Object> objects1 = new ArrayList<>();
         objects1.add(myCountryCount);
         objects1.add(BroadCount);
         return objects1;
     }
+
     public Date[] getDate(Date[] createTime) {
         Calendar calendar = new GregorianCalendar();
         Integer nd = 1000 * 24 * 60 * 60;
@@ -247,6 +364,7 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
             return day2 - day1;
         }
     }
+
     public List<Map> getGuoBieList(Integer index, Date[] objects, List<Map> list, Integer devId) {
         List<Map> lists = new ArrayList<>();
         for (int i = 0; i <= index; i++) {

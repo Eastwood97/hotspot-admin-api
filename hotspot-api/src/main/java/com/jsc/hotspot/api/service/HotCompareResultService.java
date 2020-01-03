@@ -3,6 +3,7 @@ package com.jsc.hotspot.api.service;
 
 import com.jsc.hotspot.db.domain.HotCompareResult;
 import com.jsc.hotspot.db.entity.CountList;
+import com.jsc.hotspot.db.entity.HotCompareResultList;
 import com.jsc.hotspot.db.entity.PageResult;
 
 /**
@@ -12,7 +13,7 @@ import com.jsc.hotspot.db.entity.PageResult;
  */
 
 public interface HotCompareResultService {
-    PageResult findHotCompareResult(int page, int row, HotCompareResult hotCompareResultDAO);
+    PageResult findHotCompareResult(int page, int row, HotCompareResultList hotCompareResultDAO);
     void deleteHotCompareResult(String id);
     CountList findHotCompareResultCount();
     void insertHotCompareResult(HotCompareResult hotCompareResult);
