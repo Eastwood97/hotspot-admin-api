@@ -500,7 +500,7 @@
   </select>
 
   <select id="selectMyGeGuoCount" resultType="java.util.Map">
-    SELECT COUNT(*)AS num,"国内" AS country FROM
+    SELECT COUNT(*)AS num,"中国" AS country FROM
     hot_num_info a RIGHT JOIN (SELECT <include refid="Base_Column_List"/> FROM hot_num_info GROUP BY imsi) AS b
     ON  a.dev_id=#{devId} AND a.imsi LIKE '460%' AND DATE(a.create_time)
     BETWEEN date(#{startTime}) AND  date(#{endTime})  WHERE  a.id=b.id
@@ -509,7 +509,7 @@
   <select id="selectGuoWaiGeGuoCount" resultType="java.util.Map">
     SELECT COUNT(*)AS num,a.attribution as country FROM
     hot_num_info a RIGHT JOIN (SELECT <include refid="Base_Column_List"/> FROM hot_num_info GROUP BY imsi) AS b
-    ON  a.dev_id=#{devId} AND a.imsi LIKE '460%' AND DATE(a.create_time)
+    ON  a.dev_id=#{devId} AND a.imsi not LIKE '460%' AND DATE(a.create_time)
     BETWEEN date(#{startTime}) AND  date(#{endTime})  WHERE  a.id=b.id
     GROUP BY a.attribution limit 9
   </select>

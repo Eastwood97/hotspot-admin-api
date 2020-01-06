@@ -9,6 +9,6 @@ import java.util.List;
 @Mapper
 public interface HotTargetInfoEXTMapper {
     int deleteNumById(@Param("targetIds") String [] targetIds);
-
+    HotTargetInfo selectHeimingdan(String imsi, String imei);
     int insertForeach(List<HotTargetInfo> list);
 }
