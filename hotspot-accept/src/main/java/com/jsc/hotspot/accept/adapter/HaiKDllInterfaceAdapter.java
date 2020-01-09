@@ -24,4 +24,19 @@ public interface HaiKDllInterfaceAdapter extends AbstractDllAdapter{
 
     BizResult<Boolean> downLoadVideo(VideoDownLoadBean videoDownLoadBean);
 
+    void initdll();
+
+    void exit();
+
+    void register();
+
+    void Logout();
+
+    void SetupAlarmChan();
+
+    void GetShortVideoFile(VideoDownLoadBean videoDownLoadBean);
+
+    void getLibrary();
+
+    BizResult<Boolean> search();
 }

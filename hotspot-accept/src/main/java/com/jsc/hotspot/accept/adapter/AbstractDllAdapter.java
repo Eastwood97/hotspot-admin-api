@@ -12,18 +12,18 @@ import java.time.LocalDateTime;
  */
 public interface AbstractDllAdapter {
 
-    void initdll();
-
-    void exit();
-
-    void register();
-
-    void Logout();
-
-    void SetupAlarmChan();
-
-    void GetShortVideoFile(VideoDownLoadBean videoDownLoadBean);
-
-    void getLibrary();
+//    void initdll();
+//
+//    void exit();
+//
+//    void register();
+//
+//    void Logout();
+//
+//    void SetupAlarmChan();
+//
+//    void GetShortVideoFile(VideoDownLoadBean videoDownLoadBean);
+//
+//    void getLibrary();
 
 }
