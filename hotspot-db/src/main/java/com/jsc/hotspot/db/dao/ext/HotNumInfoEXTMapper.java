@@ -21,7 +21,7 @@ public interface HotNumInfoEXTMapper {
      * @auther: ww
      * @date: 2019/11/15 0015 10:25
      */
-    List<Map> selectCount(List<Date> capture_time);
+    List<Map> selectCount(@Param(value ="startTime") Date startTime, @Param(value ="endTime") Date endTime);
     /**
      *
      * 功能描述: 归属地进行分组统计

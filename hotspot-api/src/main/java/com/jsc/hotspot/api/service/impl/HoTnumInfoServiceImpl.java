@@ -15,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -85,19 +87,60 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         long count = hotNumInfoMapper.countByExample(hotNumInfoExample);
         return count;
     }
-
+    /**
+     * 功能描述: 提取将当天时间改变为从00:00:00开始
+     *
+     * @param:
+     * @return:
+     * @auther: ww
+     * @date: 2019/12/30 0030 8:33
+     */
+    public Date changeDate(Date createTimes) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String createTime = format.format(createTimes);
+        Date parse = null;
+        try {
+            parse = dateFormat.parse(createTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return parse;
+    }
+    /**
+     * 功能描述: 获取15天公共接口
+     *
+     * @param:
+     * @return:
+     * @auther: ww
+     * @date: 2019/12/3 0003 16:25
+     */
+    public List<Date> getData(Date date, List<Date> dateList) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        for (int i = 0; i < 16; i++) {
+            if (i == 0) {
+                c.add(Calendar.DATE, 0);
+                Date d = c.getTime();
+                dateList.add(changeDate(d));
+            } else {
+                c.add(Calendar.DATE, -1);
+                Date d = c.getTime();
+                dateList.add(changeDate(d));
+            }
+        }
+        return dateList;
+    }
     @Override
     public List getHoTnumInfoDateNum() {
         Date date = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         List<Date> dateList = new ArrayList<>();
-        for (int i = 0; i < 16; i++) {
-            c.add(Calendar.DATE, -1);
-            Date d = c.getTime();
-            dateList.add(d);
-        }
-        List<Map> maps1 = hotNumInfoEXTMapper.selectCount(dateList);
+        List<Date> data = getData(date, dateList);
+        Date date1 = data.get(data.size() - 1);
+        Date date2 = data.get(0);
+        List<Map> maps1 = hotNumInfoEXTMapper.selectCount(date1,date2);
         return maps1;
     }
 
@@ -150,14 +193,13 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         date[1] = endTime;
         Date[] objects = getDate(date);
         List<Map> guoBieList = selectGuoBieCount(devId, date);//各省
-        List GuojiCountList = selectGuojiCount(devId, date);//国内外数量
+        List<Map>  GuojiCountList = selectGuojiCount(devId, date);//国内外数量
         Map<Object, Object> objectObjectHashMap = new HashMap<>();
         List<Map> GuoWaiGeGuoCount = hotNumInfoEXTMapper.selectGuoWaiGeGuoCount(devId,  startTime,endTime);
-        Map MyGuoCount = hotNumInfoEXTMapper.selectMyGeGuoCount(devId, startTime,endTime);
         objectObjectHashMap.put("guoBieList", guoBieList);
         objectObjectHashMap.put("GuojiCountList", GuojiCountList);
         objectObjectHashMap.put("GuoWaiGeGuoCount", GuoWaiGeGuoCount);
-        objectObjectHashMap.put("MyGuoCount", MyGuoCount);
+        objectObjectHashMap.put("MyGuoCount", GuojiCountList.get(0));
         return objectObjectHashMap;
     }
 
@@ -274,14 +316,14 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
     public List<Map> selectGuoBieCount(Integer devId, Date[] createTime) {
         Date[] objects = getDate(createTime);
         List<Map> list = hotNumInfoEXTMapper.selectGuoBieCount(devId, createTime[0], createTime[1]);
-        return getGuoBieList(objects.length - 1, objects, list, devId);
+        return list;
     }
 
-    public List selectGuojiCount(Integer devId, Date[] createTime) {
+    public List<Map>  selectGuojiCount(Integer devId, Date[] createTime) {
         Date[] objects = getDate(createTime);
         Map myCountryCount = hotNumInfoEXTMapper.selectGuojiCount(devId, createTime[0], createTime[1]);
         Map BroadCount = hotNumInfoEXTMapper.selectGuojiCounts(devId, createTime[0], createTime[1]);
-        ArrayList<Object> objects1 = new ArrayList<>();
+        ArrayList<Map> objects1 = new ArrayList<>();
         objects1.add(myCountryCount);
         objects1.add(BroadCount);
         return objects1;
@@ -313,11 +355,8 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
                 if (differentDays(objects[i], createTime1) == 0) {
 //                    此处添加数组
                     Map map = new HashMap();
-                    map.put("devId", time.get("dev_id"));
-                    map.put("area", time.get("attribution"));
                     map.put("createTime", time.get("create_time"));
                     map.put("num", time.get("num"));
-                    map.put("imsi", time.get("imsi"));
                     lists.add(map);
                     she = true;
                     break;
@@ -326,11 +365,10 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
             if (she == false) {
                 //                    此处添加数组
                 Map map = new HashMap();
-                map.put("devId", devId);
-                map.put("area", "");
+
                 map.put("createTime", objects[i]);
                 map.put("num", 0);
-                map.put("imsi", "");
+
                 lists.add(map);
             }
         }
@@ -369,15 +407,11 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         List<Map> lists = new ArrayList<>();
         for (int i = 0; i <= index; i++) {
             for (Map time : list) {
-                Date createTime1 = (Date) time.get("create_time");
-                if (differentDays(objects[i], createTime1) == 0) {
-//                    此处添加数组
                     Map map = new HashMap();
                     map.put("devId", time.get("dev_id"));
                     map.put("area", time.get("attribution"));
                     map.put("num", time.get("num"));
                     lists.add(map);
-                }
             }
         }
         return lists;

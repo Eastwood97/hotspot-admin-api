@@ -450,68 +450,78 @@
     </if>
     limit 1
   </select>
+
   <select id="selectCount" resultType="java.util.Map">
-    select count(*) AS num,capture_time
+    select count(*) AS num,date(create_time) as capture_time2
     from hot_num_info
     <where>
-      date(capture_time) in
-      <foreach collection="list" item="capture_time" index="index" open="(" close=")" separator=",">
-        date(#{capture_time})
-      </foreach>
+     create_time
+      BETWEEN #{startTime} AND #{endTime}
     </where>
-    GROUP BY date(capture_time)
+    GROUP BY capture_time2
   </select>
+
   <select id="selectGuiShuDiList" resultType="java.util.Map">
         select count(*) AS value,attribution AS name
         from hot_num_info
         GROUP BY attribution
     </select>
+
   <select id="selectTraffic" resultType="java.util.Map">
-    select count(*)as num,b.capture_time as create_time,b.dev_id,b.imsi,b.attribution FROM hot_num_info a RIGHT JOIN (
-    SELECT <include refid="Base_Column_List" />
-    FROM hot_num_info GROUP BY imsi,DATE(capture_time))AS b
-    ON  a.dev_id=#{devId} AND DATE(a.capture_time)
-    BETWEEN date(#{startTime}) AND  date(#{endTime})
-    WHERE  a.id=b.id GROUP BY DATE(a.capture_time)
+    SELECT
+    COUNT( DISTINCT imsi ) AS num,create_time
+    FROM
+    hot_num_info
+    WHERE
+    dev_id = 1
+    AND create_time   BETWEEN #{startTime} AND #{endTime}
+    GROUP BY
+     DATE( create_time )
   </select>
 
   <select id="selectGuoBieCount" resultType="java.util.Map">
-    SELECT b.create_time,b.dev_id,b.imsi,b.attribution,COUNT(*)AS num FROM hot_num_info a
-    RIGHT JOIN (
-    SELECT <include refid="Base_Column_List"/> FROM hot_num_info GROUP BY imsi,attribution) AS b
-    ON  a.dev_id=#{devId}  AND a.imsi LIKE '460%' AND  DATE(a.create_time)
-    BETWEEN date(#{startTime}) AND  date(#{endTime})
-    WHERE  a.id=b.id GROUP BY a.attribution LIMIT 10
+    SELECT COUNT(DISTINCT imsi)AS num,attribution FROM hot_num_info WHERE  dev_id=#{devId}
+    AND imsi LIKE '460%'
+    AND create_time
+    BETWEEN #{startTime} AND #{endTime}
+    GROUP BY attribution ORDER BY num DESC LIMIT 10
   </select>
 
   <select id="selectGuojiCount" resultType="java.util.Map">
-    SELECT COUNT(*)AS num,"国内" AS country FROM
-    hot_num_info a RIGHT JOIN (SELECT <include refid="Base_Column_List"/> FROM hot_num_info GROUP BY imsi) AS b
-    ON  a.dev_id=#{devId} AND a.imsi LIKE '460%' AND DATE(a.create_time)
-    BETWEEN date(#{startTime}) AND  date(#{endTime})  WHERE  a.id=b.id
+    SELECT "国内" AS country,COUNT(DISTINCT imsi)AS num
+    FROM hot_num_info where dev_id=#{devId}
+    and imsi LIKE '460%'
+    and create_time
+    BETWEEN #{startTime} AND #{endTime} ORDER BY num DESC LIMIT 10
   </select>
 
   <!--国内国外查询-->
   <select id="selectGuojiCounts" resultType="java.util.Map">
-    SELECT COUNT(*)AS num,"国外" AS country FROM
-    hot_num_info a RIGHT JOIN (SELECT <include refid="Base_Column_List"/> FROM hot_num_info GROUP BY imsi) AS b
-    ON  a.dev_id=#{devId} AND a.imsi not LIKE '460%' AND DATE(a.create_time)
-    BETWEEN date(#{startTime}) AND  date(#{endTime})  WHERE  a.id=b.id
+    SELECT "国外" AS country,COUNT(DISTINCT imsi)AS num
+    FROM hot_num_info
+    where dev_id=#{devId}
+    and imsi not LIKE '460%'
+    and create_time
+    BETWEEN #{startTime} AND #{endTime}
   </select>
 
   <select id="selectMyGeGuoCount" resultType="java.util.Map">
-    SELECT COUNT(*)AS num,"中国" AS country FROM
-    hot_num_info a RIGHT JOIN (SELECT <include refid="Base_Column_List"/> FROM hot_num_info GROUP BY imsi) AS b
-    ON  a.dev_id=#{devId} AND a.imsi LIKE '460%' AND DATE(a.create_time)
-    BETWEEN date(#{startTime}) AND  date(#{endTime})  WHERE  a.id=b.id
+    SELECT COUNT(DISTINCT imsi)AS num,"中国" AS country FROM
+    hot_num_info
+    where dev_id=#{devId}
+    and imsi LIKE '460%'
+    and create_time
+    BETWEEN #{startTime} AND #{endTime}
   </select>
 
   <select id="selectGuoWaiGeGuoCount" resultType="java.util.Map">
-    SELECT COUNT(*)AS num,a.attribution as country FROM
-    hot_num_info a RIGHT JOIN (SELECT <include refid="Base_Column_List"/> FROM hot_num_info GROUP BY imsi) AS b
-    ON  a.dev_id=#{devId} AND a.imsi not LIKE '460%' AND DATE(a.create_time)
-    BETWEEN date(#{startTime}) AND  date(#{endTime})  WHERE  a.id=b.id
-    GROUP BY a.attribution limit 9
+    SELECT COUNT(DISTINCT imsi)AS num,attribution as country FROM
+    hot_num_info
+    where dev_id=#{devId}
+    and imsi not LIKE '460%'
+    and create_time
+    BETWEEN #{startTime} AND #{endTime}
+    GROUP BY attribution
   </select>
   <select id="selectbansuiLists" resultType="java.util.Map">
     SELECT a.id, a.dev_id,a.imsi, a.imei, a.attribution, a.create_time FROM hot_num_info a
