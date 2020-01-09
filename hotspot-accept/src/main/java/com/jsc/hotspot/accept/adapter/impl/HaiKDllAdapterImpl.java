@@ -96,6 +96,11 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
         return lUserID;
     }
 
+    @Override
+    public BizResult<Boolean> downLoadVideo(VideoDownLoadBean videoDownLoadBean) {
+        return null;
+    }
+
     public HaiKDllAdapterImpl(){
 
         lUserID = -1;
@@ -230,6 +235,11 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
         }
     }
 
+    public BizResult<Boolean> search(){
+
+        return BizResult.create(faceInterface.SearchFDLib(new NativeLong(lUserID)));
+    }
+
     /**
      * 上传文件到摄像机
      * @param fileInfo
@@ -240,17 +250,32 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
         String urls = fileInfo.getUrl();
         Map<String, String> fileInfo1 = JSON.parseObject(urls, Map.class);
         // 开始上传数据
-        if (!ObjectUtils.isEmpty(fileInfo1)) {
-            fileInfo1.forEach((k, v) -> {
-                ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
-                String base64String = valueOperations.get(v);
-                byte[] picByte = Base64Utils.decodeFromString(base64String);
-                InputStream inputStream = new ByteArrayInputStream(picByte);
-                faceInterface.UploadFaceLinData(new NativeLong(lUserID), inputStream);
-            });
-        }else {
-            return BizResult.create(false);
+        int i = 0;
+        while (i < 30000){
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            i++;
+            try {
+                InputStream inputStream = new FileInputStream(new File("C:\\Users\\Administrator\\Desktop\\qiu.jpg"));
+                faceInterface.UploadFaceLinData(new NativeLong(lUserID), inputStream, fileInfo);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
+//        if (!ObjectUtils.isEmpty(fileInfo1)) {
+//            fileInfo1.forEach((k, v) -> {
+//                ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
+//                String base64String = valueOperations.get(v);
+//                byte[] picByte = Base64Utils.decodeFromString(base64String);
+//                InputStream inputStream = new ByteArrayInputStream(picByte);
+//                faceInterface.UploadFaceLinData(new NativeLong(lUserID), inputStream, fileInfo);
+//            });
+//        }else {
+//            return BizResult.create(false);
+//        }
         return BizResult.create(true);
     }
 

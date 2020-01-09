@@ -1,8 +1,11 @@
 package com.jsc.hotspot.accept.video;
 
 import com.jsc.hotspot.accept.adapter.AbstractDllAdapter;
+import com.jsc.hotspot.accept.adapter.HaiKDllInterfaceAdapter;
 import com.jsc.hotspot.accept.adapter.impl.HaiKDllAdapterImpl;
+import com.jsc.hotspot.accept.adapter.impl.HaiKDllFaceImpl;
 import com.jsc.hotspot.accept.facade.KafkaSender;
+import com.jsc.hotspot.common.bean.FileInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.javacpp.avcodec;
 import org.bytedeco.javacv.*;
@@ -35,18 +38,19 @@ public class RecordVideoThread implements ApplicationRunner {
     public Integer audioChannel;//是否录制声音
     @Autowired
     @Qualifier("haiKDllAdapterImpl")
-    private AbstractDllAdapter haiKDllAdapter;
-
+    private HaiKDllInterfaceAdapter haiKDllAdapter;
     @Autowired
     private KafkaSender kafkaSender;
     @Override
     public void run(ApplicationArguments args) throws Exception {
         // 获取视频源 可以获取RTSP视频源进行视频播放
 
-        kafkaSender.send("---------------------------");
         haiKDllAdapter.register();
         haiKDllAdapter.SetupAlarmChan();
-        haiKDllAdapter.getLibrary();
+        haiKDllAdapter.search();
+//        FileInfo fileInfo = new FileInfo();
+//        fileInfo.setTargetName("ni");
+//        haiKDllAdapter.uploadToHaiKCamera(fileInfo);
 //        FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(streamURL);
 //        FFmpegFrameRecorder recorder = null;
 //        try {

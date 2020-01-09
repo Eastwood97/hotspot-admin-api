@@ -131,6 +131,50 @@
             <version>3.9</version>
         </dependency>
 
+
     </dependencies>
+
+    <build>
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>src/main/java</directory>-->
+<!--                <includes>-->
+<!--                    <include>**/*.xml</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <includes>-->
+<!--                    <include>**/*.*</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
+<!--        </resources>-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>static/static/fonts/*.ttf</exclude>
+                    <exclude>static/static/fonts/*.woff</exclude>
+                    <exclude>static/fonts/*.ttf</exclude>
+                    <exclude>static/fonts/*.woff</exclude>
+                    <exclude>dist/static/fonts/*.ttf</exclude>
+                    <exclude>dist/static/fonts/*.woff</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>static/static/fonts/*.ttf</include>
+                    <include>static/static/fonts/*.woff</include>
+                    <include>static/fonts/*.ttf</include>
+                    <include>static/fonts/*.woff</include>
+                    <include>dist/static/fonts/*.ttf</include>
+                    <include>dist/static/fonts/*.woff</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 
 </project>
