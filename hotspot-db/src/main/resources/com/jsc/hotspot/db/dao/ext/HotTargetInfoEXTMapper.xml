@@ -443,7 +443,7 @@
     </delete>
     <select id="selectHeimingdan" parameterType="java.lang.String"  resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_Listgit"/>
+        <include refid="Base_Column_List"/>
         from hot_target_info
         <where>
             <if test="imsi != '' and imsi != ''">
