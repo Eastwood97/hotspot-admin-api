@@ -51,8 +51,8 @@ public class TargetFaceServiceImpl implements TargetFaceService {
         cameraTargetFace.setTargetName(targetFace.getTargetName());
         cameraTargetFace.setDesc(targetFace.getDesc());
         Map<String,String> map=new HashMap<String,String>();
-        //map.put("fileId1",targetFace.getFileId1());
-        map.put("fileId1", "file");
+        map.put("fileId1",targetFace.getFileId1());
+//        map.put("fileId1", "file");
         map.put("fileId2",targetFace.getFileId2());
         map.put("fileId3",targetFace.getFileId3());
 

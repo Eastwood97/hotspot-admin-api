@@ -37,7 +37,7 @@ import java.util.concurrent.*;
  * @description kafka接收服务实现
  * @date 2019/11/4
  */
-//@Service
+@Service
 public class KafkaReceiverServiceImpl implements KafkaReceiverService {
 
     private Log log= LogFactory.getLog(KafkaReceiverServiceImpl.class);
@@ -176,7 +176,7 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
 //                    if (count > 1) { //是否是第一次中标
                     //查询每个号码出现的频次比
                 List<RealatedNumAndCount> realatedNumAndCounts = relatedNumEXTMapper.getCampareValue(faceRecognitionInfo.getTargetName());
-                if (null!=realatedNumAndCounts) {
+                if (null!=realatedNumAndCounts&&realatedNumAndCounts.size()>0) {
                             //数组转json字符串
                             Map<String,Object> jsonMap= new HashMap<>();
 

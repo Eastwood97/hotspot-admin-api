@@ -109,6 +109,7 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
 
     @Override
     public void insertHoTnumInfoNum(HotNumInfo hotNumInfoDAO) {
+        hotNumInfoDAO.setCreateTime(LocalDateTime.now());
         hotNumInfoMapper.insert(hotNumInfoDAO);
     }
 }

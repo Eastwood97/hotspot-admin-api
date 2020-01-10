@@ -126,6 +126,7 @@ public class UdpListenerServiceImpl implements ServletContextListener {
                     hotCompareResult.setImei(imei);
                     hotCompareResult.setImsi(imsi);
                     hotCompareResult.setIsdn("");
+                    hotCompareResult.setCaptureTime(LocalDateTime.now());
                     hotCompareResult.setTargetId(List.getTargetId());
                     hotCompareResultService.insertHotCompareResult(hotCompareResult);
                 }
