@@ -441,9 +441,9 @@
             #{targetId}
         </foreach>
     </delete>
-    <select id="selectHeimingdan" parameterType="java.lang.String" resultType="com.jsc.hotspot.db.domain.HotTargetInfo">
+    <select id="selectHeimingdan" parameterType="java.lang.String"  resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List"/>
+        <include refid="Base_Column_Listgit"/>
         from hot_target_info
         <where>
             <if test="imsi != '' and imsi != ''">

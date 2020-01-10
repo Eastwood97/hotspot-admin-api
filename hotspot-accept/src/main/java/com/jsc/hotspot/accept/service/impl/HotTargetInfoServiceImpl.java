@@ -33,14 +33,6 @@ public class HotTargetInfoServiceImpl implements HotTargetInfoService {
 
     @Override
     public HotTargetInfo selectHotTargetInfoList(String imsi, String imei) {
-        HotTargetInfoExample hotTargetInfoExample = new HotTargetInfoExample();
-        HotTargetInfoExample.Criteria criteria = hotTargetInfoExample.createCriteria();
-        if(imsi !="" && imsi !=null){
-            criteria.andImsiEqualTo(imsi);
-        }
-        if(imei !="" && imei !=null){
-            criteria.andImeiEqualTo(imei);
-        }
         HotTargetInfo list = hotTargetInfoEXTMapper.selectHeimingdan(imsi,imei);
         return list;
     }
