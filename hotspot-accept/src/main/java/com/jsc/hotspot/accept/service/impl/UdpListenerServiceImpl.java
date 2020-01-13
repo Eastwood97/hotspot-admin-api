@@ -128,6 +128,10 @@ public class UdpListenerServiceImpl implements ServletContextListener {
                     hotCompareResult.setIsdn("");
                     hotCompareResult.setCaptureTime(LocalDateTime.now());
                     hotCompareResult.setTargetId(List.getTargetId());
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    hotCompareResult.setCaptureTime(localDateTime);
+                    hotCompareResult.setCreateTime(LocalDateTime.now());
+                    hotCompareResult.setUpdateTime((LocalDateTime.now()));
                     hotCompareResultService.insertHotCompareResult(hotCompareResult);
                 }
                 hotNumInfo.setDevId((long) devId);
@@ -136,6 +140,8 @@ public class UdpListenerServiceImpl implements ServletContextListener {
                 hotNumInfo.setIsdn(hotNumInfo.getIsdn());
                 hotNumInfo.setTargetId(hotNumInfo.getTargetId());
                 hotNumInfo.setCaptureTime(LocalDateTime.now());
+                hotNumInfo.setCreateTime(LocalDateTime.now());
+                hotNumInfo.setUpdateTime((LocalDateTime.now()));
                 HoTnumInfoService.insertHoTnumInfoNum(hotNumInfo);
 
             }
