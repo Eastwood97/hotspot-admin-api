@@ -223,16 +223,31 @@
                     <!--</execution>-->
                 <!--</executions>-->
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <version>3.1</version>-->
+<!--                <configuration>-->
+<!--                    <source>1.8</source>-->
+<!--                    <target>1.8</target>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
+
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>maven-release</id>-->
+<!--            <name>maven-release</name>-->
+<!--            <url>http://192.168.244.3:8081/repository/maven-releases/</url>-->
+<!--        </repository>-->
+
+<!--        <snapshotRepository>-->
+<!--            <id>maven-snapshots</id>-->
+<!--            <name>maven-snapshots</name>-->
+<!--            <url>http://192.168.244.3:8081/repository/maven-snapshots/</url>-->
+<!--        </snapshotRepository>-->
+<!--    </distributionManagement>-->
+
 
 </project>

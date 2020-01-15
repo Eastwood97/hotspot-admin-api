@@ -15,11 +15,11 @@
 
 
     <dependencies>
-        <dependency>
-            <groupId>com.sun.jna</groupId>  <!--自定义-->
-            <artifactId>examples</artifactId>    <!--自定义-->
-            <version>1.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.sun.jna</groupId>  &lt;!&ndash;自定义&ndash;&gt;-->
+<!--            <artifactId>examples</artifactId>    &lt;!&ndash;自定义&ndash;&gt;-->
+<!--            <version>1.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.sun.jna</groupId>  <!--自定义-->
             <artifactId>examples</artifactId>    <!--自定义-->

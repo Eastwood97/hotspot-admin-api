@@ -3,9 +3,11 @@ package com.jsc.hotspot.accept.controller;
 import com.jsc.hotspot.accept.adapter.AbstractDllAdapter;
 import com.jsc.hotspot.accept.adapter.HaiKDllInterfaceAdapter;
 import com.jsc.hotspot.accept.adapter.impl.HaiKDllAdapterImpl;
+import com.jsc.hotspot.accept.service.CameraService;
 import com.jsc.hotspot.common.bean.FileInfo;
 import com.jsc.hotspot.common.bean.VideoDownLoadBean;
 import com.jsc.hotspot.common.biz.BizResult;
+import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,8 +26,9 @@ import java.time.LocalDateTime;
 @RequestMapping("sdk")
 public class SDKController {
 
+
     @Autowired
-    private HaiKDllInterfaceAdapter haiKDllInterfaceAdapter;
+    private CameraService cameraService;
 
     /**
      * 上传数据到摄像头通用接口
@@ -35,15 +38,25 @@ public class SDKController {
     @ResponseBody
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     public BizResult<Boolean> uploadImgToCamera(@RequestBody FileInfo fileInfo){
-        return haiKDllInterfaceAdapter.uploadToHaiKCamera(fileInfo);
+        return cameraService.uploadToHaiKCamera(fileInfo);
     }
 
     /**
      * 下載視頻接口
      * @return
      */
-    @RequestMapping(value = "download/video", method = RequestMethod.POST)
-    public BizResult<Boolean> downloadVideo(VideoDownLoadBean videoDownLoadBean){
-        return haiKDllInterfaceAdapter.downLoadVideo(videoDownLoadBean);
+    @RequestMapping(value = "download", method = RequestMethod.GET)
+    public BizResult<String> downloadVideo(VideoDownLoadBean videoDownLoadBean){
+        return cameraService.downLoadVideo(videoDownLoadBean);
     }
+
+    /**
+     * 进行注册操作
+     * @return
+     */
+    @RequestMapping(value = "register", method = RequestMethod.GET)
+    public BizResult<String> register(){
+        return cameraService.register();
+    }
+
 }

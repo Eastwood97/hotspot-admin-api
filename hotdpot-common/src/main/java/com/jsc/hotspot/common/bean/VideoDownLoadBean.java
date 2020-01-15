@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 /**
  * @author huixing
- * @description 视频下载接口
+ * @description 视频下载参数
  * @date 2019/12/27
  */
 @Data
@@ -14,4 +14,5 @@ public class VideoDownLoadBean {
     private LocalDateTime startTime;
     private LocalDateTime stopTime;
     private String storeFileName = "D:\\Video";
+    private int channelId;
 }

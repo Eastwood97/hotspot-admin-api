@@ -77,7 +77,7 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
      * @param record
      */
     @Async
-    @KafkaListener(topics = {"picTopic"})
+    @KafkaListener(topics = {"picTopic_test"})
     public void listen(ConsumerRecord<?, ?> record) throws InvocationTargetException, IllegalAccessException {
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
         log.error("-----===========---------+++++++++++++++++++");

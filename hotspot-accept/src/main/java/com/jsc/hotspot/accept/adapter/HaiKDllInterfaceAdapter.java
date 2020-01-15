@@ -22,17 +22,17 @@ public interface HaiKDllInterfaceAdapter extends AbstractDllAdapter{
 
     int getlUserID();
 
-    BizResult<Boolean> downLoadVideo(VideoDownLoadBean videoDownLoadBean);
+    BizResult<String> downLoadVideo(VideoDownLoadBean videoDownLoadBean);
 
     void initdll();
 
     void exit();
 
-    void register();
+    BizResult<String> register();
 
     void Logout();
 
-    void SetupAlarmChan();
+    BizResult<String> SetupAlarmChan();
 
     void GetShortVideoFile(VideoDownLoadBean videoDownLoadBean);
 

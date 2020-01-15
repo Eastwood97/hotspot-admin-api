@@ -175,4 +175,18 @@
 
     </dependencies>
 
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>maven-release</id>-->
+<!--            <name>maven-release</name>-->
+<!--            <url>http://192.168.244.3:8081/repository/maven-releases/</url>-->
+<!--        </repository>-->
+
+<!--        <snapshotRepository>-->
+<!--            <id>maven-snapshots</id>-->
+<!--            <name>maven-snapshots</name>-->
+<!--            <url>http://192.168.244.3:8081/repository/maven-snapshots/</url>-->
+<!--        </snapshotRepository>-->
+<!--    </distributionManagement>-->
+
 </project>

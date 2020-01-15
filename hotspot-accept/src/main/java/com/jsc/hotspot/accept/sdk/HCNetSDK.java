@@ -4015,7 +4015,8 @@ EMAIL参数结构
     boolean  NET_DVR_UnlockFileByName(int lUserID, String sUnlockFileName);
     int  NET_DVR_PlayBackByName(int lUserID,String sPlayBackFileName, HWND hWnd);
     int  NET_DVR_PlayBackByTime(int lUserID,int lChannel, NET_DVR_TIME lpStartTime, NET_DVR_TIME lpStopTime, HWND hWnd);
-    boolean  NET_DVR_PlayBackControl(int lPlayHandle,int dwControlCode,int dwInValue,IntByReference LPOutValue);
+    //boolean  NET_DVR_PlayBackControl(int lPlayHandle,int dwControlCode,int dwInValue,IntByReference LPOutValue);
+    boolean  NET_DVR_PlayBackControl(NativeLong lPlayHandle,int dwControlCode,int dwInValue,IntByReference LPOutValue);
     boolean  NET_DVR_StopPlayBack(int lPlayHandle);
     boolean  NET_DVR_SetPlayDataCallBack(int lPlayHandle,FPlayDataCallBack fPlayDataCallBack,int dwUser);
     boolean  NET_DVR_PlayBackSaveData(int lPlayHandle,String sFileName);
@@ -4023,10 +4024,12 @@ EMAIL参数结构
     boolean  NET_DVR_GetPlayBackOsdTime(int lPlayHandle, NET_DVR_TIME lpOsdTime);
     boolean  NET_DVR_PlayBackCaptureFile(int lPlayHandle,String sFileName);
     int  NET_DVR_GetFileByName(int lUserID,String sDVRFileName,String sSavedFileName);
-    int  NET_DVR_GetFileByTime(int lUserID,int lChannel, NET_DVR_TIME lpStartTime, NET_DVR_TIME lpStopTime, String sSavedFileName);
+   // int  NET_DVR_GetFileByTime(int lUserID,NativeLong lChannel, NET_DVR_TIME lpStartTime, NET_DVR_TIME lpStopTime, String sSavedFileName);
+   NativeLong  NET_DVR_GetFileByTime(NativeLong lUserID,NativeLong lChannel, NET_DVR_TIME lpStartTime, NET_DVR_TIME lpStopTime, String sSavedFileName);
     int  NET_DVR_GetFileByTime_V40(int lUserID,String sSavedFileName, LPNET_DVR_PLAYCOND pDownloadCond);
 
-    boolean  NET_DVR_StopGetFile(int lFileHandle);
+//    boolean  NET_DVR_StopGetFile(int lFileHandle);
+    boolean  NET_DVR_StopGetFile(NativeLong lFileHandle);
     int  NET_DVR_GetDownloadPos(int lFileHandle);
     int	 NET_DVR_GetPlayBackPos(int lPlayHandle);
 

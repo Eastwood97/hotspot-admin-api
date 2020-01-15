@@ -30,7 +30,7 @@ public class KafkaSenderServiceImpl implements KafkaSender {
     public void send(String msg) {
         log.info("+++++++++++++++++++++  message = {}", msg);
 
-        ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send("picTopic", msg);
+        ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send("picTopicTest", msg);
 
         future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
             @Override
