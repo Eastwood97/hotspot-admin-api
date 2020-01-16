@@ -29,4 +29,10 @@ public interface CameraService {
      * @return
      */
     BizResult<String> register();
+
+    /**
+     * 不注册
+     * @return
+     */
+    BizResult<Boolean> unregister();
 }

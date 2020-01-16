@@ -39,4 +39,6 @@ public interface HaiKDllInterfaceAdapter extends AbstractDllAdapter{
     void getLibrary();
 
     BizResult<Boolean> search();
+
+    void unregister();
 }

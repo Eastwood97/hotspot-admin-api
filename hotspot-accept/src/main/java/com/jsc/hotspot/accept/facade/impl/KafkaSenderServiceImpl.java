@@ -44,4 +44,21 @@ public class KafkaSenderServiceImpl implements KafkaSender {
             }
         });
     }
+
+    @Override
+    public void sendVideoId(String msg) {
+        ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send("videoMessage", msg);
+
+        future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
+            @Override
+            public void onFailure(Throwable throwable) {
+                log.info("照片数据放入kafka失败");
+            }
+
+            @Override
+            public void onSuccess(SendResult<String, String> stringStringSendResult) {
+                log.info("照片数据放入kafka成功");
+            }
+        });
+    }
 }

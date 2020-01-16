@@ -10,5 +10,6 @@ public interface KafkaSender {
 //    @Async
     void send(String msg);
 
+    void sendVideoId(String msg);
 }
 

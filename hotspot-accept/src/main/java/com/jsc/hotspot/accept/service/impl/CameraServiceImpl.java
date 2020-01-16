@@ -42,4 +42,10 @@ public class CameraServiceImpl implements CameraService {
             return registerResult;
         }
     }
+
+    @Override
+    public BizResult<Boolean> unregister() {
+        haiKDllInterfaceAdapter.unregister();
+        return BizResult.create(true);
+    }
 }

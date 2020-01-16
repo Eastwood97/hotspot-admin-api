@@ -46,6 +46,7 @@ public class SDKController {
      * @return
      */
     @RequestMapping(value = "download", method = RequestMethod.GET)
+    @ResponseBody
     public BizResult<String> downloadVideo(VideoDownLoadBean videoDownLoadBean){
         return cameraService.downLoadVideo(videoDownLoadBean);
     }
@@ -55,8 +56,18 @@ public class SDKController {
      * @return
      */
     @RequestMapping(value = "register", method = RequestMethod.GET)
+    @ResponseBody
     public BizResult<String> register(){
         return cameraService.register();
     }
 
+    /**
+     * 取消注册
+     * @return
+     */
+    @RequestMapping(value = "unregister", method = RequestMethod.GET)
+    @ResponseBody
+    public BizResult<Boolean> unregister(){
+        return cameraService.unregister();
+    }
 }
