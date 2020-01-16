@@ -126,7 +126,7 @@ public class HaiKDllFaceImpl implements FaceInterface {
                 else
                 {
                     int code = hCNetSDK.NET_DVR_GetLastError();
-                    JOptionPane.showMessageDialog(null, "创建人脸库失败: " + code);
+                    logger.debug("创建人脸库失败: " + code);
                     return false;
                 }
             }

@@ -1,6 +1,9 @@
 package com.jsc.hotspot.api.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.jsc.hotspot.api.service.DeviceService;
+import com.jsc.hotspot.api.utils.HttpUtil;
+import com.jsc.hotspot.common.biz.BizResult;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
 import com.jsc.hotspot.db.domain.HotFrontDevice;
 import org.apache.commons.lang.StringUtils;
@@ -48,7 +51,16 @@ public class DevicemanagerController {
     public Object add(@RequestBody HotFrontDevice hotFrontDevice){
         Object error=validate(hotFrontDevice);
         if(error!=null){
-            return  error;
+            return  ResponseUtil.badArgumentValue();
+        }
+        if (1==hotFrontDevice.getIsRegister()){
+            String respone= HttpUtil.sendGet("","http://127.0.0.1:9090/sdk/register");
+            BizResult<String> data=JSON.parseObject(respone, BizResult.class);
+            if(!data.getFlag()){
+                hotFrontDevice.setIsRegister((byte) 0);
+                deviceService.add(hotFrontDevice);
+                return  ResponseUtil.fail(-1,data.getData());
+            }
         }
         deviceService.add(hotFrontDevice);
         return ResponseUtil.ok(hotFrontDevice);
@@ -60,13 +72,36 @@ public class DevicemanagerController {
         if(error!=null){
             return  error;
         }
+        int flag=deviceService.selectById(hotFrontDevice).getIsRegister();
+        if (hotFrontDevice.getIsRegister()==1&&flag==0){
+            String respone= HttpUtil.sendGet("","http://127.0.0.1:9090/sdk/register");
+            BizResult<String> data=JSON.parseObject(respone, BizResult.class);
+            if(!data.getFlag()){
+                hotFrontDevice.setIsRegister((byte) 0);
+                deviceService.updateById(hotFrontDevice);
+                return  ResponseUtil.fail(-1,data.getData());
+            }
+        }
+        if(hotFrontDevice.getIsRegister()==0&&flag==1){
+            //取消注册
+            String respone= HttpUtil.sendGet("","http://127.0.0.1:9090/sdk/unRegister");
+            BizResult<String> data=JSON.parseObject(respone, BizResult.class);
+            if(!data.getFlag()){
+                hotFrontDevice.setIsRegister((byte) 1);
+                deviceService.updateById(hotFrontDevice);
+                return  ResponseUtil.fail(-1,data.getData());
+            }
+        }
         deviceService.updateById(hotFrontDevice);
         return ResponseUtil.ok();
     }
 
     @DeleteMapping
-    public Object delete(@RequestBody String ids){
-        return ResponseUtil.deleteDataFailed();
+    public Object delete(@RequestBody String ids) {
+        if (deviceService.deleteById(ids)) {
+            return  ResponseUtil.ok();
+        } else {
+            return ResponseUtil.deleteDataFailed();
+        }
     }
-
 }

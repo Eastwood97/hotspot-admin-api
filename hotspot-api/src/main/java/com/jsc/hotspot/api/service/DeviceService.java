@@ -26,6 +26,12 @@ public interface DeviceService {
     int updateById(HotFrontDevice hotFrontDevice);
 
     /**
+     * 根据id查找设备信息
+     * @param hotFrontDevice
+     * @return
+     */
+    HotFrontDevice selectById(HotFrontDevice hotFrontDevice);
+    /**
      * 获取设备集合
      * @return
      */

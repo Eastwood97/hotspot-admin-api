@@ -10,7 +10,6 @@ import com.jsc.hotspot.accept.utils.HTTPClientUtil;
 import com.jsc.hotspot.common.bean.FileInfo;
 import com.jsc.hotspot.common.bean.PlayBean;
 import com.jsc.hotspot.common.bean.VideoDownLoadBean;
-import com.jsc.hotspot.common.bean.VideoMessageBean;
 import com.jsc.hotspot.common.biz.BizResult;
 import com.jsc.hotspot.common.http.RestClient;
 import com.jsc.hotspot.common.util.RandomNameUtil;
@@ -75,6 +74,7 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
     FMSGCallBack fMSFCallBack;//报警回调函数实现
     FMSGCallBack_V31 fMSFCallBack_V31;//报警回调函数实现
     FGPSDataCallback fGpsCallBack;//GPS信息查询回调函数实现
+
 
     javax.swing.JTable jTableAlarm = new javax.swing.JTable();
     @Value("${camera1.ip}")
@@ -143,24 +143,17 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                 hCNetSDK.NET_DVR_PlayBackControl(m_lLoadHandle, HCNetSDK.NET_DVR_PLAYSTART, 0, null);
                 logger.debug("停止下载");
                 Downloadtimer = new Timer();//新建定时器
-                Downloadtimer.schedule(new DownloadTask((m_sDeviceIP + m_iChanShowNum + struStartTime.toStringTitle() + struStopTime.toStringTitle() + "")), 0, 5000);//0秒后开始响应函数
-
-                //weedFSService.storagePic()
-                BizResult<String> bizResult = BizResult.create("按时间下载成功");
-                bizResult.setData((m_sDeviceIP + m_iChanShowNum + struStartTime.toStringTitle() + struStopTime.toStringTitle() + ""));
-                return bizResult;
+                Downloadtimer.schedule(new DownloadTask(), 0, 5000);//0秒后开始响应函数
+                return BizResult.create("按时间下载成功");
             } else {
                 logger.error("按时间下载失败");
-                BizResult<String> bizResult = BizResult.create("按时间下载失败");
-                bizResult.setDesc("按时间下载失败");
-                bizResult.setFlag(false);
-                return bizResult;
+                return BizResult.create("按时间下载失败");
             }
         } else {
             hCNetSDK.NET_DVR_StopGetFile(m_lLoadHandle);
             logger.debug("下载");
             Downloadtimer.cancel();
-            return BizResult.create("按时间下载");
+            return BizResult.create("按时间下载成功");
         }
     }
 
@@ -244,8 +237,8 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
             logger.info("注册成功");
             BizResult<String> bizResult = BizResult.create("注册成功");
             bizResult.setDesc("注册成功");
-            bizResult.setFlag(true);
-            return BizResult.create("注册成功");
+            bizResult.setFlag(false);
+            return bizResult;
         }
     }
 
@@ -276,7 +269,7 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
         {
             logger.error("未注册");
             BizResult<String> bizResult = BizResult.create("未注册");
-            bizResult.setDesc("未注册");
+            bizResult.setData("注册失败");
             bizResult.setFlag(false);
             return bizResult;
         }
@@ -302,17 +295,17 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
             {
                 logger.error("布防失败，错误号:" +  hCNetSDK.NET_DVR_GetLastError());
                 BizResult<String> bizResult = BizResult.create("布防失败");
-                bizResult.setDesc("布防失败");
+                bizResult.setData("布防失败");
                 bizResult.setFlag(false);
                 return bizResult;
             }
             else
             {
-                logger.error("布防成功");
+                 logger.error("布防成功");
                 BizResult<String> bizResult = BizResult.create("布防成功");
-                bizResult.setDesc("布防成功");
-                bizResult.setFlag(true);
-                return BizResult.create("布防成功");
+                bizResult.setData("布防成功");
+                bizResult.setFlag(false);
+                return bizResult;
             }
         }
         return BizResult.create("已布防");
@@ -321,11 +314,6 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
     public BizResult<Boolean> search(){
 
         return BizResult.create(faceInterface.SearchFDLib(new NativeLong(lUserID)));
-    }
-
-    @Override
-    public void unregister() {
-        lUserID = -1;
     }
 
     /**
@@ -774,43 +762,31 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                         buffers.rewind();
                         buffers.get(bytes);
                         // 场景图
-                        int type = 1;
-                        if (camera_type == 0) {
-                            String srString = new String(bytes);
-                            System.out.println(srString);
-                            faceRecognitionInfo.setSceneImg(srString);
+                        String srString = new String(bytes);
+                        System.out.println(srString);
+                        faceRecognitionInfo.setSceneImg(srString);
 
-                            ISAPILogin();
-                            VideoDownLoadBean videoDownLoadBean = new VideoDownLoadBean();
-                            videoDownLoadBean.setStartTime(localDateTime.minusSeconds(5));
-                            videoDownLoadBean.setStopTime(localDateTime.minusSeconds(5));
-                            int fileName = RandomNameUtil.getNum(0, Integer.MAX_VALUE);
-                            videoDownLoadBean.setStoreFileName("D:\\Video\\" + fileName);
-                            // 下载黑名单前后5s的小视频
-                            GetShortVideoFile(videoDownLoadBean);
-                            byte[] strOut;
-                            try {
-                                strOut = HTTPClientUtil.doGet(srString, null);
-                                InputStream inputStream = new ByteArrayInputStream(strOut);
-                                BizResult<String> bizResult = weedFSService.storagePic(inputStream);
-                                if (bizResult.getFlag()) {
-                                    faceRecognitionInfo.setSceneStorageUrl(bizResult.getData());
-                                }
-                                if (logger.isDebugEnabled()) {
-                                    logger.debug("HaiKDllAdapterImpl: 场景图信息：{0}, {1}" + bizResult.getData() + inputStream);
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }else {
-                            InputStream inputStream = new ByteArrayInputStream(bytes);
+                        ISAPILogin();
+                        VideoDownLoadBean videoDownLoadBean = new VideoDownLoadBean();
+                        videoDownLoadBean.setStartTime(localDateTime.minusSeconds(5));
+                        videoDownLoadBean.setStopTime(localDateTime.minusSeconds(5));
+                        int fileName = RandomNameUtil.getNum(0, Integer.MAX_VALUE);
+                        videoDownLoadBean.setStoreFileName("D:\\Video\\" + fileName);
+                        // 下载黑名单前后5s的小视频
+                        GetShortVideoFile(videoDownLoadBean);
+                        byte[] strOut;
+                        try {
+                            strOut= HTTPClientUtil.doGet(srString, null);
+                            InputStream inputStream = new ByteArrayInputStream(strOut);
                             BizResult<String> bizResult = weedFSService.storagePic(inputStream);
-                            if (bizResult.getFlag()) {
+                            if (bizResult.getFlag()){
                                 faceRecognitionInfo.setSceneStorageUrl(bizResult.getData());
                             }
-                            if (logger.isDebugEnabled()) {
+                            if (logger.isDebugEnabled()){
                                 logger.debug("HaiKDllAdapterImpl: 场景图信息：{0}, {1}" + bizResult.getData() + inputStream);
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
 
                     }
@@ -825,35 +801,23 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                         buffers.rewind();
                         buffers.get(bytes);
                         // 黑名单
-                        int type = 1;
-                        if (camera_type == 0) {
-                            String srString = new String(bytes);
-                            System.out.println(srString);
-                            faceRecognitionInfo.setTargetFaceImg(srString);
-                            byte[] strOut;
-                            try {
-                                strOut = HTTPClientUtil.doGet(srString, null);
-                                InputStream inputStream = new ByteArrayInputStream(strOut);
-                                weedFSService.init();
-                                BizResult<String> bizResult = weedFSService.storagePic(inputStream);
-                                if (bizResult.getFlag()) {
-                                    faceRecognitionInfo.setTargetFaceStorageUrl(bizResult.getData());
-                                }
-                                if (logger.isDebugEnabled()) {
-                                    logger.debug("HaiKDllAdapterImpl: 黑名单人脸信息：{0}, {1}" + bizResult.getData() + inputStream);
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }else {
-                            InputStream inputStream = new ByteArrayInputStream(bytes);
+                        String srString = new String(bytes);
+                        System.out.println(srString);
+                        faceRecognitionInfo.setTargetFaceImg(srString);
+                        byte[] strOut;
+                        try {
+                            strOut= HTTPClientUtil.doGet(srString, null);
+                            InputStream inputStream = new ByteArrayInputStream(strOut);
+                            weedFSService.init();
                             BizResult<String> bizResult = weedFSService.storagePic(inputStream);
-                            if (bizResult.getFlag()) {
+                            if (bizResult.getFlag()){
                                 faceRecognitionInfo.setTargetFaceStorageUrl(bizResult.getData());
                             }
-                            if (logger.isDebugEnabled()) {
-                                logger.debug("HaiKDllAdapterImpl: 场景图信息：{0}, {1}" + bizResult.getData() + inputStream);
+                            if (logger.isDebugEnabled()){
+                                logger.debug("HaiKDllAdapterImpl: 黑名单人脸信息：{0}, {1}" +bizResult.getData() + inputStream);
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
                     }
                     if (strFaceSnapMatch.struSnapInfo.dwSnapFacePicLen > 0 && strFaceSnapMatch.struSnapInfo.pBuffer1 != null) {
@@ -866,35 +830,23 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                         byte[] bytes = new byte[strFaceSnapMatch.struSnapInfo.dwSnapFacePicLen];
                         buffers.rewind();
                         buffers.get(bytes);
-                        int type = 1;
-                        if (camera_type == 0) {
-                            // 抓拍人脸
-                            String srString = new String(bytes);
-                            faceRecognitionInfo.setCaptureFaceImg(srString);
+                        // 抓拍人脸
+                        String srString = new String(bytes);
+                        faceRecognitionInfo.setCaptureFaceImg(srString);
 
-                            byte[] strOut;
-                            try {
-                                strOut = HTTPClientUtil.doGet(srString, null);
-                                InputStream inputStream = new ByteArrayInputStream(strOut);
-                                BizResult<String> bizResult = weedFSService.storagePic(inputStream);
-                                if (bizResult.getFlag()) {
-                                    faceRecognitionInfo.setCaptureFaceStorageUrl(bizResult.getData());
-                                }
-                                if (logger.isDebugEnabled()) {
-                                    logger.debug("HaiKDllAdapterImpl: 抓拍人脸信息：{0}, {1}" + bizResult.getData() + inputStream);
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }else {
-                            InputStream inputStream = new ByteArrayInputStream(bytes);
+                        byte[] strOut;
+                        try {
+                            strOut= HTTPClientUtil.doGet(srString, null);
+                            InputStream inputStream = new ByteArrayInputStream(strOut);
                             BizResult<String> bizResult = weedFSService.storagePic(inputStream);
-                            if (bizResult.getFlag()) {
+                            if (bizResult.getFlag()){
                                 faceRecognitionInfo.setCaptureFaceStorageUrl(bizResult.getData());
                             }
-                            if (logger.isDebugEnabled()) {
-                                logger.debug("HaiKDllAdapterImpl: 场景图信息：{0}, {1}" + bizResult.getData() + inputStream);
+                            if (logger.isDebugEnabled()){
+                                logger.debug("HaiKDllAdapterImpl: 抓拍人脸信息：{0}, {1}" +bizResult.getData() + inputStream);
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
 
 //                        InputStream in = restClient.get("http://192.168.1.100:80", "picture/Streaming/tracks/103/?name=ch0001_00010000067005405235200435403&size=435403", InputStream.class);
@@ -933,7 +885,6 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
 
                             fout.write(bytes);
                             fout.close();
-                            logger.error("HaiKDllAdapterImpl: 场景图信息：{0}, {1}");
                         } catch (FileNotFoundException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
@@ -957,7 +908,6 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                             buffers.get(bytes);
                             fout.write(bytes);
                             fout.close();
-                            logger.error("HaiKDllAdapterImpl: 黑名單信息：{0}, {1}");
                         } catch (FileNotFoundException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
@@ -981,7 +931,6 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                             buffers.get(bytes);
                             fout.write(bytes);
                             fout.close();
-                            logger.error("HaiKDllAdapterImpl: 對比圖信息：{0}, {1}");
                         } catch (FileNotFoundException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
@@ -1220,56 +1169,6 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                         }
                     }
                     break;
-                case HCNetSDK.COMM_UPLOAD_PLATE_RESULT:
-                    HCNetSDK.NET_DVR_PLATE_RESULT strPlateResult = new HCNetSDK.NET_DVR_PLATE_RESULT();
-                    strPlateResult.write();
-                    Pointer pPlateInfo = strPlateResult.getPointer();
-                    pPlateInfo.write(0, pAlarmInfo.getByteArray(0, strPlateResult.size()), 0, strPlateResult.size());
-                    strPlateResult.read();
-                    try {
-                        String srt3=new String(strPlateResult.struPlateInfo.sLicense,"GBK");
-                        sAlarmType = sAlarmType + "：交通抓拍上传，车牌："+ srt3;
-                    }
-                    catch (UnsupportedEncodingException e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
-                    } catch (IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-
-                    newRow[0] = dateFormat.format(today);
-                    //报警类型
-                    newRow[1] = sAlarmType;
-                    //报警设备IP地址
-                    sIP = new String(pAlarmer.sDeviceIP).split("\0", 2);
-                    newRow[2] = sIP[0];
-                    alarmTableModel.insertRow(0, newRow);
-
-                    if(strPlateResult.dwPicLen>0)
-                    {
-                        SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
-                        String newName = sf.format(new Date());
-                        FileOutputStream fout;
-                        try {
-                            fout = new FileOutputStream("D://"+newName+"01.jpg");
-                            //将字节写入文件
-                            long offset = 0;
-                            ByteBuffer buffers = strPlateResult.pBuffer1.getByteBuffer(offset, strPlateResult.dwPicLen);
-                            byte [] bytes = new byte[strPlateResult.dwPicLen];
-                            buffers.rewind();
-                            buffers.get(bytes);
-                            fout.write(bytes);
-                            fout.close();
-                        } catch (FileNotFoundException e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        }
-                    }
-                    break;
                 default:
                     newRow[0] = dateFormat.format(today);
                     //报警类型
@@ -1301,15 +1200,8 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
 
     }
 
-    /**
-     * 下载视频定时器类
-     */
     class DownloadTask extends java.util.TimerTask
     {
-        private String id;
-        public DownloadTask(String id){
-            this.id = id;
-        }
         //定时器函数
         @Override
         public void run()
@@ -1323,10 +1215,6 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                 logger.debug("下载");
                 Downloadtimer.cancel();
                 logger.error("由于网络原因或DVR忙,下载异常终止!");
-                VideoMessageBean videoMessageBean = new VideoMessageBean();
-                videoMessageBean.setId(id);
-                videoMessageBean.setStorageId("");
-                kafkaSenderService.sendVideoId(JSON.toJSONString(videoMessageBean));
             }
             if (nPos.getValue() == 100)
             {
@@ -1335,17 +1223,6 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                 logger.debug("下载");
                 Downloadtimer.cancel();
                 logger.debug("按时间下载结束!");
-                VideoMessageBean videoMessageBean = new VideoMessageBean();
-                BizResult<String> bizResult = null;
-                try {
-                    bizResult = weedFSService.storagePic(new FileInputStream("c:/DownLoad/"+id));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                // 下载完成放入Kafka
-                videoMessageBean.setId(id);
-                videoMessageBean.setStorageId(bizResult.getData());
-                kafkaSenderService.sendVideoId(JSON.toJSONString(videoMessageBean));
             }
         }
     }

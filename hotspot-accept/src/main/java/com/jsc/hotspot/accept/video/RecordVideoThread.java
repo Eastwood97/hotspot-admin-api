@@ -45,9 +45,9 @@ public class RecordVideoThread implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         // 获取视频源 可以获取RTSP视频源进行视频播放
 
-        haiKDllAdapter.register();
-        haiKDllAdapter.SetupAlarmChan();
-        haiKDllAdapter.search();
+//        haiKDllAdapter.register();
+//        haiKDllAdapter.SetupAlarmChan();
+//        haiKDllAdapter.search();
 //        FileInfo fileInfo = new FileInfo();
 //        fileInfo.setTargetName("ni");
 //        haiKDllAdapter.uploadToHaiKCamera(fileInfo);

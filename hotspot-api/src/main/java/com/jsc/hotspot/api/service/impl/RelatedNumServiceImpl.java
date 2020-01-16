@@ -3,6 +3,7 @@ package com.jsc.hotspot.api.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.jsc.hotspot.api.service.RealtedNumService;
 import com.jsc.hotspot.db.dao.RelatedNumResultMapper;
+import com.jsc.hotspot.db.dao.ext.RelatedNumResultEXTMapper;
 import com.jsc.hotspot.db.domain.RelatedNumResult;
 import com.jsc.hotspot.db.domain.RelatedNumResultExample;
 import org.apache.avro.data.Json;
@@ -17,6 +18,9 @@ public class RelatedNumServiceImpl implements RealtedNumService {
     @Autowired
     private RelatedNumResultMapper relatedNumResultMapper;
 
+    @Autowired
+    private RelatedNumResultEXTMapper relatedNumResultEXTMapper;
+
     @Override
     public List<RelatedNumResult> query(Integer page, Integer limit,String targetName) {
         RelatedNumResultExample example=new RelatedNumResultExample();
@@ -25,5 +29,12 @@ public class RelatedNumServiceImpl implements RealtedNumService {
         }
         PageHelper.startPage(page, limit);
          return  relatedNumResultMapper.selectByExampleSelective(example);
+    }
+
+    @Override
+    public boolean deleteById(String ids) {
+        String[] split=ids.split(",");
+        int result=relatedNumResultEXTMapper.deleteById(split);
+        return split.length==result;
     }
 }

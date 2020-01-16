@@ -47,6 +47,11 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
+    public HotFrontDevice selectById(HotFrontDevice hotFrontDevice) {
+        return hotFrontDeviceMapper.selectByPrimaryKeySelective(hotFrontDevice.getDevId());
+    }
+
+    @Override
     public List<HotFrontDevice> getDevices(Integer page, Integer limit,String devName,String devType,String devNum) {
         HotFrontDeviceExample example=new HotFrontDeviceExample();
         HotFrontDeviceExample.Criteria certificate=example.createCriteria();

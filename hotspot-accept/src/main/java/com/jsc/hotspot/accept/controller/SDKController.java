@@ -55,6 +55,7 @@ public class SDKController {
      * 进行注册操作
      * @return
      */
+    @ResponseBody
     @RequestMapping(value = "register", method = RequestMethod.GET)
     @ResponseBody
     public BizResult<String> register(){
