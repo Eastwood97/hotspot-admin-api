@@ -1,8 +1,5 @@
 package com.jsc.hotspot.api.service;
 
-import com.jsc.hotspot.db.domain.HotTargetInfo;
-
-import java.util.List;
 
 /**
  * @Auther: WW
@@ -10,6 +7,6 @@ import java.util.List;
  * @Description:
  */
 public interface HotTargetInfoService {
+    //获取布控名单数量
     Long getHotTargetInfoNum();
-    List<HotTargetInfo> selectHotTargetInfoList(String imsi, String imei);
 }

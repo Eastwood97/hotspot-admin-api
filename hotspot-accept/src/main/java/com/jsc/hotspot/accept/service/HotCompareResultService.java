@@ -2,8 +2,6 @@ package com.jsc.hotspot.accept.service;
 
 
 import com.jsc.hotspot.db.domain.HotCompareResult;
-import com.jsc.hotspot.db.entity.CountList;
-import com.jsc.hotspot.db.entity.PageResult;
 
 /**
  * @Auther: WW
@@ -12,8 +10,6 @@ import com.jsc.hotspot.db.entity.PageResult;
  */
 
 public interface HotCompareResultService {
-    PageResult findHotCompareResult(int page, int row, HotCompareResult hotCompareResultDAO);
-    void deleteHotCompareResult(String id);
-    CountList findHotCompareResultCount();
+    //插入黑名单
     void insertHotCompareResult(HotCompareResult hotCompareResult);
 }

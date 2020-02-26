@@ -20,16 +20,8 @@ import java.util.List;
 @Slf4j
 public class HotTargetInfoServiceImpl implements HotTargetInfoService {
     @Autowired
-    private HotTargetInfoMapper hotTargetInfoMapper;
-    @Autowired
     private HotTargetInfoEXTMapper hotTargetInfoEXTMapper;
-    @Override
-    public Long getHotTargetInfoNum() {
-        HotTargetInfoExample hotTargetInfoExample = new HotTargetInfoExample();
-        HotTargetInfoExample.Criteria criteria = hotTargetInfoExample.createCriteria();
-        long count = hotTargetInfoMapper.countByExample(hotTargetInfoExample);
-        return count;
-    }
+
 
     @Override
     public HotTargetInfo selectHotTargetInfoList(String imsi, String imei) {

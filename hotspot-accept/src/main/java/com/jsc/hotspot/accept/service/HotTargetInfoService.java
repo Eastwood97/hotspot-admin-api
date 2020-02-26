@@ -10,6 +10,6 @@ import java.util.List;
  * @Description:
  */
 public interface HotTargetInfoService {
-    Long getHotTargetInfoNum();
+    //查询黑名单
     HotTargetInfo selectHotTargetInfoList(String imsi, String imei);
 }

@@ -47,6 +47,7 @@ public class DevicemanagerController {
         }
         return null;
     }
+    @LogService(value="添加设备",method = "用户",param = "：添加设备", index = "0")
     @PostMapping
     public Object add(@RequestBody HotFrontDevice hotFrontDevice){
         Object error=validate(hotFrontDevice);
@@ -65,6 +66,7 @@ public class DevicemanagerController {
         deviceService.add(hotFrontDevice);
         return ResponseUtil.ok(hotFrontDevice);
     }
+    @LogService(value="修改设备",method = "用户",param = "：修改设备", index = "0")
 
     @PutMapping
     public Object upadte(@RequestBody HotFrontDevice hotFrontDevice){
@@ -95,6 +97,7 @@ public class DevicemanagerController {
         deviceService.updateById(hotFrontDevice);
         return ResponseUtil.ok();
     }
+    @LogService(value="删除设备",method = "用户",param = "：删除设备", index = "0")
 
     @DeleteMapping
     public Object delete(@RequestBody String ids) {
@@ -104,4 +107,5 @@ public class DevicemanagerController {
             return ResponseUtil.deleteDataFailed();
         }
     }
+
 }

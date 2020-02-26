@@ -13,8 +13,15 @@ import com.jsc.hotspot.db.entity.PageResult;
  */
 
 public interface HotCompareResultService {
+    //查询
     PageResult findHotCompareResult(int page, int row, HotCompareResultList hotCompareResultDAO);
+    /**
+     * 功能描述: 删除中标信息
+     *
+     * @param: Long []ids
+     * @return: Result
+     * @auther: ww
+     * @date: 2019/11/7 0007 11:19
+     */
     void deleteHotCompareResult(String id);
-    CountList findHotCompareResultCount();
-    void insertHotCompareResult(HotCompareResult hotCompareResult);
 }

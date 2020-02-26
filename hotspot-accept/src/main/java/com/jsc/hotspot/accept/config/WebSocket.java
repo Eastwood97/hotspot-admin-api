@@ -1,8 +1,6 @@
-package com.jsc.hotspot.api.config;
+package com.jsc.hotspot.accept.config;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArraySet;
+import org.springframework.stereotype.Component;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -10,11 +8,12 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
-
-import org.springframework.stereotype.Component;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 @Component
-@ServerEndpoint("/websocket/{userName}")
+@ServerEndpoint("/screen/{userName}")
 //此注解相当于设置访问URL
 public class WebSocket {
 

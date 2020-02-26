@@ -1,6 +1,7 @@
 package com.jsc.hotspot.api.controller;
 
 import com.jsc.hotspot.api.dto.TargetFace;
+import com.jsc.hotspot.api.service.LogService;
 import com.jsc.hotspot.api.service.TargetFaceService;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
 import com.jsc.hotspot.db.domain.CameraTargetFace;
@@ -20,13 +21,13 @@ public class TargetFaceController {
 
     @Autowired
     private  TargetFaceService targetFaceService;
-
+    @LogService(value="添加人脸")
     @PostMapping
     public Object creat(@RequestBody TargetFace targetFace){
         targetFaceService.add(targetFace);
         return ResponseUtil.ok("添加成功");
     }
-
+    @LogService(value="修改人脸")
     @PutMapping
     public Object update(@RequestBody TargetFace targetFace){
         if(targetFaceService.update(targetFace)==0){
@@ -42,7 +43,7 @@ public class TargetFaceController {
         List<CameraTargetFace> targetFaces=targetFaceService.getTargetFace(page,limit,targetName);
         return ResponseUtil.ok(targetFaces);
     }
-
+    @LogService(value="删除人脸")
     @DeleteMapping
     public Object deleteById(@RequestBody String targetIds){
         if(targetFaceService.deleteById(targetIds)){

@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface HotTargetFaceEXTMapper {
     int deleteById(@Param("targetIds") String [] targetIds);
-
+    TargetFaceResult selectById(@Param("target_id") Long target_id);
     List<TargetFaceResult> selectByMyExampleSelective(@Param("example") CameraTargetFaceExample example, @Param("selective") CameraTargetFace.Column ... selective);
 }

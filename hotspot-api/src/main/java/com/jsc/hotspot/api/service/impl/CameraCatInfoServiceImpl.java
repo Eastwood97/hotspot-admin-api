@@ -44,6 +44,7 @@ public class CameraCatInfoServiceImpl implements CameraCatInfoService {
         int result=cameraCatInfoEXTMapper.deleteById(split);
         return split.length==result;
     }
+    //获取人脸总量
     @Override
     public Long getCameraCatInfoList() {
         CameraCatInfoExample cameraCatInfoExample = new CameraCatInfoExample();
@@ -51,7 +52,7 @@ public class CameraCatInfoServiceImpl implements CameraCatInfoService {
         long count = cameraCatInfoMapper.countByExample(cameraCatInfoExample);
         return count;
     }
-
+    //人脸折线图
     @Override
     public List getHoTnumInfoDateNum() {
         Date date = new Date();
@@ -63,7 +64,7 @@ public class CameraCatInfoServiceImpl implements CameraCatInfoService {
             Date d = c.getTime();
             dateList.add(d);
         }
-        List<Map> maps1 = cameraCatInfoEXTMapper.selectCount(dateList);
+        List<Map> maps1 = cameraCatInfoEXTMapper.selectCount(dateList.get(0),dateList.get(15));
         return maps1;
     }
 }

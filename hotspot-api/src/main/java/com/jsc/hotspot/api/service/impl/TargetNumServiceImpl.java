@@ -35,6 +35,8 @@ public class TargetNumServiceImpl implements TargetNumService {
 
     @Override
     public List<HotTargetInfo> query(Integer page, Integer limit,String targetName,String imsi,String imei,String isdn ) {
+        Subject currentUser = SecurityUtils.getSubject();
+        Admin admin = (Admin) currentUser.getPrincipal();
         HotTargetInfoExample example=new HotTargetInfoExample();
         HotTargetInfoExample.Criteria criteria=example.createCriteria();
         if (!StringUtils.isEmpty(targetName)) {
@@ -51,6 +53,9 @@ public class TargetNumServiceImpl implements TargetNumService {
             criteria.andIsdnEqualTo(isdn);
         }
 
+        if(!"admin123".equals(admin.getUsername())){
+            criteria.andOperatorIdEqualTo(admin.getId());
+        }
        example.setOrderByClause("create_time desc");
         PageHelper.startPage(page, limit);
         return hotTargetInfoMapper.selectByExample(example);

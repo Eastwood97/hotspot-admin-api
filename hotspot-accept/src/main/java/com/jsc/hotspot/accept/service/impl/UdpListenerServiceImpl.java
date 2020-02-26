@@ -1,11 +1,9 @@
 package com.jsc.hotspot.accept.service.impl;
 
-
+import com.alibaba.fastjson.JSONObject;
+import com.jsc.hotspot.accept.config.WebSocket;
 import com.jsc.hotspot.accept.service.*;
-import com.jsc.hotspot.db.domain.HotCompareResult;
-import com.jsc.hotspot.db.domain.HotNumInfo;
-import com.jsc.hotspot.db.domain.HotTargetInfo;
-import com.jsc.hotspot.db.domain.NumArea;
+import com.jsc.hotspot.db.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.ServletContextEvent;
@@ -15,13 +13,10 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 @WebListener
 public class UdpListenerServiceImpl implements ServletContextListener {
-    private HashMap<Integer, String> dicorg = new HashMap<Integer, String>();
+    private WebSocket websocket = new WebSocket();
     @Autowired
     private HoTnumInfoService HoTnumInfoService;
     @Autowired
@@ -82,16 +77,16 @@ public class UdpListenerServiceImpl implements ServletContextListener {
             String[] split = str.split(" ");
             String imsi = "";
             String imei = "";
-            Integer devId;
+            Long devId;
             if (split[0].equals("04")) {
-                devId = Integer.parseInt(split[6].substring(1));
+                String substring = split[6].substring(1);
+                devId = (long) Integer.parseInt(substring);
                 for (int i = 8; i < 23; i++) {
                     imsi = imsi + split[i].substring(1);
                 }
                 for (int i = 23; i < 38; i++) {
                     imei = imei + split[i].substring(1);
                 }
-                //数据展示插入
                 HotNumInfo hotNumInfo = new HotNumInfo();
                 if ((imsi.indexOf("46011")) == -1 && (imsi.indexOf("46003")) == -1) {
                     if (imsi.indexOf("460") != -1) {
@@ -122,7 +117,7 @@ public class UdpListenerServiceImpl implements ServletContextListener {
                 HotTargetInfo List = hotTargetInfoService.selectHotTargetInfoList(imsi, imei);
                 if (List != null) {
                     HotCompareResult hotCompareResult = new HotCompareResult();
-                    hotCompareResult.setFrtDevId((long) devId);
+                    hotCompareResult.setFrtDevId(devId);
                     hotCompareResult.setImei(imei);
                     hotCompareResult.setImsi(imsi);
                     hotCompareResult.setIsdn("");
@@ -134,7 +129,7 @@ public class UdpListenerServiceImpl implements ServletContextListener {
                     hotCompareResult.setUpdateTime((LocalDateTime.now()));
                     hotCompareResultService.insertHotCompareResult(hotCompareResult);
                 }
-                hotNumInfo.setDevId((long) devId);
+                hotNumInfo.setDevId(devId);
                 hotNumInfo.setImsi(imsi);
                 hotNumInfo.setImei(imei);
                 hotNumInfo.setIsdn(hotNumInfo.getIsdn());
@@ -143,9 +138,12 @@ public class UdpListenerServiceImpl implements ServletContextListener {
                 hotNumInfo.setCreateTime(LocalDateTime.now());
                 hotNumInfo.setUpdateTime((LocalDateTime.now()));
                 HoTnumInfoService.insertHoTnumInfoNum(hotNumInfo);
-
+                //websocket推送实时取号信息
+                String hotNumInfoJson = JSONObject.toJSONString(hotNumInfo);
+                websocket.sendAllMessage(hotNumInfoJson);
             }
         }
+
 
         @Override
         public void run() {

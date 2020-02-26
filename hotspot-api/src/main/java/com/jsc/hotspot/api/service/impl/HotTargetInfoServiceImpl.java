@@ -20,6 +20,7 @@ import java.util.List;
 public class HotTargetInfoServiceImpl implements HotTargetInfoService {
     @Autowired
     private HotTargetInfoMapper hotTargetInfoMapper;
+    //获取布控总量
     @Override
     public Long getHotTargetInfoNum() {
         HotTargetInfoExample hotTargetInfoExample = new HotTargetInfoExample();
@@ -28,13 +29,5 @@ public class HotTargetInfoServiceImpl implements HotTargetInfoService {
         return count;
     }
 
-    @Override
-    public List<HotTargetInfo> selectHotTargetInfoList(String imsi, String imei) {
-        HotTargetInfoExample hotTargetInfoExample = new HotTargetInfoExample();
-        HotTargetInfoExample.Criteria criteria = hotTargetInfoExample.createCriteria();
-        criteria.andImeiEqualTo(imei);
-        criteria.andImsiEqualTo(imsi);
-        List<HotTargetInfo> list = hotTargetInfoMapper.selectByExample(hotTargetInfoExample);
-        return list;
-    }
+
 }

@@ -37,7 +37,7 @@ import java.util.concurrent.*;
  * @description kafka接收服务实现
  * @date 2019/11/4
  */
-@Service
+//@Service
 public class KafkaReceiverServiceImpl implements KafkaReceiverService {
 
     private Log log= LogFactory.getLog(KafkaReceiverServiceImpl.class);
@@ -82,9 +82,9 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
         log.error("-----===========---------+++++++++++++++++++");
         if (kafkaMessage.isPresent()) {
-             RelatedNumResultExample relatedNumResultExample=new RelatedNumResultExample();
-             CameraCompareResultExample cameraCompareResultExample=new CameraCompareResultExample();
-             HotNumInfoExample hotNumInfoExample=new HotNumInfoExample();
+            RelatedNumResultExample relatedNumResultExample = new RelatedNumResultExample();
+            CameraCompareResultExample cameraCompareResultExample = new CameraCompareResultExample();
+            HotNumInfoExample hotNumInfoExample = new HotNumInfoExample();
             FaceRecognitionInfo faceRecognitionInfo = new FaceRecognitionInfo();
             Object message = kafkaMessage.get();
             String msg = (String) message;//json字符串
@@ -124,7 +124,7 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                 cameraCompareResultMapper.insertSelective(result);
                 log.error("-------------------------成功添加人臉中標結果-------------");
                 // 3.根据中标时间查询取号
-                Callable<List> numberListCallable=new Callable<List>() {
+                Callable<List> numberListCallable = new Callable<List>() {
                     @Override
                     public List call() throws Exception {
                         java.time.Duration duration = java.time.Duration.between(LocalDateTime.now() , captureTime );
@@ -174,41 +174,41 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                 RelatedNumResult relatedNumResult=new RelatedNumResult();
                 relatedNumResult.setCaptureNum(count);
 //                    if (count > 1) { //是否是第一次中标
-                    //查询每个号码出现的频次比
+                //查询每个号码出现的频次比
                 List<RealatedNumAndCount> realatedNumAndCounts = relatedNumEXTMapper.getCampareValue(faceRecognitionInfo.getTargetName());
-                if (null!=realatedNumAndCounts&&realatedNumAndCounts.size()>0) {
-                            //数组转json字符串
-                            Map<String,Object> jsonMap= new HashMap<>();
+                if (null != realatedNumAndCounts) {
+                    //数组转json字符串
+                    Map<String, Object> jsonMap = new HashMap<>();
 
-                            jsonMap.put("topOne",realatedNumAndCounts.get(0));
-                            if(realatedNumAndCounts.size()>1) {
-                                jsonMap.put("topTwo", realatedNumAndCounts.get(1));
-                            }
-                            if(realatedNumAndCounts.size()>2) {
-                                jsonMap.put("topThree", realatedNumAndCounts.get(2));
-                            }
-                            String  stringMap=JSON.toJSONString(jsonMap);
-                            //json 字符串转object
-                           JSONObject relatedResult=JSON.parseObject(stringMap);
-                            map.put("realatedNumAndCount",relatedResult);
-                            map.put("captureCount",count);
-                            //更新关联结果
-                            relatedNumResult.setRelatedResult(relatedResult);
-                            relatedNumResultExample.or().andTargetNameEqualTo(result.getTargetName());
-                            List<RelatedNumResult> list=relatedNumResultMapper.selectByExampleSelective(relatedNumResultExample);
-                            if (list.size()>0) {
-                                RelatedNumResultExample.Criteria criteria = relatedNumResultExample.createCriteria();
-                                criteria.andTargetNameEqualTo(result.getTargetName());
-                                log.error("更新关联结果表前");
-                                relatedNumResultMapper.updateByExampleSelective(relatedNumResult, relatedNumResultExample);
-                                log.error("更新关联结果表后");
-                            }else{
-                                relatedNumResult.setTargetName(result.getTargetName());
-                                relatedNumResult.setTargetFace(result.getTargetFaceStorageUrl());
-                                log.error("插入relatedNum表");
-                                relatedNumResultMapper.insertSelective(relatedNumResult);
-                                log.error("插入relatedNum表结束");
-                            }
+                    jsonMap.put("topOne", realatedNumAndCounts.get(0));
+                    if (realatedNumAndCounts.size() > 1) {
+                        jsonMap.put("topTwo", realatedNumAndCounts.get(1));
+                    }
+                    if (realatedNumAndCounts.size() > 2) {
+                        jsonMap.put("topThree", realatedNumAndCounts.get(2));
+                    }
+                    String stringMap = JSON.toJSONString(jsonMap);
+                    //json 字符串转object
+                    JSONObject relatedResult = JSON.parseObject(stringMap);
+                    map.put("realatedNumAndCount", relatedResult);
+                    map.put("captureCount", count);
+                    //更新关联结果
+                    relatedNumResult.setRelatedResult(relatedResult);
+                    relatedNumResultExample.or().andTargetNameEqualTo(result.getTargetName());
+                    List<RelatedNumResult> list = relatedNumResultMapper.selectByExampleSelective(relatedNumResultExample);
+                    if (list.size() > 0) {
+                        RelatedNumResultExample.Criteria criteria = relatedNumResultExample.createCriteria();
+                        criteria.andTargetNameEqualTo(result.getTargetName());
+                        log.error("更新关联结果表前");
+                        relatedNumResultMapper.updateByExampleSelective(relatedNumResult, relatedNumResultExample);
+                        log.error("更新关联结果表后");
+                    } else {
+                        relatedNumResult.setTargetName(result.getTargetName());
+                        relatedNumResult.setTargetFace(result.getTargetFaceStorageUrl());
+                        log.error("插入relatedNum表");
+                        relatedNumResultMapper.insertSelective(relatedNumResult);
+                        log.error("插入relatedNum表结束");
+                    }
 
                 }
 
@@ -216,7 +216,7 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                 webSocket.sendOneMessage("admin123", data);
             }
 
-            BeanUtils.copyProperties(cameraCatInfo,faceRecognitionInfo);
+            BeanUtils.copyProperties(cameraCatInfo, faceRecognitionInfo);
             cameraCatInfo.setCreateTime(LocalDateTime.now());
             //抓拍入库
             cameraCatInfoMapper.insertSelective(cameraCatInfo);

@@ -450,12 +450,15 @@
     </if>
     limit 1
   </select>
-
+  <select id="selectDistCount" resultType="java.lang.Long">
+    select count(DISTINCT imsi)
+    from hot_num_info
+  </select>
   <select id="selectCount" resultType="java.util.Map">
-    select count(*) AS num,date(create_time) as capture_time2
+    select count(*) AS num,date(capture_time) as capture_time2
     from hot_num_info
     <where>
-     create_time
+      capture_time
       BETWEEN #{startTime} AND #{endTime}
     </where>
     GROUP BY capture_time2
@@ -469,20 +472,19 @@
 
   <select id="selectTraffic" resultType="java.util.Map">
     SELECT
-    COUNT( DISTINCT imsi ) AS num,create_time
+    COUNT( DISTINCT imsi ) AS num,DATE( capture_time ) as create_time1
     FROM
     hot_num_info
     WHERE
-    dev_id = 1
-    AND create_time   BETWEEN #{startTime} AND #{endTime}
-    GROUP BY
-     DATE( create_time )
+    dev_id = #{devId}
+    AND capture_time   BETWEEN #{startTime} AND #{endTime}
+    GROUP BY create_time1
   </select>
 
   <select id="selectGuoBieCount" resultType="java.util.Map">
     SELECT COUNT(DISTINCT imsi)AS num,attribution FROM hot_num_info WHERE  dev_id=#{devId}
     AND imsi LIKE '460%'
-    AND create_time
+    AND capture_time
     BETWEEN #{startTime} AND #{endTime}
     GROUP BY attribution ORDER BY num DESC LIMIT 10
   </select>
@@ -491,7 +493,7 @@
     SELECT "国内" AS country,COUNT(DISTINCT imsi)AS num
     FROM hot_num_info where dev_id=#{devId}
     and imsi LIKE '460%'
-    and create_time
+    and capture_time
     BETWEEN #{startTime} AND #{endTime} ORDER BY num DESC LIMIT 10
   </select>
 
@@ -501,7 +503,7 @@
     FROM hot_num_info
     where dev_id=#{devId}
     and imsi not LIKE '460%'
-    and create_time
+    and capture_time
     BETWEEN #{startTime} AND #{endTime}
   </select>
 
@@ -510,7 +512,7 @@
     hot_num_info
     where dev_id=#{devId}
     and imsi LIKE '460%'
-    and create_time
+    and capture_time
     BETWEEN #{startTime} AND #{endTime}
   </select>
 
@@ -519,7 +521,7 @@
     hot_num_info
     where dev_id=#{devId}
     and imsi not LIKE '460%'
-    and create_time
+    and capture_time
     BETWEEN #{startTime} AND #{endTime}
     GROUP BY attribution
   </select>
@@ -531,5 +533,31 @@
     FROM hot_num_info WHERE id=#{id} and dev_id=#{devId}
     )b ON a.create_time BETWEEN DATE_SUB(b.create_time,INTERVAL #{createTime} SECOND)
     AND DATE_ADD(b.create_time,INTERVAL #{createTime} SECOND) AND b.id !=a.id and b.dev_id=a.dev_id
+  </select>
+  <select id="selectHotNumInfoList"  resultType="java.util.Map">
+    select
+    h.id, h.imsi,h.imei,h.isdn,h.mode,h.capture_time,h.target_id,h.dev_id,h.create_time,h.update_time,h.attribution
+    from hot_num_info h inner join (
+    select id from hot_num_info
+    <where>
+      <if test="dev_id !=null and dev_id !=''">
+        and dev_id=#{dev_id}
+      </if>
+      <if test="imsi !=null and imsi !=''">
+        and imsi=#{imsi}
+      </if>
+      <if test="imei !=null and imei !=''">
+        and imei=#{imei}
+      </if>
+      <if test="isdn !=null and isdn !=''">
+        and isdn=#{isdn}
+      </if>
+      <if test="capture_time !=null">
+        and capture_time between #{startTime} and #{endTime}
+      </if>
+    </where>
+    order by id desc limit #{page},#{rows}
+    )t
+    on h.id=t.id
   </select>
 </mapper>

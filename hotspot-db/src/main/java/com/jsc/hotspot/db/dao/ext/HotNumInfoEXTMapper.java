@@ -21,6 +21,7 @@ public interface HotNumInfoEXTMapper {
      * @auther: ww
      * @date: 2019/11/15 0015 10:25
      */
+    Long selectDistCount();
     List<Map> selectCount(@Param(value ="startTime") Date startTime, @Param(value ="endTime") Date endTime);
     /**
      *
@@ -41,4 +42,8 @@ public interface HotNumInfoEXTMapper {
     Map selectGuojiCounts(@Param(value ="devId") Integer devId, @Param(value ="startTime") Date startTime, @Param(value ="endTime") Date endTime);
     List<Map> selectbansuiLists(@Param(value ="id") Long id, @Param(value ="devId") Long devId, @Param(value ="imsi") String imsi,
                                 @Param(value ="createTime") Integer createTime);
+    List<Map> selectHotNumInfoList(@Param("dev_id") Long dev_id,@Param("imsi")String imsi,@Param("imei")String imei,
+                             @Param("isdn")String isdn,@Param("capture_time") LocalDateTime capture_time,@Param("page")Integer page,@Param("rows")Integer rows,
+                                   @Param("startTime") LocalDateTime startTime,
+                                   @Param("endTime") LocalDateTime endTime);
 }

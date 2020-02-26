@@ -11,6 +11,6 @@ import com.jsc.hotspot.db.domain.NumArea;
  */
 
 public interface ImsiAreaService {
-    void insertImsiArea(ImsiArea imsiArea);
+    //查询IMSI区域
     String selectImsiArea(Integer MCC);
 }

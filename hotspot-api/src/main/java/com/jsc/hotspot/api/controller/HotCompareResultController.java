@@ -88,11 +88,9 @@ public class HotCompareResultController {
         Long hoTnumInfoNum = hoTnumInfoService.getHoTnumInfoNum();
         //获取15天的取号数量及其对应15天
         List<HotNumInfo> hoTnumInfoDateNum = hoTnumInfoService.getHoTnumInfoDateNum();
-        //归属地分析
-        List guiShuDiList = hoTnumInfoService.getGuiShuDiList();
         //今日取号数量
         Long todayHoTnumInfoNum = hoTnumInfoService.getTodayHoTnumInfoNum();
-        return ResponseUtil.ok(new CountList(hoTnumInfoDateNum, targetInfoNum, guiShuDiList, cameraCatInfoList, hoTnumInfoNum,todayHoTnumInfoNum,cameraCatInfoServiceHoTnumInfoDateNum));
+        return ResponseUtil.ok(new CountList(hoTnumInfoDateNum, targetInfoNum, null, cameraCatInfoList, hoTnumInfoNum,todayHoTnumInfoNum,cameraCatInfoServiceHoTnumInfoDateNum));
     }
 
 }

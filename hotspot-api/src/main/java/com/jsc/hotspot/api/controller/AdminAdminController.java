@@ -1,5 +1,6 @@
 package com.jsc.hotspot.api.controller;
 
+import com.jsc.hotspot.api.service.LogService;
 import com.jsc.hotspot.api.service.impl.AdminService;
 import com.jsc.hotspot.common.util.bcrypt.BCryptPasswordEncoder;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
@@ -29,7 +30,6 @@ import static com.jsc.hotspot.common.utils.response.AdminResponseCode.*;
 public class AdminAdminController {
     @Autowired
     private AdminService adminService;
-
     @GetMapping("/list")
     public Object list(String username,
                        @RequestParam(defaultValue = "1") Integer page,
@@ -44,7 +44,7 @@ public class AdminAdminController {
         map.put("type",false);
         return ResponseUtil.ok(map);
     }
-
+    @LogService(value="添加用户")
     @PostMapping("/create")
     public Object create(@RequestBody Admin admin) {
         Object error = validate(admin);
@@ -78,7 +78,7 @@ public class AdminAdminController {
         }
         return null;
     }
-
+    @LogService(value="修改用户")
     @PostMapping("/update")
     public Object update(@RequestBody Admin admin) {
 //        Object error = validate(admin);
@@ -96,7 +96,7 @@ public class AdminAdminController {
         }
         return ResponseUtil.ok(admin);
     }
-
+    @LogService(value="删除用户")
     @PostMapping("/delete")
     public Object delete(@RequestBody Admin admin) {
         Integer anotherAdminId = Math.toIntExact(admin.getId());

@@ -1,5 +1,6 @@
 package com.jsc.hotspot.api.controller;
 
+import com.jsc.hotspot.api.service.LogService;
 import com.jsc.hotspot.api.service.impl.AdminService;
 import com.jsc.hotspot.api.service.impl.PermissionService;
 import com.jsc.hotspot.api.service.impl.RoleService;
@@ -55,6 +56,7 @@ public class AdminAuthController {
     /*
      *  { username : value, password : value }
      */
+    @LogService(value="用户登录")
     @PostMapping("/login")
     public Object login(@RequestBody String body, HttpServletRequest request) {
         logger.debug("正在登陆");

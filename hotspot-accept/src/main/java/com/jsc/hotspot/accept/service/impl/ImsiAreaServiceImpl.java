@@ -21,11 +21,6 @@ public class ImsiAreaServiceImpl implements ImsiAreaService {
     @Autowired
     private ImsiAreaMapper imsiAreaMapper;
     @Override
-    public void insertImsiArea(ImsiArea imsiArea) {
-        imsiAreaMapper.insertImsiArea(imsiArea);
-    }
-
-    @Override
     public String selectImsiArea(Integer MCC) {
         return imsiAreaMapper.selectImsiArea(MCC);
     }

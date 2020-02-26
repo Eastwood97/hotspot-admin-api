@@ -31,8 +31,8 @@ public class HoTnumInfoController {
      * @date: 2019/11/7 0007 9:00
      */
     @RequestMapping(value = "/hotnuminfo",method = RequestMethod.GET)
-    public Object findHoTnumInfo(int page, int row, HotNumInfo hotNumInfoDAO){
-        PageResult hotNumInfo = hoTnumInfoService.findHotNumInfo(page, row, hotNumInfoDAO);
+    public Object findHoTnumInfo(int groupId, int page, int row, HotNumInfo hotNumInfoDAO){
+        PageResult hotNumInfo = hoTnumInfoService.findHotNumInfo(groupId,page, row, hotNumInfoDAO);
         return ResponseUtil.ok(hotNumInfo);
     }
 

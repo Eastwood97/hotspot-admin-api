@@ -8,14 +8,13 @@
         </foreach>
     </delete>
     <select id="selectCount" resultType="java.util.Map">
-        select count(*) AS num,capture_time
+        select count(*) AS num,date(capture_time) as capture_time2
         from camera_cat_info
         <where>
-            date(capture_time) in
-            <foreach collection="list" item="capture_time" index="index" open="(" close=")" separator=",">
-                date(#{capture_time})
-            </foreach>
+            create_time
+            BETWEEN #{startTime} AND #{endTime}
         </where>
-        GROUP BY date(create_time)
+        GROUP BY capture_time2
     </select>
+
 </mapper>

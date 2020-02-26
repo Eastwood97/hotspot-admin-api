@@ -113,10 +113,15 @@ public class TargetFaceServiceImpl implements TargetFaceService {
 
     @Override
     public List<CameraTargetFace> getTargetFace(Integer page,Integer limit,String targetName) {
+        Subject currentUser = SecurityUtils.getSubject();
+        Admin admin = (Admin) currentUser.getPrincipal();
         CameraTargetFaceExample cameraTargetFaceExample=new CameraTargetFaceExample();
         CameraTargetFaceExample.Criteria criteria=cameraTargetFaceExample.createCriteria();
         if(!StringUtils.isEmpty(targetName)){
             criteria.andTargetNameLike("%"+targetName+"%");
+        }
+        if(!"admin123".equals(admin.getUsername())){
+            criteria.andOperatorIdEqualTo(admin.getId());
         }
         PageHelper.startPage(page, limit);
         return targetFaceMapper.selectByExampleSelective(cameraTargetFaceExample);

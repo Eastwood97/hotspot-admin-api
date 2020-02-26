@@ -10,6 +10,6 @@ import com.jsc.hotspot.db.domain.NumArea;
  */
 
 public interface NumAreaService {
-    void insertNumArea(NumArea numArea);
+    //查询国外的国籍
     NumArea selectNumArea(String Mobile);
 }

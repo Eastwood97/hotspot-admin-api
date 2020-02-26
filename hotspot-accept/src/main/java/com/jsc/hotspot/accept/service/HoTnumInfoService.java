@@ -11,10 +11,6 @@ import java.util.List;
  * @Description:
  */
 public interface HoTnumInfoService {
-    PageResult findHotNumInfo(int page, int rows, HotNumInfo hotNumInfoDAO);
-    void deleteHotNumInfo(String ids);
-    Long getHoTnumInfoNum();
-    List getHoTnumInfoDateNum();
-    Long getTodayHoTnumInfoNum();
+    //插入取号信息
     void insertHoTnumInfoNum(HotNumInfo hotNumInfoDAO);
 }

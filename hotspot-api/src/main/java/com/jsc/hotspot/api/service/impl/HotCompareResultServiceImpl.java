@@ -35,13 +35,28 @@ public class HotCompareResultServiceImpl implements HotCompareResultService {
     @Autowired
     private HotCompareResultEXTMapper hotCompareResultEXTMapper;
     @Override
+    /**
+     * 功能描述: 获取中标信息
+     *
+     * @param: page, row, hotCompareResultDAO
+     * @return: pageResult
+     * @auther: ww
+     * @date: 2019/11/7 0007 11:18
+     */
     public PageResult findHotCompareResult(int page, int row, HotCompareResultList hotCompareResultList) {
         PageHelper.startPage(page,row);
         List list = hotCompareResultEXTMapper.selectHotCompareResult(hotCompareResultList);
         Page<HotCompareResult> page1 = (Page<HotCompareResult>) list;
         return new PageResult(page1.getTotal(),page1.getResult());
     }
-
+    /**
+     * 功能描述: 删除中标信息
+     *
+     * @param: Long []ids
+     * @return: Result
+     * @auther: ww
+     * @date: 2019/11/7 0007 11:19
+     */
     @Override
     public void deleteHotCompareResult(String ids) {
         List<String> strings = JSONArray.parseArray(ids, String.class);
@@ -50,14 +65,5 @@ public class HotCompareResultServiceImpl implements HotCompareResultService {
         }
     }
 
-    @Override
-    public CountList findHotCompareResultCount() {
 
-        return null;
-    }
-
-    @Override
-    public void insertHotCompareResult(HotCompareResult hotCompareResult) {
-        hotCompareResultDAOMapper.insert(hotCompareResult);
-    }
 }

@@ -18,11 +18,6 @@ public class NumAreaServiceImpl implements NumAreaService {
     @Autowired
     private NumAreaMapper numAreaMapper;
     @Override
-    public void insertNumArea(NumArea numArea) {
-        numAreaMapper.insertNumArea(numArea);
-    }
-
-    @Override
     public NumArea selectNumArea(String Mobile) {
         return numAreaMapper.selectNumArea(Mobile);
     }

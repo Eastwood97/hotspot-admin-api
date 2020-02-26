@@ -12,14 +12,20 @@ import java.util.Map;
  * @Description:
  */
 public interface HoTnumInfoService {
-    PageResult findHotNumInfo(int page, int rows, HotNumInfo hotNumInfoDAO);
+    //分页查询展示
+    PageResult findHotNumInfo(int groupId, int page, int rows, HotNumInfo hotNumInfoDAO);
+    //删除取号信息
     void deleteHotNumInfo(String ids);
+    //获取数量
     Long getHoTnumInfoNum();
+    //15天统计
     List getHoTnumInfoDateNum();
+    //今日数量
     Long getTodayHoTnumInfoNum();
-    void insertHoTnumInfoNum(HotNumInfo hotNumInfoDAO);
-    List getGuiShuDiList();
+    //人流分析
     List<Map> getTraffic(Integer devId, String[] createTime);
+
     Object getDifferentCountries(Integer devId, String[] createTime);
+
     PageResult selecttongxingList(Integer currentPage, Integer pageSize, Integer createTime,String imsi);
 }
