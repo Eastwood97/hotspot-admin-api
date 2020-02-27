@@ -1239,6 +1239,6 @@ public class PermissionExample {
          *
          * @mbg.generated
          */
-        void example(com.jsc.hotspot.db.domain.PermissionExample example);
+        void example(PermissionExample example);
     }
 }

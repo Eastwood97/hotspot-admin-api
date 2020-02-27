@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface HotTargetInfoEXTMapper {
-    int deleteNumById(@Param("targetIds") String [] targetIds);
+    int deleteNumById(@Param("targetIds") String[] targetIds);
     HotTargetInfo selectHeimingdan(@Param("imsi") String imsi, @Param("imei") String imei);
     int insertForeach(List<HotTargetInfo> list);
 }

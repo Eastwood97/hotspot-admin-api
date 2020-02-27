@@ -2,6 +2,7 @@ package com.jsc.hotspot.api.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.jsc.hotspot.api.service.DeviceService;
+import com.jsc.hotspot.api.service.LogService;
 import com.jsc.hotspot.api.utils.HttpUtil;
 import com.jsc.hotspot.common.biz.BizResult;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
@@ -47,7 +48,7 @@ public class DevicemanagerController {
         }
         return null;
     }
-    @LogService(value="添加设备",method = "用户",param = "：添加设备", index = "0")
+    @LogService(value="添加设备")
     @PostMapping
     public Object add(@RequestBody HotFrontDevice hotFrontDevice){
         Object error=validate(hotFrontDevice);
@@ -66,8 +67,7 @@ public class DevicemanagerController {
         deviceService.add(hotFrontDevice);
         return ResponseUtil.ok(hotFrontDevice);
     }
-    @LogService(value="修改设备",method = "用户",param = "：修改设备", index = "0")
-
+    @LogService(value="修改设备")
     @PutMapping
     public Object upadte(@RequestBody HotFrontDevice hotFrontDevice){
         Object error=validate(hotFrontDevice);
@@ -97,8 +97,7 @@ public class DevicemanagerController {
         deviceService.updateById(hotFrontDevice);
         return ResponseUtil.ok();
     }
-    @LogService(value="删除设备",method = "用户",param = "：删除设备", index = "0")
-
+    @LogService(value="删除设备")
     @DeleteMapping
     public Object delete(@RequestBody String ids) {
         if (deviceService.deleteById(ids)) {

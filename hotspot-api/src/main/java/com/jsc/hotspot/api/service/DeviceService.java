@@ -35,7 +35,7 @@ public interface DeviceService {
      * 获取设备集合
      * @return
      */
-    List<HotFrontDevice> getDevices(Integer page, Integer limit,String devName,String devType,String devNum);
+    List<HotFrontDevice> getDevices(Integer page, Integer limit, String devName, String devType, String devNum);
 
     HotFrontDevice getDeviceByDevName(String devName);
 

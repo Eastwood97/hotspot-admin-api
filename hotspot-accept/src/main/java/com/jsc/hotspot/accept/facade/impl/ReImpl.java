@@ -1,4 +1,4 @@
-//package com.jsc.hotspot.accept.facade.impl;
+package com.jsc.hotspot.accept.facade.impl;//package com.jsc.hotspot.accept.facade.impl;
 //
 //import org.springframework.cache.annotation.Cacheable;
 //import org.springframework.data.redis.core.StringRedisTemplate;

@@ -13,9 +13,18 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 import java.time.LocalDateTime;
-
+/**
+ *
+ * 功能描述: Udp
+ *
+ * @param:
+ * @return:
+ * @auther: ww
+ * @date: 2020/2/27 0027 10:16
+ */
 @WebListener
 public class UdpListenerServiceImpl implements ServletContextListener {
+    //创建websocket
     private WebSocket websocket = new WebSocket();
     @Autowired
     private HoTnumInfoService HoTnumInfoService;
@@ -30,7 +39,7 @@ public class UdpListenerServiceImpl implements ServletContextListener {
 
     public static final int MAX_UDP_DATA_SIZE = 4096;
     public static final int UDP_PORT = 9999;
-
+    //Udp初始化
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("init udp");
@@ -40,7 +49,7 @@ public class UdpListenerServiceImpl implements ServletContextListener {
             e.printStackTrace();
         }
     }
-
+    //Udp删除
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         System.err.println("udp Destroyed");

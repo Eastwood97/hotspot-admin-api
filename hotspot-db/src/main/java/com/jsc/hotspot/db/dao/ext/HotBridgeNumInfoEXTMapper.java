@@ -128,9 +128,9 @@ public interface HotBridgeNumInfoEXTMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(HotBridgeNumInfo record);
-    List<Map> selectHotBridInfoList(@Param("dev_id") Long dev_id, @Param("imsi")String imsi, @Param("imei")String imei,
-                                   @Param("isdn")String isdn, @Param("capture_time") LocalDateTime capture_time
-            , @Param("page")Integer page, @Param("rows")Integer rows,
+    List<Map> selectHotBridInfoList(@Param("dev_id") Long dev_id, @Param("imsi") String imsi, @Param("imei") String imei,
+                                    @Param("isdn") String isdn, @Param("capture_time") LocalDateTime capture_time
+            , @Param("page") Integer page, @Param("rows") Integer rows,
                                     @Param("startTime") LocalDateTime startTime,
                                     @Param("endTime") LocalDateTime endTime);
 }

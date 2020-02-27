@@ -1,4 +1,4 @@
-//package com.jsc.hotspot.accept.facade.impl;
+package com.jsc.hotspot.accept.facade.impl;//package com.jsc.hotspot.accept.facade.impl;
 //
 //
 //import java.util.concurrent.TimeUnit;

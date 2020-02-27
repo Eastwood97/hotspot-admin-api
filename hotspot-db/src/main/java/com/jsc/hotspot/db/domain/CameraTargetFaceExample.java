@@ -1410,6 +1410,6 @@ public class CameraTargetFaceExample {
          *
          * @mbg.generated
          */
-        void example(com.jsc.hotspot.db.domain.CameraTargetFaceExample example);
+        void example(CameraTargetFaceExample example);
     }
 }

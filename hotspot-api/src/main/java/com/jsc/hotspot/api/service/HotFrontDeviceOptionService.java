@@ -10,5 +10,6 @@ import java.util.List;
  * @Description:
  */
 public interface HotFrontDeviceOptionService {
+    //归属、人流查询获取设备信息
     List<HotFrontDeviceOption> getHotFrontDeviceOption(Integer id);
 }

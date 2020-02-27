@@ -2559,6 +2559,6 @@ public class HotFrontDeviceExample {
          *
          * @mbg.generated
          */
-        void example(com.jsc.hotspot.db.domain.HotFrontDeviceExample example);
+        void example(HotFrontDeviceExample example);
     }
 }

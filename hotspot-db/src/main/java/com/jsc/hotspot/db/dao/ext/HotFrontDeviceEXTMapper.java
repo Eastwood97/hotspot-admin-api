@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface HotFrontDeviceEXTMapper {
 
-    int deleteById(@Param("devIds") String [] devIds);
+    int deleteById(@Param("devIds") String[] devIds);
     List<HotFrontDevice> selectDeviceList();
 }

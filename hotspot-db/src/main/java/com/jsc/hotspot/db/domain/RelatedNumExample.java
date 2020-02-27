@@ -1258,6 +1258,6 @@ public class RelatedNumExample {
          *
          * @mbg.generated
          */
-        void example(com.jsc.hotspot.db.domain.RelatedNumExample example);
+        void example(RelatedNumExample example);
     }
 }

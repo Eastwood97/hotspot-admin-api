@@ -2141,6 +2141,6 @@ public class HotBridgeNumInfoExample {
          *
          * @mbg.generated
          */
-        void example(com.jsc.hotspot.db.domain.HotBridgeNumInfoExample example);
+        void example(HotBridgeNumInfoExample example);
     }
 }

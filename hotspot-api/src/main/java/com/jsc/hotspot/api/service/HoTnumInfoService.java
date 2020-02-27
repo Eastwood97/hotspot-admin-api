@@ -24,8 +24,7 @@ public interface HoTnumInfoService {
     Long getTodayHoTnumInfoNum();
     //人流分析
     List<Map> getTraffic(Integer devId, String[] createTime);
-
+    //获取不同国家
     Object getDifferentCountries(Integer devId, String[] createTime);
 
-    PageResult selecttongxingList(Integer currentPage, Integer pageSize, Integer createTime,String imsi);
 }

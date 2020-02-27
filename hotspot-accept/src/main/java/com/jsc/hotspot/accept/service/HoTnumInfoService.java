@@ -13,4 +13,6 @@ import java.util.List;
 public interface HoTnumInfoService {
     //插入取号信息
     void insertHoTnumInfoNum(HotNumInfo hotNumInfoDAO);
+    //15天统计
+    List getHoTnumInfoDateNum();
 }

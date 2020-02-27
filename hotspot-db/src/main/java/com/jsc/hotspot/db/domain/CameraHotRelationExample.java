@@ -967,6 +967,6 @@ public class CameraHotRelationExample {
          *
          * @mbg.generated
          */
-        void example(com.jsc.hotspot.db.domain.CameraHotRelationExample example);
+        void example(CameraHotRelationExample example);
     }
 }

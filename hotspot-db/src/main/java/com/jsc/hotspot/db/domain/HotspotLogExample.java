@@ -1395,6 +1395,6 @@ public class HotspotLogExample {
          *
          * @mbg.generated
          */
-        void example(com.jsc.hotspot.db.domain.HotspotLogExample example);
+        void example(HotspotLogExample example);
     }
 }

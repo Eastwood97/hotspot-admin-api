@@ -1157,6 +1157,6 @@ public class RelatedNumResultExample {
          *
          * @mbg.generated
          */
-        void example(com.jsc.hotspot.db.domain.RelatedNumResultExample example);
+        void example(RelatedNumResultExample example);
     }
 }

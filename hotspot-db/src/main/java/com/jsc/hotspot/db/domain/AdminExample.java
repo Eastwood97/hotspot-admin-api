@@ -1817,6 +1817,6 @@ public class AdminExample {
          *
          * @mbg.generated
          */
-        void example(com.jsc.hotspot.db.domain.AdminExample example);
+        void example(AdminExample example);
     }
 }

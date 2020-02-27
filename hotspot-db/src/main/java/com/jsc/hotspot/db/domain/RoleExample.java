@@ -1375,6 +1375,6 @@ public class RoleExample {
          *
          * @mbg.generated
          */
-        void example(com.jsc.hotspot.db.domain.RoleExample example);
+        void example(RoleExample example);
     }
 }

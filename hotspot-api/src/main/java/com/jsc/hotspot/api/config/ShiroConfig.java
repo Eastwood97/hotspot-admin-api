@@ -69,10 +69,10 @@ public class ShiroConfig {
         //shiro过滤器工厂类
         ShiroFilterFactoryBean shiroFilterFactoryBean=new ShiroFilterFactoryBean();
         //必须设置SercuityMannage
-        shiroFilterFactoryBean.setSecurityManager((org.apache.shiro.mgt.SecurityManager) securityManager);
+        shiroFilterFactoryBean.setSecurityManager((SecurityManager) securityManager);
         //拦截器--map集合
         Map<String,String> filterChainDefinitionMap =new LinkedHashMap<>();
-        Map<String, javax.servlet.Filter> filterMap = new HashMap<String, Filter>(1);
+        Map<String, Filter> filterMap = new HashMap<String, Filter>(1);
         filterMap.put("authc", new ShiroBasicHttpAuthenticationFilter());
 //        filterChainDefinitionMap.put("/admin/auth/login","anon");
 //        filterChainDefinitionMap.put("/admin/auth/401","anon");
@@ -125,7 +125,7 @@ public class ShiroConfig {
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager){
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor=
                 new AuthorizationAttributeSourceAdvisor();
-        authorizationAttributeSourceAdvisor.setSecurityManager((org.apache.shiro.mgt.SecurityManager) securityManager);
+        authorizationAttributeSourceAdvisor.setSecurityManager((SecurityManager) securityManager);
         return authorizationAttributeSourceAdvisor;
     }
 

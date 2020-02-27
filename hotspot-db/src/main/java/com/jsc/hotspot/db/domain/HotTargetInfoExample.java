@@ -1783,6 +1783,6 @@ public class HotTargetInfoExample {
          *
          * @mbg.generated
          */
-        void example(com.jsc.hotspot.db.domain.HotTargetInfoExample example);
+        void example(HotTargetInfoExample example);
     }
 }

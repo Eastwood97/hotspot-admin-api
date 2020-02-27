@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TargetNumService {
 
-    List<HotTargetInfo> query(Integer page, Integer limit,String targetName,String imsi,String imei,String isdn);
+    List<HotTargetInfo> query(Integer page, Integer limit, String targetName, String imsi, String imei, String isdn);
 
     int updateById(HotTargetInfo targetInfo);
 

@@ -19,6 +19,8 @@ import java.util.List;
 public class HotFrontDeviceOptionServiceImpl implements HotFrontDeviceOptionService {
     @Autowired
     private HotFrontDeviceOptionMapper hotFrontDeviceOptionMapper;
+
+    //归属、人流查询获取设备信息
     @Override
     public List<HotFrontDeviceOption> getHotFrontDeviceOption(Integer id) {
         return hotFrontDeviceOptionMapper.selectHotFrontDeviceOption(id);

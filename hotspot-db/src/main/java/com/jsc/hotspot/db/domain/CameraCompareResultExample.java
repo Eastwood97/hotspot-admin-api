@@ -2453,6 +2453,6 @@ public class CameraCompareResultExample {
          *
          * @mbg.generated
          */
-        void example(com.jsc.hotspot.db.domain.CameraCompareResultExample example);
+        void example(CameraCompareResultExample example);
     }
 }

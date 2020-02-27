@@ -32,4 +32,9 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         hotNumInfoDAO.setCreateTime(LocalDateTime.now());
         hotNumInfoMapper.insert(hotNumInfoDAO);
     }
+
+    @Override
+    public List getHoTnumInfoDateNum() {
+        return null;
+    }
 }

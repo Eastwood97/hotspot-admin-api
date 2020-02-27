@@ -1540,6 +1540,6 @@ public class TargetExample {
          *
          * @mbg.generated
          */
-        void example(com.jsc.hotspot.db.domain.TargetExample example);
+        void example(TargetExample example);
     }
 }

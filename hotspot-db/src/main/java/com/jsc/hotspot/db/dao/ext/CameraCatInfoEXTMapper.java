@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface CameraCatInfoEXTMapper {
-    int deleteById(@Param("ids") String [] ids);
+    int deleteById(@Param("ids") String[] ids);
     /**
      *
      * 功能描述: 此处是为了获取15天内的上号数量进行展示
@@ -17,5 +17,5 @@ public interface CameraCatInfoEXTMapper {
      * @auther: ww
      * @date: 2019/11/15 0015 10:25
      */
-    List<Map> selectCount(@Param(value ="startTime") Date startTime, @Param(value ="endTime") Date endTime);
+    List<Map> selectCount(@Param(value = "startTime") Date startTime, @Param(value = "endTime") Date endTime);
 }

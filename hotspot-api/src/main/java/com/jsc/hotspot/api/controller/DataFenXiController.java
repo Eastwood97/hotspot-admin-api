@@ -110,14 +110,14 @@ public class DataFenXiController {
      * @auther: ww
      * @date: 2019/12/16 0016 14:54
      */
-    @RequestMapping(value = "/tongxingList", method = RequestMethod.GET)
-    public Object getTongXingLists(Integer currentPage, Integer pageSize, Integer createTime,String imsi) {
-        try {
-            PageResult pageResult = hoTnumInfoService.selecttongxingList(currentPage, pageSize,createTime,imsi);
-            return ResponseUtil.ok(pageResult);
-        }catch (Exception e){
-            return ResponseUtil.fail();
-        }
-//
-    }
+//    @RequestMapping(value = "/tongxingList", method = RequestMethod.GET)
+//    public Object getTongXingLists(Integer currentPage, Integer pageSize, Integer createTime,String imsi) {
+//        try {
+//            PageResult pageResult = hoTnumInfoService.selecttongxingList(currentPage, pageSize,createTime,imsi);
+//            return ResponseUtil.ok(pageResult);
+//        }catch (Exception e){
+//            return ResponseUtil.fail();
+//        }
+////
+//    }
 }

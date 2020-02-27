@@ -1,26 +1,16 @@
 package com.jsc.hotspot.api.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.jsc.hotspot.api.service.HoTnumInfoService;
-import com.jsc.hotspot.db.dao.HotBridgeNumInfoMapper;
 import com.jsc.hotspot.db.dao.HotNumInfoMapper;
-import com.jsc.hotspot.db.dao.ext.HotBridgeNumInfoEXTMapper;
 import com.jsc.hotspot.db.dao.ext.HotNumInfoEXTMapper;
-import com.jsc.hotspot.db.domain.HotBridgeNumInfo;
-import com.jsc.hotspot.db.domain.HotBridgeNumInfoExample;
 import com.jsc.hotspot.db.domain.HotNumInfo;
 import com.jsc.hotspot.db.domain.HotNumInfoExample;
-import com.jsc.hotspot.db.entity.HotNumInfoObject;
-import com.jsc.hotspot.db.entity.ListSub;
 import com.jsc.hotspot.db.entity.PageResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -39,45 +29,6 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
     private HotNumInfoMapper hotNumInfoMapper;
     @Autowired
     private HotNumInfoEXTMapper hotNumInfoEXTMapper;
-    @Autowired
-    private HotBridgeNumInfoMapper hotBridgeNumInfoMapper;
-    @Autowired
-    private HotBridgeNumInfoEXTMapper hotBridgeNumInfoEXTMapper;
-
-//    public List<Map> BridgeList(int page, int rows, HotNumInfo hotNumInfoDAO) {//口岸
-//        String imsi = "";
-//        String imei = "";
-//        String isdn = "";
-//        LocalDateTime of = null;
-//        LocalDateTime of1 = null;
-//        Long dev_id = null;
-//        LocalDateTime capture_time = null;
-////        判断数据
-//        if (hotNumInfoDAO.getImsi() != null && hotNumInfoDAO.getImsi().length() > 0) {
-//            imsi = hotNumInfoDAO.getImsi();
-//        }
-//        if (hotNumInfoDAO.getImei() != null && hotNumInfoDAO.getImei().length() > 0) {
-//            imei = hotNumInfoDAO.getImei();
-//        }
-//        if (hotNumInfoDAO.getIsdn() != null && hotNumInfoDAO.getIsdn().length() > 0) {
-//            isdn = hotNumInfoDAO.getIsdn();
-//        }
-//        if (hotNumInfoDAO.getMode() != null) {
-//            dev_id = hotNumInfoDAO.getDevId();
-//        }
-//        if (hotNumInfoDAO.getCaptureTime() != null) {
-//            capture_time = hotNumInfoDAO.getCaptureTime();
-//            of = LocalDateTime.of(hotNumInfoDAO.getCaptureTime().toLocalDate(), LocalTime.MIN);
-//            of1 = LocalDateTime.of(hotNumInfoDAO.getCaptureTime().toLocalDate(), LocalTime.MAX);
-//        }
-//        if (page == 1) {
-//            page = 0;
-//        } else {
-//            page = rows * (page - 1);
-//        }
-//        List<Map> maps = hotBridgeNumInfoEXTMapper.selectHotBridInfoList(dev_id, imsi, imei, isdn, capture_time, page, rows, of, of1);
-//        return maps;
-//    }
 
     public List<Map> PortList(int page, int rows, HotNumInfo hotNumInfoDAO) {//口岸
         String imsi = "";
@@ -117,35 +68,6 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
 
     @Override
     public PageResult findHotNumInfo(int groupId, int page, int rows, HotNumInfo hotNumInfoDAO) {
-//        HotBridgeNumInfoExample hotBridgeNumInfoExample = new HotBridgeNumInfoExample();
-//        HotBridgeNumInfoExample.Criteria criterias = hotBridgeNumInfoExample.createCriteria();
-////        判断数据
-//        if (hotNumInfoDAO.getImsi() != null && hotNumInfoDAO.getImsi().length() > 0) {
-//            criterias.andImsiLike(hotNumInfoDAO.getImsi() + "%");
-//        }
-//        if (hotNumInfoDAO.getImei() != null && hotNumInfoDAO.getImei().length() > 0) {
-//            criterias.andImeiLike(hotNumInfoDAO.getImei() + "%");
-//        }
-//        if (hotNumInfoDAO.getIsdn() != null && hotNumInfoDAO.getIsdn().length() > 0) {
-//            criterias.andIsdnLike(hotNumInfoDAO.getIsdn() + "%");
-//        }
-//        if (hotNumInfoDAO.getMode() != null) {
-//            criterias.andModeEqualTo(hotNumInfoDAO.getMode());
-//        }
-//        if (hotNumInfoDAO.getCaptureTime() != null) {
-//            LocalDateTime of = LocalDateTime.of(hotNumInfoDAO.getCaptureTime().toLocalDate(), LocalTime.MIN);
-//            LocalDateTime of1 = LocalDateTime.of(hotNumInfoDAO.getCaptureTime().toLocalDate(), LocalTime.MAX);
-//            criterias.andCaptureTimeBetween(of, of1);
-//        }
-//        if (hotNumInfoDAO.getDevId() != null) {
-//            criterias.andDevIdEqualTo(hotNumInfoDAO.getDevId());
-//        }
-//        if (hotNumInfoDAO.getTargetId() != null) {
-//            criterias.andTargetIdEqualTo(hotNumInfoDAO.getTargetId());
-//        }
-//        if (hotNumInfoDAO.getId() != null) {
-//            criterias.andIdEqualTo(hotNumInfoDAO.getId());
-//        }
         HotNumInfoExample hotNumInfoDAOExample = new HotNumInfoExample();
         HotNumInfoExample.Criteria criteria = hotNumInfoDAOExample.createCriteria();
 //        判断数据
@@ -177,74 +99,8 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         }
         //此处groupId是判断是口岸还是大桥
 //        if (groupId == 0) {//口岸
-            List<Map> portPageList = PortList(page, rows, hotNumInfoDAO);
-            return new PageResult(hotNumInfoMapper.countByExample(hotNumInfoDAOExample), portPageList);
-//        } else if (groupId == 1) {//大桥
-//            List<Map> bridPageList = BridgeList(page, rows, hotNumInfoDAO);
-//            return new PageResult(hotBridgeNumInfoMapper.countByExample(hotBridgeNumInfoExample), bridPageList);
-//        } else {//大桥+口岸
-//            List<Map> portPageList = null;
-//            List<Map> bridPageList = null;
-//            long count = hotBridgeNumInfoMapper.countByExample(hotBridgeNumInfoExample);
-//            long count1 = hotNumInfoMapper.countByExample(hotNumInfoDAOExample);
-//            if(count<count1){
-//                if ((count - rows * (page - 1)) >= 7) {
-//                    portPageList = PortList(page, 7, hotNumInfoDAO);
-//                    bridPageList = BridgeList(page, 7, hotNumInfoDAO);
-//                }
-//                if ((count - rows * (page - 1)) < 0) {
-//                    double anInt = (double) Integer.parseInt(String.valueOf(count));
-//                    double i = anInt / 14;
-//                    int ceil = (int) Math.ceil(i);
-//                    portPageList = PortList(page - ceil, 14, hotNumInfoDAO);
-//                }
-//                if ((count - rows * (page - 1)) >= 0 && (count - rows * (page - 1)) < 7) {
-//                    Integer l = Integer.parseInt(String.valueOf(count - rows * (page - 1)));
-//                    bridPageList = BridgeList(page, 7, hotNumInfoDAO);
-//                    portPageList = PortList(page, 14 - l, hotNumInfoDAO);
-//                }
-//                List totalObjectList = new ArrayList<>();
-//                if (portPageList != null) {
-//                    for (Object port : portPageList) {
-//                        totalObjectList.add(port);
-//                    }
-//                }
-//                if (bridPageList != null) {
-//                    for (Object brid : bridPageList) {
-//                        totalObjectList.add(brid);
-//                    }
-//                }
-//                return new PageResult(count1 + count, totalObjectList);
-//            }else{
-//                if ((count - rows * (page - 1)) >= 7) {
-//                    portPageList = PortList(page, 7, hotNumInfoDAO);
-//                    bridPageList = BridgeList(page, 7, hotNumInfoDAO);
-//                }
-//                if ((count - rows * (page - 1)) < 0) {
-//                    double anInt = (double) Integer.parseInt(String.valueOf(count));
-//                    double i = anInt / 14;
-//                    int ceil = (int) Math.ceil(i);
-//                    bridPageList = BridgeList(page - ceil, 14, hotNumInfoDAO);
-//                }
-//                if ((count - rows * (page - 1)) >= 0 && (count - rows * (page - 1)) < 7) {
-//                    Integer l = Integer.parseInt(String.valueOf(count - rows * (page - 1)));
-//                    portPageList = PortList(page, 7, hotNumInfoDAO);
-//                    bridPageList = BridgeList(page, 14 - l, hotNumInfoDAO);
-//                }
-//                List totalObjectList = new ArrayList<>();
-//                if (portPageList != null) {
-//                    for (Object port : portPageList) {
-//                        totalObjectList.add(port);
-//                    }
-//                }
-//                if (bridPageList != null) {
-//                    for (Object brid : bridPageList) {
-//                        totalObjectList.add(brid);
-//                    }
-//                }
-//                return new PageResult(count1 + count, totalObjectList);
-//            }
-//        }
+        List<Map> portPageList = PortList(page, rows, hotNumInfoDAO);
+        return new PageResult(hotNumInfoMapper.countByExample(hotNumInfoDAOExample), portPageList);
     }
 
     @Override
@@ -254,6 +110,7 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
             hotNumInfoMapper.deleteByPrimaryKey(Long.decode(id));
         }
     }
+
     //取号总量
     @Override
     public Long getHoTnumInfoNum() {
@@ -269,18 +126,18 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
      * @auther: ww
      * @date: 2019/12/30 0030 8:33
      */
-    public Date changeDate(Date createTimes) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String createTime = format.format(createTimes);
-        Date parse = null;
-        try {
-            parse = dateFormat.parse(createTime);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return parse;
-    }
+//    public Date changeDate(Date createTimes) {
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//        String createTime = format.format(createTimes);
+//        Date parse = null;
+//        try {
+//            parse = dateFormat.parse(createTime);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        return parse;
+//    }
 
     /**
      * 功能描述: 获取15天公共接口
@@ -290,35 +147,22 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
      * @auther: ww
      * @date: 2019/12/3 0003 16:25
      */
-    public List<Date> getData(Date date, List<Date> dateList) {
-        Calendar c = Calendar.getInstance();
-        c.setTime(date);
-        for (int i = 0; i < 16; i++) {
-            if (i == 0) {
-                c.add(Calendar.DATE, 0);
-                Date d = c.getTime();
-                dateList.add(changeDate(d));
-            } else {
-                c.add(Calendar.DATE, -1);
-                Date d = c.getTime();
-                dateList.add(changeDate(d));
-            }
-        }
-        return dateList;
-    }
-    //获取15天的取号数量及其对应15天
-    @Override
-    public List getHoTnumInfoDateNum() {
+    public Date returnDate(Integer index) {
         Date date = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(date);
-        List<Date> dateList = new ArrayList<>();
-        List<Date> data = getData(date, dateList);
-        Date date1 = data.get(data.size() - 1);
-        Date date2 = data.get(0);
-        List<Map> maps1 = hotNumInfoEXTMapper.selectCount(date1, date2);
+        c.add(Calendar.DATE, -index);
+        Date returnDate = c.getTime();
+        return returnDate;
+    }
+
+    //获取15天的取号数量及其对应15天
+    @Override
+    public List getHoTnumInfoDateNum() {
+        List<Map> maps1 = hotNumInfoEXTMapper.selectCount(returnDate(15), returnDate(0));
         return maps1;
     }
+
     //今日取号数量
     @Override
     public Long getTodayHoTnumInfoNum() {
@@ -331,10 +175,8 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         return count;
     }
 
-
-
-    @Override
-    public List<Map> getTraffic(Integer devId, String[] createTime) {
+    //分析成图的所有时间（从开头到结束）
+    public Date[] getYestDayIndex(String[] createTime) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         ParsePosition pos = new ParsePosition(0);
         ParsePosition pos1 = new ParsePosition(0);
@@ -343,13 +185,22 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         Date[] date = new Date[2];
         date[0] = startTime;
         date[1] = endTime;
-        Date[] objects = getDate(date);
-        List<Map> list = hotNumInfoEXTMapper.selectTraffic(devId, startTime, endTime);
-        return getList(objects.length - 1, objects, list, devId);
+        Date[] dateList = getDate(date);
+        return dateList;
+    }
+
+    //人流查询
+    @Override
+    public List<Map> getTraffic(Integer devId, String[] createTime) {
+        Date[] yestDayList = getYestDayIndex(createTime);
+        int index = yestDayList.length - 1;
+        List<Map> list = hotNumInfoEXTMapper.selectTraffic(devId, yestDayList[0], yestDayList[index]);
+        return getList(yestDayList.length - 1, yestDayList, list, devId);
     }
 
     @Override
     public Object getDifferentCountries(Integer devId, String[] createTime) {
+        Map<Object, Object> objectObjectHashMap = new HashMap<>();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         ParsePosition pos = new ParsePosition(0);
         ParsePosition pos1 = new ParsePosition(0);
@@ -358,10 +209,8 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         Date[] date = new Date[2];
         date[0] = startTime;
         date[1] = endTime;
-        Date[] objects = getDate(date);
         List<Map> guoBieList = selectGuoBieCount(devId, date);//各省
         List<Map> GuojiCountList = selectGuojiCount(devId, date);//国内外数量
-        Map<Object, Object> objectObjectHashMap = new HashMap<>();
         List<Map> GuoWaiGeGuoCount = hotNumInfoEXTMapper.selectGuoWaiGeGuoCount(devId, startTime, endTime);
         objectObjectHashMap.put("guoBieList", guoBieList);
         objectObjectHashMap.put("GuojiCountList", GuojiCountList);
@@ -370,67 +219,67 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         return objectObjectHashMap;
     }
 
-    public List<HotNumInfo> selectbansuiList(String imsi) {
-        HotNumInfo hotNumInfo = new HotNumInfo();
-        HotNumInfoExample hotNumInfoDAOExample = new HotNumInfoExample();
-        HotNumInfoExample.Criteria criteria = hotNumInfoDAOExample.createCriteria();
-//        判断数据
-        criteria.andImsiEqualTo(imsi);
-        hotNumInfo.setImsi(imsi);
-        List<HotNumInfo> hotNumInfoList = hotNumInfoMapper.selectByExample(hotNumInfoDAOExample);
-        return hotNumInfoList;
-    }
+//    public List<HotNumInfo> selectbansuiList(String imsi) {
+//        HotNumInfo hotNumInfo = new HotNumInfo();
+//        HotNumInfoExample hotNumInfoDAOExample = new HotNumInfoExample();
+//        HotNumInfoExample.Criteria criteria = hotNumInfoDAOExample.createCriteria();
+////        判断数据
+//        criteria.andImsiEqualTo(imsi);
+//        hotNumInfo.setImsi(imsi);
+//        List<HotNumInfo> hotNumInfoList = hotNumInfoMapper.selectByExample(hotNumInfoDAOExample);
+//        return hotNumInfoList;
+//    }
 
-    @Override
-    public PageResult selecttongxingList(Integer currentPage, Integer pageSize, Integer createTime, String imsi) {
-        List<Map<String, Object>> ListOne = new ArrayList<>();
-        List<HotNumInfo> dataMessages = this.selectbansuiList(imsi);
-        List<List<Map>> list = new ArrayList<>();
-        for (HotNumInfo message : dataMessages) {
-            List<Map> dataMessages1 = hotNumInfoEXTMapper.selectbansuiLists(message.getId(),
-                    message.getDevId(), message.getImsi(), createTime);
-            list.add(dataMessages1);
-        }
-        for (int i = 0; i < list.size(); i++) {//循环大的
-            List<Map> dataMessages1 = list.get(i);//获取第二个往后
-            for (int k = 0; k < dataMessages1.size(); k++) {
-                Integer id = (Integer) dataMessages1.get(k).get("id");
-                Integer devId = (Integer) dataMessages1.get(k).get("dev_Id");
-                String imsi1 = (String) dataMessages1.get(k).get("imsi");
-                String imei = (String) dataMessages1.get(k).get("imei");
-                String area = (String) dataMessages1.get(k).get("attribution");
-                String shengshi = (String) dataMessages1.get(k).get("attribution");
-                String location = (String) dataMessages1.get(k).get("attribution");
-                Map<String, Object> map = new HashMap<>();
-                map.put("id", id);
-                map.put("devId", devId);
-                map.put("imsi", imsi1);
-                map.put("imei", imei);
-                map.put("area", area);
-                map.put("shengshi", shengshi);
-                map.put("location", location);
-                map.put("num", 0);
-                ListOne.add(map);
-            }
-        }
-        List<Map<String, Object>> maps = this.removeRepeatMapByKey(ListOne);
-        List<HotNumInfoObject> Lists = new ArrayList<>();
-        for (Map<String, Object> map : maps) {
-            Integer id = (Integer) map.get("id");
-            Integer devId = (Integer) map.get("devId");
-            String imsi1 = (String) map.get("imsi");
-            String imei = (String) map.get("imei");
-            String area = (String) map.get("area");
-            String shengshi = (String) map.get("attribution");
-            String location = (String) map.get("location");
-            Integer num = (Integer) map.get("num");
-            Lists.add(new HotNumInfoObject(id, devId, imsi1, imei, area, shengshi, location, num));
-
-        }
-        List<HotNumInfoObject> sort = this.sort(Lists);
-        ListSub<HotNumInfoObject> objectListSub = new ListSub<>(currentPage, pageSize, sort);
-        return new PageResult(objectListSub.getTotal(), objectListSub.getList());
-    }
+//    @Override
+//    public PageResult selecttongxingList(Integer currentPage, Integer pageSize, Integer createTime, String imsi) {
+//        List<Map<String, Object>> ListOne = new ArrayList<>();
+//        List<HotNumInfo> dataMessages = this.selectbansuiList(imsi);
+//        List<List<Map>> list = new ArrayList<>();
+//        for (HotNumInfo message : dataMessages) {
+//            List<Map> dataMessages1 = hotNumInfoEXTMapper.selectbansuiLists(message.getId(),
+//                    message.getDevId(), message.getImsi(), createTime);
+//            list.add(dataMessages1);
+//        }
+//        for (int i = 0; i < list.size(); i++) {//循环大的
+//            List<Map> dataMessages1 = list.get(i);//获取第二个往后
+//            for (int k = 0; k < dataMessages1.size(); k++) {
+//                Integer id = (Integer) dataMessages1.get(k).get("id");
+//                Integer devId = (Integer) dataMessages1.get(k).get("dev_Id");
+//                String imsi1 = (String) dataMessages1.get(k).get("imsi");
+//                String imei = (String) dataMessages1.get(k).get("imei");
+//                String area = (String) dataMessages1.get(k).get("attribution");
+//                String shengshi = (String) dataMessages1.get(k).get("attribution");
+//                String location = (String) dataMessages1.get(k).get("attribution");
+//                Map<String, Object> map = new HashMap<>();
+//                map.put("id", id);
+//                map.put("devId", devId);
+//                map.put("imsi", imsi1);
+//                map.put("imei", imei);
+//                map.put("area", area);
+//                map.put("shengshi", shengshi);
+//                map.put("location", location);
+//                map.put("num", 0);
+//                ListOne.add(map);
+//            }
+//        }
+//        List<Map<String, Object>> maps = this.removeRepeatMapByKey(ListOne);
+//        List<HotNumInfoObject> Lists = new ArrayList<>();
+//        for (Map<String, Object> map : maps) {
+//            Integer id = (Integer) map.get("id");
+//            Integer devId = (Integer) map.get("devId");
+//            String imsi1 = (String) map.get("imsi");
+//            String imei = (String) map.get("imei");
+//            String area = (String) map.get("area");
+//            String shengshi = (String) map.get("attribution");
+//            String location = (String) map.get("location");
+//            Integer num = (Integer) map.get("num");
+//            Lists.add(new HotNumInfoObject(id, devId, imsi1, imei, area, shengshi, location, num));
+//
+//        }
+//        List<HotNumInfoObject> sort = this.sort(Lists);
+//        ListSub<HotNumInfoObject> objectListSub = new ListSub<>(currentPage, pageSize, sort);
+//        return new PageResult(objectListSub.getTotal(), objectListSub.getList());
+//    }
 
     /**
      * 功能描述: 对list中map进行排序
@@ -440,19 +289,19 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
      * @auther: ww
      * @date: 2019/12/17 0017 7:59
      */
-    public List<HotNumInfoObject> sort(List<HotNumInfoObject> list) {
-        if (list != null && list.size() > 1) {
-            Collections.sort(list, new Comparator<HotNumInfoObject>() {
-                @Override
-                public int compare(HotNumInfoObject o1, HotNumInfoObject o2) {
-                    Integer num1 = o1.getNum();
-                    Integer num2 = o2.getNum();
-                    return num2.compareTo(num1);
-                }
-            });
-        }
-        return list;
-    }
+//    public List<HotNumInfoObject> sort(List<HotNumInfoObject> list) {
+//        if (list != null && list.size() > 1) {
+//            Collections.sort(list, new Comparator<HotNumInfoObject>() {
+//                @Override
+//                public int compare(HotNumInfoObject o1, HotNumInfoObject o2) {
+//                    Integer num1 = o1.getNum();
+//                    Integer num2 = o2.getNum();
+//                    return num2.compareTo(num1);
+//                }
+//            });
+//        }
+//        return list;
+//    }
 
     /**
      * 功能描述: 根据map中的某个key 去除List中重复的map
@@ -462,26 +311,26 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
      * @auther: ww
      * @date: 2019/12/17 0017 8:48
      */
-    public static List<Map<String, Object>> removeRepeatMapByKey(List<Map<String, Object>> list) {
-
-        List<Integer> integerList = new ArrayList<>();
-        for (int i = 0; i < list.size() - 1; i++) {
-            for (int j = i + 1; j < list.size(); j++) {
-                Map<String, Object> map = list.get(i);
-                String imsi1 = (String) map.get("imsi");
-                Map<String, Object> maps = list.get(j);
-                String imsi2 = (String) maps.get("imsi");
-                if (imsi1.equals(imsi2)) {
-                    integerList.add(j);
-                    Integer num = (Integer) map.get("num");
-                    map.put("num", num + 1);
-                    list.remove(j);
-                }
-            }
-        }
-
-        return list;
-    }
+//    public static List<Map<String, Object>> removeRepeatMapByKey(List<Map<String, Object>> list) {
+//
+//        List<Integer> integerList = new ArrayList<>();
+//        for (int i = 0; i < list.size() - 1; i++) {
+//            for (int j = i + 1; j < list.size(); j++) {
+//                Map<String, Object> map = list.get(i);
+//                String imsi1 = (String) map.get("imsi");
+//                Map<String, Object> maps = list.get(j);
+//                String imsi2 = (String) maps.get("imsi");
+//                if (imsi1.equals(imsi2)) {
+//                    integerList.add(j);
+//                    Integer num = (Integer) map.get("num");
+//                    map.put("num", num + 1);
+//                    list.remove(j);
+//                }
+//            }
+//        }
+//
+//        return list;
+//    }
 
     public List<Map> selectGuoBieCount(Integer devId, Date[] createTime) {
         Date[] objects = getDate(createTime);
@@ -523,7 +372,6 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
                 she = false;
                 Date createTime1 = (Date) time.get("create_time1");
                 if (differentDays(objects[i], createTime1) == 0) {
-//                    此处添加数组
                     Map map = new HashMap();
                     map.put("createTime", time.get("create_time1"));
                     map.put("num", time.get("num"));
@@ -533,12 +381,9 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
                 }
             }
             if (she == false) {
-                //                    此处添加数组
                 Map map = new HashMap();
-
                 map.put("createTime", objects[i]);
                 map.put("num", 0);
-
                 lists.add(map);
             }
         }
@@ -573,17 +418,17 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         }
     }
 
-    public List<Map> getGuoBieList(Integer index, Date[] objects, List<Map> list, Integer devId) {
-        List<Map> lists = new ArrayList<>();
-        for (int i = 0; i <= index; i++) {
-            for (Map time : list) {
-                Map map = new HashMap();
-                map.put("devId", time.get("dev_id"));
-                map.put("area", time.get("attribution"));
-                map.put("num", time.get("num"));
-                lists.add(map);
-            }
-        }
-        return lists;
-    }
+//    public List<Map> getGuoBieList(Integer index, Date[] objects, List<Map> list, Integer devId) {
+//        List<Map> lists = new ArrayList<>();
+//        for (int i = 0; i <= index; i++) {
+//            for (Map time : list) {
+//                Map map = new HashMap();
+//                map.put("devId", time.get("dev_id"));
+//                map.put("area", time.get("attribution"));
+//                map.put("num", time.get("num"));
+//                lists.add(map);
+//            }
+//        }
+//        return lists;
+//    }
 }

@@ -1,4 +1,4 @@
-//package com.jsc.hotspot.accept.config.redis;
+package com.jsc.hotspot.accept.config.redis;//package com.jsc.hotspot.accept.config.redis;
 //
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;

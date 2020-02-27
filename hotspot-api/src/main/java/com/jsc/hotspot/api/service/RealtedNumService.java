@@ -9,7 +9,7 @@ import java.util.List;
  *
  */
 public interface RealtedNumService {
-    List<RelatedNumResult>  query(Integer page, Integer limit,String targetName);
+    List<RelatedNumResult>  query(Integer page, Integer limit, String targetName);
 
     boolean deleteById(String ids);
 }

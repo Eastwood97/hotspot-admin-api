@@ -17,6 +17,6 @@ public interface TargetFaceService {
 
     int update(TargetFace targetFace);
 
-    List<CameraTargetFace> getTargetFace(Integer page,Integer limit,String targetName);
+    List<CameraTargetFace> getTargetFace(Integer page, Integer limit, String targetName);
 
 }
