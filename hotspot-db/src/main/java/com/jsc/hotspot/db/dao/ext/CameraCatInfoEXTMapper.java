@@ -18,4 +18,16 @@ public interface CameraCatInfoEXTMapper {
      * @date: 2019/11/15 0015 10:25
      */
     List<Map> selectCount(@Param(value = "startTime") Date startTime, @Param(value = "endTime") Date endTime);
+
+    /**
+     * 上号数量统计
+     * @return
+     */
+    Map<String, Integer> countByDay();
+
+    /**
+     * 上号数量统计
+     * @return
+     */
+    Map<String, Integer> countByMonth();
 }

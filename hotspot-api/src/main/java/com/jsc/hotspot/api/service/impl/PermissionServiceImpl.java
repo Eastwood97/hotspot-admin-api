@@ -1,19 +1,20 @@
 package com.jsc.hotspot.api.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.jsc.hotspot.api.dto.PermissionVO;
+import com.jsc.hotspot.api.service.PermissionService;
 import com.jsc.hotspot.db.dao.PermissionMapper;
 import com.jsc.hotspot.db.domain.Permission;
 import com.jsc.hotspot.db.domain.PermissionExample;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
-public class PermissionService {
+public class PermissionServiceImpl implements PermissionService {
     @Resource
     private PermissionMapper permissionMapper;
 
@@ -72,5 +73,17 @@ public class PermissionService {
         Permission.setCreateTime(LocalDateTime.now());
         Permission.setUpdateTime(LocalDateTime.now());
         permissionMapper.insertSelective(Permission);
+    }
+
+    public List<PermissionVO> queryPermissionByPage(){
+        PermissionExample permissionExample = new PermissionExample();
+        List<Permission> permissionList = permissionMapper.selectByExample(permissionExample);
+        List<PermissionVO> permissionVOList = new ArrayList<>();
+        permissionList.forEach(x -> {
+            PermissionVO permissionVO = new PermissionVO();
+            BeanUtils.copyProperties(x, permissionVO);
+            permissionVOList.add(permissionVO);
+        });
+        return permissionVOList;
     }
 }

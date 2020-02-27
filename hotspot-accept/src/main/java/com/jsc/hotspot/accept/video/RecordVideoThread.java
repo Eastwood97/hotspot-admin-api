@@ -6,6 +6,8 @@ import com.jsc.hotspot.accept.adapter.impl.HaiKDllAdapterImpl;
 import com.jsc.hotspot.accept.adapter.impl.HaiKDllFaceImpl;
 import com.jsc.hotspot.accept.facade.KafkaSender;
 import com.jsc.hotspot.common.bean.FileInfo;
+import com.jsc.hotspot.db.dao.HotNumInfoMapper;
+import com.jsc.hotspot.db.domain.HotNumInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.javacpp.avcodec;
 import org.bytedeco.javacv.*;
@@ -19,6 +21,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -44,10 +47,15 @@ public class RecordVideoThread implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         // 获取视频源 可以获取RTSP视频源进行视频播放
+        try {
+            haiKDllAdapter.register();
+            haiKDllAdapter.SetupAlarmChan();
+            haiKDllAdapter.search();
+        } catch (Exception e)
+        {
+            log.info("未连接海康设备");
+        }
 
-//        haiKDllAdapter.register();
-//        haiKDllAdapter.SetupAlarmChan();
-//        haiKDllAdapter.search();
 //        FileInfo fileInfo = new FileInfo();
 //        fileInfo.setTargetName("ni");
 //        haiKDllAdapter.uploadToHaiKCamera(fileInfo);

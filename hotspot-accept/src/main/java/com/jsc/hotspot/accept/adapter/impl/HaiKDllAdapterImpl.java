@@ -2,7 +2,7 @@ package com.jsc.hotspot.accept.adapter.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.jsc.hotspot.accept.adapter.HaiKDllInterfaceAdapter;
-import com.jsc.hotspot.accept.dto.FaceRecognitionInfo;
+import com.jsc.hotspot.accept.dto.FaceRecognitionInfoDTO;
 import com.jsc.hotspot.accept.facade.KafkaSender;
 import com.jsc.hotspot.accept.facade.WeedFSService;
 import com.jsc.hotspot.accept.sdk.HCNetSDK;
@@ -746,7 +746,7 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                     LocalDateTime localDateTime = LocalDateTime.now();
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                     String captureTime = formatter.format(localDateTime);
-                    FaceRecognitionInfo faceRecognitionInfo = new FaceRecognitionInfo();
+                    FaceRecognitionInfoDTO faceRecognitionInfo = new FaceRecognitionInfoDTO();
                     HCNetSDK.NET_VCA_FACESNAP_MATCH_ALARM strFaceSnapMatch = new HCNetSDK.NET_VCA_FACESNAP_MATCH_ALARM();
                     strFaceSnapMatch.write();
                     Pointer pFaceSnapMatch = strFaceSnapMatch.getPointer();

@@ -280,7 +280,16 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
 //        ListSub<HotNumInfoObject> objectListSub = new ListSub<>(currentPage, pageSize, sort);
 //        return new PageResult(objectListSub.getTotal(), objectListSub.getList());
 //    }
+@Override
+public Map<String, Integer> getNumInfoByDay() {
+    return null;
+}
 
+    @Override
+    public Map<String, Integer> getNumInfoByMonth() {
+        //return hotNumInfoEXTMapper.selectNumInfoByMonth();
+        return null;
+    }
     /**
      * 功能描述: 对list中map进行排序
      *
@@ -431,4 +440,35 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
 //        }
 //        return lists;
 //    }
+    public List<Map> getGuoBieList(Integer index, Date[] objects, List<Map> list, Integer devId) {
+        List<Map> lists = new ArrayList<>();
+        for (int i = 0; i <= index; i++) {
+            for (Map time : list) {
+                    Map map = new HashMap();
+                    map.put("devId", time.get("dev_id"));
+                    map.put("area", time.get("attribution"));
+                    map.put("num", time.get("num"));
+                    lists.add(map);
+            }
+        }
+        return lists;
+    }
+
+
+    @Override
+    public Long countImsiCatNums() {
+        return new Long(hotNumInfoEXTMapper.countDistinctByIMSI());
+    }
+
+    @Override
+    public Long currentImsiNums() {
+        HotNumInfoExample hotNumInfoExample = new HotNumInfoExample();
+        HotNumInfoExample.Criteria criteria = hotNumInfoExample.createCriteria();
+        LocalDateTime localDateTime = LocalDateTime.now();
+        LocalDateTime currentMin = LocalDateTime.MIN;
+        LocalDateTime currentMax = localDateTime.MAX;
+        criteria.andCaptureTimeBetween(currentMin, currentMax);
+        return hotNumInfoMapper.countByExample(hotNumInfoExample);
+    }
+
 }

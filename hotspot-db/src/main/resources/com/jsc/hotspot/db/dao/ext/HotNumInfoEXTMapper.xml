@@ -560,4 +560,19 @@
     )t
     on h.id=t.id
   </select>
+  <select id="countDistinctByIMSI">
+    SELECT count(distinct imsi) from hot_num_info
+  </select>
+  <select id="selectNumInfoByDay" resultType="java.util.Map">
+    SELECT date(capture_time) t,count(distinct imsi)
+        from hot_num_info
+        WHERE capture_time between (#{capture_time} - 15) and #{capture_time}
+        group BY t
+  </select>
+  <select id="selectNumInfoByMonth" resultType="java.util.Map">
+    SELECT month(capture_time) t,count(distinct imsi)
+        from hot_num_info
+        WHERE capture_time between (#{capture_time} - 30) and #{capture_time}
+        group BY t
+  </select>
 </mapper>

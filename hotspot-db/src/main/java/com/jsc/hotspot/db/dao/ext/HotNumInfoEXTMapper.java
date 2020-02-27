@@ -46,4 +46,6 @@ public interface HotNumInfoEXTMapper {
                                    @Param("isdn") String isdn, @Param("capture_time") LocalDateTime capture_time, @Param("page") Integer page, @Param("rows") Integer rows,
                                    @Param("startTime") LocalDateTime startTime,
                                    @Param("endTime") LocalDateTime endTime);
+    int countDistinctByIMSI();
+
 }

@@ -1,8 +1,8 @@
 package com.jsc.hotspot.api.shiro;
 
+import com.jsc.hotspot.api.service.PermissionService;
 import com.jsc.hotspot.api.service.impl.AdminService;
-import com.jsc.hotspot.api.service.impl.PermissionService;
-import com.jsc.hotspot.api.service.impl.RoleService;
+import com.jsc.hotspot.api.service.impl.RoleServiceImpl;
 import com.jsc.hotspot.common.utils.bcrypt.BCryptPasswordEncoder;
 import com.jsc.hotspot.db.domain.Admin;
 import org.apache.shiro.authc.*;
@@ -23,7 +23,7 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
     @Autowired
     private AdminService adminService;
     @Autowired
-    private RoleService roleService;
+    private RoleServiceImpl roleService;
     @Autowired
     private PermissionService permissionService;
 

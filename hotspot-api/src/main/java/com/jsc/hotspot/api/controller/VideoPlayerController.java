@@ -36,7 +36,7 @@ public class VideoPlayerController {
     }
 
     @GetMapping("/record")
-    public Object getVideoRTSPUrl(RecordVideoDTO recordVideoDTO){
+    public Object getVideoRTSPUrl(@RequestBody RecordVideoDTO recordVideoDTO){
         BizResult<List<String>> listBizResult = videoPlayerService.getDownLoadVideo(recordVideoDTO);
         if (listBizResult.getFlag()){
             return ResponseUtil.fail(400, listBizResult.getDesc());

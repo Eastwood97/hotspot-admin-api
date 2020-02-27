@@ -21,8 +21,6 @@ public class CameraCatInfoServiceImpl implements CameraCatInfoService {
     @Autowired
    private CameraCatInfoEXTMapper cameraCatInfoEXTMapper;
 
-
-
     @Override
     public List<CameraCatInfo> query(Integer page, Integer limit, String startTime,String endTime) {
         CameraCatInfoExample example=new CameraCatInfoExample();
@@ -67,4 +65,31 @@ public class CameraCatInfoServiceImpl implements CameraCatInfoService {
         List<Map> maps1 = cameraCatInfoEXTMapper.selectCount(dateList.get(0),dateList.get(15));
         return maps1;
     }
+
+    @Override
+    public Map<String, Integer> getFaceByDay() {
+        return cameraCatInfoEXTMapper.countByDay();
+    }
+
+    @Override
+    public Map<String, Integer> getFaceByMonth(){
+        return cameraCatInfoEXTMapper.countByMonth();
+    }
+
+    @Override
+    public Long countCameraCatNums() {
+        CameraCatInfoExample cameraCatInfoExample = new CameraCatInfoExample();
+        CameraCatInfoExample.Criteria criteria = cameraCatInfoExample.createCriteria();
+        return cameraCatInfoMapper.countByExample(cameraCatInfoExample);
+    }
+
+    @Override
+    public Long currentCameraNums() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        CameraCatInfoExample cameraCatInfoExample = new CameraCatInfoExample();
+        CameraCatInfoExample.Criteria criteria = cameraCatInfoExample.createCriteria();
+        criteria.andCaptureTimeEqualTo(localDateTime);
+        return cameraCatInfoMapper.countByExample(cameraCatInfoExample);
+    }
+
 }

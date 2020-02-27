@@ -2,7 +2,7 @@ package com.jsc.hotspot.api.facade.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.jsc.hotspot.api.dto.FaceRecognitionInfo;
+import com.jsc.hotspot.api.dto.FaceRecognitionInfoDTO;
 import com.jsc.hotspot.api.config.WebSocket;
 import com.jsc.hotspot.api.facade.KafkaReceiverService;
 import com.jsc.hotspot.api.facade.WeedFSService;
@@ -37,7 +37,7 @@ import java.util.concurrent.*;
  * @description kafka接收服务实现
  * @date 2019/11/4
  */
-//@Service
+@Service
 public class KafkaReceiverServiceImpl implements KafkaReceiverService {
 
     private Log log= LogFactory.getLog(KafkaReceiverServiceImpl.class);
@@ -77,15 +77,15 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
      * @param record
      */
     @Async
-    @KafkaListener(topics = {"picTopic_test"})
+    @KafkaListener(topics = {"picTopic"})
     public void listen(ConsumerRecord<?, ?> record) throws InvocationTargetException, IllegalAccessException {
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
         log.error("-----===========---------+++++++++++++++++++");
         if (kafkaMessage.isPresent()) {
-            RelatedNumResultExample relatedNumResultExample = new RelatedNumResultExample();
-            CameraCompareResultExample cameraCompareResultExample = new CameraCompareResultExample();
-            HotNumInfoExample hotNumInfoExample = new HotNumInfoExample();
-            FaceRecognitionInfo faceRecognitionInfo = new FaceRecognitionInfo();
+             RelatedNumResultExample relatedNumResultExample=new RelatedNumResultExample();
+             CameraCompareResultExample cameraCompareResultExample=new CameraCompareResultExample();
+             HotNumInfoExample hotNumInfoExample=new HotNumInfoExample();
+            FaceRecognitionInfoDTO faceRecognitionInfo = new FaceRecognitionInfoDTO();
             Object message = kafkaMessage.get();
             String msg = (String) message;//json字符串
             JSONObject jsonObject = JSON.parseObject(msg);//json对象

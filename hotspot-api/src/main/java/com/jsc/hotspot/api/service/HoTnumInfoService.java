@@ -27,4 +27,30 @@ public interface HoTnumInfoService {
     //获取不同国家
     Object getDifferentCountries(Integer devId, String[] createTime);
 
+    PageResult selecttongxingList(Integer currentPage, Integer pageSize, Integer createTime,String imsi);
+
+    /**
+     * 按天获取取号数据
+     * @return
+     */
+    Map<String, Integer> getNumInfoByDay();
+
+    /**
+     * 按月获取取号数据
+     * @return
+     */
+    Map<String, Integer> getNumInfoByMonth();
+
+
+    /**
+     * 当天捕获到的号码总数
+     * @return
+     */
+    Long currentImsiNums();
+
+    /**
+     * 手机号码捕获总数
+     * @return
+     */
+    Long countImsiCatNums();
 }

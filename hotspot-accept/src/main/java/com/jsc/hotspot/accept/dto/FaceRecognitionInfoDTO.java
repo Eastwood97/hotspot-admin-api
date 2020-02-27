@@ -1,19 +1,23 @@
-package com.jsc.hotspot.api.dto;
+package com.jsc.hotspot.accept.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
 @Data
-public class FaceRecognitionInfo {
+@ToString
+public class FaceRecognitionInfoDTO {
     private String targetName;
     private long devId;
     private String devIp;
     private String targetFaceImg;
-    private Double compareScore;
-    private LocalDateTime captureTime;
+    private double compareScore;
+    private String captureTime;
     private String captureFaceImg;
-    private String libraryName;
+    private int libraryName;
     private String sceneImg;
     private String targetLibrary;
     private String sceneStorageUrl;

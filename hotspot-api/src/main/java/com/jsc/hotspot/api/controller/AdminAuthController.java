@@ -1,9 +1,10 @@
 package com.jsc.hotspot.api.controller;
 
 import com.jsc.hotspot.api.service.LogService;
+import com.jsc.hotspot.api.service.RoleService;
 import com.jsc.hotspot.api.service.impl.AdminService;
-import com.jsc.hotspot.api.service.impl.PermissionService;
-import com.jsc.hotspot.api.service.impl.RoleService;
+import com.jsc.hotspot.api.service.PermissionService;
+import com.jsc.hotspot.api.service.impl.RoleServiceImpl;
 import com.jsc.hotspot.api.utils.Permission;
 import com.jsc.hotspot.api.utils.PermissionUtil;
 import com.jsc.hotspot.common.utils.JacksonUtil;
@@ -121,13 +122,14 @@ public class AdminAuthController {
         data.put("name", admin.getUsername());
         data.put("avatar", admin.getAvatar());
         Long[] roleIds = admin.getRoleIds();
-        roleIds[0] = 1l;
+//        roleIds[0] = 1l;
         Set<String> roles = roleService.queryByIds(roleIds);
         Set<String> permissions = permissionService.queryByRoleIds(roleIds);
         data.put("roles", roles);
         // NOTE
         // 这里需要转换perms结构，因为对于前端而已API形式的权限更容易理解
-        data.put("perms", toApi(permissions));
+        data.put("perms", permissions);
+        // data.put("perms", toApi(permissions));
         return ResponseUtil.ok(data);
     }
 
@@ -162,6 +164,7 @@ public class AdminAuthController {
         }
         return apis;
     }
+
 
 
     @GetMapping("/401")

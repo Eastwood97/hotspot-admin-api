@@ -17,4 +17,17 @@
         GROUP BY capture_time2
     </select>
 
+    <select id="countByDay" resultMap="java.util.Map">
+        SELECT date(capture_time) t,count(distinct imsi) counts
+        from camera_cat_info
+        WHERE capture_time between (#{capture_time} - 15) and #{capture_time}
+        group BY t
+    </select>
+
+    <select id="countByMonth" resultMap="java.util.Map">
+        SELECT month(capture_time) t,count(distinct imsi) counts
+        from camera_cat_info
+        WHERE capture_time between (#{capture_time} - 30) and #{capture_time}
+        group BY t
+    </select>
 </mapper>

@@ -20,7 +20,7 @@ import java.util.List;
 public interface HCNetSDK extends StdCallLibrary {
 
 
-    HCNetSDK INSTANCE = (HCNetSDK) Native.loadLibrary(Path.DLL_PATH + "HCNetSDK.dll",
+    HCNetSDK INSTANCE = (HCNetSDK) Native.loadLibrary("D:\\Repositories\\hotspot-admin-api\\hotspot-accept\\target\\classes\\HCNetSDK",
             HCNetSDK.class);
     /***宏定义***/
     //常量

@@ -25,7 +25,7 @@ public class UdpEncoderHandler extends MessageToMessageEncoder {
         byte[] data = o.toString().getBytes();
         ByteBuf buf = ctx.alloc().buffer(data.length);
         buf.writeBytes(data);
-        InetSocketAddress inetSocketAddress = new InetSocketAddress("127.0.0.1", 8888);//指定客户端的IP及端口
+        InetSocketAddress inetSocketAddress = new InetSocketAddress("127.0.0.1", 8889);//指定客户端的IP及端口
         list.add(new DatagramPacket(buf, inetSocketAddress));
         LOGGER.info("{}发送消息{}:" + o.toString());
     }
