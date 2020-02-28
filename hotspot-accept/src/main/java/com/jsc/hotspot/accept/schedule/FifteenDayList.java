@@ -4,8 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.jsc.hotspot.accept.config.WebSocket;
 import com.jsc.hotspot.accept.service.CameraCatInfoService;
 import com.jsc.hotspot.accept.service.HoTnumInfoService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -23,25 +21,21 @@ import java.util.*;
  */
 @Component
 public class FifteenDayList {
-    @Autowired
-    private WebSocket websocket;
+    private WebSocket websocket = new WebSocket();
     @Autowired
     private HoTnumInfoService hoTnumInfoService;
     @Autowired
     private CameraCatInfoService cameraCatInfoService;
 
-    private Logger logger = LoggerFactory.getLogger(FifteenDayList.class);
     /**
      * 零点定时推送15天的统计数量
      */
-    //@Scheduled(cron = "0 0 0 * * *")
-    @Scheduled(cron = "*/5 * * * * *")
+    @Scheduled(cron = "0/5 * * * * ? ")
     public void clearRedisAndUpdateData() {
         //取号15天数量
-
         List<Map> hoTnumInfoDateNum = hoTnumInfoService.getHoTnumInfoDateNum();
         List<Map> hoTnumInfoDateNumList = getList(hoTnumInfoDateNum);
-        logger.error("-------------------------------------------");
+
         //人脸折线图
         List<Map> cameraCatInfoServiceHoTnumInfoDateNum = cameraCatInfoService.getHoTnumInfoDateNum();
         List<Map> cameraCatInfoDateNumList = getList(cameraCatInfoServiceHoTnumInfoDateNum);
@@ -55,29 +49,42 @@ public class FifteenDayList {
 
     //过滤封装15天
     public List<Map> getList(List<Map> hoTnumInfoDateNum) {
-        Map map = new HashMap();
-        List<Map> maps = new ArrayList<>();
-        for (int i = 0; i <= 15; i++) {
-            Date capture_Time =(Date) hoTnumInfoDateNum.get(0).get("capture_time2");
-            LocalDateTime captureTime =dateToLocalDate(capture_Time);
-            String captureTimeFormat = captureTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            LocalDate localDate = LocalDate.now().minusDays(i);
-            String localDateFormat = localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            if (localDateFormat.equals(captureTimeFormat)) {
-                map.put("capture_time", captureTimeFormat);
-                map.put("num", hoTnumInfoDateNum.get(i).get("num"));
-            } else {
-                map.put("capture_time", localDateFormat);
-                map.put("num", 0);
+        int s = 0;
+        boolean judge = false;
+        int length = hoTnumInfoDateNum.size();
+        List maps = new ArrayList<>();
+        if (length != 0) {
+            for (int i = 0; i <= 14; i++) {
+                Map map = new HashMap();
+                LocalDate localDate = LocalDate.now().minusDays(i);
+                Date capture_time2 = null;
+                String localDateFormat = localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                if (s < length) {
+                    capture_time2 = (Date) hoTnumInfoDateNum.get(s).get("capture_time2");
+                }
+                String captureTimeFormat = "";
+                if (capture_time2 != null) {
+                    captureTimeFormat = capture_time2.toString();
+                }
+                if (localDateFormat.equals(captureTimeFormat)) {
+                    map.put("capture_time", localDateFormat);
+                    Long num = (Long) hoTnumInfoDateNum.get(s).get("num");
+                    map.put("num", num);
+                    judge = true;
+                } else {
+                    map.put("capture_time", localDateFormat);
+                    map.put("num", 0);
+                }
+                if (length > s && judge == true) {
+                    s++;
+                }
+                judge = false;
+                maps.add(map);
             }
-        }
-        maps.add(map);
-        return maps;
-    }
-    public LocalDateTime dateToLocalDate(Date date){
-        if(null == date){
+            return maps;
+        } else {
             return null;
         }
-        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
+
 }

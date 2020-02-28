@@ -11,7 +11,7 @@
         select count(*) AS num,date(capture_time) as capture_time2
         from camera_cat_info
         <where>
-            create_time
+            capture_time
             BETWEEN #{startTime} AND #{endTime}
         </where>
         GROUP BY capture_time2

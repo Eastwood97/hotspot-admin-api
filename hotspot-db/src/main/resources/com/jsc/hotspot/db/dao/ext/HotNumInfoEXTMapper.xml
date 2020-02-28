@@ -461,7 +461,7 @@
       capture_time
       BETWEEN #{startTime} AND #{endTime}
     </where>
-    GROUP BY capture_time2
+    GROUP BY capture_time2 order by capture_time2 desc
   </select>
 
   <select id="selectGuiShuDiList" resultType="java.util.Map">

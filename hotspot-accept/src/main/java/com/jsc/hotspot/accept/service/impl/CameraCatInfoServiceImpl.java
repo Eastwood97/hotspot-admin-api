@@ -15,7 +15,7 @@ public class CameraCatInfoServiceImpl implements CameraCatInfoService {
     //人脸折线图
     @Override
     public List getHoTnumInfoDateNum() {
-        List<Map> maps1 = cameraCatInfoEXTMapper.selectCount(returnDate(0), returnDate(15));
+        List<Map> maps1 = cameraCatInfoEXTMapper.selectCount(returnDate(15), returnDate(1));
         return maps1;
     }
 
