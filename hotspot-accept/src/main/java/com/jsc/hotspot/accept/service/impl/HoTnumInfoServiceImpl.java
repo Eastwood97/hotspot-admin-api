@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
@@ -27,6 +28,8 @@ import java.util.*;
 public class HoTnumInfoServiceImpl implements HoTnumInfoService {
     @Autowired
     private HotNumInfoMapper hotNumInfoMapper;
+    @Autowired
+    private HotNumInfoEXTMapper hotNumInfoEXTMapper;
 
     public void insertHoTnumInfoNum(HotNumInfo hotNumInfoDAO) {
         hotNumInfoDAO.setCreateTime(LocalDateTime.now());
@@ -35,6 +38,16 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
 
     @Override
     public List getHoTnumInfoDateNum() {
-        return null;
+        List<Map> hoTnumInfoDateList = hotNumInfoEXTMapper.selectCount(returnDate(15), returnDate(0));
+        return hoTnumInfoDateList;
+    }
+    //往前获取时间
+    public Date returnDate(Integer index) {
+        Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.DATE, -index);
+        Date returnDate = c.getTime();
+        return returnDate;
     }
 }

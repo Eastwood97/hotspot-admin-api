@@ -17,6 +17,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import reactor.core.publisher.Flux;
 import reactor.netty.udp.UdpServer;
 
@@ -32,6 +33,7 @@ import java.time.format.DateTimeFormatter;
 @ComponentScan(basePackages = {"com.jsc.hotspot.db", "com.jsc.hotspot.common", "com.jsc.hotspot.accept"})
 @ServletComponentScan
 @Slf4j
+@EnableScheduling
 public class HotspotAcceptApplication {
 
     //TODO 录制完视频后保存到文件系统中，并将文件系统的ID保存到数据库中，后期通过时间来查

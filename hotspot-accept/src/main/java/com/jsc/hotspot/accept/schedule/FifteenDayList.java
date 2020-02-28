@@ -4,12 +4,15 @@ import com.alibaba.fastjson.JSONObject;
 import com.jsc.hotspot.accept.config.WebSocket;
 import com.jsc.hotspot.accept.service.CameraCatInfoService;
 import com.jsc.hotspot.accept.service.HoTnumInfoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -20,21 +23,25 @@ import java.util.*;
  */
 @Component
 public class FifteenDayList {
-    private WebSocket websocket = new WebSocket();
+    @Autowired
+    private WebSocket websocket;
     @Autowired
     private HoTnumInfoService hoTnumInfoService;
     @Autowired
     private CameraCatInfoService cameraCatInfoService;
 
+    private Logger logger = LoggerFactory.getLogger(FifteenDayList.class);
     /**
      * 零点定时推送15天的统计数量
      */
-    @Scheduled(cron = "0 0 0 * * *")
+    //@Scheduled(cron = "0 0 0 * * *")
+    @Scheduled(cron = "*/5 * * * * *")
     public void clearRedisAndUpdateData() {
         //取号15天数量
+
         List<Map> hoTnumInfoDateNum = hoTnumInfoService.getHoTnumInfoDateNum();
         List<Map> hoTnumInfoDateNumList = getList(hoTnumInfoDateNum);
-
+        logger.error("-------------------------------------------");
         //人脸折线图
         List<Map> cameraCatInfoServiceHoTnumInfoDateNum = cameraCatInfoService.getHoTnumInfoDateNum();
         List<Map> cameraCatInfoDateNumList = getList(cameraCatInfoServiceHoTnumInfoDateNum);
@@ -51,7 +58,8 @@ public class FifteenDayList {
         Map map = new HashMap();
         List<Map> maps = new ArrayList<>();
         for (int i = 0; i <= 15; i++) {
-            LocalDateTime captureTime = (LocalDateTime) hoTnumInfoDateNum.get(0).get("capture_time2");
+            Date capture_Time =(Date) hoTnumInfoDateNum.get(0).get("capture_time2");
+            LocalDateTime captureTime =dateToLocalDate(capture_Time);
             String captureTimeFormat = captureTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             LocalDate localDate = LocalDate.now().minusDays(i);
             String localDateFormat = localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -65,5 +73,11 @@ public class FifteenDayList {
         }
         maps.add(map);
         return maps;
+    }
+    public LocalDateTime dateToLocalDate(Date date){
+        if(null == date){
+            return null;
+        }
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
 }

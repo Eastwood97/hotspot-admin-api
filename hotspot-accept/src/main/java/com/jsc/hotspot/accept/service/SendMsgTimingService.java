@@ -18,7 +18,7 @@ public class SendMsgTimingService {
     @Autowired
     private KafkaSender kafkaSender;
 
-    @Scheduled(cron = "0/5 * * * * ?")
+//    @Scheduled(cron = "0/5 * * * * ?")
     public void sendMsg(){
         log.info("KAFKA准备发送消息");
 //        StringBuilder sb = new StringBuilder();

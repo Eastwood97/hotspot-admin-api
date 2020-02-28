@@ -7,6 +7,7 @@ import com.jsc.hotspot.db.dao.PermissionMapper;
 import com.jsc.hotspot.db.domain.Permission;
 import com.jsc.hotspot.db.domain.PermissionExample;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.BeansException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -81,9 +82,11 @@ public class PermissionServiceImpl implements PermissionService {
         List<PermissionVO> permissionVOList = new ArrayList<>();
         permissionList.forEach(x -> {
             PermissionVO permissionVO = new PermissionVO();
+
             BeanUtils.copyProperties(x, permissionVO);
             permissionVOList.add(permissionVO);
         });
+
         return permissionVOList;
     }
 }

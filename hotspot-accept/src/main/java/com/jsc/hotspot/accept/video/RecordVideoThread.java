@@ -5,6 +5,7 @@ import com.jsc.hotspot.accept.adapter.HaiKDllInterfaceAdapter;
 import com.jsc.hotspot.accept.adapter.impl.HaiKDllAdapterImpl;
 import com.jsc.hotspot.accept.adapter.impl.HaiKDllFaceImpl;
 import com.jsc.hotspot.accept.facade.KafkaSender;
+import com.jsc.hotspot.accept.schedule.FifteenDayList;
 import com.jsc.hotspot.common.bean.FileInfo;
 import com.jsc.hotspot.db.dao.HotNumInfoMapper;
 import com.jsc.hotspot.db.domain.HotNumInfo;
@@ -42,19 +43,20 @@ public class RecordVideoThread implements ApplicationRunner {
     @Autowired
     @Qualifier("haiKDllAdapterImpl")
     private HaiKDllInterfaceAdapter haiKDllAdapter;
+
     @Autowired
     private KafkaSender kafkaSender;
     @Override
     public void run(ApplicationArguments args) throws Exception {
         // 获取视频源 可以获取RTSP视频源进行视频播放
-        try {
-            haiKDllAdapter.register();
-            haiKDllAdapter.SetupAlarmChan();
-            haiKDllAdapter.search();
-        } catch (Exception e)
-        {
-            log.info("未连接海康设备");
-        }
+//        try {
+//            haiKDllAdapter.register();
+//            haiKDllAdapter.SetupAlarmChan();
+//            haiKDllAdapter.search();
+//        } catch (Exception e)
+//        {
+//            log.info("未连接海康设备");
+//        }
 
 //        FileInfo fileInfo = new FileInfo();
 //        fileInfo.setTargetName("ni");

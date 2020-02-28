@@ -28,27 +28,15 @@ public interface CameraCatInfoEXTMapper {
      */
     List<Map> selectCount(@Param(value = "startTime") Date startTime, @Param(value = "endTime") Date endTime);
 
-    /**
-     * 上号数量统计
-     * @return
-     */
-    Map<String, Integer> countByDay();
-
-    /**
-     * 上号数量统计
-     * @return
-     */
-    Map<String, Integer> countByMonth();
-    /**
-     * 上号数量统计
-     * @return
-     */
-    Map<String, Integer> countByDay();
-
-    /**
-     * 上号数量统计
-     * @return
-     */
-    Map<String, Integer> countBy
-
+//    /**
+//     * 上号数量统计
+//     * @return
+//     */
+//    Map<String, Integer> countByDay();
+//
+//    /**
+//     * 上号数量统计
+//     * @return
+//     */
+//    Map<String, Integer> countByMonth();
 }

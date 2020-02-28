@@ -94,12 +94,12 @@ public class CameraCatInfoServiceImpl implements CameraCatInfoService {
 
     @Override
     public Map<String, Integer> getFaceByDay() {
-        return cameraCatInfoEXTMapper.countByDay();
+        return null;
     }
 
     @Override
     public Map<String, Integer> getFaceByMonth(){
-        return cameraCatInfoEXTMapper.countByMonth();
+        return null;
     }
 
     @Override

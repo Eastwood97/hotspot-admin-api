@@ -55,7 +55,6 @@ public class SDKController {
      * 进行注册操作
      * @return
      */
-    @ResponseBody
     @RequestMapping(value = "register", method = RequestMethod.GET)
     public BizResult<String> register(){
         return cameraService.register();

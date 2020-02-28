@@ -27,8 +27,6 @@ public interface HoTnumInfoService {
     //获取不同国家
     Object getDifferentCountries(Integer devId, String[] createTime);
 
-    PageResult selecttongxingList(Integer currentPage, Integer pageSize, Integer createTime,String imsi);
-
     /**
      * 按天获取取号数据
      * @return
