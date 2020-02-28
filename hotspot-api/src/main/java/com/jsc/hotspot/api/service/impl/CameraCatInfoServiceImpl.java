@@ -88,7 +88,7 @@ public class CameraCatInfoServiceImpl implements CameraCatInfoService {
             Date d = c.getTime();
             dateList.add(d);
         }
-        List<Map> maps1 = cameraCatInfoEXTMapper.selectCount(dateList);
+        List<Map> maps1 = cameraCatInfoEXTMapper.selectCount(dateList.get(0),dateList.get(15));
         return maps1;
     }
 

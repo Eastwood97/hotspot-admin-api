@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsc.hotspot.db.dao.ext.RoleExtMapper">
+
+    <resultMap id="BaseRolePermissionMap" type="com.jsc.hotspot.db.domain.RolePermission">
+        <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+        <result column="role_id" jdbcType="BIGINT" property="roleId" />
+        <collection property="permissions" ofType="com.jsc.hotspot.db.domain.Permission">
+            <result column="permission_id" jdbcType="BIGINT" property="id" />
+            <result column="permission_name" jdbcType="VARCHAR" property="permission" />
+        </collection>
+    </resultMap>
+
+    <select id="queryRolePermissionbyPage" resultMap="BaseRolePermissionMap">
+        select role_t.name as role_name, role_t.id as role_id, permission.permission as permission_name, permission.id as permission_id
+        from (SELECT * from role limit #{pageSize},#{pageNum}) role_t left join permission
+        on role_t.id = permission.role_id
+    </select>
+
+    <select id="insertBatch" parameterType="java.util.List">
+        insert into permission(role_id,permission,create_time,update_time,deleted) values
+         <foreach collection="list" item="item" separator="," >
+             (#{item.roleId},#{item.permission},#{item.createTime},#{item.updateTime},0)
+         </foreach>
+    </select>
+
+    <select id="selectMaxId"  resultType="java.lang.Long">
+        select max(id) from role
+    </select>
+</mapper>

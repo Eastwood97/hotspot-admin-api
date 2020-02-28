@@ -64,12 +64,4 @@ public class KafkaConsumerConfig {
         propsMap.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoOffsetReset);
         return propsMap;
     }
-    /**
-     * kafka监听
-     * @return
-     */
-//    @Bean
-//    public RawDataListener listener() {
-//        return new RawDa();
-//    }
 }

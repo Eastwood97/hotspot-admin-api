@@ -54,6 +54,11 @@ public class RedisCacheAutoConfiguration extends CachingConfigurerSupport {
         };
     }
 
+    /**
+     * 缓存管理器
+     * @param factory
+     * @return
+     */
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory factory) {
         //以锁写入的方式创建RedisCacheWriter对象

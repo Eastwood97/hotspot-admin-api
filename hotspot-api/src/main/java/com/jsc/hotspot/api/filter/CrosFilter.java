@@ -18,6 +18,14 @@ public class CrosFilter implements Filter {
     final static org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(CorsFilter.class);
 
 
+    /**
+     * 过滤
+     * @param req
+     * @param res
+     * @param chain
+     * @throws IOException
+     * @throws ServletException
+     */
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
