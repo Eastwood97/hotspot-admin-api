@@ -10,6 +10,7 @@ import com.jsc.hotspot.accept.utils.HTTPClientUtil;
 import com.jsc.hotspot.common.bean.FileInfo;
 import com.jsc.hotspot.common.bean.PlayBean;
 import com.jsc.hotspot.common.bean.VideoDownLoadBean;
+import com.jsc.hotspot.common.bean.VideoMessageBean;
 import com.jsc.hotspot.common.biz.BizResult;
 import com.jsc.hotspot.common.http.RestClient;
 import com.jsc.hotspot.common.util.RandomNameUtil;
@@ -74,7 +75,6 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
     FMSGCallBack fMSFCallBack;//报警回调函数实现
     FMSGCallBack_V31 fMSFCallBack_V31;//报警回调函数实现
     FGPSDataCallback fGpsCallBack;//GPS信息查询回调函数实现
-
 
     javax.swing.JTable jTableAlarm = new javax.swing.JTable();
     @Value("${camera1.ip}")
@@ -143,17 +143,24 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                 hCNetSDK.NET_DVR_PlayBackControl(m_lLoadHandle, HCNetSDK.NET_DVR_PLAYSTART, 0, null);
                 logger.debug("停止下载");
                 Downloadtimer = new Timer();//新建定时器
-                Downloadtimer.schedule(new DownloadTask(), 0, 5000);//0秒后开始响应函数
-                return BizResult.create("按时间下载成功");
+                Downloadtimer.schedule(new DownloadTask((m_sDeviceIP + m_iChanShowNum + struStartTime.toStringTitle() + struStopTime.toStringTitle() + "")), 0, 5000);//0秒后开始响应函数
+
+                //weedFSService.storagePic()
+                BizResult<String> bizResult = BizResult.create("按时间下载成功");
+                bizResult.setData((m_sDeviceIP + m_iChanShowNum + struStartTime.toStringTitle() + struStopTime.toStringTitle() + ""));
+                return bizResult;
             } else {
                 logger.error("按时间下载失败");
-                return BizResult.create("按时间下载失败");
+                BizResult<String> bizResult = BizResult.create("按时间下载失败");
+                bizResult.setDesc("按时间下载失败");
+                bizResult.setFlag(false);
+                return bizResult;
             }
         } else {
             hCNetSDK.NET_DVR_StopGetFile(m_lLoadHandle);
             logger.debug("下载");
             Downloadtimer.cancel();
-            return BizResult.create("按时间下载成功");
+            return BizResult.create("按时间下载");
         }
     }
 
@@ -237,7 +244,7 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
             logger.info("注册成功");
             BizResult<String> bizResult = BizResult.create("注册成功");
             bizResult.setDesc("注册成功");
-            bizResult.setFlag(false);
+            bizResult.setFlag(true);
             return bizResult;
         }
     }
@@ -304,7 +311,7 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                  logger.error("布防成功");
                 BizResult<String> bizResult = BizResult.create("布防成功");
                 bizResult.setData("布防成功");
-                bizResult.setFlag(false);
+                bizResult.setFlag(true);
                 return bizResult;
             }
         }
@@ -314,6 +321,11 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
     public BizResult<Boolean> search(){
 
         return BizResult.create(faceInterface.SearchFDLib(new NativeLong(lUserID)));
+    }
+
+    @Override
+    public void unregister() {
+        lUserID = -1;
     }
 
     /**
@@ -1200,8 +1212,15 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
 
     }
 
+    /**
+     * 下载视频定时器类
+     */
     class DownloadTask extends java.util.TimerTask
     {
+        private String id;
+        public DownloadTask(String id){
+            this.id = id;
+        }
         //定时器函数
         @Override
         public void run()
@@ -1215,6 +1234,10 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                 logger.debug("下载");
                 Downloadtimer.cancel();
                 logger.error("由于网络原因或DVR忙,下载异常终止!");
+                VideoMessageBean videoMessageBean = new VideoMessageBean();
+                videoMessageBean.setId(id);
+                videoMessageBean.setStorageId("");
+                kafkaSenderService.sendVideoId(JSON.toJSONString(videoMessageBean));
             }
             if (nPos.getValue() == 100)
             {
@@ -1223,6 +1246,17 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                 logger.debug("下载");
                 Downloadtimer.cancel();
                 logger.debug("按时间下载结束!");
+                VideoMessageBean videoMessageBean = new VideoMessageBean();
+                BizResult<String> bizResult = null;
+                try {
+                    bizResult = weedFSService.storagePic(new FileInputStream("c:/DownLoad/"+id));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                // 下载完成放入Kafka
+                videoMessageBean.setId(id);
+                videoMessageBean.setStorageId(bizResult.getData());
+                kafkaSenderService.sendVideoId(JSON.toJSONString(videoMessageBean));
             }
         }
     }

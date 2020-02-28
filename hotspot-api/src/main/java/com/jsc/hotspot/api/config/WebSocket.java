@@ -13,6 +13,10 @@ import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * @author tzm
+ * @desc websocket服务端
+ */
 @Component
 @ServerEndpoint("/websocket/{userName}")
 //此注解相当于设置访问URL

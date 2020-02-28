@@ -6,8 +6,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author tzm
+ * @desc 抓拍人脸数据访问层扩展接口
+ */
 public interface CameraCatInfoEXTMapper {
-    int deleteById(@Param("ids") String[] ids);
+    /**
+     * 批量删除
+     * @param ids
+     * @return
+     */
+    int deleteById(@Param("ids") String [] ids);
     /**
      *
      * 功能描述: 此处是为了获取15天内的上号数量进行展示
@@ -30,4 +39,16 @@ public interface CameraCatInfoEXTMapper {
      * @return
      */
     Map<String, Integer> countByMonth();
+    /**
+     * 上号数量统计
+     * @return
+     */
+    Map<String, Integer> countByDay();
+
+    /**
+     * 上号数量统计
+     * @return
+     */
+    Map<String, Integer> countBy
+
 }

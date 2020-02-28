@@ -11,12 +11,21 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * @author tzm
+ * @desc shiro异常处理类
+ */
 @ControllerAdvice
 @Order(value = Ordered.HIGHEST_PRECEDENCE)
 public class ShiroExceptionHandler {
 
     private final Log logger = LogFactory.getLog(ShiroExceptionHandler.class);
 
+    /**
+     * 未认证异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(AuthenticationException.class)
     @ResponseBody
     public Object unauthenticatedHandler(AuthenticationException e) {
@@ -24,6 +33,11 @@ public class ShiroExceptionHandler {
         return ResponseUtil.unlogin();
     }
 
+    /**
+     * 未经授权异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(AuthorizationException.class)
     @ResponseBody
     public Object unauthorizedHandler(AuthorizationException e) {

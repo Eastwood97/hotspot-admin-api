@@ -4,6 +4,11 @@ package com.jsc.hotspot.api.dto;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author tzm
+ * @desc 接受添加人脸的数据载体
+ *
+ */
 @Data
 public class TargetFace {
 

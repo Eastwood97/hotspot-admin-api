@@ -47,7 +47,7 @@ public class SDKController {
      */
     @RequestMapping(value = "download", method = RequestMethod.GET)
     @ResponseBody
-    public BizResult<String> downloadVideo(VideoDownLoadBean videoDownLoadBean){
+    public BizResult<String> downloadVideo(@RequestBody VideoDownLoadBean videoDownLoadBean){
         return cameraService.downLoadVideo(videoDownLoadBean);
     }
 
@@ -57,7 +57,6 @@ public class SDKController {
      */
     @ResponseBody
     @RequestMapping(value = "register", method = RequestMethod.GET)
-    @ResponseBody
     public BizResult<String> register(){
         return cameraService.register();
     }

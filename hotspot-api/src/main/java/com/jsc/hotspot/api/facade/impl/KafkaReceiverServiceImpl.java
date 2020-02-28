@@ -2,38 +2,30 @@ package com.jsc.hotspot.api.facade.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.jsc.hotspot.api.dto.FaceRecognitionInfoDTO;
 import com.jsc.hotspot.api.config.WebSocket;
+import com.jsc.hotspot.api.dto.FaceRecognitionInfoDTO;
 import com.jsc.hotspot.api.facade.KafkaReceiverService;
-import com.jsc.hotspot.api.facade.WeedFSService;
 import com.jsc.hotspot.db.dao.*;
-import com.jsc.hotspot.db.dao.ext.HotNumInfoEXTMapper;
 import com.jsc.hotspot.db.dao.ext.RelatedNumEXTMapper;
 import com.jsc.hotspot.db.domain.*;
 import com.jsc.hotspot.db.po.RealatedNumAndCount;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import sun.rmi.runtime.NewThreadAction;
 
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.*;
 
 /**
- * @author huixing
+ * @author tzm
  * @description kafka接收服务实现
  * @date 2019/11/4
  */
@@ -41,14 +33,11 @@ import java.util.concurrent.*;
 public class KafkaReceiverServiceImpl implements KafkaReceiverService {
 
     private Log log= LogFactory.getLog(KafkaReceiverServiceImpl.class);
-    @Autowired
-    private WeedFSService weedFSService;
+
 
     @Autowired
     private HotNumInfoMapper hotNumInfoMapper;
 
-    @Autowired
-    private HotNumInfoEXTMapper hotNumInfoEXTMapper;
 
     @Autowired
     private RelatedNumMapper relatedNumMapper;
@@ -124,7 +113,7 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                 cameraCompareResultMapper.insertSelective(result);
                 log.error("-------------------------成功添加人臉中標結果-------------");
                 // 3.根据中标时间查询取号
-                Callable<List> numberListCallable = new Callable<List>() {
+                Callable<List> numberListCallable=new Callable<List>() {
                     @Override
                     public List call() throws Exception {
                         java.time.Duration duration = java.time.Duration.between(LocalDateTime.now() , captureTime );
@@ -174,41 +163,55 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                 RelatedNumResult relatedNumResult=new RelatedNumResult();
                 relatedNumResult.setCaptureNum(count);
 //                    if (count > 1) { //是否是第一次中标
-                //查询每个号码出现的频次比
+                    //查询每个号码出现的频次比
                 List<RealatedNumAndCount> realatedNumAndCounts = relatedNumEXTMapper.getCampareValue(faceRecognitionInfo.getTargetName());
-                if (null != realatedNumAndCounts) {
-                    //数组转json字符串
-                    Map<String, Object> jsonMap = new HashMap<>();
-
-                    jsonMap.put("topOne", realatedNumAndCounts.get(0));
-                    if (realatedNumAndCounts.size() > 1) {
-                        jsonMap.put("topTwo", realatedNumAndCounts.get(1));
+                if (null!=realatedNumAndCounts&&realatedNumAndCounts.size()>0) {
+                    /*
+                    通过卷积的思想去除干扰
+                     */
+                    HashMap<Double,String> hashMap=new HashMap<>();
+                    ArrayList<Double> arrayList=new ArrayList<>();
+                    for(int i=0;i<realatedNumAndCounts.size();i++){
+                        String imsi=realatedNumAndCounts.get(i).getImsi();
+                        HotNumInfoExample example=new HotNumInfoExample();
+                        example.or().andImsiEqualTo(imsi);
+                        long totalCount=hotNumInfoMapper.countByExample(example);
+                        double relatedCount=realatedNumAndCounts.get(i).getCount();
+                        //关联次数比上号次数
+                        Double ratio=relatedCount/totalCount;
+                        hashMap.put(ratio,imsi);
+                        arrayList.add(ratio);
                     }
-                    if (realatedNumAndCounts.size() > 2) {
-                        jsonMap.put("topThree", realatedNumAndCounts.get(2));
+                    //降序排列
+                    sort(arrayList);
+                    Map<String, String> jsonMap= new HashMap<>();
+                    String [] rank={"topOne","topTwo","topThree"};
+                    //取三个关联性最强的号码
+                    for(int i=0;i<3;i++){
+                        jsonMap.put(rank[i],hashMap.get(arrayList.get(i)));
                     }
-                    String stringMap = JSON.toJSONString(jsonMap);
-                    //json 字符串转object
-                    JSONObject relatedResult = JSON.parseObject(stringMap);
-                    map.put("realatedNumAndCount", relatedResult);
-                    map.put("captureCount", count);
-                    //更新关联结果
-                    relatedNumResult.setRelatedResult(relatedResult);
-                    relatedNumResultExample.or().andTargetNameEqualTo(result.getTargetName());
-                    List<RelatedNumResult> list = relatedNumResultMapper.selectByExampleSelective(relatedNumResultExample);
-                    if (list.size() > 0) {
-                        RelatedNumResultExample.Criteria criteria = relatedNumResultExample.createCriteria();
-                        criteria.andTargetNameEqualTo(result.getTargetName());
-                        log.error("更新关联结果表前");
-                        relatedNumResultMapper.updateByExampleSelective(relatedNumResult, relatedNumResultExample);
-                        log.error("更新关联结果表后");
-                    } else {
-                        relatedNumResult.setTargetName(result.getTargetName());
-                        relatedNumResult.setTargetFace(result.getTargetFaceStorageUrl());
-                        log.error("插入relatedNum表");
-                        relatedNumResultMapper.insertSelective(relatedNumResult);
-                        log.error("插入relatedNum表结束");
-                    }
+                            String  stringMap=JSON.toJSONString(jsonMap);
+                            //json 字符串转object
+                           JSONObject relatedResult=JSON.parseObject(stringMap);
+                            map.put("realatedNumAndCount",relatedResult);
+                            map.put("captureCount",count);
+                            //更新关联结果
+                            relatedNumResult.setRelatedResult(relatedResult);
+                            relatedNumResultExample.or().andTargetNameEqualTo(result.getTargetName());
+                            List<RelatedNumResult> list=relatedNumResultMapper.selectByExampleSelective(relatedNumResultExample);
+                            if (list.size()>0) {
+                                RelatedNumResultExample.Criteria criteria = relatedNumResultExample.createCriteria();
+                                criteria.andTargetNameEqualTo(result.getTargetName());
+                                log.error("更新关联结果表前");
+                                relatedNumResultMapper.updateByExampleSelective(relatedNumResult, relatedNumResultExample);
+                                log.error("更新关联结果表后");
+                            }else{
+                                relatedNumResult.setTargetName(result.getTargetName());
+                                relatedNumResult.setTargetFace(result.getTargetFaceStorageUrl());
+                                log.error("插入relatedNum表");
+                                relatedNumResultMapper.insertSelective(relatedNumResult);
+                                log.error("插入relatedNum表结束");
+                            }
 
                 }
 
@@ -216,10 +219,35 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                 webSocket.sendOneMessage("admin123", data);
             }
 
-            BeanUtils.copyProperties(cameraCatInfo, faceRecognitionInfo);
+            BeanUtils.copyProperties(cameraCatInfo,faceRecognitionInfo);
             cameraCatInfo.setCreateTime(LocalDateTime.now());
             //抓拍入库
             cameraCatInfoMapper.insertSelective(cameraCatInfo);
         }
     }
-}
+
+    /**
+     * 冒泡排序,优化版
+     * @param array
+     */
+    private static void sort(ArrayList<Double> array) {
+        Double tmp = 0.0;
+        for (int i = 0; i < array.size(); i++) {
+            //有序标记，每一轮的初始是true
+            boolean isSorted = true;
+            for (int j = 0; j < array.size() - i - 1; j++) {
+                if (array.get(j) < array.get(j+1)) {
+                    tmp = array.get(j);
+                    array.set(j,array.get(j+1));
+                    array.set(j + 1,tmp);
+                    //有元素交换，所以不是有序，标记变为false
+                    isSorted = false;
+                }
+            }
+            if (isSorted) {
+                break;
+            }
+        }
+    }
+
+    }

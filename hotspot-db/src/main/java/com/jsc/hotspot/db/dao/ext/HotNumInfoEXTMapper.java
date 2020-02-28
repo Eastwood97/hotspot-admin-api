@@ -10,7 +10,13 @@ import java.util.List;
 import java.util.Map;
 
 public interface HotNumInfoEXTMapper {
-    @Select("select * from hot_num_info where create_time<DATE_SUB(#{captureTime},INTERVAL 30 SECOND)")
+    /**
+     * 根据时间点查询前后30秒的取号记录
+     * @author tzm
+     * @param captureTime
+     * @return
+     */
+    @Select("select * from hot_num_info where capture_time<DATE_SUB(#{captureTime},INTERVAL 30 SECOND)")
     List<HotNumInfo> getIntervalNum(LocalDateTime captureTime);
     /**
      *

@@ -6,9 +6,17 @@ import com.jsc.hotspot.db.entity.TargetFaceResult;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-
+/**
+ * @author tzm
+ * @desc 目标人脸数据访问层扩展接口
+ */
 public interface HotTargetFaceEXTMapper {
-    int deleteById(@Param("targetIds") String[] targetIds);
-    TargetFaceResult selectById(@Param("target_id") Long target_id);
-    List<TargetFaceResult> selectByMyExampleSelective(@Param("example") CameraTargetFaceExample example, @Param("selective") CameraTargetFace.Column... selective);
+    /**
+     * 批量删除
+     * @param targetIds
+     * @return
+     */
+    int deleteById(@Param("targetIds") String [] targetIds);
+
+    List<TargetFaceResult> selectByMyExampleSelective(@Param("example") CameraTargetFaceExample example, @Param("selective") CameraTargetFace.Column ... selective);
 }

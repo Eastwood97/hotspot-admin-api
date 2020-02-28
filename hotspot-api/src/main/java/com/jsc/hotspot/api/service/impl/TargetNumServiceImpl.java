@@ -17,6 +17,10 @@ import org.springframework.util.StringUtils;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * @author tzm
+ * @desc 处理目标号码的相关业务
+ */
 @Service("TargetNumService")
 @Transactional
 public class TargetNumServiceImpl implements TargetNumService {
@@ -33,6 +37,16 @@ public class TargetNumServiceImpl implements TargetNumService {
             HotTargetInfo.Column.desc,HotTargetInfo.Column.operatorId
     };
 
+    /**
+     * 分页查询
+     * @param page
+     * @param limit
+     * @param targetName
+     * @param imsi
+     * @param imei
+     * @param isdn
+     * @return
+     */
     @Override
     public List<HotTargetInfo> query(Integer page, Integer limit,String targetName,String imsi,String imei,String isdn ) {
         Subject currentUser = SecurityUtils.getSubject();
@@ -61,12 +75,22 @@ public class TargetNumServiceImpl implements TargetNumService {
         return hotTargetInfoMapper.selectByExample(example);
     }
 
+    /**
+     * 编辑布控名单
+     * @param targetInfo
+     * @return
+     */
     @Override
     public int updateById(HotTargetInfo targetInfo) {
         targetInfo.setUpdateTime(LocalDateTime.now());
         return hotTargetInfoMapper.updateByPrimaryKeySelective(targetInfo);
     }
 
+    /**
+     * 批量删除
+     * @param targetIds
+     * @return
+     */
     @Override
     public boolean deleteById(String targetIds) {
         String[] spllit=targetIds.split(",");
@@ -74,6 +98,10 @@ public class TargetNumServiceImpl implements TargetNumService {
         return result==spllit.length;
     }
 
+    /**
+     * 添加目标
+     * @param targetInfo
+     */
     @Override
     public void add(HotTargetInfo targetInfo) {
         Subject currentUser = SecurityUtils.getSubject();
@@ -84,12 +112,21 @@ public class TargetNumServiceImpl implements TargetNumService {
         hotTargetInfoMapper.insertSelective(targetInfo);
     }
 
+    /**
+     * 获取所有的目标信息
+     * @return
+     */
     @Override
     public List<HotTargetInfo> getAllTargetNum() {
         HotTargetInfoExample example=new HotTargetInfoExample();
         return hotTargetInfoMapper.selectByExampleSelective(example);
     }
 
+    /**
+     * 批量插入数据
+     * @param targetList
+     * @return
+     */
     public boolean insertForeach(List<HotTargetInfo> targetList){
         int result=hotTargetInfoEXTMapper.insertForeach(targetList);
         if(result==targetList.size()){

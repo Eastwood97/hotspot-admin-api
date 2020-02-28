@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author tzm
+ * @desc 人脸识别与关联号码的数据接口
+ */
 @RequestMapping("admin/relatedNumResult")
 @RestController
 public class RealtedNumController {
@@ -24,6 +28,11 @@ public class RealtedNumController {
         return ResponseUtil.okList(relatedNumResults);
     }
 
+    /**
+     * 批量删除
+     * @param ids
+     * @return
+     */
     @DeleteMapping
     public Object delete(@RequestBody String ids) {
         if (realtedNumService.deleteById(ids)) {

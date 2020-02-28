@@ -4,6 +4,10 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * @author tzm
+ * @desc 接受kafka人脸识别信息的数据载体
+ */
 @Data
 public class FaceRecognitionInfoDTO {
     private String targetName;

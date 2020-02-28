@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author tzm
+ * @desc websocket通信测试接口
+ */
 @RestController
 @RequestMapping("/websocket")
 public class WebSocketController {

@@ -32,7 +32,10 @@ import java.util.*;
 
 import static com.jsc.hotspot.common.utils.response.AdminResponseCode.ADMIN_INVALID_ACCOUNT;
 
-
+/**
+ * @author tzm
+ * @desc 用户登录认证
+ */
 @RestController
 @RequestMapping("/admin/auth")
 @Validated
@@ -54,8 +57,11 @@ public class AdminAuthController {
 //    @Autowired
 //    private LogHelper logHelper;
 
-    /*
-     *  { username : value, password : value }
+    /**
+     * 登录
+     * @param body { username : value, password : value }
+     * @param request
+     * @return
      */
     @LogService(value="用户登录")
     @PostMapping("/login")
@@ -102,6 +108,10 @@ public class AdminAuthController {
         return ResponseUtil.ok(result);
     }
 
+    /**
+     * 登出
+     * @return
+     */
     @RequiresAuthentication
     @PostMapping("/logout")
     public Object logout() {
@@ -112,7 +122,10 @@ public class AdminAuthController {
         return ResponseUtil.ok();
     }
 
-
+    /**
+     * 获取用户信息
+     * @return
+     */
     @GetMapping("/info")
     public Object infos() {
         Subject currentUser = SecurityUtils.getSubject();

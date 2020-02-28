@@ -15,6 +15,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+/**
+ * @author tzm
+ * @desc 处理人脸识别结果的相关业务
+ */
 @Service
 public class FaceCampareResultServiceImpl implements FaceCampareResultService {
 
@@ -24,7 +28,15 @@ public class FaceCampareResultServiceImpl implements FaceCampareResultService {
     private FaceCameraResultEXOMapper faceCameraResultEXOMapper;
 
 
-
+    /**
+     * 分页查询
+     * @param page
+     * @param limit
+     * @param targetName
+     * @param startTime
+     * @param endTime
+     * @return
+     */
     @Override
     public List<CameraCompareResult> query(Integer page, Integer limit, String targetName,String startTime,String endTime) {
         CameraCompareResultExample example=new CameraCompareResultExample();
@@ -43,6 +55,11 @@ public class FaceCampareResultServiceImpl implements FaceCampareResultService {
         return cameraCompareResultMapper.selectByExampleSelective(example);
     }
 
+    /**
+     * 批量删除
+     * @param ids
+     * @return
+     */
     @Override
     public Boolean deleteById(String ids) {
         String[] split=ids.split(",");

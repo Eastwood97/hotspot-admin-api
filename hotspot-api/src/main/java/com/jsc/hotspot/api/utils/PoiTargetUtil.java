@@ -15,6 +15,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author tzm'
+ * @desc 导出数据库工具类
+ */
 public class PoiTargetUtil {
     public static ResponseEntity<byte[]> exportTargetExcel(List<HotTargetInfo> targets) {
         HttpHeaders headers = null;

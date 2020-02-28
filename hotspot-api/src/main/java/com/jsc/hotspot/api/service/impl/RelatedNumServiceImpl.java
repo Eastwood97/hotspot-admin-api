@@ -12,6 +12,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author tzm
+ * @desc 处理人脸识别与号码管理的业务的相关业务
+ */
 @Service
 public class RelatedNumServiceImpl implements RealtedNumService {
 
@@ -21,6 +25,10 @@ public class RelatedNumServiceImpl implements RealtedNumService {
     @Autowired
     private RelatedNumResultEXTMapper relatedNumResultEXTMapper;
 
+    /**
+     * @author tzm
+     * @desc 处理人脸识别与号码管理的业务的相关业务
+     */
     @Override
     public List<RelatedNumResult> query(Integer page, Integer limit,String targetName) {
         RelatedNumResultExample example=new RelatedNumResultExample();
@@ -31,6 +39,11 @@ public class RelatedNumServiceImpl implements RealtedNumService {
          return  relatedNumResultMapper.selectByExampleSelective(example);
     }
 
+    /**
+     * 批量删除
+     * @param ids
+     * @return
+     */
     @Override
     public boolean deleteById(String ids) {
         String[] split=ids.split(",");

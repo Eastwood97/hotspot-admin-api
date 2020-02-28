@@ -1,7 +1,6 @@
 package com.jsc.hotspot.api.controller;
 
 import com.jsc.hotspot.api.dto.TargetFace;
-import com.jsc.hotspot.api.service.LogService;
 import com.jsc.hotspot.api.service.TargetFaceService;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
 import com.jsc.hotspot.db.domain.CameraTargetFace;
@@ -12,8 +11,8 @@ import java.util.List;
 
 
 /**
- * 布控人脸数据接口
  * @author tzm
+ * @desc   布控目标人脸的接口数据
  */
 @RestController
 @RequestMapping("/admin/targetFace")
@@ -21,13 +20,23 @@ public class TargetFaceController {
 
     @Autowired
     private  TargetFaceService targetFaceService;
-    @LogService(value="添加人脸")
+
+    /**
+     * 添加目标人脸信息
+     * @param targetFace
+     * @return
+     */
     @PostMapping
     public Object creat(@RequestBody TargetFace targetFace){
         targetFaceService.add(targetFace);
         return ResponseUtil.ok("添加成功");
     }
-    @LogService(value="修改人脸")
+
+    /**
+     * 编辑布控人脸的信息
+     * @param targetFace
+     * @return
+     */
     @PutMapping
     public Object update(@RequestBody TargetFace targetFace){
         if(targetFaceService.update(targetFace)==0){
@@ -36,6 +45,13 @@ public class TargetFaceController {
         return ResponseUtil.ok(targetFace);
     }
 
+    /**
+     * 分页查询
+     * @param page
+     * @param limit
+     * @param targetName
+     * @return
+     */
     @GetMapping
     public Object query(  @RequestParam(defaultValue = "1") Integer page,
                           @RequestParam(defaultValue = "20") Integer limit,
@@ -43,7 +59,12 @@ public class TargetFaceController {
         List<CameraTargetFace> targetFaces=targetFaceService.getTargetFace(page,limit,targetName);
         return ResponseUtil.ok(targetFaces);
     }
-    @LogService(value="删除人脸")
+
+    /**
+     * 批量删除
+     * @param targetIds
+     * @return
+     */
     @DeleteMapping
     public Object deleteById(@RequestBody String targetIds){
         if(targetFaceService.deleteById(targetIds)){

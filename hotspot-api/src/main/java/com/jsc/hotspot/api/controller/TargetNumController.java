@@ -1,7 +1,6 @@
 package com.jsc.hotspot.api.controller;
 
 import com.jsc.hotspot.api.service.ImportService;
-import com.jsc.hotspot.api.service.LogService;
 import com.jsc.hotspot.api.service.TargetNumService;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
 import com.jsc.hotspot.db.domain.HotTargetInfo;
@@ -71,8 +70,12 @@ public class TargetNumController {
         return null;
 
     }
-    @LogService(value="添加黑名单")
 
+    /**
+     * 添加目标号码
+     * @param targetNum
+     * @return
+     */
     @PostMapping
     public Object add(@RequestBody HotTargetInfo targetNum){
         Object error=validate(targetNum);
@@ -82,8 +85,12 @@ public class TargetNumController {
         targetNumService.add(targetNum);
         return ResponseUtil.ok(targetNum);
     }
-    @LogService(value="修改黑名单")
 
+    /**
+     * 编辑目标号的信息
+     * @param targetInfo
+     * @return
+     */
     @PutMapping
     public Object Update(@RequestBody HotTargetInfo targetInfo){
         Object error=validate(targetInfo);
@@ -95,7 +102,12 @@ public class TargetNumController {
         }
         return ResponseUtil.ok(targetInfo);
     }
-    @LogService(value="删除黑名单")
+
+    /**
+     * 批量删除
+     * @param targetIds
+     * @return
+     */
     @DeleteMapping
     public Object deleteById(@RequestBody String targetIds){
         if(targetNumService.deleteById(targetIds)){

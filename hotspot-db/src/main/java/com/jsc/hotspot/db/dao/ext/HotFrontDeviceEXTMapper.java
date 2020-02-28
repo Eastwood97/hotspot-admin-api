@@ -5,7 +5,10 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
-
+/**
+ * @author tzm
+ * @desc 设备管理数据访问层扩展接口
+ */
 public interface HotFrontDeviceEXTMapper {
 
     int deleteById(@Param("devIds") String[] devIds);

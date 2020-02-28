@@ -5,7 +5,8 @@ import com.jsc.hotspot.db.domain.HotFrontDevice;
 import java.util.List;
 
 /**
- * 设备
+ * @author tzm
+ * @desc 处理设备数据相关业务
  */
 public interface DeviceService {
     /**
@@ -37,8 +38,17 @@ public interface DeviceService {
      */
     List<HotFrontDevice> getDevices(Integer page, Integer limit, String devName, String devType, String devNum);
 
+    /**
+     * 根据设备名获取设备
+     * @param devName
+     * @return
+     */
     HotFrontDevice getDeviceByDevName(String devName);
 
+    /**
+     * 魏伟写的方法
+     * @return
+     */
     List<HotFrontDevice> getDeviceList();
 
 }

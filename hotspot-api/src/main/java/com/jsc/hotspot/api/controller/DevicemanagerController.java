@@ -2,7 +2,6 @@ package com.jsc.hotspot.api.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.jsc.hotspot.api.service.DeviceService;
-import com.jsc.hotspot.api.service.LogService;
 import com.jsc.hotspot.api.utils.HttpUtil;
 import com.jsc.hotspot.common.biz.BizResult;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
@@ -13,12 +12,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author tzm
+ * @desc 设备管理
+ */
 @RequestMapping("admin/device")
 @RestController
 public class DevicemanagerController {
 
     @Autowired
     private DeviceService deviceService;
+
+    /**
+     * 分页查询数据
+     * @param page
+     * @param limit
+     * @param devName
+     * @param devType
+     * @param devNum
+     * @return
+     */
     @GetMapping
     public Object query(@RequestParam(defaultValue = "1") Integer page,
                                       @RequestParam(defaultValue = "10")Integer limit,
@@ -48,7 +61,12 @@ public class DevicemanagerController {
         }
         return null;
     }
-    @LogService(value="添加设备")
+
+    /**
+     * 添加设备
+     * @param hotFrontDevice
+     * @return
+     */
     @PostMapping
     public Object add(@RequestBody HotFrontDevice hotFrontDevice){
         Object error=validate(hotFrontDevice);
@@ -67,7 +85,12 @@ public class DevicemanagerController {
         deviceService.add(hotFrontDevice);
         return ResponseUtil.ok(hotFrontDevice);
     }
-    @LogService(value="修改设备")
+
+    /**
+     * 编辑设备信息
+     * @param hotFrontDevice
+     * @return
+     */
     @PutMapping
     public Object upadte(@RequestBody HotFrontDevice hotFrontDevice){
         Object error=validate(hotFrontDevice);
@@ -97,7 +120,12 @@ public class DevicemanagerController {
         deviceService.updateById(hotFrontDevice);
         return ResponseUtil.ok();
     }
-    @LogService(value="删除设备")
+
+    /**
+     * 批量删除设备
+     * @param ids
+     * @return
+     */
     @DeleteMapping
     public Object delete(@RequestBody String ids) {
         if (deviceService.deleteById(ids)) {
@@ -106,5 +134,4 @@ public class DevicemanagerController {
             return ResponseUtil.deleteDataFailed();
         }
     }
-
 }

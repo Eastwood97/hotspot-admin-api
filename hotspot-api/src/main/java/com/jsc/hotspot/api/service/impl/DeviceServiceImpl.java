@@ -18,6 +18,10 @@ import java.security.cert.Certificate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * @author tzm
+ * @desc 处理设备数据相关业务
+ */
 @Service("DeviceService")
 public class DeviceServiceImpl implements DeviceService {
 
@@ -27,12 +31,19 @@ public class DeviceServiceImpl implements DeviceService {
     @Autowired
     private HotFrontDeviceEXTMapper hotFrontDeviceEXTMapper;
 
+    /**
+     * 添加设备
+     * @param hotFrontDevice
+     */
     public void  add(HotFrontDevice hotFrontDevice){
         hotFrontDevice.setCreateTime(LocalDateTime.now());
         hotFrontDevice.setUpdateTime(LocalDateTime.now());
         hotFrontDeviceMapper.insertSelective(hotFrontDevice);
     }
 
+    /**
+     * 根据id删除设备消息
+     */
     @Override
     public boolean deleteById(String devIds) {
         String[] split=devIds.split(",");
@@ -40,17 +51,30 @@ public class DeviceServiceImpl implements DeviceService {
         return split.length==result;
     }
 
+    /**
+     * 根据id修改设备信息
+     * @return
+     */
     @Override
     public int updateById(HotFrontDevice hotFrontDevice) {
         hotFrontDevice.setUpdateTime(LocalDateTime.now());
         return  hotFrontDeviceMapper.updateByPrimaryKeySelective(hotFrontDevice);
     }
 
+    /**
+     * 根据id查找设备信息
+     * @param hotFrontDevice
+     * @return
+     */
     @Override
     public HotFrontDevice selectById(HotFrontDevice hotFrontDevice) {
         return hotFrontDeviceMapper.selectByPrimaryKeySelective(hotFrontDevice.getDevId());
     }
 
+    /**
+     * 获取设备集合
+     * @return
+     */
     @Override
     public List<HotFrontDevice> getDevices(Integer page, Integer limit,String devName,String devType,String devNum) {
         HotFrontDeviceExample example=new HotFrontDeviceExample();
@@ -69,6 +93,11 @@ public class DeviceServiceImpl implements DeviceService {
         return hotFrontDeviceMapper.selectByExampleSelective(example);
     }
 
+    /**
+     * 根据设备名获取设备
+     * @param devName
+     * @return
+     */
     @Override
     public HotFrontDevice getDeviceByDevName(String devName) {
         HotFrontDeviceExample hotFrontDeviceExample = new HotFrontDeviceExample();
@@ -77,6 +106,11 @@ public class DeviceServiceImpl implements DeviceService {
         HotFrontDevice hotFrontDevice = hotFrontDeviceMapper.selectOneByExampleSelective(hotFrontDeviceExample);
         return hotFrontDevice;
     }
+
+    /**
+     * 魏伟写的方法
+     * @return
+     */
     @Override
     public List<HotFrontDevice> getDeviceList() {
         return hotFrontDeviceEXTMapper.selectDeviceList();

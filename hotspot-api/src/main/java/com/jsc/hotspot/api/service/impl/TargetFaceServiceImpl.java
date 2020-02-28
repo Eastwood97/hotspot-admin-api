@@ -34,6 +34,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author tzm
+ * @desc 处理目标人脸的相关业务
+ */
 @Service("TargetFaceService")
 public class TargetFaceServiceImpl implements TargetFaceService {
 
@@ -45,6 +49,10 @@ public class TargetFaceServiceImpl implements TargetFaceService {
     @Autowired
     private HotTargetFaceEXTMapper hotTargetFaceEXTMapper;
 
+    /**
+     * 添加目标
+     * @param targetFace
+     */
     @Override
     public void add(TargetFace targetFace) {
         CameraTargetFace cameraTargetFace =new CameraTargetFace();
@@ -81,7 +89,11 @@ public class TargetFaceServiceImpl implements TargetFaceService {
     }
 
 
-
+    /**
+     * 批量删除
+     * @param targetIds
+     * @return
+     */
     @Override
     public boolean deleteById(String targetIds) {
         String[] split=targetIds.split(",");
@@ -90,6 +102,11 @@ public class TargetFaceServiceImpl implements TargetFaceService {
 
     }
 
+    /**
+     * 修改目标人脸的数据
+     * @param targetFace
+     * @return
+     */
     @Override
     public int update(TargetFace targetFace) {
         CameraTargetFace cameraTargetFace =new CameraTargetFace();
@@ -111,6 +128,13 @@ public class TargetFaceServiceImpl implements TargetFaceService {
 
     }
 
+    /**
+     * 分页查询
+     * @param page
+     * @param limit
+     * @param targetName
+     * @return
+     */
     @Override
     public List<CameraTargetFace> getTargetFace(Integer page,Integer limit,String targetName) {
         Subject currentUser = SecurityUtils.getSubject();

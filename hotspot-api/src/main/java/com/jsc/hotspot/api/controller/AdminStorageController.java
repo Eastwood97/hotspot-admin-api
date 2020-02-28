@@ -14,7 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 /**
- * 向文件系統中進行圖片的增加和刪除，將相應數據存入redis
+ * @author tzm
+ * @desc 向文件系統中進行圖片的增加和刪除，將相應數據存入redis
  */
 @RequestMapping("/admin/storage")
 @RestController

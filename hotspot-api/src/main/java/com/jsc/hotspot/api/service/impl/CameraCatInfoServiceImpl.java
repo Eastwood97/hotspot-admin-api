@@ -12,7 +12,10 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-
+/**
+ * @author tzm
+ * @desc 处理摄像头抓拍人脸的相关业务
+ */
 @Service("cameraCatInfoServiceImpl")
 public class CameraCatInfoServiceImpl implements CameraCatInfoService {
 
@@ -21,6 +24,15 @@ public class CameraCatInfoServiceImpl implements CameraCatInfoService {
     @Autowired
    private CameraCatInfoEXTMapper cameraCatInfoEXTMapper;
 
+
+    /**
+     * 分页查询
+     * @param page
+     * @param limit
+     * @param startTime
+     * @param endTime
+     * @return
+     */
     @Override
     public List<CameraCatInfo> query(Integer page, Integer limit, String startTime,String endTime) {
         CameraCatInfoExample example=new CameraCatInfoExample();
@@ -36,20 +48,34 @@ public class CameraCatInfoServiceImpl implements CameraCatInfoService {
         return cameraCatInfoMapper.selectByExampleSelective(example);
     }
 
+    /**
+     * 批量删除
+     * @param ids
+     * @return
+     */
     @Override
     public boolean deleteById(String ids) {
         String[] split=ids.split(",");
         int result=cameraCatInfoEXTMapper.deleteById(split);
         return split.length==result;
     }
+
+    /**
+     * 查出抓拍数量
+     * @return
+     */
     //获取人脸总量
     @Override
     public Long getCameraCatInfoList() {
         CameraCatInfoExample cameraCatInfoExample = new CameraCatInfoExample();
-        CameraCatInfoExample.Criteria criteria = cameraCatInfoExample.createCriteria();
         long count = cameraCatInfoMapper.countByExample(cameraCatInfoExample);
         return count;
     }
+
+    /**
+     * 以下是魏伟写的方法
+     * @return
+     */
     //人脸折线图
     @Override
     public List getHoTnumInfoDateNum() {
@@ -62,7 +88,7 @@ public class CameraCatInfoServiceImpl implements CameraCatInfoService {
             Date d = c.getTime();
             dateList.add(d);
         }
-        List<Map> maps1 = cameraCatInfoEXTMapper.selectCount(dateList.get(0),dateList.get(15));
+        List<Map> maps1 = cameraCatInfoEXTMapper.selectCount(dateList);
         return maps1;
     }
 

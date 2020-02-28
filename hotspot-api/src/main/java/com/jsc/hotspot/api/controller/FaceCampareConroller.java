@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author tzm
+ * @desc 人脸识别的数据接口
+ */
 @RequestMapping("admin/faceCampareResult")
 @RestController
 public class FaceCampareConroller {
@@ -15,14 +19,26 @@ public class FaceCampareConroller {
     @Autowired
     private FaceCampareResultService faceCompareResultService;
 
-    //查询
+    /**
+     * 分页查询
+     * @param page
+     * @param limit
+     * @param targetName
+     * @param startTime
+     * @param endTime
+     * @return
+     */
     @GetMapping
     public Object query(Integer page, Integer limit,String targetName,String startTime,String endTime){
         List<CameraCompareResult> cameraCompareResults=faceCompareResultService.query(page,limit,targetName,startTime,endTime);
         return ResponseUtil.okList(cameraCompareResults);
     }
 
-    //删除
+    /**
+     * 批量删除
+     * @param ids
+     * @return
+     */
     @DeleteMapping
     public Object delete(@RequestBody String ids){
         if(faceCompareResultService.deleteById(ids)){

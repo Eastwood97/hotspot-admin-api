@@ -22,7 +22,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * 功能描述：在ShiroConfig中做什么事情呢？
+ * @author tzm
+ * @desc 功能描述：在ShiroConfig中做什么事情呢？
  * 1.配置shiro安全管理器，向安全管理器中注入Realm域
  * 2.配置密码比较器
  * 3.配置拦截路径和放行路径
