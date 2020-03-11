@@ -54,10 +54,15 @@ public class WeedFSServiceImpl implements WeedFSService {
         return BizResult.create(picInputStream);
     }
 
-    public BizResult<Boolean> deletePic(String fileId)
+    public BizResult<Boolean> deletePic(String fileIds)
     {
-        boolean deleteFlag = weedStorage.delete(fileId);
-
-        return BizResult.create(deleteFlag);
+        String[] split=fileIds.split("-");
+        for (String s : split) {
+            boolean deleteFlag = weedStorage.delete(s);
+            if (!deleteFlag) {
+                return BizResult.create(null);
+            }
+        }
+        return BizResult.create(true);
     }
 }

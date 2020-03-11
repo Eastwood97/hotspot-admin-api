@@ -3,22 +3,30 @@ package com.jsc.hotspot.api.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.jsc.hotspot.api.facade.WeedFSService;
+import com.jsc.hotspot.api.facade.impl.KafkaReceiverServiceImpl;
 import com.jsc.hotspot.api.service.CameraCatInfoService;
 import com.jsc.hotspot.api.service.FaceCampareResultService;
 import com.jsc.hotspot.api.service.TargetFaceService;
 import com.jsc.hotspot.api.utils.HttpUtil;
+import com.jsc.hotspot.api.vo.DeleteParams;
+import com.jsc.hotspot.common.biz.BizResult;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
 import com.jsc.hotspot.db.dao.CameraCatInfoMapper;
 import com.jsc.hotspot.db.domain.CameraCatInfo;
 import com.jsc.hotspot.db.domain.CameraCompareResult;
 import com.sun.jdi.Method;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * @author tzm
@@ -28,10 +36,13 @@ import java.util.Map;
 @RestController
 public class CameraCatInfoController {
 
+    private Log log= LogFactory.getLog(CameraCatInfoController.class);
+
     @Autowired
     private CameraCatInfoService cameraCatInfoService;
 
-    private TargetFaceService targetFaceService;
+    @Autowired
+    private WeedFSService weedFSService;
 
     /**
      * 多条件分页查询
@@ -48,50 +59,20 @@ public class CameraCatInfoController {
     }
 
     /**
-     * 批量删除
-     * @param rowList
+     *
+      * @param params
      * @return
      */
     @DeleteMapping
-    public Object delete(@RequestBody String rowList){
-        // 解析接收的JSON字符串
-        List<CameraCatInfo> listObject = (List<CameraCatInfo>) JSONArray.parse(rowList);
-        for (int i=0;i<listObject.size();i++){
-            CameraCatInfo cameraCatInfo=listObject.get(i);
-            if(cameraCatInfo.getQuality()==1){//该抓拍是中标提示
-//                targetFaceService.deleteByTime(cameraCatInfo.getCaptureTime());
-            }
-
+    public Object delete(@RequestBody DeleteParams params){
+        BizResult<Boolean> bizResult=weedFSService.deletePic(params.getFileIds());
+        if(!bizResult.getFlag()){
+            return ResponseUtil.ok("删除失败");
         }
-//        以数组作为参数，遍历删除抓拍
-//        cameraCatInfoService.deleteByList(listObject);
-
-
-
-
-        return  ResponseUtil.deleteDataFailed();
+        if (cameraCatInfoService.deleteById(params.getIds())) {
+            return  ResponseUtil.ok();
+        } else {
+            return ResponseUtil.deleteDataFailed();
+        }
     }
-
-    /**
-     * 下载视频，此处还应添加参数 :设备ip
-     * @param captureTime
-     * @return
-     */
-    @RequestMapping(value = "/downloadVedio",method = RequestMethod.GET)
-    public Object download(@RequestBody String captureTime){
-       //1.设置开始和结束时间  通道号作为参数发送http请求下载视频
-        DateTimeFormatter df=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime midTime= LocalDateTime.parse(captureTime,df);
-        LocalDateTime startTime=midTime.minusSeconds(5);
-        LocalDateTime endTime=midTime.plusSeconds(5);
-        //2.返回值
-        //  String reponse= HttpUtil.sendGet();
-        //3.判断下载是否成功
-        //3.1获取isDownload状态
-        //3.2封装前端需要的数据： \1.isDownload状态 2.文件系统中的视频id
-        return ResponseUtil.ok();
-
-    }
-
-
 }

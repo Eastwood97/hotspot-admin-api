@@ -2171,6 +2171,6 @@ public class CameraCatInfoExample {
          *
          * @mbg.generated
          */
-        void example(CameraCatInfoExample example);
+        void example(com.jsc.hotspot.db.domain.CameraCatInfoExample example);
     }
 }

@@ -15,6 +15,6 @@ public interface RelatedNumEXTMapper {
      * @param targetName
      * @return
      */
-    @Select({"select imsi,count(imsi) count from related_num where target_name=#{targetName} group by imsi order by count desc limit 3"})
+    @Select({"select imsi,count(imsi) count from related_num where target_name=#{targetName} group by imsi order by count desc limit 10"})
     List<RealatedNumAndCount> getCampareValue(String targetName);
 }

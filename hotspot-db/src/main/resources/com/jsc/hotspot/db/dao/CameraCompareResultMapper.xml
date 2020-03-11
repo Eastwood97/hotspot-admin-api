@@ -21,6 +21,7 @@
     <result column="capture_face_storage_url" jdbcType="VARCHAR" property="captureFaceStorageUrl" />
     <result column="scene_img" jdbcType="VARCHAR" property="sceneImg" />
     <result column="target_name" jdbcType="VARCHAR" property="targetName" />
+    <result column="is_download" jdbcType="TINYINT" property="isDownload" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -95,7 +96,7 @@
     -->
     id, scene_storage_url, target_face_storage_url, video_id, capture_time, dev_id, create_time, 
     target_face_img, compare_score, capture_face_img, library_name, dev_ip, capture_face_storage_url, 
-    scene_img, target_name
+    scene_img, target_name, is_download
   </sql>
   <select id="selectByExample" parameterType="com.jsc.hotspot.db.domain.CameraCompareResultExample" resultMap="BaseResultMap">
     <!--
@@ -201,14 +202,14 @@
       video_id, capture_time, dev_id, 
       create_time, target_face_img, compare_score, 
       capture_face_img, library_name, dev_ip, 
-      capture_face_storage_url, scene_img, target_name
-      )
+      capture_face_storage_url, scene_img, target_name, 
+      is_download)
     values (#{sceneStorageUrl,jdbcType=VARCHAR}, #{targetFaceStorageUrl,jdbcType=VARCHAR}, 
       #{videoId,jdbcType=VARCHAR}, #{captureTime,jdbcType=TIMESTAMP}, #{devId,jdbcType=BIGINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{targetFaceImg,jdbcType=VARCHAR}, #{compareScore,jdbcType=DOUBLE}, 
       #{captureFaceImg,jdbcType=VARCHAR}, #{libraryName,jdbcType=VARCHAR}, #{devIp,jdbcType=VARCHAR}, 
-      #{captureFaceStorageUrl,jdbcType=VARCHAR}, #{sceneImg,jdbcType=VARCHAR}, #{targetName,jdbcType=VARCHAR}
-      )
+      #{captureFaceStorageUrl,jdbcType=VARCHAR}, #{sceneImg,jdbcType=VARCHAR}, #{targetName,jdbcType=VARCHAR}, 
+      #{isDownload,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.jsc.hotspot.db.domain.CameraCompareResult">
     <!--
@@ -262,6 +263,9 @@
       <if test="targetName != null">
         target_name,
       </if>
+      <if test="isDownload != null">
+        is_download,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="sceneStorageUrl != null">
@@ -305,6 +309,9 @@
       </if>
       <if test="targetName != null">
         #{targetName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDownload != null">
+        #{isDownload,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
@@ -370,6 +377,9 @@
       <if test="record.targetName != null">
         target_name = #{record.targetName,jdbcType=VARCHAR},
       </if>
+      <if test="record.isDownload != null">
+        is_download = #{record.isDownload,jdbcType=TINYINT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -395,7 +405,8 @@
       dev_ip = #{record.devIp,jdbcType=VARCHAR},
       capture_face_storage_url = #{record.captureFaceStorageUrl,jdbcType=VARCHAR},
       scene_img = #{record.sceneImg,jdbcType=VARCHAR},
-      target_name = #{record.targetName,jdbcType=VARCHAR}
+      target_name = #{record.targetName,jdbcType=VARCHAR},
+      is_download = #{record.isDownload,jdbcType=TINYINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -449,6 +460,9 @@
       <if test="targetName != null">
         target_name = #{targetName,jdbcType=VARCHAR},
       </if>
+      <if test="isDownload != null">
+        is_download = #{isDownload,jdbcType=TINYINT},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -471,7 +485,8 @@
       dev_ip = #{devIp,jdbcType=VARCHAR},
       capture_face_storage_url = #{captureFaceStorageUrl,jdbcType=VARCHAR},
       scene_img = #{sceneImg,jdbcType=VARCHAR},
-      target_name = #{targetName,jdbcType=VARCHAR}
+      target_name = #{targetName,jdbcType=VARCHAR},
+      is_download = #{isDownload,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="selectOneByExample" parameterType="com.jsc.hotspot.db.domain.CameraCompareResultExample" resultMap="BaseResultMap">

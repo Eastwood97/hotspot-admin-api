@@ -1375,6 +1375,6 @@ public class OperatorInfoExample {
          *
          * @mbg.generated
          */
-        void example(OperatorInfoExample example);
+        void example(com.jsc.hotspot.db.domain.OperatorInfoExample example);
     }
 }

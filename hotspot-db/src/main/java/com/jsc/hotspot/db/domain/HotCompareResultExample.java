@@ -1889,6 +1889,6 @@ public class HotCompareResultExample {
          *
          * @mbg.generated
          */
-        void example(HotCompareResultExample example);
+        void example(com.jsc.hotspot.db.domain.HotCompareResultExample example);
     }
 }
