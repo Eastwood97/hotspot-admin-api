@@ -81,8 +81,9 @@ public class UdpListenerServiceImpl implements ServletContextListener {
     class Process implements Runnable {
         public Process(DatagramPacket packet) {
             byte[] buffer = packet.getData();
-            String str = BinaryToHexString(buffer);
-            System.out.println(buffer);
+            System.out.println(System.currentTimeMillis());
+            String str = bytesToHex(buffer);
+            System.out.println(System.currentTimeMillis());
             String[] split = str.split(" ");
             String imsi = "";
             String imei = "";
@@ -159,18 +160,19 @@ public class UdpListenerServiceImpl implements ServletContextListener {
         }
     }
 
-    public static String BinaryToHexString(byte[] bytes) {
-        String hexStr = "0123456789ABCDEF";
-        String result = "";
-        String hex = "";
-        for (byte b : bytes) {
-            hex = String.valueOf(hexStr.charAt((b & 0xF0) >> 4));
-            hex += String.valueOf(hexStr.charAt(b & 0x0F));
-            result += hex + " ";
-        }
-        return result;
-    }
 
+
+    public static String bytesToHex(byte[] bytes) {
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0; i < 40; i++) {
+            String hex = Integer.toHexString(bytes[i] & 0xFF);
+            if(hex.length() < 2){
+                sb.append(0);
+            }
+            sb.append(hex).append(" ");
+        }
+        return sb.toString();
+    }
     public String GetPhoneNumByIMSI(String imsi) {
         String num = "";
         String networkid = imsi.substring(3, 5);

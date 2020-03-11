@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsc.hotspot.db.dao.ext.HotNumTableHandleExtMapper">
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into hot_num_table_handle
+    (imsi,
+        imei,
+        isdn,
+        `mode`,
+        capture_time,
+        target_id,
+        dev_id,
+        create_time,
+        update_time,
+        attribution)
+    values
+    <foreach collection="list" item="item" separator=",">
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+          #{item.imsi,jdbcType=VARCHAR},
+          #{item.imei,jdbcType=VARCHAR},
+          #{item.isdn,jdbcType=VARCHAR},
+          #{item.mode,jdbcType=TINYINT},
+          #{item.captureTime,jdbcType=TIMESTAMP},
+          #{item.targetId,jdbcType=BIGINT},
+          #{item.devId,jdbcType=BIGINT},
+          #{item.createTime,jdbcType=TIMESTAMP},
+          #{item.updateTime,jdbcType=TIMESTAMP},
+          #{item.attribution,jdbcType=VARCHAR},
+      </trim>
+    </foreach>
+
+  </insert>
+</mapper>

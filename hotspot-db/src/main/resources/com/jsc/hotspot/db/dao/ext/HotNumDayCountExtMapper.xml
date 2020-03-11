@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsc.hotspot.db.dao.ext.HotNumDayCountExtMapper">
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into hot_num_day_count
+    (capture_date,
+        imsi_count,
+        dev_id)
+      <foreach collection="list" item="item" separator=",">
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+              #{item.captureDate,jdbcType=TIMESTAMP},
+              #{item.imsiCount,jdbcType=BIGINT},
+              #{item.devId,jdbcType=BIGINT},
+          </trim>
+    </foreach>
+
+  </insert>
+</mapper>

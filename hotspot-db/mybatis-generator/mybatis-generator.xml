@@ -56,76 +56,88 @@
                              targetProject="src/main/java"/>
 
         <!--表名-->
-        <table tableName="arm_message">
+                <table tableName="hot_num_table_handle">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+                </table>
+<!--        <table tableName="hot_num_table_handle">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+        <table tableName="hot_num_attr_pre_handle">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="role">
+        <table tableName="hot_num_day_count">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="admin">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="role_ids" javaType="java.lang.Long[]"
-                            typeHandler="com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler"/>
-        </table>
+<!--        <table tableName="arm_message">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="role">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="admin">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--            <columnOverride column="role_ids" javaType="java.lang.Long[]"-->
+<!--                            typeHandler="com.jsc.hotspot.db.utils.JsonLongArrayTypeHandler"/>-->
+<!--        </table>-->
 
-        <table tableName="related_num_result">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="related_result" javaType="com.alibaba.fastjson.JSONObject"
-                            typeHandler="com.jsc.hotspot.db.utils.ObjectJsonHandler"/>
-        </table>
-        <table tableName="target">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="permission">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="related_num_result">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--            <columnOverride column="related_result" javaType="com.alibaba.fastjson.JSONObject"-->
+<!--                            typeHandler="com.jsc.hotspot.db.utils.ObjectJsonHandler"/>-->
+<!--        </table>-->
+<!--        <table tableName="target">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="permission">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
-        <!--表名-->
-        <table tableName="camera_cat_info" domainObjectName="CameraCatInfo">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="capture_car" domainObjectName="CaptureCar">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        &lt;!&ndash;表名&ndash;&gt;-->
+<!--        <table tableName="camera_cat_info" domainObjectName="CameraCatInfo">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="capture_car" domainObjectName="CaptureCar">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
-        <table tableName="camera_compare_result" domainObjectName="CameraCompareResult">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="camera_hot_relation" domainObjectName="CameraHotRelation">
-            <generatedKey column="target_id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="camera_target_face" domainObjectName="CameraTargetFace">
-            <generatedKey column="target_id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="file_name" javaType="com.alibaba.fastjson.JSONObject"
-                            typeHandler="com.jsc.hotspot.db.utils.ObjectJsonHandler"/>
-        </table>
-        <table tableName="hot_compare_result" domainObjectName="HotCompareResult">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="hot_front_device" domainObjectName="HotFrontDevice">
-            <generatedKey column="dev_id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="hot_num_info" domainObjectName="HotNumInfo">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="hot_target_info" domainObjectName="HotTargetInfo">
-            <generatedKey column="target_id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="camera_compare_result" domainObjectName="CameraCompareResult">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="camera_hot_relation" domainObjectName="CameraHotRelation">-->
+<!--            <generatedKey column="target_id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="camera_target_face" domainObjectName="CameraTargetFace">-->
+<!--            <generatedKey column="target_id" sqlStatement="MySql" identity="true"/>-->
+<!--            <columnOverride column="file_name" javaType="com.alibaba.fastjson.JSONObject"-->
+<!--                            typeHandler="com.jsc.hotspot.db.utils.ObjectJsonHandler"/>-->
+<!--        </table>-->
+<!--        <table tableName="hot_compare_result" domainObjectName="HotCompareResult">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="hot_front_device" domainObjectName="HotFrontDevice">-->
+<!--            <generatedKey column="dev_id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="hot_num_info" domainObjectName="HotNumInfo">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="hot_target_info" domainObjectName="HotTargetInfo">-->
+<!--            <generatedKey column="target_id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
-        <table tableName="hot_target_car" domainObjectName="HotTargetCar">
-            <generatedKey column="target_id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="hot_target_car" domainObjectName="HotTargetCar">-->
+<!--            <generatedKey column="target_id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
-        <table tableName="operator_info" domainObjectName="OperatorInfo">
-            <generatedKey column="operator_id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="operator_info" domainObjectName="OperatorInfo">-->
+<!--            <generatedKey column="operator_id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
-        <table tableName="related_num" domainObjectName="RelatedNum">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="related_num" domainObjectName="RelatedNum">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
-        <table tableName="plate_number_compare" domainObjectName="PlateNumberCompare">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="plate_number_compare" domainObjectName="PlateNumberCompare">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
     </context>
 </generatorConfiguration>

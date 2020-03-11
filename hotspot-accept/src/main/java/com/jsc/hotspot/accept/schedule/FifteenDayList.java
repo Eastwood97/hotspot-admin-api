@@ -30,7 +30,7 @@ public class FifteenDayList {
     /**
      * 零点定时推送15天的统计数量
      */
-    @Scheduled(cron = "0/5 * * * * ? ")
+//    @Scheduled(cron = "0/5 * * * * ? ")
     public void clearRedisAndUpdateData() {
         //取号15天数量
         List<Map> hoTnumInfoDateNum = hoTnumInfoService.getHoTnumInfoDateNum();

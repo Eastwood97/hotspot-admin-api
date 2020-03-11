@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsc.hotspot.db.dao.ext.HotNumAttrPreHandleExtMapper">
+  <insert id="insertBatch" parameterType="com.jsc.hotspot.db.domain.HotNumAttrPreHandle">
+    insert into hot_num_attr_pre_handle ( capture_date,attribution,attribution_num)
+    values
+    <foreach collection="list" item="item" separator=",">
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+          #{item.captureDate,jdbcType=TIMESTAMP},
+          #{item.attribution,jdbcType=VARCHAR},
+          #{item.attributionNum,jdbcType=BIGINT},
+          #{item.devId, jdbcType=BIGINT}
+      </trim>
+    </foreach>
+  </insert>
+</mapper>

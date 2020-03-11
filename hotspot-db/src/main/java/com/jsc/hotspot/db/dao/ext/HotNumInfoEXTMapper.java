@@ -55,4 +55,11 @@ public interface HotNumInfoEXTMapper {
                                    @Param("endTime") LocalDateTime endTime);
     int countDistinctByIMSI();
 
+    /**
+     * IMSI去重统计
+     * @param minTime
+     * @param maxTime
+     * @return
+     */
+    List<HotNumInfo> selectDistinctImsi(@Param("startTime") LocalDateTime minTime, @Param("endTime") LocalDateTime maxTime);
 }

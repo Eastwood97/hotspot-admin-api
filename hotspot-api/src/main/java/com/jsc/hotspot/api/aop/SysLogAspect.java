@@ -86,7 +86,7 @@ public class SysLogAspect {
     }
 
     //切面配置通知
-    @AfterReturning("logPointcut()")
+//    @AfterReturning("logPointcut()")
     public void saveSysLog(JoinPoint joinPoint) {
         //切面
         HotspotLog sysLog = new HotspotLog();

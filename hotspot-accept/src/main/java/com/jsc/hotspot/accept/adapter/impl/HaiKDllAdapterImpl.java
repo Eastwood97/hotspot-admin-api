@@ -726,32 +726,60 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                     SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss"); //设置日期格式
                     String time = df.format(new Date()); // new Date()为获取当前系统时间
                     //人脸图片写文件
-                    try {
-                        FileOutputStream small = new FileOutputStream(System.getProperty("user.dir") + "\\pic\\" + time + "small.jpg");
-                        FileOutputStream big = new FileOutputStream(System.getProperty("user.dir") + "\\pic\\" + time + "big.jpg");
-
+//                    try {
+//                        FileOutputStream small = new FileOutputStream(System.getProperty("user.dir") + "\\pic\\" + time + "small.jpg");
+//                        FileOutputStream big = new FileOutputStream(System.getProperty("user.dir") + "\\pic\\" + time + "big.jpg");
+//
+                    LocalDateTime localDateTime1 = LocalDateTime.now();
+                    DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    String captureTime1 = formatter1.format(localDateTime1);
+                        FaceRecognitionInfoDTO faceRecognitionInfoFace = new FaceRecognitionInfoDTO();
                         if(strFaceSnapInfo.dwFacePicLen > 0)
                         {
-                            try {
-                                small.write(strFaceSnapInfo.pBuffer1.getByteArray(0, strFaceSnapInfo.dwFacePicLen), 0, strFaceSnapInfo.dwFacePicLen);
-                                small.close();
-                            } catch (IOException ex) {
-                                logger.error(HaiKDllAdapterImpl.class.getName() + "  COMM_UPLOAD_FACESNAP_RESULT");
-                            }
+//                            try {
+                                byte[] facePicBytes = strFaceSnapInfo.pBuffer1.getByteArray(0, strFaceSnapInfo.dwFacePicLen);
+
+                            faceRecognitionInfoFace.setCaptureTime(captureTime1);
+                                ByteArrayInputStream inputStream = new ByteArrayInputStream(facePicBytes);
+                                BizResult<String> bizResult = weedFSService.storagePic(inputStream);
+
+                                if (bizResult.getFlag()){
+                                    faceRecognitionInfoFace.setCaptureFaceStorageUrl(bizResult.getData());
+                                }
+                                if (logger.isDebugEnabled()){
+                                    logger.debug("HaiKDllAdapterImpl: 人脸信息：{0}, {1}" +bizResult.getData() + inputStream);
+                                }
+//                                small.write(strFaceSnapInfo.pBuffer1.getByteArray(0, strFaceSnapInfo.dwFacePicLen), 0, strFaceSnapInfo.dwFacePicLen);
+//                                small.close();
+//                            } catch (IOException ex) {
+//                                logger.error(HaiKDllAdapterImpl.class.getName() + "  COMM_UPLOAD_FACESNAP_RESULT");
+//                            }
 
                         }
                         if(strFaceSnapInfo.dwFacePicLen > 0)
                         {
-                            try {
-                                big.write(strFaceSnapInfo.pBuffer2.getByteArray(0, strFaceSnapInfo.dwBackgroundPicLen), 0, strFaceSnapInfo.dwBackgroundPicLen);
-                                big.close();
-                            } catch (IOException ex) {
-                                logger.error(HaiKDllAdapterImpl.class.getName() + "  COMM_UPLOAD_FACESNAP_RESULT");
-                            }
+//                            try {
+                                byte[] scenePicBytes = strFaceSnapInfo.pBuffer2.getByteArray(0, strFaceSnapInfo.dwBackgroundPicLen);
+                            faceRecognitionInfoFace.setCaptureTime(captureTime1);
+
+                                ByteArrayInputStream inputStream = new ByteArrayInputStream(scenePicBytes);
+                                BizResult<String> bizResult = weedFSService.storagePic(inputStream);
+                                if (bizResult.getFlag()){
+                                    faceRecognitionInfoFace.setSceneStorageUrl(bizResult.getData());
+                                }
+                                if (logger.isDebugEnabled()){
+                                    logger.debug("HaiKDllAdapterImpl: 人脸信息：{0}, {1}" +bizResult.getData() + inputStream);
+                                }
+//                                big.write(strFaceSnapInfo.pBuffer2.getByteArray(0, strFaceSnapInfo.dwBackgroundPicLen), 0, strFaceSnapInfo.dwBackgroundPicLen);
+//                                big.close();
+//                            } catch (IOException ex) {
+//                                logger.error(HaiKDllAdapterImpl.class.getName() + "  COMM_UPLOAD_FACESNAP_RESULT");
+//                            }
                         }
-                    } catch (FileNotFoundException ex) {
-                        logger.error(HaiKDllAdapterImpl.class.getName() + "  COMM_UPLOAD_FACESNAP_RESULT");
-                    }
+                    kafkaSenderService.send(JSON.toJSONString(faceRecognitionInfoFace));
+//                    } catch (FileNotFoundException ex) {
+//                        logger.error(HaiKDllAdapterImpl.class.getName() + "  COMM_UPLOAD_FACESNAP_RESULT");
+//                    }
                     break;
                 case HCNetSDK.COMM_SNAP_MATCH_ALARM:
                     //人脸黑名单比对报警
