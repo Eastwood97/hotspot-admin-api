@@ -14,7 +14,9 @@ import com.jsc.hotspot.db.entity.PageResult;
 
 public interface HotCompareResultService {
     //查询
-    PageResult findHotCompareResult(int page, int row, HotCompareResultList hotCompareResultDAO);
+    PageResult findHotCompareResult(int page, int row, HotCompareResultList hotCompareResultDAO,
+                                    String startTime,
+                                    String endTime);
     /**
      * 功能描述: 删除中标信息
      *

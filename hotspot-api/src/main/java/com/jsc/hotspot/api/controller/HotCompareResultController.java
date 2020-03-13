@@ -5,7 +5,6 @@ import com.jsc.hotspot.api.service.HoTnumInfoService;
 import com.jsc.hotspot.api.service.HotCompareResultService;
 import com.jsc.hotspot.api.service.HotTargetInfoService;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
-import com.jsc.hotspot.db.domain.HotCompareResult;
 import com.jsc.hotspot.db.domain.HotNumInfo;
 import com.jsc.hotspot.db.entity.CountList;
 import com.jsc.hotspot.db.entity.HotCompareResultList;
@@ -45,8 +44,10 @@ public class HotCompareResultController {
      * @date: 2019/11/7 0007 11:18
      */
     @RequestMapping(value = "/hotcompareresult", method = RequestMethod.GET)
-    public Object findHotCompareResult(int page, int row, HotCompareResultList hotCompareResultList) {
-        PageResult hotCompareResult = hotCompareResultService.findHotCompareResult(page, row, hotCompareResultList);
+    public Object findHotCompareResult(int page, int row, HotCompareResultList hotCompareResultList,
+                                       String startTime,
+                                       String endTime) {
+        PageResult hotCompareResult = hotCompareResultService.findHotCompareResult(page, row, hotCompareResultList,startTime,endTime);
         return ResponseUtil.ok(hotCompareResult);
     }
 
@@ -92,5 +93,4 @@ public class HotCompareResultController {
         Long todayHoTnumInfoNum = hoTnumInfoService.getTodayHoTnumInfoNum();
         return ResponseUtil.ok(new CountList(hoTnumInfoDateNum, targetInfoNum, null, cameraCatInfoList, hoTnumInfoNum,todayHoTnumInfoNum,cameraCatInfoServiceHoTnumInfoDateNum));
     }
-
 }

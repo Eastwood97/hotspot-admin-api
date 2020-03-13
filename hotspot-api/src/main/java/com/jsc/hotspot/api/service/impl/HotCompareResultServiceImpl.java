@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -34,6 +35,7 @@ public class HotCompareResultServiceImpl implements HotCompareResultService {
     private HotTargetInfoMapper hotTargetInfoDAOMapper;
     @Autowired
     private HotCompareResultEXTMapper hotCompareResultEXTMapper;
+
     @Override
     /**
      * 功能描述: 获取中标信息
@@ -43,12 +45,23 @@ public class HotCompareResultServiceImpl implements HotCompareResultService {
      * @auther: ww
      * @date: 2019/11/7 0007 11:18
      */
-    public PageResult findHotCompareResult(int page, int row, HotCompareResultList hotCompareResultList) {
-        PageHelper.startPage(page,row);
-        List list = hotCompareResultEXTMapper.selectHotCompareResult(hotCompareResultList);
+    public PageResult findHotCompareResult(int page, int row, HotCompareResultList hotCompareResultList,
+                                           String startTime,
+                                           String endTime) {
+        PageHelper.startPage(page, row);
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime startTimes = null;
+        LocalDateTime endTimes = null;
+        if (!"".equals(startTime) && startTime !=null) {
+            startTimes = LocalDateTime.parse(startTime, df);
+            endTimes = LocalDateTime.parse(endTime, df);
+        }
+        List list = hotCompareResultEXTMapper.selectHotCompareResult(hotCompareResultList.getImsi(), hotCompareResultList.getImei(), page, row,
+                startTimes,endTimes);
         Page<HotCompareResult> page1 = (Page<HotCompareResult>) list;
-        return new PageResult(page1.getTotal(),page1.getResult());
+        return new PageResult(page1.getTotal(), page1.getResult());
     }
+
     /**
      * 功能描述: 删除中标信息
      *

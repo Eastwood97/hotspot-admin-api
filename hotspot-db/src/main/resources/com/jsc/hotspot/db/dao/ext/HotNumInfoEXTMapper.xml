@@ -472,58 +472,57 @@
 
   <select id="selectTraffic" resultType="java.util.Map">
     SELECT
-    COUNT( DISTINCT imsi ) AS num,DATE( capture_time ) as create_time1
+    imsi_count AS num,DATE( capture_date ) as create_time1
     FROM
-    hot_num_info
+    hot_num_day_count
     WHERE
     dev_id = #{devId}
-    AND capture_time   BETWEEN #{startTime} AND #{endTime}
-    GROUP BY create_time1
+    AND capture_date   BETWEEN #{startTime} AND #{endTime}
+    GROUP BY capture_date
   </select>
 
   <select id="selectGuoBieCount" resultType="java.util.Map">
-    SELECT COUNT(DISTINCT imsi)AS num,attribution FROM hot_num_info WHERE  dev_id=#{devId}
-    AND imsi LIKE '460%'
-    AND capture_time
+    SELECT SUM(attribution_num) AS num,attribution FROM hot_num_attr_pre_handle WHERE  dev_id=#{devId}
+    and country = "中国" and capture_date
     BETWEEN #{startTime} AND #{endTime}
     GROUP BY attribution ORDER BY num DESC LIMIT 10
   </select>
 
   <select id="selectGuojiCount" resultType="java.util.Map">
-    SELECT "国内" AS country,COUNT(DISTINCT imsi)AS num
-    FROM hot_num_info where dev_id=#{devId}
-    and imsi LIKE '460%'
-    and capture_time
-    BETWEEN #{startTime} AND #{endTime} ORDER BY num DESC LIMIT 10
+    SELECT "国内" AS country,SUM(attribution_num) AS num
+    FROM hot_num_attr_pre_handle where dev_id=#{devId}
+    and country = "中国"
+    and capture_date
+    BETWEEN #{startTime} AND #{endTime}
   </select>
 
   <!--国内国外查询-->
   <select id="selectGuojiCounts" resultType="java.util.Map">
-    SELECT "国外" AS country,COUNT(DISTINCT imsi)AS num
-    FROM hot_num_info
+    SELECT "国外" AS country,SUM(attribution_num) AS num
+    FROM hot_num_attr_pre_handle
     where dev_id=#{devId}
-    and imsi not LIKE '460%'
-    and capture_time
+    and country != "中国"
+    and capture_date
     BETWEEN #{startTime} AND #{endTime}
   </select>
 
   <select id="selectMyGeGuoCount" resultType="java.util.Map">
-    SELECT COUNT(DISTINCT imsi)AS num,"中国" AS country FROM
-    hot_num_info
+    SELECT SUM(attribution_num) AS num,"中国" AS country FROM
+    hot_num_attr_pre_handle
     where dev_id=#{devId}
-    and imsi LIKE '460%'
-    and capture_time
+    and country = "中国"
+    and capture_date
     BETWEEN #{startTime} AND #{endTime}
   </select>
 
   <select id="selectGuoWaiGeGuoCount" resultType="java.util.Map">
-    SELECT COUNT(DISTINCT imsi)AS num,attribution as country FROM
-    hot_num_info
+    SELECT SUM(attribution_num) AS num,attribution as country FROM
+    hot_num_attr_pre_handle
     where dev_id=#{devId}
-    and imsi not LIKE '460%'
-    and capture_time
+    and country != "中国"
+    and capture_date
     BETWEEN #{startTime} AND #{endTime}
-    GROUP BY attribution
+    GROUP BY attribution  ORDER BY num DESC LIMIT 9
   </select>
   <select id="selectbansuiLists" resultType="java.util.Map">
     SELECT a.id, a.dev_id,a.imsi, a.imei, a.attribution, a.create_time FROM hot_num_info a
@@ -536,7 +535,7 @@
   </select>
   <select id="selectHotNumInfoList"  resultType="java.util.Map">
     select
-    h.id, h.imsi,h.imei,h.isdn,h.mode,h.capture_time,h.target_id,h.dev_id,h.create_time,h.update_time,h.attribution
+    h.id, h.imsi,h.imei,h.isdn,h.mode,h.capture_time as captureTime,h.target_id as targetId,h.dev_id as devId,h.create_time,h.update_time,h.attribution
     from hot_num_info h inner join (
     select id from hot_num_info
     <where>
@@ -561,13 +560,7 @@
     on h.id=t.id
   </select>
   <select id="countDistinctByIMSI">
-    SELECT selectDistinctImsicount(distinct imsi) from hot_num_info
-  </select>
-
-  <select id="selectDistinctImsi" resultType="com.jsc.hotspot.db.domain.HotNumInfo">
-    select distinct imsi, imei, isdn, mode, target_id, dev_id,create_time,update_time,attribution, capture_time
-    from hot_num_info
-    where capture_time BETWEEN #{startTime} AND #{endTime}
+    SELECT count(distinct imsi) from hot_num_info
   </select>
 <!--  <select id="selectNumInfoByDay" resultType="java.util.Map">-->
 <!--    SELECT date(capture_time) t,count(distinct imsi)-->

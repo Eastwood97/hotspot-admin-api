@@ -463,11 +463,8 @@
             <if test="imei!=null and imei!=''">
                 and b.imei=#{imei}
             </if>
-            <if test="isdn!=null and isdn!=''">
-                and b.isdn=#{isdn}
-            </if>
-            <if test="capture_time!=null">
-                and date(b.capture_time)=#{capture_time}
+            <if test="startTime!=null">
+                and b.capture_time between #{startTime} and #{endTime}
             </if>
         </where>
         order by b.id desc

@@ -3,6 +3,7 @@ package com.jsc.hotspot.api.service;
 import com.jsc.hotspot.db.domain.HotNumInfo;
 import com.jsc.hotspot.db.entity.PageResult;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ import java.util.Map;
  */
 public interface HoTnumInfoService {
     //分页查询展示
-    PageResult findHotNumInfo(int groupId, int page, int rows, HotNumInfo hotNumInfoDAO);
+    PageResult findHotNumInfo(int groupId, int page, int rows, HotNumInfo hotNumInfoDAO, String startTime, String endTime);
     //删除取号信息
     void deleteHotNumInfo(String ids);
     //获取数量

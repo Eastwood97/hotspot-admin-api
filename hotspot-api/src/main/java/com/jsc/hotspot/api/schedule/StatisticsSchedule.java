@@ -71,6 +71,7 @@ public class StatisticsSchedule {
                     if (map != null){
                         if (map.containsKey(hotNumInfo.getAttribution())){
                             map.put(hotNumInfo.getAttribution(), map.get(hotNumInfo.getAttribution() + 1));
+
                         }
                     }
                 }
@@ -93,6 +94,11 @@ public class StatisticsSchedule {
                     hotNumAttrPreHandle.setAttributionNum(entry1.getValue());
                     hotNumAttrPreHandle.setCaptureDate(localDate);
                     hotNumAttrPreHandle.setDevId(entry.getKey());
+                    if (hotNumAttrPreHandle.getAttribution().startsWith("中国")){
+                        hotNumAttrPreHandle.setCountry("中国");
+                    }else {
+                        hotNumAttrPreHandle.setCountry(hotNumAttrPreHandle.getAttribution());
+                    }
                     hotNumAttrPreHandles.add(hotNumAttrPreHandle);
                 }
             }

@@ -1,13 +1,9 @@
 package com.jsc.hotspot.api.service;
 
-import com.jsc.hotspot.db.domain.HotTargetInfo;
-
-import java.util.List;
-
 /**
- * @Auther: WW
- * @Date: 2019/11/13 0013 10:23
- * @Description:
+ * @author huixing
+ * @description
+ * @date 2020/3/11
  */
 public interface HotTargetInfoService {
     //获取布控名单数量

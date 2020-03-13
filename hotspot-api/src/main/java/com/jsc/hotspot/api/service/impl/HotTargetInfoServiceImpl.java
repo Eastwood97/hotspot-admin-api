@@ -1,14 +1,10 @@
 package com.jsc.hotspot.api.service.impl;
 
-import com.jsc.hotspot.api.service.HotTargetInfoService;
 import com.jsc.hotspot.db.dao.HotTargetInfoMapper;
-import com.jsc.hotspot.db.domain.HotTargetInfo;
 import com.jsc.hotspot.db.domain.HotTargetInfoExample;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @Auther: WW
@@ -17,7 +13,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class HotTargetInfoServiceImpl implements HotTargetInfoService {
+public class HotTargetInfoServiceImpl implements com.jsc.hotspot.api.service.HotTargetInfoService {
     @Autowired
     private HotTargetInfoMapper hotTargetInfoMapper;
     //获取布控总量

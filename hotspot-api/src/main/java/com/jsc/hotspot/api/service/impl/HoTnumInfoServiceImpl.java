@@ -15,6 +15,7 @@ import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -67,7 +68,8 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
     }
 
     @Override
-    public PageResult findHotNumInfo(int groupId, int page, int rows, HotNumInfo hotNumInfoDAO) {
+    public PageResult findHotNumInfo(int groupId, int page, int rows, HotNumInfo hotNumInfoDAO,  String startTime,
+                                     String endTime) {
         HotNumInfoExample hotNumInfoDAOExample = new HotNumInfoExample();
         HotNumInfoExample.Criteria criteria = hotNumInfoDAOExample.createCriteria();
 //        判断数据
@@ -83,10 +85,9 @@ public class HoTnumInfoServiceImpl implements HoTnumInfoService {
         if (hotNumInfoDAO.getMode() != null) {
             criteria.andModeEqualTo(hotNumInfoDAO.getMode());
         }
-        if (hotNumInfoDAO.getCaptureTime() != null) {
-            LocalDateTime of = LocalDateTime.of(hotNumInfoDAO.getCaptureTime().toLocalDate(), LocalTime.MIN);
-            LocalDateTime of1 = LocalDateTime.of(hotNumInfoDAO.getCaptureTime().toLocalDate(), LocalTime.MAX);
-            criteria.andCaptureTimeBetween(of, of1);
+        if (!"".equals(startTime) && !"".equals(endTime) && startTime !=null) {
+            DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            criteria.andCaptureTimeBetween(LocalDateTime.parse(startTime,df),LocalDateTime.parse(endTime,df));
         }
         if (hotNumInfoDAO.getDevId() != null) {
             criteria.andDevIdEqualTo(hotNumInfoDAO.getDevId());
@@ -336,7 +337,6 @@ public Map<String, Integer> getNumInfoByDay() {
 //                    list.remove(j);
 //                }
 //            }
-//        }
 //
 //        return list;
 //    }
