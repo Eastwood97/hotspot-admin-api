@@ -13,4 +13,5 @@ public interface HotFrontDeviceEXTMapper {
 
     int deleteById(@Param("devIds") String[] devIds);
     List<HotFrontDevice> selectDeviceList();
+    List getregionIdList(@Param("region_id")Integer regionId);
 }

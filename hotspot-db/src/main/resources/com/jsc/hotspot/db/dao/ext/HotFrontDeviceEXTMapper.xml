@@ -523,4 +523,14 @@
         *
         from hot_front_device
     </select>
+    <select id="getregionIdList" resultType="java.util.Map" parameterType="java.lang.Integer">
+        select
+        *
+        from hot_front_device
+        <where>
+            <if test="region_id!=null and region_id!=''">
+                and region_id = #{region_id}
+            </if>
+        </where>
+    </select>
 </mapper>

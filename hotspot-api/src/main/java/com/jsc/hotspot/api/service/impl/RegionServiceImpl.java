@@ -61,4 +61,11 @@ public class RegionServiceImpl implements RegionService {
         region.setUpdateTime(LocalDateTime.now());
         return regionMapper.updateByPrimaryKeySelective(region);
     }
+
+    @Override
+    public long getRegionNameCount(String regionName) {
+        RegionExample example=new RegionExample();
+        example.or().andRegionNameEqualTo(regionName);
+        return regionMapper.countByExample(example);
+    }
 }

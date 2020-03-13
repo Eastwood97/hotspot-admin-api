@@ -134,4 +134,14 @@ public class DevicemanagerController {
             return ResponseUtil.deleteDataFailed();
         }
     }
+    /**
+     * 获取设备
+     * @param regionId
+     * @return
+     */
+    @RequestMapping("/getDevId")
+    public Object getDevId(Integer regionId){
+        List<HotFrontDevice> devices=deviceService.getregionIdList(regionId);
+        return ResponseUtil.okList(devices);
+    }
 }

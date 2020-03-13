@@ -77,5 +77,15 @@ public class RegionController {
         return ResponseUtil.ok(region);
     }
 
+    @RequestMapping("/getRegionNameCount")
+    @GetMapping
+    public Object getRegionNameCount(String regionName){
+        if(StringUtils.isEmpty(regionName)){
+            return null;
+        }
+        long count=regionService.getRegionNameCount(regionName);
+        return ResponseUtil.ok(count);
+    }
+
 
 }

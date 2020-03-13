@@ -57,7 +57,7 @@ public class TargetFaceController {
                           @RequestParam(defaultValue = "20") Integer limit,
                              String targetName){
         List<CameraTargetFace> targetFaces=targetFaceService.getTargetFace(page,limit,targetName);
-        return ResponseUtil.ok(targetFaces);
+        return ResponseUtil.okList(targetFaces);
     }
 
     /**

@@ -116,4 +116,18 @@ public class DeviceServiceImpl implements DeviceService {
         return hotFrontDeviceEXTMapper.selectDeviceList();
     }
 
+    /**
+     * 功能描述: 根据regionId取内容
+     *
+     * @param regionId
+     * @param:
+     * @return:
+     * @auther: ww
+     * @date: 2020/3/13 0013 15:42
+     */
+    @Override
+    public List getregionIdList(Integer regionId) {
+        return hotFrontDeviceEXTMapper.getregionIdList(regionId);
+    }
+
 }

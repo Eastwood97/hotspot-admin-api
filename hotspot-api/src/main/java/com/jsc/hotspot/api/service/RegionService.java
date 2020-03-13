@@ -1,7 +1,5 @@
 package com.jsc.hotspot.api.service;
 
-import com.jsc.hotspot.db.domain.HotTargetCar;
-import com.jsc.hotspot.db.domain.HotTargetInfo;
 import com.jsc.hotspot.db.domain.Region;
 
 import java.util.List;
@@ -42,6 +40,13 @@ public interface RegionService {
      * @return
      */
     int updateById(Region region);
+
+    /**
+     * 查找区域名的数量
+     * @param regionName
+     * @return
+     */
+     long getRegionNameCount(String regionName);
 
 
 }

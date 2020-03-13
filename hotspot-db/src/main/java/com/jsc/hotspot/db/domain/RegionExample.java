@@ -535,7 +535,7 @@ public class RegionExample {
             return (Criteria) this;
         }
 
-        public Criteria andStateEqualTo(Byte value) {
+        public Criteria andStateEqualTo(Integer value) {
             addCriterion("`state` =", value, "state");
             return (Criteria) this;
         }

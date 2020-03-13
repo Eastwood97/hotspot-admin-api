@@ -478,7 +478,6 @@
     WHERE
     dev_id = #{devId}
     AND capture_date   BETWEEN #{startTime} AND #{endTime}
-    GROUP BY capture_date
   </select>
 
   <select id="selectGuoBieCount" resultType="java.util.Map">

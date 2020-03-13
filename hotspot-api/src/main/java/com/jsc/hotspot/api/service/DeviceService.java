@@ -51,4 +51,14 @@ public interface DeviceService {
      */
     List<HotFrontDevice> getDeviceList();
 
+    /**
+     *
+     * 功能描述: 根据regionId取内容
+     *
+     * @param:
+     * @return:
+     * @auther: ww
+     * @date: 2020/3/13 0013 15:42
+     */
+    List getregionIdList(Integer regionId);
 }
