@@ -7,6 +7,7 @@ import com.jsc.hotspot.api.service.PermissionService;
 import com.jsc.hotspot.api.service.impl.RoleServiceImpl;
 import com.jsc.hotspot.api.utils.Permission;
 import com.jsc.hotspot.api.utils.PermissionUtil;
+import com.jsc.hotspot.common.bean.Response;
 import com.jsc.hotspot.common.utils.JacksonUtil;
 import com.jsc.hotspot.common.utils.response.ResponseUtil;
 import com.jsc.hotspot.db.domain.Admin;
@@ -132,6 +133,10 @@ public class AdminAuthController {
         Admin admin = (Admin) currentUser.getPrincipal();
 
         Map<String, Object> data = new HashMap<>();
+        // 未登录
+        if (admin == null){
+            return ResponseUtil.fail();
+        }
         data.put("name", admin.getUsername());
         data.put("avatar", admin.getAvatar());
         Long[] roleIds = admin.getRoleIds();

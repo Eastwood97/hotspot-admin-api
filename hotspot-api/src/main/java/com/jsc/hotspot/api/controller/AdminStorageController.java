@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.temporal.TemporalUnit;
 
 /**
  * @author tzm
@@ -39,7 +41,8 @@ public class AdminStorageController {
             ValueOperations<String, String> redisValueOptions = redisTemplate.opsForValue();
             byte[] pciBytes = file.getBytes();
             String transferToBase64 = Base64Utils.encodeToString(pciBytes);
-            redisValueOptions.set(bizResult.getData(), transferToBase64);
+            // 设置过期时间
+            redisValueOptions.set(bizResult.getData(), transferToBase64, Duration.ofMinutes(20));
             return ResponseUtil.ok(bizResult.getData());
         }else {
             return ResponseUtil.uploadFailed();

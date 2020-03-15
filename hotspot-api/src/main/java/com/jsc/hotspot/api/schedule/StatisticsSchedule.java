@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,12 +44,15 @@ public class StatisticsSchedule {
     /**
      * 每日定时做预处理
      */
-    @Scheduled(cron = "0 0 1 * * ?")
+//    @Scheduled(cron = "0 0 1 * * ?")
+//    @Scheduled(cron = "0/5 * * * * ? ")
+    @Scheduled(cron = "0 13 23 * * ?")
     public void totalNumberPerDay(){
         HotNumInfoExample hotNumInfoExample = new HotNumInfoExample();
         HotNumInfoExample.Criteria criteria = hotNumInfoExample.createCriteria();
-        LocalDateTime minTime = LocalDateTime.MIN;
-        LocalDateTime maxTime = LocalDateTime.MAX;
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime minTime = LocalDateTime.of(now.toLocalDate(), LocalTime.MIN);
+        LocalDateTime maxTime = LocalDateTime.of(now.toLocalDate(), LocalTime.MAX);
         criteria.andCaptureTimeBetween(minTime, maxTime);
 
         List<HotNumInfo> hotNumInfos = hotNumInfoMapper.selectDistinctImsi(minTime, maxTime);
@@ -63,6 +67,7 @@ public class StatisticsSchedule {
             // 取出的号码做归属地分析
             LocalDateTime localDate = LocalDateTime.now();
 
+            // 键为设备号；值为<归属地，数量>
             Map<Long, Map<String, Long>> countDes = new HashMap<>();
 
             for (HotNumInfo hotNumInfo : hotNumInfos){
@@ -70,10 +75,16 @@ public class StatisticsSchedule {
                     Map<String, Long> map = countDes.get(hotNumInfo.getDevId());
                     if (map != null){
                         if (map.containsKey(hotNumInfo.getAttribution())){
-                            map.put(hotNumInfo.getAttribution(), map.get(hotNumInfo.getAttribution() + 1));
+                            map.put(hotNumInfo.getAttribution(), map.get(hotNumInfo.getAttribution()) + 1);
 
+                        }else {
+                            map.put(hotNumInfo.getAttribution(), 1l);
                         }
                     }
+                }else {
+                    Map<String, Long> newMap = new HashMap<>();
+                    newMap.put(hotNumInfo.getAttribution(), 1l);
+                    countDes.put(hotNumInfo.getDevId(), newMap);
                 }
             }
 

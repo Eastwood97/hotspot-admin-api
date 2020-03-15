@@ -6,6 +6,7 @@
     (capture_date,
         imsi_count,
         dev_id)
+        values
       <foreach collection="list" item="item" separator=",">
           <trim prefix="(" suffix=")" suffixOverrides=",">
               #{item.captureDate,jdbcType=TIMESTAMP},
