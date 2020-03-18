@@ -31,6 +31,7 @@ public class DataFenXiController {
     private DeviceService deviceService;
     @Autowired
     private HotFrontDeviceOptionService hotFrontDeviceOptionService;
+
     /**
      * 功能描述: 根据人流量统计数据
      *
@@ -41,13 +42,14 @@ public class DataFenXiController {
      */
     @RequestMapping(value = "/traffic", method = RequestMethod.POST)
     public Object getTraffic(@RequestBody Traffic traffic) {
-        try{
+        try {
             List<Map> trafficList = hoTnumInfoService.getTraffic(traffic.getDevId(), traffic.getCreateTime());
             return ResponseUtil.ok(trafficList);
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseUtil.fail();
         }
     }
+
     /**
      * 功能描述: 根据国别统计数据
      *
@@ -58,10 +60,10 @@ public class DataFenXiController {
      */
     @RequestMapping(value = "/CountryCount", method = RequestMethod.POST)
     public Object getCountryCount(@RequestBody Traffic traffic) {
-        try{
+        try {
             Object differentCountries = hoTnumInfoService.getDifferentCountries(traffic.getDevId(), traffic.getCreateTime());
             return ResponseUtil.ok(differentCountries);
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseUtil.fail();
         }
     }
@@ -76,15 +78,15 @@ public class DataFenXiController {
      */
     @RequestMapping(value = "/device", method = RequestMethod.GET)
     public Object getDeviceList() {
-        try{
+        try {
             List<HotFrontDevice> deviceList = deviceService.getDeviceList();
             return ResponseUtil.ok(deviceList);
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseUtil.fail();
         }
     }
+
     /**
-     *
      * 功能描述: 获取设备数组
      *
      * @param:
@@ -92,12 +94,12 @@ public class DataFenXiController {
      * @auther: ww
      * @date: 2019/11/29 0029 15:07
      */
-    @RequestMapping(value = "/devicemessage",method = RequestMethod.GET)
-    public Object getOptionMessageList(Integer id){
-        try{
+    @RequestMapping(value = "/devicemessage", method = RequestMethod.GET)
+    public Object getOptionMessageList(Integer id) {
+        try {
             List<HotFrontDeviceOption> hotFrontDeviceOption = hotFrontDeviceOptionService.getHotFrontDeviceOption(id);
             return ResponseUtil.ok(hotFrontDeviceOption);
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseUtil.fail();
         }
     }
@@ -120,4 +122,22 @@ public class DataFenXiController {
 //        }
 ////
 //    }
+
+    /**
+     * 功能描述: 归属地点击分析
+     *
+     * @param:
+     * @return:
+     * @auther: ww
+     * @date: 2020/3/16 0016 15:13
+     */
+    @RequestMapping(value = "/getGuiShuiDiList", method = RequestMethod.GET)
+    public Object getGuiShuiDiList(String imsi, int page, int row,String guishu) {
+        try {
+            PageResult guiShuiDiList = hoTnumInfoService.getGuiShuiDiList(imsi, page, row, guishu);
+            return ResponseUtil.ok(guiShuiDiList);
+        } catch (Exception e) {
+            return ResponseUtil.fail();
+        }
+    }
 }

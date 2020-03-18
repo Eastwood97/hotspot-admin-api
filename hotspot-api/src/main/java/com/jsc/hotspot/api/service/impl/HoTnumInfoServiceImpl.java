@@ -1,11 +1,14 @@
 package com.jsc.hotspot.api.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.jsc.hotspot.api.service.HoTnumInfoService;
 import com.jsc.hotspot.db.dao.HotNumInfoMapper;
 import com.jsc.hotspot.db.dao.ext.HotNumInfoEXTMapper;
 import com.jsc.hotspot.db.domain.HotNumInfo;
 import com.jsc.hotspot.db.domain.HotNumInfoExample;
+import com.jsc.hotspot.db.domain.HotspotLog;
 import com.jsc.hotspot.db.entity.PageResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -471,4 +474,22 @@ public Map<String, Integer> getNumInfoByDay() {
         return hotNumInfoMapper.countByExample(hotNumInfoExample);
     }
 
+    /**
+     * 功能描述: 归属地点击分析
+     *
+     * @param imsi
+     * @param page
+     * @param row
+     * @param:
+     * @return:
+     * @auther: ww
+     * @date: 2020/3/16 0016 15:16
+     */
+    @Override
+    public PageResult getGuiShuiDiList(String imsi, int page, int row,String guishu) {
+        PageHelper.startPage(page, row);
+        List guiShuiDiList = hotNumInfoEXTMapper.getGuiShuiDiList(imsi,guishu);
+        PageInfo<HotspotLog> pages = new PageInfo<>(guiShuiDiList);
+        return new PageResult(pages.getTotal(), pages.getList());
+    }
 }

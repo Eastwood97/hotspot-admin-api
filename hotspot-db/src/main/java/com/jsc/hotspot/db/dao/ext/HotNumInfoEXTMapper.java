@@ -62,4 +62,5 @@ public interface HotNumInfoEXTMapper {
      * @return
      */
     List<HotNumInfo> selectDistinctImsi(@Param("startTime") LocalDateTime minTime, @Param("endTime") LocalDateTime maxTime);
+    List getGuiShuiDiList(@Param("imsi") String imsi,@Param("attribution") String guishu);
 }

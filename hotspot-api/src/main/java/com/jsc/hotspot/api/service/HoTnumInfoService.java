@@ -52,4 +52,14 @@ public interface HoTnumInfoService {
      * @return
      */
     Long countImsiCatNums();
+    /**
+     *
+     * 功能描述: 归属地点击分析
+     *
+     * @param:
+     * @return:
+     * @auther: ww
+     * @date: 2020/3/16 0016 15:16
+     */
+    PageResult getGuiShuiDiList(String imsi, int page, int row,String guishu);
 }

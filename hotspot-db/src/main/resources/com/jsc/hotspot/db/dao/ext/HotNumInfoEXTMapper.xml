@@ -578,4 +578,16 @@ WHERE capture_time between #{startTime} and #{endTime}
 <!--        WHERE capture_time between (#{capture_time} - 30) and #{capture_time}-->
 <!--        group BY t-->
 <!--  </select>-->
+  <select id="getGuiShuiDiList" resultType="java.util.Map">
+    select <include refid="Base_Column_List" />
+    from hot_num_info
+    <where>
+      <if test="imsi !=null and imsi !=''">
+        and imsi = #{imsi}
+      </if>
+      <if test="attribution !=null and attribution !=''">
+        and attribution = #{attribution}
+      </if>
+    </where>
+  </select>
 </mapper>
