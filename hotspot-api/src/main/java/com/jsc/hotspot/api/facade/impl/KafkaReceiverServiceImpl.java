@@ -35,14 +35,14 @@ import static java.util.stream.Collectors.toCollection;
  * @description kafka接收服务实现
  * @date 2019/11/4
  */
-@Service
+//@Service
 public class KafkaReceiverServiceImpl implements KafkaReceiverService {
 
     private static Log log = LogFactory.getLog(KafkaReceiverServiceImpl.class);
 
 
     @Autowired
-    private static HotNumInfoMapper hotNumInfoMapper;
+    private HotNumInfoMapper hotNumInfoMapper;
 
 
     @Autowired
@@ -160,19 +160,19 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
     /**
      * 冒泡排序,优化版
      *
-     * @param array
+     * @param imsiRatios
      */
 
-    private void sort(ArrayList<Double> array) {
-        Double tmp = 0.0;
-        for (int i = 0; i < array.size(); i++) {
+    private void sort(List<ImsiRatio> imsiRatios) {
+        ImsiRatio tmp = null;
+        for (int i = 0; i < imsiRatios.size(); i++) {
             //有序标记，每一轮的初始是true
             boolean isSorted = true;
-            for (int j = 0; j < array.size() - i - 1; j++) {
-                if (array.get(j) < array.get(j + 1)) {
-                    tmp = array.get(j);
-                    array.set(j, array.get(j + 1));
-                    array.set(j + 1, tmp);
+            for (int j = 0; j < imsiRatios.size() - i - 1; j++) {
+                if (imsiRatios.get(j).getRatio() < imsiRatios.get(j + 1).getRatio()) {
+                    tmp = imsiRatios.get(j);
+                    imsiRatios.set(j, imsiRatios.get(j + 1));
+                    imsiRatios.set(j + 1, tmp);
                     //有元素交换，所以不是有序，标记变为false
                     isSorted = false;
                 }
@@ -292,86 +292,34 @@ public class KafkaReceiverServiceImpl implements KafkaReceiverService {
                 imsiRatio.setRatio(ratio);
                 imsiRatio.setRelatedCount(relatedCount);
                 imsiRatioList.add(imsiRatio);
-                arrayList.add(ratio);
             }
             //按比值降序排列
-            sort(arrayList);
+            sort(imsiRatioList);
             //用于第二次卷积的数据容器
             List<ImsiRatio> ratioList = new ArrayList<>();
             //存放第二次比值，用于排序和去除干扰
             ArrayList<Double> arrayList2 = new ArrayList<>();
             //取前半部分加一
-            for (int i = 0; i < (arrayList.size() / 2) + 2; i++) {
-                for (int j = 0; j < imsiRatioList.size(); j++) {
-                    ImsiRatio imsiRatio = imsiRatioList.get(j);
-                    if (imsiRatio.getRatio() == arrayList.get(i)) {
-                        ratioList.add(imsiRatio);
-                        double ratioTwo = imsiRatio.getRelatedCount() / count;
-                        imsiRatio.setRatioTwo(ratioTwo);
-                        arrayList2.add(ratioTwo);
-                        break;
-                    }
-                }
+            for (int i = 0; i < (imsiRatioList.size() / 2 + 1); i++) {
+                ImsiRatio imsiRatio = imsiRatioList.get(i);
+                double ratio = imsiRatio.getRelatedCount() / count;
+                imsiRatio.setRatio(ratio);
+                ratioList.add(imsiRatio);
             }
             //降序排列
-            sort(arrayList2);
+            sort(ratioList);
             String[] rank = {"topOne", "topTwo", "topThree"};
-            for (int i = 0; i < (arrayList2.size() / 2) + 1; i++) {
-                for (int j = 0; j < ratioList.size(); j++) {
-                    ImsiRatio imsiRatio = ratioList.get(j);
-                    if (imsiRatio.getRatioTwo() == arrayList2.get(i)) {
-                        jsonMap.put(rank[i], imsiRatio);
-                        break;
-                    }
+            if (ratioList.size() > 3) {
+                for (int i = 0; i < 3; i++) {
+                    jsonMap.put(rank[i], ratioList.get(i));
                 }
-
+            } else {
+                for (int i = 0; i < ratioList.size(); i++) {
+                    jsonMap.put(rank[i], ratioList.get(i));
+                }
             }
         }
-        return jsonMap;
+            return jsonMap;
     }
-
-
-//    /**
-//     * 占比计算保留小数的位数方法
-//     * 转成百分数
-//     * 当前数除以总数
-//     *
-//     * @param num1 ,num2  num1/num2
-//     * @return rate  保留2位小数的
-//     */
-//    public static String division(int num1, int num2) {
-//        String rate = "0.00%";
-//        //定义格式化起始位数
-//        String format = "0.00";
-//        if (num2 != 0 && num1 != 0) {
-//            DecimalFormat dec = new DecimalFormat(format);
-//            rate = dec.format((double) num1 / num2 * 100) + "%";
-//            while (true) {
-//                if (rate.equals(format + "%")) {
-//                    format = format + "0";
-//                    DecimalFormat dec1 = new DecimalFormat(format);
-//                    rate = dec1.format((double) num1 / num2 * 100) + "%";
-//                } else {
-//                    break;
-//                }
-//            }
-//        } else if (num1 != 0 && num2 == 0) {
-//            rate = "100%";
-//        }
-//        return rate;
-//    }
-//
-//
-//    /**
-//     * 把上面得到的百分比转为字符串类型的小数  保留两位小数
-//     *
-//     * @author shw
-//     */
-//    public static BigDecimal perToDecimal(String percent) {
-//        String decimal = percent.substring(0, percent.indexOf("%"));
-//        BigDecimal bigDecimal = new BigDecimal(decimal);
-//        bigDecimal.divide(new BigDecimal("100"), 4, BigDecimal.ROUND_HALF_UP);
-//        return bigDecimal;
-//    }
 }
 

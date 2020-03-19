@@ -73,7 +73,7 @@ public class DevicemanagerController {
         if(error!=null){
             return  ResponseUtil.badArgumentValue();
         }
-        if (1==hotFrontDevice.getIsRegister()){
+        if (null!=hotFrontDevice.getIsRegister()&&1==hotFrontDevice.getIsRegister()){
             String respone= HttpUtil.sendGet("","http://127.0.0.1:9090/sdk/register");
             BizResult<String> data=JSON.parseObject(respone, BizResult.class);
             if(!data.getFlag()){
@@ -98,7 +98,7 @@ public class DevicemanagerController {
             return  error;
         }
         int flag=deviceService.selectById(hotFrontDevice).getIsRegister();
-        if (hotFrontDevice.getIsRegister()==1&&flag==0){
+        if (null!=hotFrontDevice.getIsRegister()&&hotFrontDevice.getIsRegister()==1&&flag==0){
             String respone= HttpUtil.sendGet("","http://127.0.0.1:9090/sdk/register");
             BizResult<String> data=JSON.parseObject(respone, BizResult.class);
             if(!data.getFlag()){

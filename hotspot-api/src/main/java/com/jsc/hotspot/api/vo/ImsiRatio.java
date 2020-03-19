@@ -10,6 +10,5 @@ import lombok.Data;
 public class ImsiRatio {
    private Double ratio;
    private String imsi;
-   private double ratioTwo;
    private double relatedCount;
 }
