@@ -14,6 +14,7 @@ import com.jsc.hotspot.db.domain.Admin;
 import com.jsc.hotspot.db.domain.CameraTargetFace;
 import com.jsc.hotspot.db.domain.CameraTargetFaceExample;
 import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.DeleteMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
@@ -98,8 +99,15 @@ public class TargetFaceServiceImpl implements TargetFaceService {
     public boolean deleteById(String targetIds) {
         String[] split=targetIds.split(",");
         int result=hotTargetFaceEXTMapper.deleteById(split);
+        org.apache.commons.httpclient.HttpClient client = new org.apache.commons.httpclient.HttpClient();
+        DeleteMethod method = new DeleteMethod("");
+        method.setDoAuthentication(true);
+//        try {
+//            int statusCode = client.executeMethod(method);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         return split.length==result;
-
     }
 
     /**

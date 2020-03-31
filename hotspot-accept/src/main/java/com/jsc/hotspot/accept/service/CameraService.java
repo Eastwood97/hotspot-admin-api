@@ -35,4 +35,10 @@ public interface CameraService {
      * @return
      */
     BizResult<Boolean> unregister();
+
+    /**
+     * 删除照片数据
+     * @return
+     */
+    BizResult<Boolean> deletePic(String pid);
 }

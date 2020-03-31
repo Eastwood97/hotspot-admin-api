@@ -4,6 +4,8 @@ import com.jsc.hotspot.accept.adapter.FaceInterface;
 import com.jsc.hotspot.accept.adapter.HaiKDllInterfaceAdapter;
 import com.jsc.hotspot.accept.sdk.HCNetSDK;
 import com.jsc.hotspot.common.bean.FileInfo;
+import com.jsc.hotspot.db.dao.TargetFaceCameraMapper;
+import com.jsc.hotspot.db.domain.TargetFaceCamera;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
@@ -32,6 +34,8 @@ public class HaiKDllFaceImpl implements FaceInterface {
 
     private final Log logger = LogFactory.getLog(HaiKDllAdapterImpl.class);
 
+    @Autowired
+    private TargetFaceCameraMapper targetFaceCameraMapper;
 
     @Autowired
     public static HCNetSDK hCNetSDK = HCNetSDK.INSTANCE;
@@ -259,7 +263,7 @@ public class HaiKDllFaceImpl implements FaceInterface {
             //返回true，说明支持人脸
             HCNetSDK.NET_DVR_FACELIB_COND	struInput = new HCNetSDK.NET_DVR_FACELIB_COND();
             struInput.dwSize = struInput.size();
-            struInput.szFDID = String.valueOf(m_FDLibList.get(index).dwFDID).getBytes();
+            struInput.szFDID = String.valueOf(m_FDLibList.get(0).dwFDID).getBytes();
             struInput.byConcurrent = 0;
             struInput.byCover = 1;
             struInput.byCustomFaceLibID = 0;
@@ -398,7 +402,7 @@ public class HaiKDllFaceImpl implements FaceInterface {
         }
     }
 
-    public void UploadFaceLinData(NativeLong lUserID, InputStream picStream, FileInfo fileInfo)
+    public void UploadFaceLinData(String k, NativeLong lUserID, InputStream picStream, FileInfo fileInfo)
     {
         if(m_lUploadHandle.longValue() != -1)
         {
@@ -454,6 +458,10 @@ public class HaiKDllFaceImpl implements FaceInterface {
                             struPicRet.read();
                             m_picID = new String(struPicRet.sUrl);
                             System.out.println("PicID:" + m_picID);
+                            TargetFaceCamera faceCamera = new TargetFaceCamera();
+                            faceCamera.setPicStorageUrl(k);
+                            faceCamera.setPid(m_picID);
+//                            targetFaceCameraMapper.insert(faceCamera);
                             logger.debug("图片上传成功 PID:" + m_picID);
                         }
 
@@ -772,5 +780,35 @@ public class HaiKDllFaceImpl implements FaceInterface {
             return;
         }
         return;
+    }
+
+    public boolean deletePic(String PID, NativeLong lUserID) {
+
+        //返回true，说明支持人脸
+        HCNetSDK.NET_DVR_XML_CONFIG_INPUT struInput = new HCNetSDK.NET_DVR_XML_CONFIG_INPUT();
+        struInput.dwSize = struInput.size();
+
+        String str = "GET /ISAPI/Intelligent/FDLib/" + m_FDID + "/picture/" + PID + "\r\n";
+        HCNetSDK.BYTE_ARRAY ptrUrl = new HCNetSDK.BYTE_ARRAY(HCNetSDK.BYTE_ARRAY_LEN);
+        System.arraycopy(str.getBytes(), 0, ptrUrl.byValue, 0, str.length());
+        ptrUrl.write();
+        struInput.lpRequestUrl = ptrUrl.getPointer();
+        struInput.dwRequestUrlLen = str.length();
+        HCNetSDK.NET_DVR_XML_CONFIG_OUTPUT struOutput = new HCNetSDK.NET_DVR_XML_CONFIG_OUTPUT();
+        struOutput.dwSize = struOutput.size();
+        struOutput.lpOutBuffer = null;
+        struOutput.dwOutBufferSize = 0;
+        HCNetSDK.BYTE_ARRAY ptrStatusByte = new HCNetSDK.BYTE_ARRAY(HCNetSDK.ISAPI_STATUS_LEN);
+        struOutput.lpStatusBuffer = ptrStatusByte.getPointer();
+        struOutput.dwStatusSize = HCNetSDK.ISAPI_STATUS_LEN;
+        struOutput.write();
+
+        if (hCNetSDK.NET_DVR_STDXMLConfig(lUserID, struInput, struOutput)) {
+            return true;
+        } else {
+            int code = hCNetSDK.NET_DVR_GetLastError();
+            logger.debug("创建人脸库失败: " + code);
+            return false;
+        }
     }
 }

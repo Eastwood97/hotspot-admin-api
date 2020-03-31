@@ -57,45 +57,45 @@
                              targetProject="src/main/java"/>
 
         <!--表名-->
-                <table tableName="hot_num_table_handle">
+                <table tableName="target_face_camera">
                     <generatedKey column="id" sqlStatement="MySql" identity="true"/>
                 </table>
 <!--        <table tableName="hot_num_table_handle">-->
 <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
 <!--        </table>-->
-        <table tableName="hot_num_attr_pre_handle">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="hot_num_day_count">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="hot_front_device" domainObjectName="HotFrontDevice">
-            <generatedKey column="dev_id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="hot_num_info" domainObjectName="HotNumInfo">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="hot_target_info" domainObjectName="HotTargetInfo">
-            <generatedKey column="target_id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="hot_num_attr_pre_handle">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="hot_num_day_count">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="hot_front_device" domainObjectName="HotFrontDevice">-->
+<!--            <generatedKey column="dev_id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="hot_num_info" domainObjectName="HotNumInfo">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="hot_target_info" domainObjectName="HotTargetInfo">-->
+<!--            <generatedKey column="target_id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
-        <table tableName="hot_target_car" domainObjectName="HotTargetCar">
-            <generatedKey column="target_id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="hot_target_car" domainObjectName="HotTargetCar">-->
+<!--            <generatedKey column="target_id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
-        <table tableName="operator_info" domainObjectName="OperatorInfo">
-            <generatedKey column="operator_id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="operator_info" domainObjectName="OperatorInfo">-->
+<!--            <generatedKey column="operator_id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
-        <table tableName="related_num" domainObjectName="RelatedNum">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="related_num" domainObjectName="RelatedNum">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
-        <table tableName="plate_number_compare" domainObjectName="PlateNumberCompare">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="region" domainObjectName="Region">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="plate_number_compare" domainObjectName="PlateNumberCompare">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="region" domainObjectName="Region">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
     </context>
 </generatorConfiguration>

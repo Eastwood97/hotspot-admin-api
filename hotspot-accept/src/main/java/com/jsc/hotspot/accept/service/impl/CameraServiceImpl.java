@@ -48,4 +48,9 @@ public class CameraServiceImpl implements CameraService {
         haiKDllInterfaceAdapter.unregister();
         return BizResult.create(true);
     }
+
+    @Override
+    public BizResult<Boolean> deletePic(String pid) {
+        return haiKDllInterfaceAdapter.deletePic(pid);
+    }
 }

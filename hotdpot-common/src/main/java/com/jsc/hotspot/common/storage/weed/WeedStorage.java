@@ -4,10 +4,14 @@ import com.jsc.hotspot.common.config.StorageConfig;
 import com.jsc.hotspot.common.exception.DevelopmentException;
 import com.jsc.hotspot.common.storage.FileStorage;
 import lombok.extern.slf4j.Slf4j;
-import org.lokra.seaweedfs.core.FileSource;
-import org.lokra.seaweedfs.core.FileTemplate;
-import org.lokra.seaweedfs.core.file.FileHandleStatus;
-import org.lokra.seaweedfs.core.http.StreamResponse;
+//import org.lokra.seaweedfs.core.FileSource;
+//import org.lokra.seaweedfs.core.FileTemplate;
+//import org.lokra.seaweedfs.core.file.FileHandleStatus;
+//import org.lokra.seaweedfs.core.http.StreamResponse;
+import net.anumbrella.seaweedfs.core.FileSource;
+import net.anumbrella.seaweedfs.core.FileTemplate;
+import net.anumbrella.seaweedfs.core.file.FileHandleStatus;
+import net.anumbrella.seaweedfs.core.http.StreamResponse;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -59,7 +63,7 @@ public class WeedStorage implements FileStorage {
         fileSource.setPort(config.getPort());
         fileSource.setMaxConnection(100);
         fileSource.setEnableLookupVolumeCache(false);
-        fileSource.setConnectionTimeout(10);
+//        fileSource.setConnectionTimeout(10);
         fileSource.setIdleConnectionExpiry(30);
         try {
             fileSource.startup();

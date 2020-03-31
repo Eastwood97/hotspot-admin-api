@@ -17,11 +17,11 @@ public interface FaceInterface {
     boolean DeleteFDLib(NativeLong lUserID);
     boolean UploadFile(int index, NativeLong lUserID);
     void UploadSend(InputStream inputStream, FileInfo fileInfo);
-    void UploadFaceLinData(NativeLong lUserID, InputStream inputStream, FileInfo fileInfo);
+    void UploadFaceLinData(String k, NativeLong lUserID, InputStream inputStream, FileInfo fileInfo);
     NativeLong getUploadState();
     void SetFaceAppendData(NativeLong lUserID);
     void DeleteFaceAppendData(NativeLong lUserID);
     void GetFaceAppendData(NativeLong lUserID);
     void FDLibGetButtonClick(NativeLong lUserID);
-
+    boolean deletePic(String PID, NativeLong lUserID);
 }

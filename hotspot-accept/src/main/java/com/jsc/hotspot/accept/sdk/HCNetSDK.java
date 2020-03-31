@@ -22,6 +22,8 @@ public interface HCNetSDK extends StdCallLibrary {
 
     HCNetSDK INSTANCE = (HCNetSDK) Native.loadLibrary("D:\\Repositories\\hotspot-admin-api\\hotspot-accept\\target\\classes\\HCNetSDK",
             HCNetSDK.class);
+//HCNetSDK INSTANCE = (HCNetSDK) Native.loadLibrary("/opt/HCNetSDK",
+//           HCNetSDK.class);
     /***宏定义***/
     //常量
     int NET_SDK_MAX_INDENTITY_KEY_LEN = 64;

@@ -69,4 +69,10 @@ public class SDKController {
     public BizResult<Boolean> unregister(){
         return cameraService.unregister();
     }
+
+    @RequestMapping(value = "deletePic", method = RequestMethod.DELETE)
+    @ResponseBody
+    public BizResult<Boolean> deletePic(String pid){
+        return cameraService.deletePic(pid);
+    }
 }

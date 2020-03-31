@@ -35,7 +35,7 @@ import static java.util.stream.Collectors.toCollection;
  * @description kafka接收服务实现
  * @date 2019/11/4
  */
-//@Service
+@Service
 public class KafkaReceiverServiceImpl implements KafkaReceiverService {
 
     private static Log log = LogFactory.getLog(KafkaReceiverServiceImpl.class);

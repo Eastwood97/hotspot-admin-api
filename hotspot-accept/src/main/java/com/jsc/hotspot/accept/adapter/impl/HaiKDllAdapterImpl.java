@@ -14,6 +14,9 @@ import com.jsc.hotspot.common.bean.VideoMessageBean;
 import com.jsc.hotspot.common.biz.BizResult;
 import com.jsc.hotspot.common.http.RestClient;
 import com.jsc.hotspot.common.util.RandomNameUtil;
+import com.jsc.hotspot.db.dao.TargetFaceCameraMapper;
+import com.jsc.hotspot.db.domain.TargetFaceCamera;
+import com.jsc.hotspot.db.domain.TargetFaceCameraExample;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
@@ -27,6 +30,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Base64Utils;
 import org.springframework.util.ObjectUtils;
 
@@ -63,6 +67,8 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
+    @Autowired
+    private TargetFaceCameraMapper targetFaceCameraMapper;
     HCNetSDK.NET_DVR_USER_LOGIN_INFO m_strLoginInfo = new HCNetSDK.NET_DVR_USER_LOGIN_INFO();//设备登录信息
     HCNetSDK.NET_DVR_DEVICEINFO_V40 m_strDeviceInfo = new HCNetSDK.NET_DVR_DEVICEINFO_V40();//设备信息
 
@@ -328,6 +334,22 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
         lUserID = -1;
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public BizResult<Boolean> deletePic(String targetIds) {
+        ISAPILogin();
+        String[] split=targetIds.split(",");
+        for (String pid : split) {
+            TargetFaceCameraExample targetFaceCamera = new TargetFaceCameraExample();
+            TargetFaceCameraExample.Criteria criteria = targetFaceCamera.createCriteria();
+            criteria.andPicStorageUrlEqualTo(pid);
+            targetFaceCameraMapper.selectOneByExample(targetFaceCamera);
+            targetFaceCameraMapper.deleteByExample(targetFaceCamera);
+            boolean flag = faceInterface.deletePic(pid, new NativeLong(lUserID));
+        }
+        return BizResult.create(true);
+    }
+
     /**
      * 上传文件到摄像机
      * @param fileInfo
@@ -338,21 +360,6 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
         String urls = fileInfo.getUrl();
         Map<String, String> fileInfo1 = JSON.parseObject(urls, Map.class);
         // 开始上传数据
-//        int i = 0;
-//        while (i < 30000){
-//            try {
-//                Thread.sleep(50);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//            i++;
-//            try {
-//                InputStream inputStream = new FileInputStream(new File("C:\\Users\\Administrator\\Desktop\\qiu.jpg"));
-//                faceInterface.UploadFaceLinData(new NativeLong(lUserID), inputStream, fileInfo);
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            }
-//        }
         if (!ObjectUtils.isEmpty(fileInfo1)) {
             fileInfo1.forEach((k, v) -> {
                 if (v !="") {
@@ -361,7 +368,7 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                     if (base64String != null) {
                         byte[] picByte = Base64Utils.decodeFromString(base64String);
                         InputStream inputStream = new ByteArrayInputStream(picByte);
-                        faceInterface.UploadFaceLinData(new NativeLong(lUserID), inputStream, fileInfo);
+                        faceInterface.UploadFaceLinData(k, new NativeLong(lUserID), inputStream, fileInfo);
                     }
                 }
             });
@@ -802,9 +809,9 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                         buffers.rewind();
                         buffers.get(bytes);
                         // 场景图
-                        String srString = new String(bytes);
-                        System.out.println(srString);
-                        faceRecognitionInfo.setSceneImg(srString);
+//                        String srString = new String(bytes);
+//                        System.out.println(srString);
+//                        faceRecognitionInfo.setSceneImg(srString);
 
                         ISAPILogin();
                         VideoDownLoadBean videoDownLoadBean = new VideoDownLoadBean();
@@ -816,8 +823,8 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                         GetShortVideoFile(videoDownLoadBean);
                         byte[] strOut;
                         try {
-                            strOut= HTTPClientUtil.doGet(srString, null);
-                            InputStream inputStream = new ByteArrayInputStream(strOut);
+//                            strOut= HTTPClientUtil.doGet(srString, null);
+                            InputStream inputStream = new ByteArrayInputStream(bytes);
                             BizResult<String> bizResult = weedFSService.storagePic(inputStream);
                             if (bizResult.getFlag()){
                                 faceRecognitionInfo.setSceneStorageUrl(bizResult.getData());
@@ -841,13 +848,13 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                         buffers.rewind();
                         buffers.get(bytes);
                         // 黑名单
-                        String srString = new String(bytes);
-                        System.out.println(srString);
-                        faceRecognitionInfo.setTargetFaceImg(srString);
+//                        String srString = new String(bytes);
+//                        System.out.println(srString);
+//                        faceRecognitionInfo.setTargetFaceImg(srString);
                         byte[] strOut;
                         try {
-                            strOut= HTTPClientUtil.doGet(srString, null);
-                            InputStream inputStream = new ByteArrayInputStream(strOut);
+//                            strOut= HTTPClientUtil.doGet(srString, null);
+                            InputStream inputStream = new ByteArrayInputStream(bytes);
                             weedFSService.init();
                             BizResult<String> bizResult = weedFSService.storagePic(inputStream);
                             if (bizResult.getFlag()){
@@ -871,20 +878,42 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                         buffers.rewind();
                         buffers.get(bytes);
                         // 抓拍人脸
-                        String srString = new String(bytes);
-                        faceRecognitionInfo.setCaptureFaceImg(srString);
+//                        String srString = new String(bytes);
+//                        faceRecognitionInfo.setCaptureFaceImg(srString);
 
                         byte[] strOut;
                         try {
-                            strOut= HTTPClientUtil.doGet(srString, null);
-                            InputStream inputStream = new ByteArrayInputStream(strOut);
+
+
+
+                            LocalDateTime localDateTime2 = LocalDateTime.now();
+                            DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                            String captureTime2 = formatter2.format(localDateTime2);
+                            faceRecognitionInfo.setCaptureTime(captureTime2);
+                            ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes);
                             BizResult<String> bizResult = weedFSService.storagePic(inputStream);
+
                             if (bizResult.getFlag()){
                                 faceRecognitionInfo.setCaptureFaceStorageUrl(bizResult.getData());
                             }
                             if (logger.isDebugEnabled()){
-                                logger.debug("HaiKDllAdapterImpl: 抓拍人脸信息：{0}, {1}" +bizResult.getData() + inputStream);
+                                logger.debug("HaiKDllAdapterImpl: 人脸信息：{0}, {1}" +bizResult.getData() + inputStream);
                             }
+
+
+
+
+
+
+//                            strOut= HTTPClientUtil.doGet(srString, null);
+//                            InputStream inputStream = new ByteArrayInputStream(strOut);
+//                            BizResult<String> bizResult = weedFSService.storagePic(inputStream);
+//                            if (bizResult.getFlag()){
+//                                faceRecognitionInfo.setCaptureFaceStorageUrl(bizResult.getData());
+//                            }
+//                            if (logger.isDebugEnabled()){
+//                                logger.debug("HaiKDllAdapterImpl: 抓拍人脸信息：{0}, {1}" +bizResult.getData() + inputStream);
+//                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -922,6 +951,7 @@ public class HaiKDllAdapterImpl implements HaiKDllInterfaceAdapter {
                             buffers.rewind();
                             buffers.get(bytes);
                             // 场景图的URL地址
+
 
                             fout.write(bytes);
                             fout.close();

@@ -41,4 +41,6 @@ public interface HaiKDllInterfaceAdapter extends AbstractDllAdapter{
     BizResult<Boolean> search();
 
     void unregister();
+
+    BizResult<Boolean> deletePic(String pid);
 }
